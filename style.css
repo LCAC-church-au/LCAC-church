@@ -475,3 +475,46 @@ footer {
     color: var(--text-muted);
     margin: 0;
 }
+
+/* شبكة بطاقات الإيمان وعقيدة الكنيسة */
+.faith-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    text-align: right;
+    margin-top: 30px;
+}
+
+.faith-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 22px;
+    border-radius: 10px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.faith-card:hover {
+    transform: translateY(-4px);
+    border-color: #555;
+}
+
+.faith-card h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.faith-card h3 i {
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.faith-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
