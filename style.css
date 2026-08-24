@@ -1,0 +1,418 @@
+:root {
+    --bg-color: #0b0b0b;
+    --card-bg: #161616;
+    --border-color: #262626;
+    --text-color: #e5e5e5;
+    --text-muted: #a3a3a3;
+    --accent-color: #ffffff;
+    --gold-color: #f39c12;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    direction: rtl;
+    line-height: 1.7;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* الهيدر */
+header {
+    background: rgba(11, 11, 11, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    border-radius: 4px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover, .highlight-btn {
+    color: #fff;
+}
+
+.highlight-btn {
+    background: #fff;
+    color: #000 !important;
+    padding: 6px 15px;
+    border-radius: 4px;
+}
+
+/* الواجهة الرئيسية */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), #111;
+    min-height: 95vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding-top: 80px;
+}
+
+.hero-logo-large img {
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.hero-content h2 {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.vision-text {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    color: #d1d1d1;
+    font-style: italic;
+    border-right: 3px solid #fff;
+    padding-right: 15px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.primary-btn {
+    background-color: #fff;
+    color: #000;
+}
+
+.primary-btn:hover {
+    background-color: #cccccc;
+}
+
+.secondary-btn {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.secondary-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.section {
+    padding: 80px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-desc {
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+/* جدول الخدمات */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    text-align: right;
+}
+
+.service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.service-card i {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.service-card .time {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.special-card {
+    grid-column: 1 / -1;
+}
+
+.location-note {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--gold-color);
+    background: rgba(243, 156, 18, 0.05);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* قسم المؤتمر */
+.dark-section {
+    background-color: #050505;
+}
+
+.badge {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+}
+
+.verse-box {
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 20px;
+    background: var(--card-bg);
+    border-right: 4px solid #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.verse-box p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.verse-box span {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.conf-dates-grid {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.date-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 15px 25px;
+    border-radius: 8px;
+    min-width: 160px;
+}
+
+.date-item .day-name {
+    display: block;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.date-item .date-num {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.conf-location {
+    margin: 30px 0;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.conf-location i {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.speakers-grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.speaker-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    width: 240px;
+    text-align: center;
+}
+
+.speaker-img-placeholder {
+    height: 140px;
+    background: #1f1f1f;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.speaker-card h3 {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 3px;
+}
+
+.speaker-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.pricing-notice {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 20px auto 0 auto;
+    font-size: 0.95rem;
+}
+
+/* قسم QR Code والخريطة */
+.qr-container {
+    max-width: 300px;
+    margin: auto;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.qr-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.qr-container p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* الأزرار العائمة */
+.floating-buttons {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+}
+
+.floating-buttons a {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 22px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+.floating-buttons a:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-btn { background-color: #25d366; }
+.call-btn { background-color: #333; border: 1px solid #555; }
+
+footer {
+    background: #000;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 25px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
