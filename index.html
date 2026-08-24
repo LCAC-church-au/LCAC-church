@@ -10,7 +10,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* تنسيق خاص بصفحة الاستقبال لتبقى في منتصف الشاشة وبشكل فاخر */
         body {
             background-color: #0b0b0b;
             color: #fff;
@@ -21,35 +20,66 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            overflow: hidden;
+            position: relative;
         }
+
+        /* خلفية متوهجة متحركة خفيفة */
+        .bg-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.3); opacity: 0.9; }
+        }
+
         .welcome-card {
-            background: #161616;
+            background: rgba(22, 22, 22, 0.85);
+            backdrop-filter: blur(10px);
             border: 1px solid #262626;
             padding: 40px 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
             max-width: 450px;
             width: 90%;
+            position: relative;
+            z-index: 2;
         }
+
+        /* حركة الشعار (نبض وحركة خفيفة للاستقرار) */
         .welcome-logo img {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             object-fit: contain;
             margin-bottom: 20px;
             border-radius: 50%;
             background: #000;
-            padding: 5px;
+            padding: 8px;
             border: 2px solid #333;
+            animation: floatLogo 4s ease-in-out infinite;
         }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 5px rgba(255,255,255,0.1)); }
+            50% { transform: translateY(-8px); filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.4)); }
+        }
+
         .welcome-card h1 {
             font-size: 1.6rem;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             color: #fff;
         }
         .welcome-card h2 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #a3a3a3;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-weight: 400;
             direction: ltr;
         }
@@ -91,17 +121,20 @@
 </head>
 <body>
 
+    <!-- تأثير الخلفية المتحركة -->
+    <div class="bg-glow"></div>
+
     <div class="welcome-card">
         <div class="welcome-logo">
-            <!-- تأكد أن اسم صورة الشعار مطابق تماماً للملف المرفوع -->
+            <!-- تأكد أن اسم ملف صورة الشعار مطابق تماماً -->
             <img src="chrch Logo.png" alt="LCAC Logo">
         </div>
         
         <h1>كنيسة مركز الحياة العربية</h1>
         <h2>Life Center Arabic Church</h2>
         
-        <p style="color: #888; font-size: 0.95rem; margin-bottom: 30px;">
-            يرجى اختيار اللغة للتابعة إلى الموقع<br>Please choose your preferred language
+        <p style="color: #888; font-size: 0.9rem; margin-bottom: 25px;">
+            يرجى اختيار اللغة للمتابعة<br>Please choose your preferred language
         </p>
 
         <div class="lang-buttons">
