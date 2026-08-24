@@ -85,7 +85,7 @@
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
-        /* تنسيق قسم العنوان والـ QR Code ليكون في المنتصف تماماً وبدون خلفية سوداء صلبة */
+        /* تنسيق قسم العنوان والـ QR Code ليكون في المنتصف تماماً */
         .centered-contact-box {
             display: flex;
             flex-direction: column;
@@ -93,6 +93,17 @@
             justify-content: center;
             text-align: center;
             margin: 0 auto;
+        }
+
+        /* إزالة الخلفية السوداء عن صورة الـ QR Code تماماً وجعلها متناسقة */
+        .qr-clean-img {
+            max-width: 200px;
+            border-radius: 12px;
+            background: transparent !important;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+            display: inline-block;
+            padding: 5px;
         }
     </style>
 </head>
@@ -193,15 +204,16 @@
         </div>
     </section>
 
-    <!-- قسم الخريطة والـ QR Code وروابط التواصل الاجتماعي (في المنتصف وبدون خلفية سوداء) -->
+    <!-- قسم الخريطة والـ QR Code وروابط التواصل الاجتماعي -->
     <section id="contact" class="section" style="background: transparent !important;">
         <div class="container centered-contact-box">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">عنوان الكنيسة ووسائل التواصل</h2>
             <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">مسح رمز الاستجابة السريعة (QR Code) للوصول إلى عنوان الكنيسة مباشرة</p>
             
             <div class="qr-container" style="margin: 20px 0; text-align: center;">
-                <img src="church address qr.jpg" alt="QR Code عنوان الكنيسة" style="max-width: 200px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); display: inline-block;">
-                <p style="color: #d4d4d4; margin-top: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">وجه كاميرا هاتفك نحو الرمز لعرض الموقع الجغرافي</p>
+                <!-- تم إضافة الكلاس الجديد لإزالة أي خلفية داكنة وتصفية الصورة -->
+                <img src="church address qr.jpg" alt="QR Code عنوان الكنيسة" class="qr-clean-img">
+                <p style="color: #d4d4d4; margin-top: 12px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">وجه كاميرا هاتفك نحو الرمز لعرض الموقع الجغرافي</p>
             </div>
 
             <!-- روابط وسائل التواصل الاجتماعي -->
