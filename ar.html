@@ -65,8 +65,28 @@
         }
 
         /* ظلال قوية لجميع النصوص لتبقى بارزة وواضحة جداً فوق الصور المباشرة */
-        .ar-hero-text h2, .ar-hero-text p, .transparent-card h3, .transparent-card p, .service-box h3, .service-box p {
+        .ar-hero-text h2, .ar-hero-text p, .transparent-card h3, .transparent-card p, footer p {
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 8px rgba(0, 0, 0, 0.8);
+        }
+
+        /* تنسيق أيقونات وسائل التواصل الاجتماعي لتكون واضحة وأنيقة */
+        .social-icons-footer {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons-footer a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+        }
+
+        .social-icons-footer a:hover {
+            color: #4dabf7;
+            transform: translateY(-3px);
         }
     </style>
 </head>
@@ -100,7 +120,7 @@
         </div>
     </header>
 
-    <!-- محتوى الصفحة العربية الشامل (كل الخدمات والمعلومات عادت كاملة) -->
+    <!-- محتوى الصفحة العربية الشامل -->
     <section class="section" style="padding-top: 140px;" id="services">
         <div class="container ar-hero-text" style="text-align: center;">
             <span class="badge">عائلتنا الروحية</span>
@@ -135,10 +155,18 @@
         </div>
     </section>
 
-    <!-- الفوتر -->
-    <footer>
+    <!-- الفوتر مع روابط وسائل التواصل الاجتماعي -->
+    <footer style="margin-top: 60px; padding: 30px 0; text-align: center;">
         <div class="container">
             <p>&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
+            
+            <!-- روابط وسائل التواصل الاجتماعي -->
+            <div class="social-icons-footer">
+                <a href="https://facebook.com" target="_blank" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://youtube.com" target="_blank" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+                <a href="https://instagram.com" target="_blank" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:info@lcac.church" title="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
+            </div>
         </div>
     </footer>
 
