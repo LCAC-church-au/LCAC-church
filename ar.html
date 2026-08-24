@@ -84,6 +84,16 @@
         .transparent-card h3, .transparent-card p, .service-card h3, .service-card p {
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
+
+        /* تنسيق قسم العنوان والـ QR Code ليكون في المنتصف تماماً وبدون خلفية سوداء صلبة */
+        .centered-contact-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -183,14 +193,14 @@
         </div>
     </section>
 
-<!-- قسم عنوان الكنيسة، الـ QR Code وروابط التواصل الاجتماعي -->
+    <!-- قسم الخريطة والـ QR Code وروابط التواصل الاجتماعي (في المنتصف وبدون خلفية سوداء) -->
     <section id="contact" class="section" style="background: transparent !important;">
-        <div class="container">
+        <div class="container centered-contact-box">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">عنوان الكنيسة ووسائل التواصل</h2>
             <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">مسح رمز الاستجابة السريعة (QR Code) للوصول إلى عنوان الكنيسة مباشرة</p>
             
-            <div class="qr-container" style="margin: 20px 0;">
-                <img src="church address qr.jpg" alt="QR Code عنوان الكنيسة">
+            <div class="qr-container" style="margin: 20px 0; text-align: center;">
+                <img src="church address qr.jpg" alt="QR Code عنوان الكنيسة" style="max-width: 200px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); display: inline-block;">
                 <p style="color: #d4d4d4; margin-top: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">وجه كاميرا هاتفك نحو الرمز لعرض الموقع الجغرافي</p>
             </div>
 
@@ -225,6 +235,7 @@
             </div>
         </div>
     </section>
+
     <!-- الفوتر -->
     <footer style="background: transparent !important; text-align: center; padding: 20px 0;">
         <div class="container">
