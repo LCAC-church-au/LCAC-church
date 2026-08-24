@@ -11,7 +11,159 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كنيسة مركز الحياة العربية - الموقع العربي</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* خلفية الصور المتحركة الخاصة بالموقع العربي */
+        .ar-bg-slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
 
+        .ar-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            /* 5 صور، إجمالي المدة 30 ثانية (كل صورة تظهر لمدة 6 ثوانٍ) */
+            animation: arSlideAnimation 30s infinite;
+        }
+
+        /* ربط الصور الخمس الجديدة بالتسلسل */
+        .ar-slide:nth-child(1) {
+            background-image: url('church4.jpg');
+            animation-delay: 0s;
+        }
+        .ar-slide:nth-child(2) {
+            background-image: url('church5.jpg');
+            animation-delay: 6s;
+        }
+        .ar-slide:nth-child(3) {
+            background-image: url('church6.jpg');
+            animation-delay: 12s;
+        }
+        .ar-slide:nth-child(4) {
+            background-image: url('church7.jpg');
+            animation-delay: 18s;
+        }
+        .ar-slide:nth-child(5) {
+            background-image: url('church8.jpg');
+            animation-delay: 24s;
+        }
+
+        @keyframes arSlideAnimation {
+            0% { opacity: 0; transform: scale(1); }
+            8% { opacity: 1; }
+            24% { opacity: 1; }
+            32% { opacity: 0; transform: scale(1.05); }
+            100% { opacity: 0; }
+        }
+
+        /* طبقة عتمة داكنة لتسهيل قراءة النصوص فوق الصور */
+        .ar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 11, 11, 0.82);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- خلفية الصور المتحركة (5 صور جديدة) -->
+    <div class="ar-bg-slideshow">
+        <div class="ar-slide"></div>
+        <div class="ar-slide"></div>
+        <div class="ar-slide"></div>
+        <div class="ar-slide"></div>
+        <div class="ar-slide"></div>
+    </div>
+    
+    <!-- طبقة التعتيم -->
+    <div class="ar-overlay"></div>
+
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="chrch Logo.png" alt="شعار كنيسة LCAC">
+                <span>LCAC Church</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="#services">خدمات الكنيسة</a></li>
+                    <li><a href="faith.html">إيمان الكنيسة</a></li>
+                    <li><a href="conference.html">مؤتمر مجد الرب</a></li>
+                    <li><a href="en.html" style="color: #4dabf7;"><i class="fas fa-globe"></i> English</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- محتوى الصفحة العربية -->
+    <section class="section" style="padding-top: 140px;" id="services">
+        <div class="container">
+            <span class="badge">رحبتنا وعائلتنا الروحية</span>
+            <h2>أهلاً بك في كنيسة مركز الحياة العربية</h2>
+            <p class="section-desc">نحن نؤمن بأن الكنيسة ليست مبنى، بل عائلة تجمعنا محبة المسيح لنرنم، نعبد، وننمو معاً في كلمته.</p>
+            
+            <!-- أقسام الخدمات أو المحتوى الخاص بك -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px;">
+                
+                <div style="background: rgba(22, 22, 22, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 12px; text-align: center;">
+                    <i class="fas fa-church" style="font-size: 2.5rem; color: #2563eb; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">خدمة الاجتماعات والعبادة</h3>
+                    <p style="color: #a3a3a3; font-size: 0.95rem; line-height: 1.6;">أوقات شركة مباركة، ترانيم روحية، وعظات تعزز الإيمان وتعزي القلوب.</p>
+                </div>
+
+                <div style="background: rgba(22, 22, 22, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 12px; text-align: center;">
+                    <i class="fas fa-book-open" style="font-size: 2.5rem; color: #2563eb; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">دراسة الكلمة</h3>
+                    <p style="color: #a3a3a3; font-size: 0.95rem; line-height: 1.6;">نتعمق معاً في أسفار الكتاب المقدس لنفهم مشيئة الله ونعيشها بحسب الحق الإلهي.</p>
+                </div>
+
+                <div style="background: rgba(22, 22, 22, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 12px; text-align: center;">
+                    <i class="fas fa-hands-helping" style="font-size: 2.5rem; color: #2563eb; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">خدمة العائلة والشباب</h3>
+                    <p style="color: #a3a3a3; font-size: 0.95rem; line-height: 1.6;">برامج مخصصة لبناء الأسر وخدمة الأجيال الصاعدة في محبة الرب وإرشاده.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
     <!-- الشريط العلوي والتنقل -->
     <header>
         <div class="container nav-container">
