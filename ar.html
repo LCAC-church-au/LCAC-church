@@ -2,15 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كنيسة مركز الحياة العربية - الموقع العربي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">              
+    <title>كنيسة مركز الحياة العربية - LCAC</title>
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* خلفية الصور المتحركة بالكامل */
+        /* خلفية الصور المتحركة الخاصة بالموقع العربي */
         .ar-bg-slideshow {
             position: fixed;
             top: 0;
@@ -47,52 +48,47 @@
             100% { opacity: 0; }
         }
 
-        /* بطاقات شفافة بالكامل بدون مربعات سوداء صلبة لتظهر الصور بوضوح */
-        .transparent-card {
-            background: rgba(0, 0, 0, 0.25) !important;
+        /* طبقة عتمة عامة خفيفة ومتوازنة لترى الصور بوضوح */
+        .ar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: -1;
+        }
+
+        /* تنسيق العنوان الرئيسي بدون مربعات مع ظلال قوية */
+        .ar-hero-text h2, .ar-hero-text p, .hero h1, .hero h2, .vision-text {
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+
+        /* بطاقات الخدمات الشفافة كلياً */
+        .transparent-card, .service-card {
+            background: rgba(15, 15, 15, 0.35) !important;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 30px;
             border-radius: 14px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             transition: transform 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
 
-        .transparent-card:hover {
+        .transparent-card:hover, .service-card:hover {
             transform: translateY(-5px);
-            background: rgba(0, 0, 0, 0.4) !important;
+            background: rgba(15, 15, 15, 0.5) !important;
         }
 
-        /* ظلال قوية لجميع النصوص لتبقى بارزة وواضحة جداً فوق الصور المباشرة */
-        .ar-hero-text h2, .ar-hero-text p, .transparent-card h3, .transparent-card p, footer p {
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 8px rgba(0, 0, 0, 0.8);
-        }
-
-        /* تنسيق أيقونات وسائل التواصل الاجتماعي لتكون واضحة وأنيقة */
-        .social-icons-footer {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-icons-footer a {
-            color: #fff;
-            font-size: 1.5rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+        .transparent-card h3, .transparent-card p, .service-card h3, .service-card p {
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-        }
-
-        .social-icons-footer a:hover {
-            color: #4dabf7;
-            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
 
-    <!-- خلفية الصور المتحركة (5 صور جديدة) -->
+    <!-- خلفية الصور المتحركة -->
     <div class="ar-bg-slideshow">
         <div class="ar-slide"></div>
         <div class="ar-slide"></div>
@@ -100,8 +96,11 @@
         <div class="ar-slide"></div>
         <div class="ar-slide"></div>
     </div>
+    
+    <!-- طبقة العتمة الخفيفة للوضوح -->
+    <div class="ar-overlay"></div>
 
-    <!-- الشريط العلوي الأصلي والأنيق -->
+    <!-- الشريط العلوي والتنقل -->
     <header>
         <div class="container nav-container">
             <div class="logo">
@@ -111,62 +110,136 @@
             <nav>
                 <ul>
                     <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="ar.html" class="highlight-btn">الموقع العربي</a></li>
+                    <li><a href="#services">خدمات الكنيسة</a></li>
                     <li><a href="faith.html">إيمان الكنيسة</a></li>
-                    <li><a href="conference.html">مؤتمر مجد الرب</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
                     <li><a href="en.html" style="color: #4dabf7;"><i class="fas fa-globe"></i> English</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- محتوى الصفحة العربية الشامل -->
-    <section class="section" style="padding-top: 140px;" id="services">
-        <div class="container ar-hero-text" style="text-align: center;">
-            <span class="badge">عائلتنا الروحية</span>
-            <h2 style="font-size: 2.2rem; color: #fff; margin-bottom: 15px;">أهلاً بك في كنيسة مركز الحياة العربية</h2>
-            <p class="section-desc" style="max-width: 600px; margin: 0 auto 40px auto; color: #e5e5e5; font-size: 1.1rem;">
-                نحن نؤمن بأن الكنيسة ليست مبنى، بل عائلة تجمعنا محبة المسيح لنرنم، نعبد، وننمو معاً في كلمته الحية.
-            </p>
-            
-            <!-- أقسام الخدمات والترتيبات الكاملة -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px;">
-                
-                <div class="transparent-card">
-                    <i class="fas fa-church" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px; filter: drop-shadow(0 0 8px rgba(77,175,247,0.6));"></i>
-                    <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.25rem;">خدمة الاجتماعات والعبادة</h3>
-                    <p style="color: #d4d4d4; font-size: 0.95rem; line-height: 1.6;">أوقات شركة مباركة، ترانيم روحية، وعظات تعزز الإيمان وتعزي القلوب.</p>
-                </div>
-
-                <div class="transparent-card">
-                    <i class="fas fa-book-open" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px; filter: drop-shadow(0 0 8px rgba(77,175,247,0.6));"></i>
-                    <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.25rem;">دراسة الكلمة</h3>
-                    <p style="color: #d4d4d4; font-size: 0.95rem; line-height: 1.6;">نتعمق معاً في أسفار الكتاب المقدس لنفهم مشيئة الله ونعيشها بحسب الحق الإلهي.</p>
-                </div>
-
-                <div class="transparent-card">
-                    <i class="fas fa-hands-helping" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px; filter: drop-shadow(0 0 8px rgba(77,175,247,0.6));"></i>
-                    <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.25rem;">خدمة العائلة والشباب</h3>
-                    <p style="color: #d4d4d4; font-size: 0.95rem; line-height: 1.6;">برامج مخصصة لبناء الأسر وخدمة الأجيال الصاعدة في محبة الرب وإرشاده.</p>
-                </div>
-
+    <!-- الواجهة الرئيسية -->
+    <section id="home" class="hero" style="background: transparent !important;">
+        <div class="container hero-content ar-hero-text" style="text-align: center;">
+            <div class="hero-logo-large">
+                <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية">
             </div>
-
+            <h1 style="color: #fff;">كنيسة مركز الحياة العربية</h1>
+            <h2 style="color: #e5e5e5;">Life Center Arabic Church - LCAC</h2>
+            <p class="vision-text" style="color: #d4d4d4;">
+                "رؤيتنا هي ربط الناس بيسوع المسيح ومساعدتهم على ايجاد الحياة والامتلاء في مقاصده."
+            </p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn primary-btn">خدمات الكنيسة</a>
+                <a href="#contact" class="btn secondary-btn">اتصل بنا</a>
+            </div>
         </div>
     </section>
 
-    <!-- الفوتر مع روابط وسائل التواصل الاجتماعي -->
-    <footer style="margin-top: 60px; padding: 30px 0; text-align: center;">
-        <div class="container">
-            <p>&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
+    <!-- جدول مواعيد خدمات الكنيسة -->
+    <section id="services" class="section" style="background: transparent !important;">
+        <div class="container" style="text-align: center;">
+            <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">مواعيد الخدمات والأنشطة</h2>
+            <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">نرحب بكم دائماً للمشاركة معنا في أوقات التسبيح والصلاة وكلمة الرب</p>
             
-            <!-- روابط وسائل التواصل الاجتماعي -->
-            <div class="social-icons-footer">
-                <a href="https://facebook.com" target="_blank" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://youtube.com" target="_blank" title="يوتيوب"><i class="fab fa-youtube"></i></a>
-                <a href="https://instagram.com" target="_blank" title="إنستغرام"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:info@lcac.church" title="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px;">
+                <div class="service-card">
+                    <i class="fas fa-church" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">الخدمة الرئيسية</h3>
+                    <p class="time" style="color: #d4d4d4;">الأحد - الساعة 5:30 مساءً</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-book-open" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">درس الكتاب</h3>
+                    <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-users" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">خدمة الشبيبة (باللغة الإنجليزية)</h3>
+                    <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-pray" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">خدمة الصلاة</h3>
+                    <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 7:30 مساءً</p>
+                </div>
+
+                <div class="service-card special-card">
+                    <i class="fas fa-female" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">خدمة النساء</h3>
+                    <p class="time" style="color: #d4d4d4;">كل خميسين (أسبوع بعد أسبوع) - الساعة 10:30 صباحاً</p>
+                    <span class="location-note" style="color: #ccc; display: block; margin-top: 10px;">
+                        <i class="fas fa-map-pin"></i> المكان المخصص لاجتماع النساء فقط:<br>
+                        Highlander Community Centre<br>
+                        141 Highlander Dr, Craigieburn VIC 3064<br>
+                        <em>(يرجى التواصل مع الكنيسة لمزيد من التفاصيل)</em>
+                    </span>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- قسم الخريطة والـ QR Code وروابط التواصل الاجتماعي -->
+    <section id="contact" class="section" style="background: transparent !important;">
+        <div class="container" style="text-align: center;">
+            <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">عنوان الكنيسة ووسائل التواصل</h2>
+            <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">مسح رمز الاستجابة السريعة (QR Code) للوصول إلى عنوان الكنيسة مباشرة</p>
+            
+            <div class="qr-container" style="margin: 20px 0;">
+                <img src="church address qr.jpg" alt="QR Code عنوان الكنيسة" style="max-width: 200px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+                <p style="color: #d4d4d4; margin-top: 10px;">وجه كاميرا هاتفك نحو الرمز لعرض الموقع الجغرافي</p>
+            </div>
+
+            <!-- روابط وسائل التواصل الاجتماعي -->
+            <div style="display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap;">
+                
+                <!-- فيسبوك الصفحة الرسمية -->
+                <a href="https://www.facebook.com/lifecenterarabicchurch?locale=ar_AR" target="_blank" style="background: #1877f2; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.3);">
+                    <i class="fab fa-facebook-f"></i> فيسبوك (الصفحة)
+                </a>
+
+                <!-- فيسبوك الحساب الثاني / المؤتمر -->
+                <a href="https://www.facebook.com/profile.php?id=61588101971469" target="_blank" style="background: #1877f2; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.3);">
+                    <i class="fab fa-facebook-f"></i> فيسبوك (المؤتمر)
+                </a>
+
+                <!-- إنستغرام -->
+                <a href="https://www.instagram.com/lifecenterarabicchurch/" target="_blank" style="background: #e1306c; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.3);">
+                    <i class="fab fa-instagram"></i> إنستغرام
+                </a>
+
+                <!-- تيك توك -->
+                <a href="https://www.tiktok.com/@lifecenterarabicchurch" target="_blank" style="background: #000000; border: 1px solid #333; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.3);">
+                    <i class="fab fa-tiktok"></i> تيك توك
+                </a>
+
+                <!-- يوتيوب -->
+                <a href="https://www.youtube.com/@lifecenterarabicchurch" target="_blank" style="background: #ff0000; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.3);">
+                    <i class="fab fa-youtube"></i> يوتيوب
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- الأزرار العائمة (واتساب واتصال) -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/61000000000" target="_blank" class="whatsapp-btn" title="تواصل عبر واتساب">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+61000000000" class="call-btn" title="اتصال مباشر">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
+
+    <!-- الفوتر -->
+    <footer style="background: transparent !important; text-align: center; padding: 20px 0;">
+        <div class="container">
+            <p style="color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
