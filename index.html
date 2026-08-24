@@ -24,66 +24,94 @@
             position: relative;
         }
 
-        /* خلفية متوهجة متحركة خفيفة */
-        .bg-glow {
+        /* خلفية صور الكنيسة المتحركة (Slideshow) */
+        .bg-slideshow {
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-            border-radius: 50%;
-            z-index: 1;
-            animation: pulseGlow 6s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
         }
 
-        @keyframes pulseGlow {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.3); opacity: 0.9; }
+        .bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: slideAnimation 18s infinite;
         }
-        /* إزالة الخلفية البيضاء تماماً وتلوين الشعار بلون مميز (مثل الأزرق السماوي أو الذهبي) */
-        .welcome-logo img {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            margin-bottom: 20px;
-            
-            /* هذا السطر هو السحر الذي سيزيل الخلفية البيضاء تماماً */
-            mix-blend-mode: screen; 
-            
-            /* هذا السطر يمنح الشعار توهجاً ولوناً مميزاً (فلتر ملون فخم) */
-            filter: drop-shadow(0 0 10px rgba(77, 175, 247, 0.6)) brightness(1.2);
-            
-            animation: floatLogo 4s ease-in-out infinite;
+
+        /* ضع أسماء صورك هنا (تأكد من مطابقة أسماء الملفات على GitHub) */
+        .bg-slide:nth-child(1) {
+            background-image: url('church1.jpg');
+            animation-delay: 0s;
+        }
+        .bg-slide:nth-child(2) {
+            background-image: url('church2.jpg');
+            animation-delay: 6s;
+        }
+        .bg-slide:nth-child(3) {
+            background-image: url('church3.jpg');
+            animation-delay: 12s;
+        }
+
+        @keyframes slideAnimation {
+            0% { opacity: 0; transform: scale(1); }
+            10% { opacity: 1; }
+            33% { opacity: 1; }
+            43% { opacity: 0; transform: scale(1.05); }
+            100% { opacity: 0; }
+        }
+
+        /* طبقة عتمة سوداء فوق الصور لتبقى النصوص مقروءة بوضوح تانٍ */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(5px);
+            z-index: -1;
         }
 
         .welcome-card {
             background: rgba(22, 22, 22, 0.85);
             backdrop-filter: blur(10px);
-            border: 1px solid #262626;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
             max-width: 450px;
             width: 90%;
             position: relative;
             z-index: 2;
         }
 
-        /* حركة الشعار (نبض وحركة خفيفة للاستقرار) */
+        /* الشعار مع إزالة الخلفية وتوهج خفيف */
         .welcome-logo img {
             width: 110px;
             height: 110px;
             object-fit: contain;
             margin-bottom: 20px;
             border-radius: 50%;
-            background: #000;
+            background: rgba(0,0,0,0.5);
             padding: 8px;
-            border: 2px solid #333;
+            border: 2px solid rgba(255,255,255,0.2);
+            mix-blend-mode: screen;
+            filter: drop-shadow(0 0 10px rgba(77, 175, 247, 0.5));
             animation: floatLogo 4s ease-in-out infinite;
         }
 
         @keyframes floatLogo {
-            0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 5px rgba(255,255,255,0.1)); }
-            50% { transform: translateY(-8px); filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.4)); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
 
         .welcome-card h1 {
@@ -136,12 +164,18 @@
 </head>
 <body>
 
-    <!-- تأثير الخلفية المتحركة -->
-    <div class="bg-glow"></div>
+    <!-- خلفية الصور المتحركة -->
+    <div class="bg-slideshow">
+        <div class="bg-slide"></div>
+        <div class="bg-slide"></div>
+        <div class="bg-slide"></div>
+    </div>
+    
+    <!-- طبقة التعتيم والضباب -->
+    <div class="overlay"></div>
 
     <div class="welcome-card">
         <div class="welcome-logo">
-            <!-- تأكد أن اسم ملف صورة الشعار مطابق تماماً -->
             <img src="chrch Logo.png" alt="LCAC Logo">
         </div>
         
@@ -153,12 +187,10 @@
         </p>
 
         <div class="lang-buttons">
-            <!-- زر الدخول للنسخة العربية -->
             <a href="ar.html" class="lang-btn btn-ar">
                 <i class="fas fa-globe-americas"></i> الدخول بالعربية
             </a>
             
-            <!-- زر الدخول للنسخة الإنجليزية -->
             <a href="en.html" class="lang-btn btn-en">
                 <i class="fas fa-globe"></i> English Site
             </a>
