@@ -3,51 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Center Arabic Church - LCAC</title>
+    <title>Life Center Arabic Church - Under Construction</title>
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0b0b0b;
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .construction-card {
+            background: #161616;
+            border: 1px solid #262626;
+            padding: 50px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            max-width: 500px;
+            width: 90%;
+        }
+        /* حركة التروس المتحركة */
+        .gear-icon {
+            font-size: 4rem;
+            color: #4dabf7;
+            margin-bottom: 20px;
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .construction-card h1 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .construction-card p {
+            color: #a3a3a3;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .custom-btn {
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .btn-home {
+            background: #2563eb;
+            color: #fff;
+        }
+        .btn-home:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .btn-ar {
+            background: #262626;
+            color: #fff;
+            border: 1px solid #404040;
+        }
+        .btn-ar:hover {
+            background: #333333;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- الشريط العلوي -->
-    <header>
-        <div class="container nav-container" style="direction: ltr;">
-            <div class="logo">
-                <img src="chrch Logo.png" alt="LCAC Logo">
-                <span>LCAC Church</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="en.html">Home</a></li>
-                    <li><a href="index.html" class="highlight-btn">عربي (Arabic)</a></li>
-                </ul>
-            </nav>
+    <div class="construction-card">
+        <!-- أيقونة التروس المتحركة -->
+        <div class="gear-icon">
+            <i class="fas fa-cog"></i>
         </div>
-    </header>
+        
+        <h1>Under Construction</h1>
+        <p>
+            Our English website is currently being built and will be available soon. Thank you for your patience!
+        </p>
 
-    <!-- محتوى الصفحة الإنجليزية -->
-    <section class="section" style="padding-top: 150px; text-align: center;">
-        <div class="container">
-            <span class="badge">Welcome</span>
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Life Center Arabic Church</h2>
-            <p class="section-desc" style="max-width: 600px; margin: 0 auto 30px auto;">
-                Welcome to our English page. Here you can find information about our services, beliefs, and upcoming conferences.
-            </p>
-            <div style="margin-top: 40px;">
-                <a href="index.html" class="btn primary-btn">Back to Arabic Site</a>
-            </div>
+        <div class="action-buttons">
+            <!-- العودة لواجهة الاستقبال -->
+            <a href="index.html" class="custom-btn btn-home">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <!-- الانتقال للموقع العربي -->
+            <a href="ar.html" class="custom-btn btn-ar">
+                <i class="fas fa-globe-americas"></i> الموقع العربي
+            </a>
         </div>
-    </section>
-
-    <!-- الفوتر -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Life Center Arabic Church (LCAC). All rights reserved.</p>
-        </div>
-    </footer>
+    </div>
 
 </body>
 </html>
