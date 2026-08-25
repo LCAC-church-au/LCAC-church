@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- نفس تصميم الموقع العام والخلفية الموحدة -->
     <style>
         * {
             box-sizing: border-box;
@@ -17,13 +16,11 @@
         body {
             margin: 0;
             padding: 0;
-            /* نفس خلفية الموقع أو خلفية متناسقة غامقة شفافة */
             background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             min-height: 100vh;
         }
-        /* تنسيق الهيدر الموحد */
         header {
             background: rgba(10, 10, 10, 0.9);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -77,7 +74,6 @@
         nav ul li a:hover {
             color: #4dabf7;
         }
-        /* تنسيق القائمة المتجاوبة للجوال */
         #menu-toggle {
             display: none;
             background: none;
@@ -116,7 +112,7 @@
 </head>
 <body>
 
-    <!-- الشريط العلوي الموحد -->
+    <!-- الشريط العلوي (تم إزالة زر عظات الكنيسة منه) -->
     <header>
         <div class="container nav-container">
             <div class="logo">
@@ -136,7 +132,6 @@
                     <li><a href="ar.html#services">خدمات الكنيسة</a></li>
                     <li><a href="faith.html">إيمان الكنيسة</a></li>
                     <li><a href="conference.html" style="color: #ffd43b; font-weight: bold;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
-                    <li><a href="sermons.html" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-video"></i> عظات الكنيسة</a></li>
                     <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
                     <li><a href="ar.html#contact">اتصل بنا</a></li>
                     <li><a href="en.html"><i class="fas fa-globe"></i> English</a></li>
@@ -145,7 +140,7 @@
         </div>
     </header>
 
-    <!-- محتوى صفحة العظات (الأرشيف المرن للإضافة مستقبلاً) -->
+    <!-- محتوى صفحة العظات -->
     <main class="container" style="padding: 50px 0; max-width: 900px;">
         
         <div style="text-align: center; margin-bottom: 40px;">
@@ -153,53 +148,48 @@
                 <i class="fas fa-video" style="color: #4dabf7;"></i> أرشيف العظات
             </h1>
             <p style="color: #d4d4d4; font-size: 1.1rem; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
-                تابع معنا أحدث العظات وكلمة الرب لبناء حياتك الروحية. يمكنك تصفح العظات السابقة بكل سهولة.
+                تابع معنا أحدث العظات وكلمة الرب لبناء حياتك الروحية.
             </p>
         </div>
 
-        <!-- حاوية العظات (لإضافة عظة جديدة مستقبلاً، انسخ صندوق .sermon-card وضعه دائماً في الأعلى) -->
+        <!-- حاوية العظات -->
         <div style="display: flex; flex-direction: column; gap: 40px;">
             
-            <!-- ---------------- العظة الأولى (الحديثة) ---------------- -->
+            <!-- ========================================== -->
+            <!-- 📌 طريقة إضافة عظة جديدة مستقبلاً:            -->
+            <!-- فقط انسخ هذا الصندوق بالكامل وضعه في الأعلى  -->
+            <!-- ========================================== -->
             <div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
                 
-                <!-- تفاصيل العظة -->
+                <!-- 1. [ضع هنا عنوان العظة، اسم الواعظ، والتاريخ بكل سهولة] -->
                 <div style="margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
                     <h2 style="color: #fff; font-size: 1.4rem; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
-                        عنوان العظة الأولى (مثال: محبة الله غير المحدودة)
+                        عنوان العظة الأولى: محبة الله غير المحدودة
                     </h2>
                     <div style="display: flex; gap: 20px; flex-wrap: wrap; color: #4dabf7; font-size: 0.95rem; font-weight: bold;">
-                        <span><i class="fas fa-user-tie"></i> الواعظ: القس / الخادم</span>
+                        <span><i class="fas fa-user-tie"></i> الواعظ: القس / اسم الواعظ هنا</span>
                         <span><i class="fas fa-calendar-alt"></i> التاريخ: 2026/02/26</span>
                     </div>
                 </div>
 
-                <!-- إطار الفيديو النظيف والمتجاوب -->
+                <!-- 2. [ضع هنا رابط يوتيوب الخاص بالفيديو مكان الرابط الحالي بين علامتي التنصيص] -->
                 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.8); background: #000; margin-bottom: 15px;">
-                    <!-- استبدل الرابط أدناه برابط يوتيوب العظة الحقيقي -->
-                    <iframe src="https://www.youtube.com/watch?v=4WzCT-SITd4&t=4658s" title="عظة الكنيسة" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" title="عظة الكنيسة" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
                 </div>
 
-                <!-- ملخص بسيط للعظة -->
+                <!-- 3. [ضع هنا ملخص العظة البسيط] -->
                 <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; border-right: 4px solid #4dabf7;">
                     <p style="color: #e5e5e5; font-size: 0.95rem; line-height: 1.6; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
-                        <strong>ملخص العظة:</strong> يتحدث هذا الدرس عن اختبار قوة القيامة وكيف يقودنا الرب في كل خطوة لنختبر السلام الحقيقي والنعمة الفائقة.
+                        <strong>ملخص العظة:</strong> يتحدث هذا الدرس عن اختبار قوة القيامة وكيف يقودنا الرب في كل خطوة لنختبر السلام الحقيقي.
                     </p>
                 </div>
             </div>
-            <!-- ---------------- نهاية العظة الأولى ---------------- -->
-
-            <!-- 
-                💡 طريقة إضافة عظة جديدة مستقبلاً:
-                قم بنسخ الصندوق الكامل ابتداءً من <div class="sermon-card" ...> إلى غاية نهاية </div> 
-                والصقه في أعلى هذه القائمة فوق العظة القديمة مباشرة، ثم قم بتعديل العنوان، الواعظ، التاريخ، الرابط، والملخص!
-            -->
+            <!-- ================= نهاية العظة ================= -->
 
         </div>
 
     </main>
 
-    <!-- سكريبت القائمة المنسدلة للجوال -->
     <script>
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
