@@ -218,17 +218,24 @@
     </div>
 
   <!-- الشريط العلوي والتنقل المحدث مع صورة الشعار الشفافة -->
+ <!-- الشريط العلوي والتنقل المتجاوب مع القائمة المنسدلة للجوال -->
     <header>
-        <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center; position: relative;">
             <div class="logo">
-                <a href="index.html" style="color: #fff; text-decoration: none; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
-                    <!-- صورة الشعار مع ضبط الخلفية لتكون شفافة وبدون حدود بيضاء -->
-                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 40px; width: auto; background: transparent; border: none; object-fit: contain;">
+                <a href="index.html" style="color: #fff; text-decoration: none; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 35px; width: auto; background: transparent; border: none; object-fit: contain;">
                     <span>كنيسة مركز الحياة العربية</span>
                 </a>
             </div>
-            <nav>
-                <ul style="display: flex; list-style: none; gap: 20px; align-items: center; margin: 0; padding: 0;">
+            
+            <!-- زر القائمة الثلاثي للجوال (Hamburger Icon) -->
+            <button id="menu-toggle" onclick="toggleMenu()" style="background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; display: none; padding: 5px;">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- الروابط والقائمة -->
+            <nav id="nav-menu">
+                <ul style="display: flex; list-style: none; gap: 18px; align-items: center; margin: 0; padding: 0;">
                     <li><a href="#services">خدمات الكنيسة</a></li>
                     <li><a href="faith.html">إيمان الكنيسة</a></li>
                     <li><a href="conference.html" style="color: #ffd43b; font-weight: bold;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
@@ -240,6 +247,42 @@
         </div>
     </header>
 
+    <!-- تنسيقات CSS الخاصة بالقائمة المتجاوبة (يمكنك إضافتها داخل قسم <style> في أعلى الصفحة) -->
+    <style>
+        @media (max-width: 900px) {
+            #menu-toggle {
+                display: block !important;
+            }
+            #nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background: rgba(15, 15, 15, 0.95);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 20px 0;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            }
+            #nav-menu.active {
+                display: block;
+            }
+            #nav-menu ul {
+                flex-direction: column;
+                gap: 15px !important;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <!-- سكريبت تشغيل زر القائمة -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
     <!-- الواجهة الرئيسية -->
     <section id="home" class="hero" style="background: transparent !important;">
         <div class="container hero-content ar-hero-text" style="text-align: center;">
