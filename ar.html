@@ -64,46 +64,58 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
 
-        /* بطاقات الخدمات الشفافة كلياً */
-        .transparent-card, .service-card {
+        /* بطاقات الخدمات الشفافة والقابلة للنقر */
+        .service-card {
             background: rgba(15, 15, 15, 0.35) !important;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 30px;
             border-radius: 14px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            text-decoration: none !important;
+            display: block;
+            cursor: pointer;
         }
 
-        .transparent-card:hover, .service-card:hover {
+        .service-card:hover {
             transform: translateY(-5px);
-            background: rgba(15, 15, 15, 0.5) !important;
+            background: rgba(15, 15, 15, 0.55) !important;
+            border-color: rgba(77, 171, 247, 0.5);
         }
 
-        .transparent-card h3, .transparent-card p, .service-card h3, .service-card p {
+        .service-card h3, .service-card p, .service-card span, .service-card i {
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
-        /* إلغاء أي خلفية سوداء صلبة خلف قسم التواصل والـ QR نهائياً وجعله شفافاً في المنتصف */
-        #contact, #contact.section {
-            background: transparent !important;
-            background-color: transparent !important;
-        }
-
-        .centered-contact-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* نافذة "تحت الإنشاء" المنبثقة المؤقتة عند الضغط على أي خدمة */
+        #under-construction-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
             justify-content: center;
-            text-align: center;
-            margin: 0 auto;
-            background: transparent !important;
-            box-shadow: none !important;
-            border: none !important;
+            align-items: center;
         }
 
-        /* تنسيق الـ QR ليكون منظماً ومحاطاً بإطار أنيق */
+        .modal-content {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        }
+
+        /* تنسيق الـ QR Clean */
         .qr-clean-img {
             max-width: 190px;
             border-radius: 12px;
@@ -128,6 +140,16 @@
     
     <!-- طبقة العتمة الخفيفة للوضوح -->
     <div class="ar-overlay"></div>
+
+    <!-- نافذة منبثقة لصفحة "تحت الإنشاء" عند الضغط على أي بطاقة خدمة -->
+    <div id="under-construction-modal">
+        <div class="modal-content">
+            <i class="fas fa-tools" style="font-size: 3.5rem; color: #4dabf7; margin-bottom: 20px;"></i>
+            <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.5rem;">الصفحة تحت الإنشاء</h3>
+            <p style="color: #d4d4d4; margin-bottom: 25px; line-height: 1.6;">نعمل حالياً على تجهيز تفاصيل هذه الخدمة لتكون متاحة لكم قريباً. شكراً لتفهمكم!</p>
+            <button onclick="closeModal()" style="background: #4dabf7; color: #fff; border: none; padding: 10px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">العودة للرئيسية</button>
+        </div>
+    </div>
 
     <!-- الشريط العلوي والتنقل -->
     <header>
@@ -166,53 +188,60 @@
         </div>
     </section>
 
-    <!-- جدول مواعيد خدمات الكنيسة -->
+    <!-- جدول مواعيد خدمات الكنيسة (مربعات تفاعلية تنقل لرسالة تحت الإنشاء) -->
     <section id="services" class="section" style="background: transparent !important;">
         <div class="container" style="text-align: center;">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">مواعيد الخدمات والأنشطة</h2>
-            <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">نرحب بكم دائماً للمشاركة معنا في أوقات التسبيح والصلاة وكلمة الرب</p>
+            <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">اضغط على أي خدمة لمعرفة المزيد من التفاصيل</p>
             
             <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px;">
-                <div class="service-card">
+                
+                <!-- الخدمة الرئيسية -->
+                <a href="javascript:void(0);" onclick="openModal()" class="service-card">
                     <i class="fas fa-church" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
                     <h3 style="color: #fff;">الخدمة الرئيسية</h3>
                     <p class="time" style="color: #d4d4d4;">الأحد - الساعة 5:30 مساءً</p>
-                </div>
+                </a>
 
-                <div class="service-card">
+                <!-- درس الكتاب -->
+                <a href="javascript:void(0);" onclick="openModal()" class="service-card">
                     <i class="fas fa-book-open" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
                     <h3 style="color: #fff;">درس الكتاب</h3>
                     <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
-                </div>
+                </a>
 
-                <div class="service-card">
+                <!-- خدمة الشبيبة -->
+                <a href="javascript:void(0);" onclick="openModal()" class="service-card">
                     <i class="fas fa-users" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
                     <h3 style="color: #fff;">خدمة الشبيبة (باللغة الإنجليزية)</h3>
                     <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
-                </div>
+                </a>
 
-                <div class="service-card">
+                <!-- خدمة الصلاة -->
+                <a href="javascript:void(0);" onclick="openModal()" class="service-card">
                     <i class="fas fa-pray" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
                     <h3 style="color: #fff;">خدمة الصلاة</h3>
                     <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 7:30 مساءً</p>
-                </div>
+                </a>
 
-                <div class="service-card special-card">
+                <!-- خدمة النساء -->
+                <a href="javascript:void(0);" onclick="openModal()" class="service-card special-card">
                     <i class="fas fa-female" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
                     <h3 style="color: #fff;">خدمة النساء</h3>
                     <p class="time" style="color: #d4d4d4;">بين خميس وخميس - الساعة 10:30 صباحاً</p>
                     <span class="location-note" style="color: #ccc; display: block; margin-top: 10px;">
-                        <i class="fas fa-map-pin"></i> المكان المخصص لاجتماع النساء فقط:<br>
+                        <i class="fas fa-map-pin"></i> المكان المخصص لاجتماع النساء :<br>
                         Highlander Community Centre<br>
                         141 Highlander Dr, Craigieburn VIC 3064<br>
                         <em>(يرجى التواصل مع الكنيسة لمزيد من التفاصيل)</em>
                     </span>
-                </div>
+                </a>
+
             </div>
         </div>
     </section>
 
-    <!-- قسم عنوان الكنيسة والـ QR Code (بدون أي خلفية سوداء بالكامل) -->
+    <!-- قسم عنوان الكنيسة والـ QR Code -->
     <section id="contact" class="section">
         <div class="container centered-contact-box">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">عنوان الكنيسة ووسائل التواصل</h2>
@@ -261,6 +290,16 @@
             <p style="color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
         </div>
     </footer>
+
+    <!-- سكريبت جافاسكريبت للتحكم بظهور واختفاء نافذة "تحت الإنشاء" -->
+    <script>
+        function openModal() {
+            document.getElementById('under-construction-modal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('under-construction-modal').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
