@@ -89,7 +89,37 @@
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
-        /* نافذة "تحت الإنشاء" المنبثقة المؤقتة عند الضغط على أي خدمة */
+        /* ضبط قسم التواصل والـ QR ليكون في المنتصف تماماً وتحت السيطرة */
+        #contact {
+            background: transparent !important;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #contact .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .qr-clean-img {
+            max-width: 190px;
+            border-radius: 12px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+            display: inline-block;
+            padding: 8px;
+            background: #ffffff;
+        }
+
+        /* نافذة "تحت الإنشاء" المنبثقة المؤقتة */
         #under-construction-modal {
             display: none;
             position: fixed;
@@ -113,17 +143,6 @@
             max-width: 400px;
             width: 90%;
             box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-        }
-
-        /* تنسيق الـ QR Clean */
-        .qr-clean-img {
-            max-width: 190px;
-            border-radius: 12px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-            display: inline-block;
-            padding: 8px;
-            background: #ffffff;
         }
     </style>
 </head>
@@ -188,11 +207,15 @@
         </div>
     </section>
 
-    <!-- جدول مواعيد خدمات الكنيسة (مربعات تفاعلية تنقل لرسالة تحت الإنشاء) -->
+    <!-- جدول مواعيد خدمات الكنيسة -->
     <section id="services" class="section" style="background: transparent !important;">
         <div class="container" style="text-align: center;">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">مواعيد الخدمات والأنشطة</h2>
-            <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">اضغط على أي خدمة لمعرفة المزيد من التفاصيل</p>
+            <!-- تنبيه يوضح للمستخدم أن الضغط على البطاقات ينقل لمزيد من المعلومات -->
+            <p class="section-desc" style="color: #4dabf7; font-weight: 600; font-size: 1.05rem; text-shadow: 0 2px 8px rgba(0,0,0,0.9); margin-bottom: 5px;">
+                <i class="fas fa-info-circle"></i> اضغط على أي خدمة أدناه لمعرفة المزيد من المعلومات والتفاصيل
+            </p>
+            <p style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 0.95rem;">نرحب بكم دائماً للمشاركة معنا في أوقات التسبيح والصلاة وكلمة الرب</p>
             
             <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px;">
                 
@@ -241,9 +264,9 @@
         </div>
     </section>
 
-    <!-- قسم عنوان الكنيسة والـ QR Code -->
+    <!-- قسم عنوان الكنيسة والـ QR Code (متمركز بالمنتصف تماماً) -->
     <section id="contact" class="section">
-        <div class="container centered-contact-box">
+        <div class="container">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">عنوان الكنيسة ووسائل التواصل</h2>
             <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">مسح رمز الاستجابة السريعة (QR Code) للوصول إلى عنوان الكنيسة مباشرة</p>
             
