@@ -89,7 +89,7 @@
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
-        /* ضبط قسم التواصل والـ QR ليكون في المنتصف تماماً وتحت السيطرة */
+        /* ضبط قسم التواصل والـ QR ليكون في المنتصف تماماً */
         #contact {
             background: transparent !important;
             width: 100%;
@@ -119,7 +119,9 @@
             background: #ffffff;
         }
 
-        /* نافذة "تحت الإنشاء" المنبثقة المؤقتة */
+        /* -------------------------------------------------- */
+        /* تصميم عصري ومتحرك لنافذة "تحت الإنشاء" الحديثة */
+        /* -------------------------------------------------- */
         #under-construction-modal {
             display: none;
             position: fixed;
@@ -127,22 +129,65 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
             z-index: 9999;
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .modal-content {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px;
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95));
+            border: 1px solid rgba(77, 171, 247, 0.4);
+            padding: 45px 30px;
+            border-radius: 20px;
             text-align: center;
-            max-width: 400px;
+            max-width: 420px;
             width: 90%;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(77, 171, 247, 0.2);
+            transform: scale(0.7) translateY(30px);
+            animation: modalPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes modalPopIn {
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* حركة نبض الأيقونة العصرية */
+        .modal-icon-glow {
+            font-size: 3.8rem;
+            color: #4dabf7;
+            margin-bottom: 20px;
+            animation: iconPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(77,171,247,0.4)); }
+            50% { transform: scale(1.12); filter: drop-shadow(0 0 15px rgba(77,171,247,0.8)); }
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, #4dabf7, #228be6);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.05rem;
+            box-shadow: 0 5px 15px rgba(77, 171, 247, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(77, 171, 247, 0.6);
+            background: linear-gradient(135deg, #339af0, #1c7ed6);
         }
     </style>
 </head>
@@ -160,17 +205,19 @@
     <!-- طبقة العتمة الخفيفة للوضوح -->
     <div class="ar-overlay"></div>
 
-    <!-- نافذة منبثقة لصفحة "تحت الإنشاء" عند الضغط على أي بطاقة خدمة -->
+    <!-- نافذة منبثقة عصرية ومتحركة لخدمات الكنيسة "تحت الإنشاء" -->
     <div id="under-construction-modal">
         <div class="modal-content">
-            <i class="fas fa-tools" style="font-size: 3.5rem; color: #4dabf7; margin-bottom: 20px;"></i>
-            <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.5rem;">الصفحة تحت الإنشاء</h3>
-            <p style="color: #d4d4d4; margin-bottom: 25px; line-height: 1.6;">نعمل حالياً على تجهيز تفاصيل هذه الخدمة لتكون متاحة لكم قريباً. شكراً لتفهمكم!</p>
-            <button onclick="closeModal()" style="background: #4dabf7; color: #fff; border: none; padding: 10px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">العودة للرئيسية</button>
+            <div class="modal-icon-glow">
+                <i class="fas fa-hammer"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 12px; font-size: 1.6rem; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">هذه الصفحة قيد التحديث</h3>
+            <p style="color: #d4d4d4; margin-bottom: 25px; line-height: 1.7; font-size: 1rem;">نعمل بكل حب على تجهيز تفاصيل هذه الخدمة لتكون متاحة لكم بأفضل شكل قريباً. نشكر صبركم وتفهمكم!</p>
+            <button class="modal-btn" onclick="closeModal()">العودة للرئيسية</button>
         </div>
     </div>
 
-    <!-- الشريط العلوي والتنقل -->
+    <!-- الشريط العلوي والتنقل (مع إضافة زر الكتاب المقدس PDF) -->
     <header>
         <div class="container nav-container">
             <div class="logo">
@@ -182,8 +229,10 @@
                     <li><a href="index.html">الرئيسية</a></li>
                     <li><a href="#services">خدمات الكنيسة</a></li>
                     <li><a href="faith.html">إيمان الكنيسة</a></li>
+                    <!-- زر الكتاب المقدس الذي يفتح ملف الـ PDF (قم بتغيير كلمة bible.pdf لاسم ملفك الفعلي) -->
+                    <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
                     <li><a href="#contact">اتصل بنا</a></li>
-                    <li><a href="en.html" style="color: #4dabf7;"><i class="fas fa-globe"></i> English</a></li>
+                    <li><a href="en.html"><i class="fas fa-globe"></i> English</a></li>
                 </ul>
             </nav>
         </div>
@@ -198,7 +247,7 @@
             <h1 style="color: #fff;">كنيسة مركز الحياة العربية</h1>
             <h2 style="color: #e5e5e5;">Life Center Arabic Church - LCAC</h2>
             <p class="vision-text" style="color: #d4d4d4;">
-                "رؤيتنا هي ان يتعرف الناس بيسوع المسيح ومساعدتهم على ايجاد الحياة الابدية."
+                "رؤيتنا هي ان نعرف الناس بيسوع المسيح ومساعدتهم على ايجاد الحياة الابدية."
             </p>
             <div class="hero-buttons">
                 <a href="#services" class="btn primary-btn">خدمات الكنيسة</a>
@@ -211,9 +260,8 @@
     <section id="services" class="section" style="background: transparent !important;">
         <div class="container" style="text-align: center;">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">مواعيد الخدمات والأنشطة</h2>
-            <!-- تنبيه يوضح للمستخدم أن الضغط على البطاقات ينقل لمزيد من المعلومات -->
             <p class="section-desc" style="color: #4dabf7; font-weight: 600; font-size: 1.05rem; text-shadow: 0 2px 8px rgba(0,0,0,0.9); margin-bottom: 5px;">
-                <i class="fas fa-info-circle"></i>  (قيد الانشاء)اضغط على أي خدمة أدناه لمعرفة المزيد من المعلومات والتفاصيل
+                <i class="fas fa-info-circle"></i>  (تحت الانشاء)اضغط على أي خدمة أدناه لمعرفة المزيد من المعلومات والتفاصيل
             </p>
             <p style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 0.95rem;">نرحب بكم دائماً للمشاركة معنا في أوقات التسبيح والصلاة وكلمة الرب</p>
             
@@ -264,7 +312,7 @@
         </div>
     </section>
 
-    <!-- قسم عنوان الكنيسة والـ QR Code (متمركز بالمنتصف تماماً) -->
+    <!-- قسم عنوان الكنيسة والـ QR Code (في المنتصف تماماً) -->
     <section id="contact" class="section">
         <div class="container">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">عنوان الكنيسة ووسائل التواصل</h2>
@@ -314,13 +362,22 @@
         </div>
     </footer>
 
-    <!-- سكريبت جافاسكريبت للتحكم بظهور واختفاء نافذة "تحت الإنشاء" -->
+    <!-- سكريبت جافاسكريبت للتحكم بالحركة والنافذة المنبثقة الحديثة -->
     <script>
         function openModal() {
-            document.getElementById('under-construction-modal').style.display = 'flex';
+            const modal = document.getElementById('under-construction-modal');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.style.opacity = '1';
+            }, 10);
         }
+        
         function closeModal() {
-            document.getElementById('under-construction-modal').style.display = 'none';
+            const modal = document.getElementById('under-construction-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
         }
     </script>
 
