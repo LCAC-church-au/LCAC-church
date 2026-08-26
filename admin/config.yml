@@ -1,9 +1,6 @@
 backend:
-backend:
-  name: git-gateway
-  branch: main
   name: github
-  repo: LCAC-church/LCAC-church-au
+  repo: LCAC-church-au/LCAC-church
   branch: main
 
 publish_mode: editorial_workflow
@@ -32,7 +29,7 @@ collections:
         fields:
           - {label: "عنوان المؤتمر الرئيسي", name: "title", widget: "string"}
           - {label: "آية المؤتمر", name: "verse", widget: "text"}
-      
+
       - file: "ar.html"
         label: "الصفحة الرئيسية (العربية)"
         name: "home_ar"
