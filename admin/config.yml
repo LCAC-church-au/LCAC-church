@@ -1,0 +1,38 @@
+backend:
+  name: github
+  repo: LCAC-church/LCAC-church-au
+  branch: main
+
+publish_mode: editorial_workflow
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "sermons"
+    label: "أرشيف العظات"
+    folder: "_sermons"
+    create: true
+    fields:
+      - {label: "عنوان العظة", name: "title", widget: "string"}
+      - {label: "اسم الواعظ", name: "speaker", widget: "string"}
+      - {label: "التاريخ", name: "date", widget: "date"}
+      - {label: "رابط يوتيوب (Embed ID)", name: "youtube_id", widget: "string"}
+      - {label: "ملخص العظة", name: "summary", widget: "text"}
+
+  - name: "pages"
+    label: "صفحات الموقع"
+    files:
+      - file: "conference.html"
+        label: "صفحة مؤتمر مجد الرب"
+        name: "conference"
+        fields:
+          - {label: "عنوان المؤتمر الرئيسي", name: "title", widget: "string"}
+          - {label: "آية المؤتمر", name: "verse", widget: "text"}
+      
+      - file: "ar.html"
+        label: "الصفحة الرئيسية (العربية)"
+        name: "home_ar"
+        fields:
+          - {label: "عنوان الترحيب", name: "welcome_title", widget: "string"}
+          - {label: "نص الرؤية", name: "vision", widget: "text"}
