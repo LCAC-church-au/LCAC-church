@@ -3,17 +3,23 @@
 <head>
     <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">            
     <title>Life Center Arabic Church - Under Construction</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        .en-bg-slideshow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; }
+        .en-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; animation: enSlideAnimation 30s infinite; }
+        .en-slide:nth-child(1) { background-image: url('church4.jpg'); animation-delay: 0s; }
+        .en-slide:nth-child(2) { background-image: url('church5.jpg'); animation-delay: 6s; }
+        .en-slide:nth-child(3) { background-image: url('church6.jpg'); animation-delay: 12s; }
+        .en-slide:nth-child(4) { background-image: url('church7.jpg'); animation-delay: 18s; }
+        .en-slide:nth-child(5) { background-image: url('church8.jpg'); animation-delay: 24s; }
+        @keyframes enSlideAnimation { 0% { opacity: 0; transform: scale(1); } 8% { opacity: 1; } 24% { opacity: 1; } 32% { opacity: 0; transform: scale(1.05); } 100% { opacity: 0; } }
+        .en-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.55); z-index: -1; }
+        
         body {
-            background-color: #0b0b0b;
-            color: #fff;
             font-family: 'Cairo', sans-serif;
             height: 100vh;
             margin: 0;
@@ -22,91 +28,114 @@
             align-items: center;
             text-align: center;
         }
+
         .construction-card {
-            background: #161616;
-            border: 1px solid #262626;
+            background: rgba(22, 22, 22, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(77, 171, 247, 0.3);
             padding: 50px 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             max-width: 500px;
             width: 90%;
         }
-        /* حركة التروس المتحركة */
+
         .gear-icon {
             font-size: 4rem;
             color: #4dabf7;
             margin-bottom: 20px;
             animation: spin 4s linear infinite;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
         .construction-card h1 {
             font-size: 1.8rem;
             margin-bottom: 15px;
             color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
+
         .construction-card p {
-            color: #a3a3a3;
+            color: #d4d4d4;
             font-size: 1.05rem;
             line-height: 1.6;
             margin-bottom: 30px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
+
         .action-buttons {
             display: flex;
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
         }
+
         .custom-btn {
-            padding: 12px 22px;
-            border-radius: 8px;
+            padding: 12px 25px;
+            border-radius: 25px;
             font-size: 1rem;
             font-weight: bold;
             text-decoration: none;
             transition: transform 0.2s, background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
+
         .btn-home {
-            background: #2563eb;
+            background: linear-gradient(135deg, #4dabf7, #228be6);
             color: #fff;
         }
+
         .btn-home:hover {
-            background: #1d4ed8;
             transform: translateY(-2px);
         }
+
         .btn-ar {
-            background: #262626;
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
-            border: 1px solid #404040;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
         .btn-ar:hover {
-            background: #333333;
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
+    <div class="en-bg-slideshow">
+        <div class="en-slide"></div>
+        <div class="en-slide"></div>
+        <div class="en-slide"></div>
+        <div class="en-slide"></div>
+        <div class="en-slide"></div>
+    </div>
+    
+    <div class="en-overlay"></div>
+
     <div class="construction-card">
-        <!-- أيقونة التروس المتحركة -->
         <div class="gear-icon">
             <i class="fas fa-cog"></i>
         </div>
         
         <h1>Under Construction</h1>
         <p>
-            Our English website is currently being built and will be available soon. Thank you for your patience
+            Our English website is currently being built and will be available soon. Thank you for your patience.
         </p>
 
         <div class="action-buttons">
-            <!-- العودة لواجهة الاستقبال -->
             <a href="index.html" class="custom-btn btn-home">
                 <i class="fas fa-home"></i> Home
             </a>
-            <!-- الانتقال للموقع العربي -->
             <a href="ar.html" class="custom-btn btn-ar">
-                <i class="fas fa-globe-americas"></i> الموقع العربي
+                <i class="fas fa-globe"></i> العربية
             </a>
         </div>
     </div>
