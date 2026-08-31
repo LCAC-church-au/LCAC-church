@@ -157,7 +157,6 @@
             }
         }
 
-        /* حركة نبض الأيقونة العصرية */
         .modal-icon-glow {
             font-size: 3.8rem;
             color: #4dabf7;
@@ -234,4 +233,37 @@
                     <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
                     <li><a href="#contact">اتصل بنا</a></li>
                     <li>
-                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af
+                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff; padding: 8px 16px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 20px; box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4); display: inline-flex; align-items: center; gap: 5px;">
+                            <span>✨</span> سجل بياناتك
+                        </a>
+                    </li>
+                    <li><a href="en.html"><i class="fas fa-globe"></i> English</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <style>
+        @media (max-width: 900px) {
+            #menu-toggle {
+                display: block !important;
+            }
+            #nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background: rgba(15, 15, 15, 0.95);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 20px 0;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            }
+            #nav-menu.active {
+                display: block;
+            }
+            #nav-menu ul {
+                flex-direction: column;
+                gap: 15px !important;
+                text
