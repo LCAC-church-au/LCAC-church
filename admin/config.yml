@@ -42,7 +42,7 @@ collections:
     fields:
       - {label: "عنوان الخدمة", name: "title", widget: "string"}
       - {label: "وصف الخدمة", name: "description", widget: "text"}
-      - {label: "أيقونة أو صورة الخدمة", name: "image", widget: "image", required: false}
+      - {label: "صورة الخدمة", name: "image", widget: "image", required: false}
 
   - name: "site_settings"
     label: "إعدادات الموقع والتواصل"
@@ -50,6 +50,6 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "عنوان القسم / الصفحة", name: "title", widget: "string"}
+      - {label: "اسم الصفحة أو القسم", name: "title", widget: "string"}
       - {label: "أرقام الهواتف والعنوان", name: "contact_info", widget: "text"}
-      - {label: "روابط وسائل التواصل", name: "social_links", widget: "markdown"}
+      - {label: "معلومات التواصل", name: "body", widget: "markdown"}
