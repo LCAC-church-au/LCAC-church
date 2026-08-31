@@ -10,34 +10,37 @@ public_folder: "/images"
 
 collections:
   - name: "sermons"
-    label: "أرشيف العظات / Sermons Archive"
+    label: "أرشيف العظات"
     folder: "_sermons"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "لغة العظة / Language", name: "language", widget: "select", options: [{label: "العربية", value: "ar"}, {label: "English", value: "en"}], default: "ar"}
+      - {label: "لغة العظة", name: "language", widget: "select", options: [{label: "العربية", value: "ar"}, {label: "English", value: "en"}], default: "ar"}
       - {label: "عنوان العظة", name: "title", widget: "string"}
       - {label: "اسم الواعظ", name: "speaker", widget: "string"}
       - {label: "التاريخ", name: "date", widget: "string", hint: "31-08-2026"}
       - {label: "رابط يوتيوب (Embed ID)", name: "youtube_id", widget: "string"}
       - {label: "ملخص العظة", name: "summary", widget: "text"}
 
-  - name: "pages"
-    label: "صفحات الموقع / Site Pages"
+  - name: "conference_page"
+    label: "صفحة مؤتمر مجد الرب"
+    folder: "_pages"
+    create: false
+    identifier_field: "title"
     files:
       - file: "conference.html"
-        label: "صفحة مؤتمر مجد الرب"
+        label: "تعديل محتوى المؤتمر"
         name: "conference"
         fields:
-          - {label: "لغة الصفحة", name: "language", widget: "select", options: [{label: "العربية", value: "ar"}, {label: "English", value: "en"}], default: "ar"}
           - {label: "عنوان المؤتمر الرئيسي", name: "title", widget: "string"}
           - {label: "آية المؤتمر / الشعار", name: "verse", widget: "text"}
-          - {label: "تفاصيل وجدول المؤتمر", name: "content", widget: "markdown"}
 
+  - name: "home_page"
+    label: "الصفحة الرئيسية (ar.html)"
+    files:
       - file: "ar.html"
-        label: "الصفحة الرئيسية (العربية)"
-        name: "home_ar"
+        label: "تعديل الصفحة الرئيسية"
+        name: "home"
         fields:
-          - {label: "لغة الصفحة", name: "language", widget: "select", options: [{label: "العربية", value: "ar"}, {label: "English", value: "en"}], default: "ar"}
-          - {label: "عنوان الترحيب الرئيسي", name: "welcome_title", widget: "string"}
+          - {label: "عنوان الترحيب", name: "welcome_title", widget: "string"}
           - {label: "نص الرؤية والخدمات", name: "vision", widget: "text"}
