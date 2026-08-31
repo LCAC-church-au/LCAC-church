@@ -22,11 +22,11 @@
         .en-slide:nth-child(5) { background-image: url('church8.jpg'); animation-delay: 24s; }
         @keyframes enSlideAnimation { 0% { opacity: 0; transform: scale(1); } 8% { opacity: 1; } 24% { opacity: 1; } 32% { opacity: 0; transform: scale(1.05); } 100% { opacity: 0; } }
         
-        .en-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.55); z-index: -1; }
+        .en-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: -1; }
 
         /* شريط التنبيه العلوي (قيد التجهيز) */
         .construction-banner {
-            background: rgba(212, 175, 55, 0.9);
+            background: rgba(212, 175, 55, 0.85);
             backdrop-filter: blur(10px);
             color: #000000;
             text-align: center;
@@ -75,119 +75,106 @@
         
         #nav-menu ul { display: flex; list-style: none; gap: 20px; align-items: center; margin: 0; padding: 0; }
         #nav-menu ul li a { font-size: 0.95rem; white-space: nowrap; text-decoration: none; color: #ffffff !important; text-shadow: 0 2px 6px rgba(0,0,0,0.8); transition: color 0.2s; }
-        #nav-menu ul li a:hover { color: #38bdf8 !important; }
+        #nav-menu ul li a:hover { color: #ffd700 !important; }
 
         /* الأقسام العامة */
-        .section { padding: 30px 20px 60px 20px; background: transparent !important; }
+        .section { padding: 30px 20px 50px 20px; background: transparent !important; }
         .container { max-width: 1100px; margin: 0 auto; text-align: center; }
 
-        /* الهيرو */
-        .page-hero { padding: 30px 20px 10px 20px; text-align: center; }
-        .page-hero h1 { font-size: 2.6rem; margin: 10px 0; text-shadow: 0 3px 12px rgba(0,0,0,0.9); color: #ffffff; }
+        /* الهيرو الخاص بالصفحة */
+        .page-hero { padding: 25px 20px 10px 20px; text-align: center; }
+        .page-hero h1 { font-size: 2.5rem; margin: 10px 0; text-shadow: 0 3px 12px rgba(0,0,0,0.9); color: #ffffff; }
         .page-hero p { font-size: 1.15rem; color: #ffd700; text-shadow: 0 3px 10px rgba(0,0,0,0.9); font-weight: 600; }
 
-        /* حاوية التروس / البازل المتجمعة */
-        .puzzle-gears-container {
+        /* حاوية التروس المتشابكة (البازل) */
+        .gears-puzzle-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 35px;
+            margin-top: 35px;
             position: relative;
         }
 
-        /* شكل الترس الاحترافي لكل آية */
-        .gear-item {
+        /* تصميم الترس (Gear / Puzzle Node) */
+        .verse-gear {
             width: 270px;
             height: 270px;
-            background: radial-gradient(circle, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.95) 100%);
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
             border: 3px solid rgba(212, 175, 55, 0.6);
-            border-radius: 35% 65% 55% 45% / 45% 55% 45% 55%; /* شكل عضوي يشبه التروس وتداخل البازل */
+            border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 0 15px rgba(212,175,55,0.2);
-            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 0 15px rgba(212, 175, 55, 0.2);
             position: relative;
-            animation: gearAssemble 8s ease-in-out infinite alternate, slowRotate 25s linear infinite;
-            transition: all 0.4s ease;
+            animation: gearRotateAndPulse 14s infinite ease-in-out alternate;
+            transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
         }
 
-        /* تخصيص سرعات وحركات مختلفة لكل ترس لتبدو كأنها تتجمع وتتداخل بديناميكية */
-        .gear-item:nth-child(1) {
-            animation-duration: 7s, 30s;
-            animation-delay: 0s;
+        /* حركات مختلفة للتروس لتشبه تجمع البازل الديناميكي */
+        .verse-gear:nth-child(1) {
+            animation-duration: 12s;
+            border-radius: 45% 55% 70% 30% / 50% 60% 40% 50%;
         }
-        .gear-item:nth-child(2) {
-            animation-duration: 9s, 35s;
-            animation-delay: 1s;
-            border-radius: 55% 45% 40% 60% / 50% 60% 40% 50%;
+        .verse-gear:nth-child(2) {
+            animation-duration: 16s;
+            animation-delay: -3s;
+            border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%;
         }
-        .gear-item:nth-child(3) {
-            animation-duration: 8s, 28s;
-            animation-delay: 2s;
-            border-radius: 45% 55% 60% 40% / 60% 40% 50% 50%;
+        .verse-gear:nth-child(3) {
+            animation-duration: 15s;
+            animation-delay: -6s;
+            border-radius: 50% 50% 45% 55% / 40% 70% 30% 60%;
         }
 
-        .gear-item:hover {
+        @keyframes gearRotateAndPulse {
+            0% { transform: rotate(0deg) scale(1); border-color: rgba(212, 175, 55, 0.5); }
+            50% { transform: rotate(3deg) scale(1.03); border-color: rgba(255, 215, 0, 0.9); background: rgba(30, 41, 59, 0.85); }
+            100% { transform: rotate(-3deg) scale(1); border-color: rgba(212, 175, 55, 0.5); }
+        }
+
+        .verse-gear:hover {
             transform: scale(1.08) rotate(0deg) !important;
-            border-color: rgba(255, 215, 0, 1);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
-            animation-play-state: paused; /* إيقاف الدوران عند مرور الماوس لقراءة الآية بوضوح */
-        }
-
-        /* أنيميشن التجميع (تشبه حركة قطع البازل والتروس) */
-        @keyframes gearAssemble {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(3deg); }
-            100% { transform: translateY(5px) rotate(-3deg); }
-        }
-
-        @keyframes slowRotate {
-            from { filter: hue-rotate(0deg); }
-            to { filter: hue-rotate(360deg); }
+            border-color: #ffea79;
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+            z-index: 10;
         }
 
         .gear-icon {
-            font-size: 1.8rem;
             color: #ffd700;
-            margin-bottom: 12px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+            animation: iconSpin 10s linear infinite;
         }
 
-        .gear-verse-text {
+        @keyframes iconSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .verse-text {
             font-size: 0.95rem;
             line-height: 1.6;
             color: #f8fafc;
-            font-weight: 600;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.9);
             margin: 0;
+            font-weight: 600;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.9);
         }
 
-        .gear-verse-ref {
+        .verse-ref {
+            display: block;
+            margin-top: 8px;
             font-size: 0.8rem;
             color: #38bdf8;
-            margin-top: 10px;
             font-weight: bold;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.9);
-        }
-
-        /* وصف سفلي يوضح فكرة التجميع */
-        .assembly-note {
-            margin-top: 40px;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-size: 1rem;
-            color: #e2e8f0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         /* الموبايل */
@@ -196,7 +183,7 @@
             #nav-menu { display: none; position: absolute; top: 100%; right: 0; width: 100%; background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(15px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
             #nav-menu.active { display: block; }
             #nav-menu ul { flex-direction: column; gap: 15px; }
-            .gear-item { width: 250px; height: 250px; }
+            .gears-puzzle-container { gap: 20px; }
         }
     </style>
 </head>
@@ -212,17 +199,17 @@
     
     <div class="en-overlay"></div>
 
-    <!-- شريط التنبيه العلوي -->
+    <!-- شريط التنبيه العلوي (قيد التجهيز) -->
     <div class="construction-banner">
         <i class="fas fa-tools"></i>
-        <span>الصفحة قيد التجهيز والتطوير المستمر لإطلاق محتوى درس الكتاب المقدس قريباً!</span>
+        <span>هذه الصفحة قيد التجهيز والتطوير المستمر لإضافات ومحتوى أرقى قريباً!</span>
     </div>
 
-    <!-- الهيدر العلوي -->
+    <!-- الهيدر العلوي مع الروابط الصحيحة والدقيقة -->
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <a href="index.html">
+                <a href="ar.html">
                     <div class="logo-img-wrapper">
                         <img src="chrch Logo.png" alt="LCAC Logo">
                     </div>
@@ -246,46 +233,41 @@
         </div>
     </header>
 
-    <!-- الهيرو -->
+    <!-- قسم الهيرو للترويسة -->
     <section class="page-hero">
         <div class="container">
             <h1>درس الكتاب المقدس</h1>
-            <p>"سراج لرجلي كلامك ونور لسبيلي"</p>
+            <p>كلمة الله.. تتشابك وتتجمع لتنير حياتنا وتعلن الحقيقة الكاملة</p>
         </div>
     </section>
 
-    <!-- قسم تجميع الآيات كتروس/بازل -->
+    <!-- قسم تروس الآيات المتشابكة (شكل البازل المتجانس) -->
     <section class="section">
         <div class="container">
-            <div class="puzzle-gears-container">
-                
-                <!-- الترس / القطعة الأولى -->
-                <div class="gear-item">
-                    <i class="fas fa-book-open gear-icon"></i>
-                    <p class="gear-verse-text">"سراج لرجلي كلامك ونور لسبيلي"</p>
-                    <span class="gear-verse-ref">مزمور 119: 105</span>
+            <p style="color: #e2e8f0; font-size: 1.05rem; margin-bottom: 20px; text-shadow: 0 2px 6px rgba(0,0,0,0.9);">
+                ⚙️ نجهز لكم محتوى مباركاً وكلمات إحياء روحية.. ترقبوا انطلاق القسم قريباً:
+            </p>
+            
+            <div class="gears-puzzle-container">
+                <!-- الترس الأول -->
+                <div class="verse-gear">
+                    <i class="fas fa-cog gear-icon"></i>
+                    <p class="verse-text">"سراج لرجلي كلامك ونور لسبيلي"</p>
+                    <span class="verse-ref">(مزمور 119: 105)</span>
                 </div>
 
-                <!-- الترس / القطعة الثانية -->
-                <div class="gear-item">
-                    <i class="fas fa-lightbulb gear-icon"></i>
-                    <p class="gear-verse-text">"السماء والأرض تزولان وأما كلامي فلا يزول"</p>
-                    <span class="gear-verse-ref">متى 24: 35</span>
+                <!-- الترس الثاني -->
+                <div class="verse-gear">
+                    <i class="fas fa-cog gear-icon"></i>
+                    <p class="verse-text">"السماء والأرض تزولان وأما كلامي فلا يزول"</p>
+                    <span class="verse-ref">(متى 24: 35)</span>
                 </div>
 
-                <!-- الترس / القطعة الثالثة -->
-                <div class="gear-item">
-                    <i class="fas fa-shield-alt gear-icon"></i>
-                    <p class="gear-verse-text">"خبأتم كلامي في قلبي لكيلا أخطئ إليك"</p>
-                    <span class="gear-verse-ref">مزمور 119: 11</span>
-                </div>
-
-            </div>
-
-            <div style="margin-top: 35px;">
-                <div class="assembly-note">
-                    <i class="fas fa-puzzle-piece" style="color: #ffd700; margin-left: 8px;"></i>
-                    جاري تجميع الكلمات والآيات لتكتمل صورة نور كلمة الله في حياتنا قريباً.. ترقبونا!
+                <!-- الترس الثالث -->
+                <div class="verse-gear">
+                    <i class="fas fa-cog gear-icon"></i>
+                    <p class="verse-text">"خبأتم كلامي في قلبي لكيلا أخطئ إليك"</p>
+                    <span class="verse-ref">(مزمور 119: 11)</span>
                 </div>
             </div>
         </div>
