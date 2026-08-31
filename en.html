@@ -33,13 +33,13 @@
         .modal-icon-glow { font-size: 3.8rem; color: #4dabf7; margin-bottom: 20px; }
         .modal-btn { background: linear-gradient(135deg, #4dabf7, #228be6); color: #fff; border: none; padding: 12px 30px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.05rem; }
         
-        /* ضبط القائمة للكمبيوتر والشاشات الكبيرة بشكل مؤكد ومنع إخفائها */
+        /* ضبط القائمة للكمبيوتر والشاشات الكبيرة */
         #menu-toggle { display: none !important; }
         #nav-menu { display: block !important; position: static !important; width: auto !important; background: transparent !important; box-shadow: none !important; }
-        #nav-menu ul { display: flex !important; list-style: none !important; gap: 15px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
+        #nav-menu ul { display: flex !important; list-style: none !important; gap: 18px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
 
         /* الشاشات الصغيرة فقط (الموبايل) */
-        @media (max-width: 900px) {
+        @media (max-width: 1050px) {
             #menu-toggle { display: block !important; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; }
             #nav-menu { display: none !important; position: absolute !important; top: 100% !important; left: 0 !important; width: 100% !important; background: rgba(15, 15, 15, 0.95) !important; backdrop-filter: blur(10px); padding: 20px 0; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.8); }
             #nav-menu.active { display: block !important; }
@@ -70,9 +70,11 @@
 
     <header>
         <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center; position: relative; padding: 15px 20px;">
+            
+            <!-- اللوجو والنص يؤديان إلى الصفحة الرئيسية -->
             <div class="logo">
-                <a href="en.html" style="color: #fff; text-decoration: none; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
-                    <img src="chrch Logo.png" alt="Life Center Arabic Church Logo" style="height: 35px; width: auto;">
+                <a href="en.html" style="color: #fff; text-decoration: none; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; gap: 10px;">
+                    <img src="chrch Logo.png" alt="Life Center Arabic Church Logo" style="height: 38px; width: auto;">
                     <span>Life Center Arabic Church</span>
                 </a>
             </div>
@@ -81,6 +83,7 @@
                 <i class="fas fa-bars"></i>
             </button>
 
+            <!-- القائمة العلوية -->
             <nav id="nav-menu">
                 <ul>
                     <li><a href="#services" style="color:#fff; text-decoration:none;">Services</a></li>
@@ -93,7 +96,7 @@
                             <span>✨</span> Register Your Info
                         </a>
                     </li>
-                    <li><a href="index.html" style="color:#fff; text-decoration:none;"><i class="fas fa-globe"></i> العربية</a></li>
+                    <li><a href="index.html" style="color:#fff; text-decoration:none;"><i class="fas fa-globe"></i> Arabic</a></li>
                 </ul>
             </nav>
         </div>
@@ -117,10 +120,12 @@
                 "Our vision is to introduce people to Jesus Christ and help them find eternal life."
             </p>
             
-            <div style="display: inline-block; background: rgba(77, 171, 247, 0.15); border: 1px solid rgba(77, 171, 247, 0.4); padding: 8px 20px; border-radius: 20px; margin-bottom: 25px; backdrop-filter: blur(5px);">
-                <p style="color: #4dabf7; font-size: 0.95rem; margin: 0; font-weight: 600; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
-                    <i class="fas fa-language"></i> All church services are in <strong>Arabic</strong>, except for the Youth Ministry which is in <strong>English</strong>.
-                </p>
+            <!-- شارة عصرية ومودرن لتوضيح لغات الخدمات -->
+            <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(77, 171, 247, 0.4); padding: 10px 22px; border-radius: 30px; margin-bottom: 25px; backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                <i class="fas fa-language" style="color: #4dabf7; font-size: 1.2rem;"></i>
+                <span style="color: #e5e5e5; font-size: 0.95rem;">
+                    Church Services are in <strong style="color: #4dabf7;">Arabic</strong> <span style="color: #888; margin: 0 5px;">|</span> Youth Ministry is in <strong style="color: #ffd43b;">English</strong>
+                </span>
             </div>
 
             <div class="hero-buttons">
