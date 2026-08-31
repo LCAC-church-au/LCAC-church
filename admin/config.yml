@@ -9,7 +9,7 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
- - name: "sermons"
+  - name: "sermons"
     label: "أرشيف العظات / Sermons Archive"
     folder: "_sermons"
     create: true
@@ -21,19 +21,23 @@ collections:
       - {label: "التاريخ", name: "date", widget: "string", hint: "31-08-2026"}
       - {label: "رابط يوتيوب (Embed ID)", name: "youtube_id", widget: "string"}
       - {label: "ملخص العظة", name: "summary", widget: "text"}
+
   - name: "pages"
-    label: "صفحات الموقع"
+    label: "صفحات الموقع / Site Pages"
     files:
       - file: "conference.html"
         label: "صفحة مؤتمر مجد الرب"
         name: "conference"
         fields:
+          - {label: "لغة الصفحة", name: "language", widget: "select", options: [{label: "العربية", value: "ar"}, {label: "English", value: "en"}], default: "ar"}
           - {label: "عنوان المؤتمر الرئيسي", name: "title", widget: "string"}
-          - {label: "آية المؤتمر", name: "verse", widget: "text"}
+          - {label: "آية المؤتمر / الشعار", name: "verse", widget: "text"}
+          - {label: "تفاصيل وجدول المؤتمر", name: "content", widget: "markdown"}
 
       - file: "ar.html"
         label: "الصفحة الرئيسية (العربية)"
         name: "home_ar"
         fields:
-          - {label: "عنوان الترحيب", name: "welcome_title", widget: "string"}
-          - {label: "نص الرؤية", name: "vision", widget: "text"}
+          - {label: "لغة الصفحة", name: "language", widget: "select", options: [{label: "العربية", value: "ar"}, {label: "English", value: "en"}], default: "ar"}
+          - {label: "عنوان الترحيب الرئيسي", name: "welcome_title", widget: "string"}
+          - {label: "نص الرؤية والخدمات", name: "vision", widget: "text"}
