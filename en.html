@@ -33,13 +33,13 @@
         .modal-icon-glow { font-size: 3.8rem; color: #4dabf7; margin-bottom: 20px; }
         .modal-btn { background: linear-gradient(135deg, #4dabf7, #228be6); color: #fff; border: none; padding: 12px 30px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.05rem; }
         
-        /* تنسيق اللوجو والشريط العلوي لمنع التداخل وجعله على سطر واحد وبمسافات مريحة */
+        /* تنسيق الشريط العلوي: اللوجو يمين والأزرار يسار مع تباعد مريح ومنع التداخل */
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; width: 100%; box-sizing: border-box; }
         .logo a { display: flex; align-items: center; gap: 10px; white-space: nowrap; text-decoration: none; color: #fff; font-weight: bold; font-size: 1rem; }
         
         #menu-toggle { display: none !important; }
         #nav-menu { display: block !important; position: static !important; width: auto !important; background: transparent !important; box-shadow: none !important; }
-        #nav-menu ul { display: flex !important; list-style: none !important; gap: 14px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
+        #nav-menu ul { display: flex !important; list-style: none !important; gap: 18px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
         #nav-menu ul li a { font-size: 0.9rem; white-space: nowrap; }
 
         /* الشاشات الصغيرة (الموبايل) */
@@ -75,7 +75,19 @@
     <header>
         <div class="container nav-container">
             
-            <!-- القائمة العلوية أصبحت على اليسار -->
+            <!-- اللوجو واسم الكنيسة على اليمين وينقل إلى الصفحة الرئيسية index.html -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="chrch Logo.png" alt="Life Center Arabic Church Logo" style="height: 40px; width: auto;">
+                    <span>Life Center Arabic Church</span>
+                </a>
+            </div>
+            
+            <button id="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- الأزرار وقائمة التنقل على اليسار -->
             <nav id="nav-menu">
                 <ul>
                     <li><a href="#services" style="color:#fff; text-decoration:none;">Services</a></li>
@@ -88,6 +100,7 @@
                             <span>✨</span> Register
                         </a>
                     </li>
+                    <!-- زر اللغة العربية مع الكرة الأرضية لينقلك للصفحة العربية -->
                     <li>
                         <a href="index.html" style="color:#fff; text-decoration:none; display: inline-flex; align-items: center; gap: 5px;">
                             <i class="fas fa-globe"></i> Arabic
@@ -95,18 +108,6 @@
                     </li>
                 </ul>
             </nav>
-            
-            <button id="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- اللوجو على اليمين وينقل للرئيسية الإنجليزية en.html -->
-            <div class="logo">
-                <a href="en.html">
-                    <span>Life Center Arabic Church</span>
-                    <img src="chrch Logo.png" alt="Life Center Arabic Church Logo" style="height: 40px; width: auto;">
-                </a>
-            </div>
 
         </div>
     </header>
