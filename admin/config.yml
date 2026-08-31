@@ -2,7 +2,7 @@ backend:
   name: github
   repo: LCAC-church-au/LCAC-church
   branch: main
-  base_url: https://lifecenterarabicchurch.org
+  base_url: https://decap-cms-oauth.vercel.app
 
 publish_mode: editorial_workflow
 
