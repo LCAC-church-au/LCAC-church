@@ -2,6 +2,9 @@ backend:
   name: github
   repo: LCAC-church-au/LCAC-church
   branch: main
+  base_url: https://lifecenterarabicchurch.org
+  
+  auth_endpoint: api/auth
 
 publish_mode: editorial_workflow
 
