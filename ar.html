@@ -25,7 +25,6 @@
         #contact { background: transparent !important; width: 100%; display: flex; justify-content: center; align-items: center; }
         #contact .container { width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
         
-        /* إزالة الخلفية والإطار تماماً عن الـ QR Code ليكون نظيفاً وشفافاً */
         .qr-clean-img { max-width: 190px; border-radius: 12px; border: 3px solid rgba(255, 255, 255, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.7); display: inline-block; padding: 8px; background: #ffffff; }
 
         #under-construction-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 9999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; }
@@ -33,11 +32,22 @@
         @keyframes modalPopIn { to { transform: scale(1) translateY(0); opacity: 1; } }
         .modal-icon-glow { font-size: 3.8rem; color: #4dabf7; margin-bottom: 20px; }
         .modal-btn { background: linear-gradient(135deg, #4dabf7, #228be6); color: #fff; border: none; padding: 12px 30px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.05rem; }
-        @media (max-width: 900px) {
-            #menu-toggle { display: block !important; }
-            #nav-menu { display: none; position: absolute; top: 100%; right: 0; width: 100%; background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(10px); padding: 20px 0; }
-            #nav-menu.active { display: block; }
-            #nav-menu ul { flex-direction: column; gap: 15px !important; text-align: center; }
+
+        /* تنسيق الشريط العلوي: اللوجو يمين والأزرار يسار مع تباعد مريح ومنع التداخل */
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; width: 100%; box-sizing: border-box; }
+        .logo a { display: flex; align-items: center; gap: 10px; white-space: nowrap; text-decoration: none; color: #fff; font-weight: bold; font-size: 1rem; }
+        
+        #menu-toggle { display: none !important; }
+        #nav-menu { display: block !important; position: static !important; width: auto !important; background: transparent !important; box-shadow: none !important; }
+        #nav-menu ul { display: flex !important; list-style: none !important; gap: 18px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
+        #nav-menu ul li a { font-size: 0.9rem; white-space: nowrap; }
+
+        /* الشاشات الصغيرة (الموبايل): قائمة منسدلة لمنع التداخل */
+        @media (max-width: 1200px) {
+            #menu-toggle { display: block !important; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; }
+            #nav-menu { display: none !important; position: absolute !important; top: 100% !important; right: 0 !important; width: 100% !important; background: rgba(15, 15, 15, 0.95) !important; backdrop-filter: blur(10px); padding: 20px 0; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.8); }
+            #nav-menu.active { display: block !important; }
+            #nav-menu ul { flex-direction: column !important; gap: 15px !important; text-align: center !important; }
         }
     </style>
 </head>
@@ -63,39 +73,49 @@
     </div>
 
     <header>
-        <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center; position: relative; padding: 15px 20px;">
+        <div class="container nav-container">
+            
+            <!-- اللوجو واسم الكنيسة على اليمين وينقل إلى الصفحة الرئيسية index.html -->
             <div class="logo">
-                <a href="index.html" style="color: #fff; text-decoration: none; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
-                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 35px; width: auto;">
+                <a href="index.html">
+                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 40px; width: auto;">
                     <span>كنيسة مركز الحياة العربية</span>
                 </a>
             </div>
             
-            <button id="menu-toggle" onclick="toggleMenu()" style="background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; display: none;">
+            <button id="menu-toggle" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </button>
 
+            <!-- الأزرار وقائمة التنقل على اليسار -->
             <nav id="nav-menu">
-                <ul style="display: flex; list-style: none; gap: 18px; align-items: center; margin: 0; padding: 0;">
+                <ul>
                     <li><a href="#services" style="color:#fff; text-decoration:none;">خدمات الكنيسة</a></li>
                     <li><a href="faith.html" style="color:#fff; text-decoration:none;">إيمان الكنيسة</a></li>
                     <li><a href="conference.html" style="color: #ffd43b; font-weight: bold; text-decoration:none;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
                     <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold; text-decoration:none;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
                     <li><a href="#contact" style="color:#fff; text-decoration:none;">اتصل بنا</a></li>
                     <li>
-                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff; padding: 8px 16px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px;">
+                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff; padding: 6px 12px; font-size: 13px; font-weight: bold; text-decoration: none; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px;">
                             <span>✨</span> سجل بياناتك
                         </a>
                     </li>
-                    <li><a href="en.html" style="color:#fff; text-decoration:none;"><i class="fas fa-globe"></i> English</a></li>
+                    <!-- زر اللغة الإنجليزية مع الكرة الأرضية لينقلك للصفحة الإنجليزية -->
+                    <li>
+                        <a href="en.html" style="color:#fff; text-decoration:none; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-globe"></i> English
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
         </div>
     </header>
 
     <script>
         function toggleMenu() {
-            document.getElementById('nav-menu').classList.toggle('active');
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
         }
     </script>
 
@@ -170,19 +190,16 @@
         </div>
     </section>
 
-    <!-- قسم عنوان الكنيسة ووسائل التواصل (بدون أي خلفية سوداء للـ QR) -->
     <section id="contact" class="section" style="padding: 60px 20px; background: transparent !important;">
         <div class="container" style="background: transparent !important;">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 2rem; margin-bottom: 10px;">عنوان الكنيسة ووسائل التواصل</h2>
             <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9); margin-bottom: 20px;">مسح رمز الاستجابة السريعة (QR Code) للوصول إلى عنوان الكنيسة مباشرة</p>
             
-            <!-- تم إلغاء الصندوق الداكن، وأصبح الـ QR يظهر مباشرة بشفافية تامة -->
             <div style="margin: 20px 0; text-align: center; background: transparent !important;">
                 <img src="church address qr.jpg" alt="QR Code عنوان الكنيسة" class="qr-clean-img">
                 <p style="color: #d4d4d4; margin-top: 12px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">وجه كاميرا هاتفك نحو الرمز لعرض الموقع الجغرافي</p>
             </div>
 
-            <!-- زر الانتقال المباشر لخرائط جوجل لعنوان الكنيسة -->
             <div style="margin: 15px 0 25px 0; background: transparent !important;">
                 <a href="https://maps.google.com/?q=75+Interlink+Dr,+Craigieburn+VIC+3064" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #28a745; color: #fff; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);">
                     <i class="fas fa-map-marked-alt"></i> الانتقال المباشر لعنوان الكنيسة على الخرائط
