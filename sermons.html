@@ -154,34 +154,33 @@
         </div>
 
         <!-- حاوية العظات بتصميم شبكي (Grid) يجمع كافة الصناديق بداخله بشكل منظم -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; align-items: stretch;">
 
-           <!-- صندق العظة الجديدة (الأحدث في المقدمة) -->
-<div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 30px;">
-    
-    <!-- عنوان العظة، الواعظ، والتاريخ -->
-    <div style="margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-        <h2 style="color: #fff; font-size: 1.4rem; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
-            إيمان يواجه الظروف
-        </h2>
-        <div style="display: flex; gap: 20px; flex-wrap: wrap; color: #4dabf7; font-size: 0.95rem; font-weight: bold;">
-            <span><i class="fas fa-user-tie"></i> الواعظ: القس غسان توماس</span>
-            <span><i class="fas fa-calendar-alt"></i> التاريخ: 30/08/2026</span>
-        </div>
-    </div>
+           <!-- صندوق العظة الجديدة (الأحدث في المقدمة) -->
+           <div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between;">
+               <div>
+                   <div style="margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                       <h2 style="color: #fff; font-size: 1.3rem; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
+                           إيمان يواجه الظروف
+                       </h2>
+                       <div style="display: flex; flex-direction: column; gap: 6px; color: #4dabf7; font-size: 0.95rem; font-weight: bold;">
+                           <span><i class="fas fa-user-tie"></i> الواعظ: القس غسان توماس</span>
+                           <span><i class="fas fa-calendar-alt"></i> التاريخ: 30/08/2026</span>
+                       </div>
+                   </div>
 
-    <!-- رابط يوتيوب العظة -->
-    <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.8); background: #000; margin-bottom: 15px;">
-        <iframe src="https://www.youtube.com/embed/byV6LXqoQow" title="عظة الكنيسة" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
-    </div>
+                   <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.8); background: #000; margin-bottom: 15px;">
+                       <iframe src="https://www.youtube.com/embed/byV6LXqoQow" title="عظة الكنيسة" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+                   </div>
+               </div>
 
-    <!-- ملخص العظة -->
-    <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; border-right: 4px solid #4dabf7;">
-        <p style="color: #e5e5e5; font-size: 0.95rem; line-height: 1.6; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
-            <strong>ملخص العظة:</strong> الإيمان الحقيقي لا يسمح للظروف أن تكون هي الصوت الأعلى في حياتنا، بل يجعل صوت الله وكلمته وتسبيحنا أعلى من صوت الخوف والواقع والظروف. فالظروف قد تتغير، والمشاعر قد تتغير، لكن كلمة الله ثابتة؛ لذلك يبني المؤمن حياته وقراراته على ما يقوله الله، وليس فقط على ما يراه أو يشعر به.
-        </p>
-    </div>
-</div> 
+               <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; border-right: 4px solid #4dabf7;">
+                   <p style="color: #e5e5e5; font-size: 0.95rem; line-height: 1.6; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
+                       <strong>ملخص العظة:</strong> الإيمان الحقيقي لا يسمح للظروف أن تكون هي الصوت الأعلى في حياتنا، بل يجعل صوت الله وكلمته وتسبيحنا أعلى من صوت الخوف والواقع والظروف. فالظروف قد تتغير، والمشاعر قد تتغير، لكن كلمة الله ثابتة؛ لذلك يبني المؤمن حياته وقراراته على ما يقوله الله، وليس فقط على ما يراه أو يشعر به.
+                   </p>
+               </div>
+           </div> 
+            
             <!-- صندوق العظة الأولى (القس جوزيف كبريال) -->
             <div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
