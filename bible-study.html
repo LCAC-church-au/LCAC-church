@@ -44,11 +44,10 @@
         }
         .construction-banner i { color: #78350f; font-size: 1.1rem; }
 
-        /* الهيدر العلوي */
+        /* الهيدر العلوي مع لوكو مميز */
         header { background: transparent !important; position: sticky; top: 0; z-index: 1000; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1300px; margin: 0 auto; padding: 15px 30px; direction: rtl; }
         
-        /* تصميم اللوكو المحسن */
         .logo a { 
             display: flex; 
             align-items: center; 
@@ -79,89 +78,61 @@
         #nav-menu ul li a:hover { color: #38bdf8 !important; }
 
         /* الأقسام العامة */
-        .section { padding: 50px 20px; background: transparent !important; }
+        .section { padding: 40px 20px; background: transparent !important; }
         .container { max-width: 1100px; margin: 0 auto; text-align: center; }
-        h2.section-title { font-size: 2.2rem; margin-bottom: 10px; color: #ffffff; text-shadow: 0 3px 10px rgba(0,0,0,0.9); }
-        p.section-desc { color: #e2e8f0; margin-bottom: 30px; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 1.1rem; }
 
         /* الهيرو الخاص بالصفحة */
-        .page-hero { padding: 40px 20px; text-align: center; }
-        .page-hero h1 { font-size: 2.8rem; margin: 10px 0; text-shadow: 0 3px 12px rgba(0,0,0,0.9); color: #ffffff; }
-        .page-hero p { font-size: 1.2rem; color: #ffffff; text-shadow: 0 3px 10px rgba(0,0,0,0.9); }
+        .page-hero { padding: 30px 20px; text-align: center; }
+        .page-hero h1 { font-size: 2.6rem; margin: 10px 0; text-shadow: 0 3px 12px rgba(0,0,0,0.9); color: #ffffff; }
+        .page-hero p { font-size: 1.15rem; color: #ffffff; text-shadow: 0 3px 10px rgba(0,0,0,0.9); }
 
-        /* 1. الموضوعات الرئيسية والدراسية */
-        .topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
-        .topic-card {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 14px;
-            padding: 20px;
-            text-align: right;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        /* معرض صور الآيات الكتابية (تجهيز الصفحة) */
+        .verses-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+            margin-top: 20px; 
         }
-        .topic-card h3 { color: #70b8ff; margin-top: 0; font-size: 1.3rem; display: flex; align-items: center; gap: 8px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
-        .sub-topics-list { list-style: none; padding: 0; margin: 10px 0 0 0; }
-        .sub-topics-list li { color: #f1f5f9; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; display: flex; align-items: center; gap: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
-        .sub-topics-list li i { color: #ffea79; font-size: 0.8rem; }
-
-        /* 2. قسم الكتب والملزمات (PDF) */
-        .pdf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .pdf-card {
+        .verse-card {
             background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-        .pdf-card h4 { color: #fff; margin: 10px 0 5px 0; font-size: 1.1rem; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #28a745;
-            color: #fff;
-            padding: 8px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-        }
-
-        /* 3. معرض الصور */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; }
-        .gallery-item {
-            border-radius: 12px;
-            overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.2);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            height: 180px;
-        }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .gallery-item img:hover { transform: scale(1.05); }
-
-        /* 4. منصة التأملات والشذرات */
-        .reflections-box {
-            background: rgba(20, 20, 30, 0.5);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 215, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(212, 175, 55, 0.4);
             border-radius: 16px;
-            padding: 25px;
-            text-align: right;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        .reflection-card {
-            background: rgba(0, 0, 0, 0.3);
-            border-right: 4px solid #ffd700;
+        .verse-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.9);
+        }
+        .verse-img-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .verse-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .verse-card:hover .verse-img-container img {
+            transform: scale(1.03);
+        }
+        .verse-title {
             padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 0 8px 8px 0;
+            margin: 0;
+            color: #ffd700;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+            background: rgba(0, 0, 0, 0.3);
         }
-        .reflection-card p { margin: 0 0 8px 0; color: #fff; font-size: 1rem; line-height: 1.6; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
-        .reflection-author { color: #ffea79; font-size: 0.85rem; font-weight: bold; }
 
         /* الموبايل */
         @media (max-width: 1000px) {
@@ -208,11 +179,11 @@
 
             <nav id="nav-menu">
                 <ul>
-                    <li><a href="index.html#services">الخدمات</a></li>
+                    <li><a href="ar.html#services">الخدمات</a></li>
                     <li><a href="faith-en.html">إيماننا</a></li>
                     <li><a href="conference.html">المؤتمر</a></li>
-                    <li><a href="index.html#contact">تواصل معنا</a></li>
-                    <li><a href="index.html" style="color: #70b8ff !important;"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="ar.html#contact">تواصل معنا</a></li>
+                    <li><a href="ar.html" style="color: #70b8ff !important;"><i class="fas fa-home"></i> الرئيسية</a></li>
                 </ul>
             </nav>
         </div>
@@ -226,113 +197,46 @@
         </div>
     </section>
 
-    <!-- 1. الموضوعات الرئيسية والفرعية للدراسة -->
-    <section class="section">
-        <div class="container" style="text-align: right;">
-            <h2 class="section-title" style="text-align: right;">📚 الموضوعات الرئيسية للدراسة</h2>
-            <p class="section-desc" style="text-align: right;">نخوض معاً رحلة تعمق في كلمة الله عبر محاور وسلاسل تعليمية متنوعة:</p>
-            
-            <div class="topics-grid">
-                <div class="topic-card">
-                    <h3><i class="fas fa-book"></i> دراسة أسفار العهد الجديد</h3>
-                    <ul class="sub-topics-list">
-                        <li><i class="fas fa-chevron-left"></i> إنجيل متى: ملكوت السماوات</li>
-                        <li><i class="fas fa-chevron-left"></i> رسالة رومية: بر الله للإنسان</li>
-                        <li><i class="fas fa-chevron-left"></i> سفر الرؤيا: إعلانات وعزاء</li>
-                    </ul>
-                </div>
-
-                <div class="topic-card">
-                    <h3><i class="fas fa-scroll"></i> شخصيات من العهد القديم</h3>
-                    <ul class="sub-topics-list">
-                        <li><i class="fas fa-chevron-left"></i> إبراهيم: أبو الآباء واختبار الإيمان</li>
-                        <li><i class="fas fa-chevron-left"></i> داود: رجل حسب قلب الله</li>
-                        <li><i class="fas fa-chevron-left"></i> دانيال: الثبات في زمن السبي</li>
-                    </ul>
-                </div>
-
-                <div class="topic-card">
-                    <h3><i class="fas fa-lightbulb"></i> مبادئ الحياة المسيحية</h3>
-                    <ul class="sub-topics-list">
-                        <li><i class="fas fa-chevron-left"></i> قوة الصلاة الفاعلة</li>
-                        <li><i class="fas fa-chevron-left"></i> ثمر الروح القدس في المؤمن</li>
-                        <li><i class="fas fa-chevron-left"></i> الغفران والتعامل مع التجارب</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. مكتبة الكتب والملزمات (PDF) -->
-    <section class="section">
-        <div class="container" style="text-align: right;">
-            <h2 class="section-title" style="text-align: right;">📥 مكتبة الملازم والكتب (PDF)</h2>
-            <p class="section-desc" style="text-align: right;">قم بتحميل ملازم الدراسة ومذكرات الدروس الأسبوعية للمتابعة الشخصية:</p>
-            
-            <div class="pdf-grid">
-                <div class="pdf-card">
-                    <i class="fas fa-file-pdf" style="font-size: 2.5rem; color: #ff5252;"></i>
-                    <h4>مذكرة دراسة رسالة رومية</h4>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; margin: 5px 0;">الملزمة الأولى - الفصول (1-4)</p>
-                    <a href="files/romans-study.pdf" download class="btn-download"><i class="fas fa-download"></i> تحميل PDF</a>
-                </div>
-
-                <div class="pdf-card">
-                    <i class="fas fa-file-pdf" style="font-size: 2.5rem; color: #ff5252;"></i>
-                    <h4>دليل الصلاة اليومية</h4>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; margin: 5px 0;">تأملات عملية لمدة 30 يوماً</p>
-                    <a href="files/prayer-guide.pdf" download class="btn-download"><i class="fas fa-download"></i> تحميل PDF</a>
-                </div>
-
-                <div class="pdf-card">
-                    <i class="fas fa-file-pdf" style="font-size: 2.5rem; color: #ff5252;"></i>
-                    <h4>أسئلة نقاش مجموعات الدرس</h4>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; margin: 5px 0;">الإصدار الأسبوعي الحديث</p>
-                    <a href="files/questions.pdf" download class="btn-download"><i class="fas fa-download"></i> تحميل PDF</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. منصة التأملات والشذرات الروحية -->
+    <!-- قسم صور آيات الكتاب المقدس (بواسطة التجهيز) -->
     <section class="section">
         <div class="container">
-            <div class="reflections-box">
-                <h2 style="color: #ffd700; margin-top: 0; display: flex; align-items: center; gap: 10px; font-size: 1.5rem; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">
-                    <i class="fas fa-feather-alt"></i> ومضات وتأملات كتابية
-                </h2>
-                <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 20px; text-shadow: 0 1px 4px rgba(0,0,0,0.8);">شذرات روحية قصيرة لتكون غذاءً للروح خلال الأسبوع:</p>
-                
-                <div class="reflection-card">
-                    <p>"الله ليس بظالم حتى ينسى تعب محبتكم.. تمسك بالرجاء ولا تهتز، فالرب يرى خفايا قلبك ويجازيك علانية."</p>
-                    <span class="reflection-author">- تأمل أسبوعي</span>
-                </div>
-
-                <div class="reflection-card">
-                    <p>"الكلمة المقدسة ليست مجرد حروف للتاريخ، بل هي مرآة لحيّ يكلمك اليوم وسط ظروفك الخاصة ليمنحك سلاماً يفوق كل عقل."</p>
-                    <span class="reflection-author">- شذرة روحية</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. معرض الصور -->
-    <section class="section">
-        <div class="container" style="text-align: right;">
-            <h2 class="section-title" style="text-align: right;">📸 صور من لقاءات درس الكتاب</h2>
-            <p class="section-desc" style="text-align: right;">لفتات محبة وأوقات مباركة خلال دراستنا لكلمة الله معاً:</p>
+            <p style="color: #e2e8f0; font-size: 1.1rem; margin-bottom: 25px; text-shadow: 0 2px 6px rgba(0,0,0,0.9);">
+                ✨ نجهز لكم محتوى مباركاً وكلمات إحياء روحية.. ترقبوا انطلاق القسم قريباً:
+            </p>
             
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="church4.jpg" alt="صورة لقاء 1"></div>
-                <div class="gallery-item"><img src="church5.jpg" alt="صورة لقاء 2"></div>
-                <div class="gallery-item"><img src="church6.jpg" alt="صورة لقاء 3"></div>
-                <div class="gallery-item"><img src="church7.jpg" alt="صورة لقاء 4"></div>
+            <div class="verses-grid">
+                <!-- الآية الأولى -->
+                <div class="verse-card">
+                    <div class="verse-img-container">
+                        <!-- استبدل verse1.jpg باسم صورة الآية الحقيقية لديك -->
+                        <img src="verse1.jpg" alt="آية كتابية 1" onerror="this.src='church4.jpg'">
+                    </div>
+                    <h3 class="verse-title">📖 "سراج لرجلي كلامك ونور لسبيلي" (مزمور 119: 105)</h3>
+                </div>
+
+                <!-- الآية الثانية -->
+                <div class="verse-card">
+                    <div class="verse-img-container">
+                        <!-- استبدل verse2.jpg باسم صورة الآية الحقيقية لديك -->
+                        <img src="verse2.jpg" alt="آية كتابية 2" onerror="this.src='church5.jpg'">
+                    </div>
+                    <h3 class="verse-title">📖 "السماء والأرض تزولان وأما كلامي فلا يزول" (متى 24: 35)</h3>
+                </div>
+
+                <!-- الآية الثالثة -->
+                <div class="verse-card">
+                    <div class="verse-img-container">
+                        <!-- استبدل verse3.jpg باسم صورة الآية الحقيقية لديك -->
+                        <img src="verse3.jpg" alt="آية كتابية 3" onerror="this.src='church6.jpg'">
+                    </div>
+                    <h3 class="verse-title">📖 "خبأتم كلامي في قلبي لكيلا أخطئ إليك" (مزمور 119: 11)</h3>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- الفوتر -->
-    <footer style="padding: 25px 0; text-align: center; background: transparent !important; border-top: 1px solid rgba(255,255,255,0.1);">
+    <footer style="padding: 25px 0; text-align: center; background: transparent !important; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px;">
         <p style="color: #ffffff; font-size: 0.9rem; margin: 0; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">© 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
     </footer>
 
