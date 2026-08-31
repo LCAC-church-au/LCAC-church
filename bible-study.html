@@ -10,19 +10,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Cairo', sans-serif; color: #ffffff; background: transparent !important; overflow-x: hidden; }
+        body { margin: 0; font-family: 'Cairo', sans-serif; color: #ffffff; background: #0b0f19 !important; overflow-x: hidden; }
 
-        /* صور الخلفية المتحركة */
-        .en-bg-slideshow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; }
-        .en-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; animation: enSlideAnimation 30s infinite; }
-        .en-slide:nth-child(1) { background-image: url('church4.jpg'); animation-delay: 0s; }
-        .en-slide:nth-child(2) { background-image: url('church5.jpg'); animation-delay: 6s; }
-        .en-slide:nth-child(3) { background-image: url('church6.jpg'); animation-delay: 12s; }
-        .en-slide:nth-child(4) { background-image: url('church7.jpg'); animation-delay: 18s; }
-        .en-slide:nth-child(5) { background-image: url('church8.jpg'); animation-delay: 24s; }
-        @keyframes enSlideAnimation { 0% { opacity: 0; transform: scale(1); } 8% { opacity: 1; } 24% { opacity: 1; } 32% { opacity: 0; transform: scale(1.05); } 100% { opacity: 0; } }
+        /* خلفية التروس الميكانيكية الضخمة المتحركة */
+        .gears-bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #1e293b 0%, #090d16 100%);
+        }
+
+        /* تصميم التروس الكبيرة المتحركة في الخلفية */
+        .bg-gear {
+            position: absolute;
+            color: rgba(212, 175, 55, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg-gear i {
+            font-size: 10rem;
+            animation: rotateGear 25s linear infinite;
+        }
+
+        .bg-gear.reverse i {
+            animation: rotateGearReverse 30s linear infinite;
+        }
+
+        /* أحجام ومواقع مختلفة للتروس الخلفية لتشبه البازل المتشابك */
+        .gear-1 { top: -10%; right: -5%; }
+        .gear-1 i { font-size: 28rem; color: rgba(212, 175, 55, 0.06); }
+
+        .gear-2 { bottom: -15%; left: -10%; }
+        .gear-2 i { font-size: 35rem; color: rgba(56, 189, 248, 0.05); }
+
+        .gear-3 { top: 30%; left: 10%; }
+        .gear-3 i { font-size: 15rem; color: rgba(212, 175, 55, 0.07); }
+
+        .gear-4 { bottom: 10%; right: 15%; }
+        .gear-4 i { font-size: 20rem; color: rgba(255, 255, 255, 0.04); }
+
+        @keyframes rotateGear {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateGearReverse {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
         
-        .en-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: -1; }
+        .en-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 8, 15, 0.65); z-index: -1; backdrop-filter: blur(3px); }
 
         /* شريط التنبيه العلوي (قيد التجهيز) */
         .construction-banner {
@@ -86,95 +129,71 @@
         .page-hero h1 { font-size: 2.5rem; margin: 10px 0; text-shadow: 0 3px 12px rgba(0,0,0,0.9); color: #ffffff; }
         .page-hero p { font-size: 1.15rem; color: #ffd700; text-shadow: 0 3px 10px rgba(0,0,0,0.9); font-weight: 600; }
 
-        /* حاوية التروس المتشابكة (البازل) */
-        .gears-puzzle-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 35px;
-            margin-top: 35px;
+        /* حاوية الآيات المتجمعة (شكل البازل المتناسق) */
+        .verses-puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
             position: relative;
+            z-index: 2;
         }
 
-        /* تصميم الترس (Gear / Puzzle Node) */
-        .verse-gear {
-            width: 270px;
-            height: 270px;
+        .verse-puzzle-card {
             background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            border: 3px solid rgba(212, 175, 55, 0.6);
-            border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 25px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 20px;
+            padding: 30px 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 0 15px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: transform 0.4s ease, border-color 0.4s ease;
             position: relative;
-            animation: gearRotateAndPulse 14s infinite ease-in-out alternate;
-            transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+            overflow: hidden;
         }
 
-        /* حركات مختلفة للتروس لتشبه تجمع البازل الديناميكي */
-        .verse-gear:nth-child(1) {
-            animation-duration: 12s;
-            border-radius: 45% 55% 70% 30% / 50% 60% 40% 50%;
-        }
-        .verse-gear:nth-child(2) {
-            animation-duration: 16s;
-            animation-delay: -3s;
-            border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%;
-        }
-        .verse-gear:nth-child(3) {
-            animation-duration: 15s;
-            animation-delay: -6s;
-            border-radius: 50% 50% 45% 55% / 40% 70% 30% 60%;
+        .verse-puzzle-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        @keyframes gearRotateAndPulse {
-            0% { transform: rotate(0deg) scale(1); border-color: rgba(212, 175, 55, 0.5); }
-            50% { transform: rotate(3deg) scale(1.03); border-color: rgba(255, 215, 0, 0.9); background: rgba(30, 41, 59, 0.85); }
-            100% { transform: rotate(-3deg) scale(1); border-color: rgba(212, 175, 55, 0.5); }
+        .verse-puzzle-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.9);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
         }
 
-        .verse-gear:hover {
-            transform: scale(1.08) rotate(0deg) !important;
-            border-color: #ffea79;
-            background: rgba(15, 23, 42, 0.9);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
-            z-index: 10;
-        }
-
-        .gear-icon {
+        .verse-puzzle-card i.card-icon {
             color: #ffd700;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
-            animation: iconSpin 10s linear infinite;
-        }
-
-        @keyframes iconSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            font-size: 2rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
         }
 
         .verse-text {
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.7;
             color: #f8fafc;
-            margin: 0;
+            margin: 0 0 15px 0;
             font-weight: 600;
             text-shadow: 0 2px 5px rgba(0,0,0,0.9);
         }
 
         .verse-ref {
-            display: block;
-            margin-top: 8px;
-            font-size: 0.8rem;
+            display: inline-block;
+            font-size: 0.9rem;
             color: #38bdf8;
             font-weight: bold;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
         /* الموبايل */
@@ -183,18 +202,25 @@
             #nav-menu { display: none; position: absolute; top: 100%; right: 0; width: 100%; background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(15px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
             #nav-menu.active { display: block; }
             #nav-menu ul { flex-direction: column; gap: 15px; }
-            .gears-puzzle-container { gap: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="en-bg-slideshow">
-        <div class="en-slide"></div>
-        <div class="en-slide"></div>
-        <div class="en-slide"></div>
-        <div class="en-slide"></div>
-        <div class="en-slide"></div>
+    <!-- خلفية التروس الميكانيكية الضخمة المتحركة -->
+    <div class="gears-bg-container">
+        <div class="bg-gear gear-1">
+            <i class="fas fa-cog"></i>
+        </div>
+        <div class="bg-gear reverse gear-2">
+            <i class="fas fa-cog"></i>
+        </div>
+        <div class="bg-gear gear-3">
+            <i class="fas fa-cog"></i>
+        </div>
+        <div class="bg-gear reverse gear-4">
+            <i class="fas fa-cog"></i>
+        </div>
     </div>
     
     <div class="en-overlay"></div>
@@ -205,11 +231,12 @@
         <span>هذه الصفحة قيد التجهيز والتطوير المستمر لإضافات ومحتوى أرقى قريباً!</span>
     </div>
 
-    <!-- الهيدر العلوي مع الروابط الصحيحة والدقيقة -->
+    <!-- الهيدر العلوي مع הروابط الصحيحة تماماً -->
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <a href="ar.html">
+                <!-- اللوقو يأخذنا إلى الصفحة الرئيسية العامة لاختيار اللغة -->
+                <a href="index.html">
                     <div class="logo-img-wrapper">
                         <img src="chrch Logo.png" alt="LCAC Logo">
                     </div>
@@ -224,9 +251,10 @@
             <nav id="nav-menu">
                 <ul>
                     <li><a href="ar.html#services">الخدمات</a></li>
-                    <li><a href="faith-en.html">إيماننا</a></li>
+                    <li><a href="faith-ar.html">إيماننا</a></li>
                     <li><a href="conference.html">المؤتمر</a></li>
                     <li><a href="ar.html#contact">تواصل معنا</a></li>
+                    <!-- زر الرئيسية يأخذنا إلى الصفحة العربية -->
                     <li><a href="ar.html" style="color: #70b8ff !important;"><i class="fas fa-home"></i> الرئيسية</a></li>
                 </ul>
             </nav>
@@ -237,44 +265,44 @@
     <section class="page-hero">
         <div class="container">
             <h1>درس الكتاب المقدس</h1>
-            <p>كلمة الله.. تتشابك وتتجمع لتنير حياتنا وتعلن الحقيقة الكاملة</p>
+            <p>كلمة الله المتكاملة.. تتجمع آياتها لتنير طريق الحياة</p>
         </div>
     </section>
 
-    <!-- قسم تروس الآيات المتشابكة (شكل البازل المتجانس) -->
+    <!-- قسم الآيات بتصميم البازل المضيء -->
     <section class="section">
         <div class="container">
-            <p style="color: #e2e8f0; font-size: 1.05rem; margin-bottom: 20px; text-shadow: 0 2px 6px rgba(0,0,0,0.9);">
-                ⚙️ نجهز لكم محتوى مباركاً وكلمات إحياء روحية.. ترقبوا انطلاق القسم قريباً:
+            <p style="color: #e2e8f0; font-size: 1.1rem; margin-bottom: 25px; text-shadow: 0 2px 6px rgba(0,0,0,0.9);">
+                ✨ نجهز لكم محتوى مباركاً وكلمات إحياء روحية.. ترقبوا انطلاق القسم قريباً:
             </p>
             
-            <div class="gears-puzzle-container">
-                <!-- الترس الأول -->
-                <div class="verse-gear">
-                    <i class="fas fa-cog gear-icon"></i>
+            <div class="verses-puzzle-grid">
+                <!-- الآية الأولى -->
+                <div class="verse-puzzle-card">
+                    <i class="fas fa-bible card-icon"></i>
                     <p class="verse-text">"سراج لرجلي كلامك ونور لسبيلي"</p>
-                    <span class="verse-ref">(مزمور 119: 105)</span>
+                    <span class="verse-ref">مزمور 119: 105</span>
                 </div>
 
-                <!-- الترس الثاني -->
-                <div class="verse-gear">
-                    <i class="fas fa-cog gear-icon"></i>
+                <!-- الآية الثانية -->
+                <div class="verse-puzzle-card">
+                    <i class="fas fa-book-open card-icon"></i>
                     <p class="verse-text">"السماء والأرض تزولان وأما كلامي فلا يزول"</p>
-                    <span class="verse-ref">(متى 24: 35)</span>
+                    <span class="verse-ref">متى 24: 35</span>
                 </div>
 
-                <!-- الترس الثالث -->
-                <div class="verse-gear">
-                    <i class="fas fa-cog gear-icon"></i>
+                <!-- الآية الثالثة -->
+                <div class="verse-puzzle-card">
+                    <i class="fas fa-scroll card-icon"></i>
                     <p class="verse-text">"خبأتم كلامي في قلبي لكيلا أخطئ إليك"</p>
-                    <span class="verse-ref">(مزمور 119: 11)</span>
+                    <span class="verse-ref">مزمور 119: 11</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- الفوتر -->
-    <footer style="padding: 25px 0; text-align: center; background: transparent !important; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px;">
+    <footer style="padding: 25px 0; text-align: center; background: transparent !important; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; position: relative; z-index: 2;">
         <p style="color: #ffffff; font-size: 0.9rem; margin: 0; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">© 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
     </footer>
 
