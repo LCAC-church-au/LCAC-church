@@ -10,9 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Cairo', sans-serif; color: #ffffff; background: #050811 !important; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
+        body { margin: 0; font-family: 'Cairo', sans-serif; color: #ffffff; background: #0f172a !important; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
 
-        /* خلفية التروس الضخمة التي تملأ الشاشة بالكامل وتتغير حركتها */
+        /* خلفية التروس الضخمة والمضيئة (أكثر إشراقاً ووضوحاً) */
         .gears-fullscreen-bg {
             position: fixed;
             top: 0;
@@ -21,64 +21,61 @@
             height: 100vh;
             z-index: -3;
             overflow: hidden;
-            background: linear-gradient(135deg, #090d16 0%, #1e1b4b 50%, #090d16 100%);
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e1b4b 100%);
         }
 
         .giant-gear {
             position: absolute;
-            color: rgba(212, 175, 55, 0.18);
+            color: rgba(212, 175, 55, 0.28);
             display: flex;
             align-items: center;
             justify-content: center;
-            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.1));
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.2));
         }
 
         .giant-gear i {
-            animation: spinGear 20s linear infinite;
+            animation: spinGear 22s linear infinite;
         }
 
         .giant-gear.reverse i {
-            animation: spinGearRev 25s linear infinite;
+            animation: spinGearRev 28s linear infinite;
         }
 
-        /* توزيع التروس لتملأ المساحات بالكامل بدون فراغات */
-        .gear-a { top: -15%; right: -10%; }
-        .gear-a i { font-size: 38rem; }
+        .gear-a { top: -10%; right: -5%; }
+        .gear-a i { font-size: 35rem; }
 
-        .gear-b { bottom: -20%; left: -10%; }
-        .gear-b i { font-size: 42rem; color: rgba(56, 189, 248, 0.15); }
+        .gear-b { bottom: -15%; left: -5%; }
+        .gear-b i { font-size: 40rem; color: rgba(56, 189, 248, 0.22); }
 
-        .gear-c { top: 25%; left: -5%; }
-        .gear-c i { font-size: 25rem; color: rgba(239, 68, 68, 0.12); }
+        .gear-c { top: 20%; left: 2%; }
+        .gear-c i { font-size: 22rem; color: rgba(239, 68, 68, 0.18); }
 
-        .gear-d { bottom: 10%; right: 15%; }
-        .gear-d i { font-size: 30rem; color: rgba(255, 255, 255, 0.1); }
+        .gear-d { bottom: 5%; right: 10%; }
+        .gear-d i { font-size: 28rem; color: rgba(255, 255, 255, 0.15); }
 
         @keyframes spinGear {
             from { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.05); }
             to { transform: rotate(360deg) scale(1); }
         }
 
         @keyframes spinGearRev {
             from { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(-180deg) scale(0.95); }
             to { transform: rotate(-360deg) scale(1); }
         }
 
-        /* طبقة عتمة خفيفة وشفافة لضمان تباين النصوص فوق التروس */
+        /* تقليل التعتيم لجعل الخلفية واضحة ومضيئة */
         .bg-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(5, 8, 17, 0.55);
+            background: rgba(15, 23, 42, 0.35);
             z-index: -2;
             pointer-events: none;
         }
 
-        /* أجواء المطر والنار الجانبية */
+        /* أجواء المطر والنار (لهب مشتعل) */
         .ambient-effects {
             position: fixed;
             top: 0;
@@ -93,14 +90,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 20%;
+            width: 22%;
             height: 100%;
-            background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.18));
+            background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.25));
             overflow: hidden;
         }
         .rain-drop {
             position: absolute;
-            background: linear-gradient(transparent, rgba(56, 189, 248, 0.9));
+            background: linear-gradient(transparent, rgba(56, 189, 248, 0.95));
             width: 2px;
             height: 25px;
             animation: fallRain linear infinite;
@@ -111,18 +108,19 @@
             100% { transform: translateY(105vh); opacity: 0; }
         }
 
+        /* لهب نار مشتعل في الجانب الأيمن */
         .fire-side {
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 25%;
-            height: 60%;
-            background: radial-gradient(circle at bottom right, rgba(239, 68, 68, 0.4) 0%, rgba(245, 158, 11, 0.2) 45%, transparent 70%);
-            filter: blur(15px);
-            animation: fireFlicker 3s infinite alternate;
+            width: 28%;
+            height: 65%;
+            background: radial-gradient(circle at bottom right, rgba(239, 68, 68, 0.5) 0%, rgba(245, 158, 11, 0.3) 40%, transparent 75%);
+            filter: blur(12px);
+            animation: fireFlicker 2.5s infinite alternate;
         }
         @keyframes fireFlicker {
-            0% { opacity: 0.6; transform: scale(1); }
+            0% { opacity: 0.7; transform: scale(1); }
             100% { opacity: 1; transform: scale(1.08); }
         }
 
@@ -144,7 +142,7 @@
         }
         .construction-banner i { color: #78350f; font-size: 1.1rem; }
 
-        /* الهيدر العلوي */
+        /* الهيدر العلوي (مع الروابط الصحيحة) */
         header { background: transparent !important; position: sticky; top: 0; z-index: 1000; width: 100%; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1300px; margin: 0 auto; padding: 15px 30px; direction: rtl; }
         
@@ -177,7 +175,7 @@
         #nav-menu ul li a { font-size: 0.95rem; white-space: nowrap; text-decoration: none; color: #ffffff !important; text-shadow: 0 2px 6px rgba(0,0,0,0.8); transition: color 0.2s; }
         #nav-menu ul li a:hover { color: #ffd700 !important; }
 
-        /* محتوى الصفحة الرئيسي */
+        /* المحتوى الرئيسي */
         .main-content-area {
             flex: 1;
             display: flex;
@@ -202,18 +200,18 @@
             color: #ffd700; 
             text-shadow: 0 3px 12px rgba(0,0,0,0.95); 
             font-weight: 700; 
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
 
-        /* نظام الآيات التي تتغير وتعمل كخلفيات حية */
+        /* حاوية الآيات المتحركة كخلفيات متغيرة */
         .dynamic-verses-container {
             max-width: 850px;
             width: 100%;
-            min-height: 180px;
+            min-height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 20px auto 40px auto;
+            margin: 10px auto 30px auto;
             position: relative;
         }
 
@@ -224,12 +222,12 @@
             transition: opacity 1s ease-in-out, transform 1s ease-in-out;
             transform: scale(0.95);
             pointer-events: none;
-            background: rgba(11, 15, 25, 0.6);
-            border: 2px solid rgba(212, 175, 55, 0.4);
+            background: rgba(15, 23, 42, 0.75);
+            border: 2px solid rgba(212, 175, 55, 0.6);
             border-radius: 20px;
-            padding: 35px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
         }
 
         .verse-slide.active {
@@ -240,57 +238,71 @@
         }
 
         .verse-text-content {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             line-height: 1.8;
             color: #ffffff;
-            margin: 0 0 15px 0;
+            margin: 0 0 12px 0;
             font-weight: 700;
-            text-shadow: 0 3px 12px rgba(0,0,0,0.98), 0 0 20px rgba(212, 175, 55, 0.7);
+            text-shadow: 0 3px 12px rgba(0,0,0,0.98), 0 0 20px rgba(212, 175, 55, 0.8);
         }
 
         .verse-ref-content {
             display: inline-block;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: #38bdf8;
             font-weight: bold;
             text-shadow: 0 2px 8px rgba(0,0,0,0.95);
         }
 
-        /* مطرقة كبيرة وأحجار محطمة على شكل قلب */
-        .tools-heart-section {
+        /* قسم المطرقة الكبيرة، الأحجار المحطمة، واللهب */
+        .hammer-stones-fire-section {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 25px;
-            margin-top: 20px;
+            gap: 30px;
+            margin-top: 25px;
             position: relative;
             z-index: 10;
         }
 
-        .hammer-icon {
-            font-size: 2.8rem;
+        /* مطرقة كبيرة تضرب بانتظام */
+        .hammer-large {
+            font-size: 3.2rem;
             color: #ffd700;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.9));
-            animation: hammerSwing 2s infinite ease-in-out;
-        }
-
-        @keyframes hammerSwing {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(-25deg) translateY(-5px); }
-        }
-
-        /* الأحجار المحطمة على شكل قلب */
-        .broken-heart-stones {
-            position: relative;
-            font-size: 2.5rem;
-            color: #ef4444;
             filter: drop-shadow(0 4px 12px rgba(0,0,0,0.9));
-            animation: heartPulse 2.5s infinite alternate;
+            animation: hammerStrike 1.8s infinite ease-in-out;
+            transform-origin: bottom right;
         }
 
-        @keyframes heartPulse {
+        @keyframes hammerStrike {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-35deg) translateY(-10px); }
+        }
+
+        /* أحجار محطمة تحت المطرقة */
+        .broken-stones {
+            font-size: 2.8rem;
+            color: #94a3b8;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.9));
+            animation: stonesRumble 2s infinite alternate;
+        }
+
+        @keyframes stonesRumble {
             0% { transform: scale(1); }
-            100% { transform: scale(1.08); filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.8)); }
+            100% { transform: scale(1.06); color: #cbd5e1; }
+        }
+
+        /* لهب نار حقيقي */
+        .fire-flame {
+            font-size: 3rem;
+            color: #f59e0b;
+            filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.8));
+            animation: flameBurn 1.5s infinite alternate;
+        }
+
+        @keyframes flameBurn {
+            0% { transform: scale(1); color: #f59e0b; }
+            100% { transform: scale(1.12); color: #ef4444; filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.9)); }
         }
 
         /* الفوتر */
@@ -308,7 +320,7 @@
         /* الموبايل */
         @media (max-width: 1000px) {
             #menu-toggle { display: block; }
-            #nav-menu { display: none; position: absolute; top: 100%; right: 0; width: 100%; background: rgba(5, 8, 17, 0.96); backdrop-filter: blur(15px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.2); }
+            #nav-menu { display: none; position: absolute; top: 100%; right: 0; width: 100%; background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(15px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.2); }
             #nav-menu.active { display: block; }
             #nav-menu ul { flex-direction: column; gap: 15px; }
             .page-hero h1 { font-size: 2.2rem; }
@@ -319,7 +331,7 @@
 </head>
 <body>
 
-    <!-- خلفية التروس الضخمة التي تملأ الشاشة بالكامل -->
+    <!-- خلفية التروس الضخمة والمضيئة -->
     <div class="gears-fullscreen-bg">
         <div class="giant-gear gear-a"><i class="fas fa-cog"></i></div>
         <div class="giant-gear reverse gear-b"><i class="fas fa-cog"></i></div>
@@ -329,7 +341,7 @@
     
     <div class="bg-overlay"></div>
 
-    <!-- أجواء المطر (يسار) والنار (يمين) -->
+    <!-- أجواء المطر والنار -->
     <div class="ambient-effects">
         <div class="rain-side" id="rainContainer"></div>
         <div class="fire-side"></div>
@@ -341,7 +353,7 @@
         <span>هذه الصفحة قيد التجهيز والتطوير المستمر لإضافات ومحتوى أرقى قريباً!</span>
     </div>
 
-    <!-- الهيدر العلوي (مع الروابط الصحيحة) -->
+    <!-- الهيدر العلوي (مع الروابط الصحيحة تماماً) -->
     <header>
         <div class="container nav-container">
             <div class="logo">
@@ -376,11 +388,11 @@
             <p>كلمة الله الحية.. تتأسس كالتروس وتبني القلوب وسط التجهيز</p>
         </div>
 
-        <p style="color: #e2e8f0; font-size: 1.15rem; margin-bottom: 15px; text-shadow: 0 2px 8px rgba(0,0,0,0.95); font-weight: 600;">
+        <p style="color: #e2e8f0; font-size: 1.15rem; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.95); font-weight: 600;">
             ✨ ترقبوا انطلاق القسم قريباً بمحتوى روحي مبارك:
         </p>
 
-        <!-- حاوية الآيات المتغيرة (تتغير تلقائياً كخلفيات حية) -->
+        <!-- حاوية الآيات التي تتغير تلقائياً كخلفيات حية -->
         <div class="dynamic-verses-container" id="versesSlider">
             <div class="verse-slide active">
                 <p class="verse-text-content">"سراج لرجلي كلامك ونور لسبيلي"</p>
@@ -396,13 +408,13 @@
             </div>
         </div>
 
-        <!-- المطرقة والأحجار المحطمة على شكل قلب -->
-        <div class="tools-heart-section">
-            <i class="fas fa-hammer hammer-icon" title="مطرقة الكلمة"></i>
-            <div class="broken-heart-stones" title="أحجار محطمة على شكل قلب ومتجددة بكلمة الله">
-                <i class="fas fa-heart-broken"></i>
+        <!-- المطرقة الكبيرة، الأحجار المحطمة تحتها، واللهب -->
+        <div class="hammer-stones-fire-section">
+            <i class="fas fa-hammer hammer-large" title="مطرقة الكلمة الكبيرة"></i>
+            <div class="broken-stones" title="أحجار متكسرة تحت تأثير المطرقة">
+                <i class="fas fa-cubes"></i>
             </div>
-            <i class="fas fa-fire" style="font-size: 2.5rem; color: #f59e0b; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.9));" title="نار الروح"></i>
+            <i class="fas fa-fire flame-burn fire-flame" title="لهب النار المشتعل"></i>
         </div>
     </main>
 
@@ -416,7 +428,7 @@
             document.getElementById('nav-menu').classList.toggle('active');
         }
 
-        // نظام تبديل الآيات التلقائي لتظهر كخلفيات حية تتغير بانتظام
+        // نظام تبديل الآيات التلقائي
         let currentSlide = 0;
         const slides = document.querySelectorAll('.verse-slide');
         
@@ -425,7 +437,7 @@
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-        setInterval(rotateVerses, 4000); // تتغير كل 4 ثوانٍ
+        setInterval(rotateVerses, 4500); // تتغير كل 4.5 ثانية
 
         // مولد قطرات المطر للجانب الأيسر
         const rainContainer = document.getElementById('rainContainer');
