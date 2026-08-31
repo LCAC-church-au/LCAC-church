@@ -22,11 +22,34 @@ collections:
       - {label: "رابط يوتيوب (Embed ID)", name: "youtube_id", widget: "string"}
       - {label: "ملخص العظة", name: "summary", widget: "text"}
 
-  - name: "pages"
-    label: "إدارة صفحات الموقع"
-    folder: "_pages"
+  - name: "conferences"
+    label: "المؤتمرات والفعاليات"
+    folder: "_conferences"
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "اسم الصفحة (مثل: ar أو conference)", name: "title", widget: "string"}
-      - {label: "محتوى الصفحة", name: "body", widget: "markdown"}
+      - {label: "لغة المؤتمر", name: "language", widget: "select", options: [{label: "العربية", value: "ar"}, {label: "English", value: "en"}], default: "ar"}
+      - {label: "عنوان المؤتمر", name: "title", widget: "string"}
+      - {label: "آية المؤتمر / الشعار", name: "verse", widget: "text"}
+      - {label: "تاريخ المؤتمر", name: "date", widget: "string"}
+      - {label: "تفاصيل وجدول المؤتمر", name: "body", widget: "markdown"}
+
+  - name: "services"
+    label: "خدمات الكنيسة"
+    folder: "_services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "عنوان الخدمة", name: "title", widget: "string"}
+      - {label: "وصف الخدمة", name: "description", widget: "text"}
+      - {label: "أيقونة أو صورة الخدمة", name: "image", widget: "image", required: false}
+
+  - name: "site_settings"
+    label: "إعدادات الموقع والتواصل"
+    folder: "_settings"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "عنوان القسم / الصفحة", name: "title", widget: "string"}
+      - {label: "أرقام الهواتف والعنوان", name: "contact_info", widget: "text"}
+      - {label: "روابط وسائل التواصل", name: "social_links", widget: "markdown"}
