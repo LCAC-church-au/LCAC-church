@@ -24,7 +24,10 @@
         .service-card h3, .service-card p, .service-card span, .service-card i { text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
         #contact { background: transparent !important; width: 100%; display: flex; justify-content: center; align-items: center; }
         #contact .container { width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        
+        /* إزالة الخلفية والإطار تماماً عن الـ QR Code ليكون نظيفاً وشفافاً */
         .qr-clean-img { max-width: 190px; border-radius: 12px; border: 3px solid rgba(255, 255, 255, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.7); display: inline-block; padding: 8px; background: #ffffff; }
+
         #under-construction-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 9999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; }
         .modal-content { background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95)); border: 1px solid rgba(77, 171, 247, 0.4); padding: 45px 30px; border-radius: 20px; text-align: center; max-width: 420px; width: 90%; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9); transform: scale(0.7) translateY(30px); animation: modalPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
         @keyframes modalPopIn { to { transform: scale(1) translateY(0); opacity: 1; } }
@@ -167,24 +170,26 @@
         </div>
     </section>
 
-    <section id="contact" class="section" style="padding: 60px 20px;">
-        <div class="container">
+    <!-- قسم عنوان الكنيسة ووسائل التواصل (بدون أي خلفية سوداء للـ QR) -->
+    <section id="contact" class="section" style="padding: 60px 20px; background: transparent !important;">
+        <div class="container" style="background: transparent !important;">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 2rem; margin-bottom: 10px;">عنوان الكنيسة ووسائل التواصل</h2>
             <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9); margin-bottom: 20px;">مسح رمز الاستجابة السريعة (QR Code) للوصول إلى عنوان الكنيسة مباشرة</p>
             
-            <div class="qr-container" style="margin: 20px 0; text-align: center;">
+            <!-- تم إلغاء الصندوق الداكن، وأصبح الـ QR يظهر مباشرة بشفافية تامة -->
+            <div style="margin: 20px 0; text-align: center; background: transparent !important;">
                 <img src="church address qr.jpg" alt="QR Code عنوان الكنيسة" class="qr-clean-img">
                 <p style="color: #d4d4d4; margin-top: 12px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">وجه كاميرا هاتفك نحو الرمز لعرض الموقع الجغرافي</p>
             </div>
 
             <!-- زر الانتقال المباشر لخرائط جوجل لعنوان الكنيسة -->
-            <div style="margin: 15px 0 25px 0;">
+            <div style="margin: 15px 0 25px 0; background: transparent !important;">
                 <a href="https://maps.google.com/?q=75+Interlink+Dr,+Craigieburn+VIC+3064" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #28a745; color: #fff; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);">
                     <i class="fas fa-map-marked-alt"></i> الانتقال المباشر لعنوان الكنيسة على الخرائط
                 </a>
             </div>
 
-            <div style="display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap;">
+            <div style="display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap; background: transparent !important;">
                 <a href="https://www.facebook.com/lifecenterarabicchurch?locale=ar_AR" target="_blank" style="background: #1877f2; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
                     <i class="fab fa-facebook-f"></i> فيسبوك (LCAC)
                 </a>
