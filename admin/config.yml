@@ -22,25 +22,11 @@ collections:
       - {label: "رابط يوتيوب (Embed ID)", name: "youtube_id", widget: "string"}
       - {label: "ملخص العظة", name: "summary", widget: "text"}
 
-  - name: "conference_page"
-    label: "صفحة مؤتمر مجد الرب"
+  - name: "pages"
+    label: "إدارة صفحات الموقع"
     folder: "_pages"
-    create: false
-    identifier_field: "title"
-    files:
-      - file: "conference.html"
-        label: "تعديل محتوى المؤتمر"
-        name: "conference"
-        fields:
-          - {label: "عنوان المؤتمر الرئيسي", name: "title", widget: "string"}
-          - {label: "آية المؤتمر / الشعار", name: "verse", widget: "text"}
-
-  - name: "home_page"
-    label: "الصفحة الرئيسية (ar.html)"
-    files:
-      - file: "ar.html"
-        label: "تعديل الصفحة الرئيسية"
-        name: "home"
-        fields:
-          - {label: "عنوان الترحيب", name: "welcome_title", widget: "string"}
-          - {label: "نص الرؤية والخدمات", name: "vision", widget: "text"}
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "اسم الصفحة (مثل: ar أو conference)", name: "title", widget: "string"}
+      - {label: "محتوى الصفحة", name: "body", widget: "markdown"}
