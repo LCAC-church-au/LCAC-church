@@ -9,31 +9,180 @@
     <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* تنسيقات عصرية خاصة بصفحة الإيمان لتوفير تجربة قراءة مريحة وجذابة */
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* خلفية جمالية خفيفة */
+        .faith-hero-section {
+            position: relative;
+            padding: 140px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(30, 41, 59, 0.6) 0%, rgba(11, 15, 25, 0.95) 100%);
+        }
+
+        .faith-badge-main {
+            display: inline-block;
+            background: rgba(77, 171, 247, 0.15);
+            color: #4dabf7;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border: 1px solid rgba(77, 171, 247, 0.3);
+        }
+
+        .faith-hero-section h2 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .faith-hero-section .section-desc {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* شبكة البطاقات بتصميم زجاجي حديث (Glassmorphism) */
+        .faith-modern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto 80px;
+            padding: 0 20px;
+        }
+
+        .faith-card-item {
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .faith-card-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(77, 171, 247, 0.4);
+            background: rgba(30, 41, 59, 0.7);
+            box-shadow: 0 20px 40px rgba(77, 171, 247, 0.1);
+        }
+
+        .faith-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .faith-icon-box {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            flex-shrink: 0;
+        }
+
+        .faith-card-item h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .faith-card-item p {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* رقم تسلسلي خفيف في زاوية البطاقة لتعزيز الجمالية البصرية */
+        .faith-card-number {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+        }
+
+        /* تنسيق الشريط العلوي */
+        .nav-container { display: flex; justify-content: space-between; align-items: center; position: relative; padding: 15px 30px; }
+        header { background: rgba(15, 15, 15, 0.9); backdrop-filter: blur(10px); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .logo a { color: #fff; text-decoration: none; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
+        #nav-menu ul { display: flex; list-style: none; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        #nav-menu ul li a { color: #cbd5e1; text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+        #nav-menu ul li a:hover { color: #4dabf7; }
+
+        @media (max-width: 900px) {
+            #menu-toggle { display: block !important; }
+            #nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background: rgba(15, 15, 15, 0.98);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 20px 0;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+                z-index: 1000;
+            }
+            #nav-menu.active { display: block; }
+            #nav-menu ul { flex-direction: column; gap: 15px !important; text-align: center; }
+        }
+        #menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; }
+    </style>
 </head>
 <body>
 
- <!-- الشريط العلوي والتنقل الموحد والمتجاوب مع القائمة المنسدلة -->
+    <!-- الشريط العلوي والتنقل الموحد والمتجاوب -->
     <header>
-        <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+        <div class="container nav-container">
             <div class="logo">
-                <a href="index.html" style="color: #fff; text-decoration: none; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
-                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 35px; width: auto; background: transparent; border: none; object-fit: contain;">
+                <a href="index.html">
+                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 38px; width: auto; object-fit: contain;">
                     <span>كنيسة مركز الحياة العربية</span>
                 </a>
             </div>
             
-            <!-- زر القائمة الثلاثي للجوال (Hamburger Icon) -->
-            <button id="menu-toggle" onclick="toggleMenu()" style="background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; display: none; padding: 5px;">
+            <button id="menu-toggle" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </button>
 
-            <!-- الروابط والقائمة -->
             <nav id="nav-menu">
-                <ul style="display: flex; list-style: none; gap: 18px; align-items: center; margin: 0; padding: 0;">
+                <ul>
                     <li><a href="ar.html">الرئيسية</a></li>
                     <li><a href="ar.html#services">خدمات الكنيسة</a></li>
-                    <li><a href="faith.html">إيمان الكنيسة</a></li>
+                    <li><a href="faith.html" style="color: #4dabf7; font-weight: bold;">إيمان الكنيسة</a></li>
                     <li><a href="conference.html" style="color: #ffd43b; font-weight: bold;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
                     <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
                     <li><a href="ar.html#contact">اتصل بنا</a></li>
@@ -43,37 +192,6 @@
         </div>
     </header>
 
-    <!-- تنسيقات CSS الخاصة بالقائمة المتجاوبة -->
-    <style>
-        @media (max-width: 900px) {
-            #menu-toggle {
-                display: block !important;
-            }
-            #nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                right: 0;
-                width: 100%;
-                background: rgba(15, 15, 15, 0.95);
-                backdrop-filter: blur(10px);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 20px 0;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-                z-index: 1000;
-            }
-            #nav-menu.active {
-                display: block;
-            }
-            #nav-menu ul {
-                flex-direction: column;
-                gap: 15px !important;
-                text-align: center;
-            }
-        }
-    </style>
-
-    <!-- سكريبت تشغيل زر القائمة -->
     <script>
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
@@ -81,98 +199,156 @@
         }
     </script>
 
-    <!-- محتوى صفحة الإيمان -->
-    <section class="section" style="padding-top: 130px;">
+    <!-- محتوى صفحة الإيمان بالتصميم العصري الجديد -->
+    <section class="faith-hero-section">
         <div class="container">
-            <span class="badge">عقيدتنا وتعليمنا</span>
+            <span class="faith-badge-main">عقيدتنا وتعليمنا</span>
             <h2>إيمان كنيسة مركز الحياة العربية (LCAC)</h2>
-            <p class="section-desc">نؤمن ونعترف بالأسس الكتابية والتعليم الرسولي الصحيح:</p>
-            
-            <div class="faith-grid">
-                
-                <div class="faith-card">
-                    <h3><i class="fas fa-bible"></i> الكتاب المقدس</h3>
-                    <p>معصوم، موحى به من الله، وهو السلطة المطلقة للإيمان والحياة المسيحية دون إضافة أو تغيير.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-dove"></i> اللاهوت (الثالوث)</h3>
-                    <p>إله واحد مثلث الأقانيم (الآب والابن والروح القدس)، متساوون في الأزلية والقدرة، خالق وحافظ كل شيء.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-sun"></i> الله الآب</h3>
-                    <p>الأزلي، الروح الأبدي، كلي القدرة والمعرفة، الصالح والمحب، الذي بذل ابنه لفداء البشرية.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-cross"></i> يسوع المسيح</h3>
-                    <p>الابن الأزلي، الكلمة المتجسد من العذراء مريم، إله حق وإنسان حق، بلا خطيئة، مات على الصليب فداءً، قام، صعد وسيرجع في المجد.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-wind"></i> الروح القدس</h3>
-                    <p>الأقنوم الثالث، واهب الحياة، يدين العالم، يسكن في المؤمنين، ينتج فيهم الثمار ويمكّنهم بالتقديس والمواهب.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-user"></i> الإنسان</h3>
-                    <p>خُلق على صورة الله، سقط بالتعدي (الخطيئة الأصلية)، وانفصل عن الله، وبات عاجزاً بلا أمل إلا بيسوع المسيح.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-shield-alt"></i> الشيطان</h3>
-                    <p>ملاك ساقط يسعى لتدمير البشرية، جرد من قوته بموت المسيح، ومصيره العقاب الأبدي.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-heart"></i> الخلاص</h3>
-                    <p>بالنعمة فقط من خلال التوبة والإيمان بيسوع المسيح؛ ولادة جديدة وتبرير وتقديس وحياة أبدية.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-church"></i> الكنيسة</h3>
-                    <p>جماعة المؤمنين "المولودين ثانية"، مهمتها الكرازة بالإنجيل وصنع التلاميذ وخلاص الهالكين.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-water"></i> الفرائض</h3>
-                    <p>تشمل معمودية المؤمنين (بالتغطيس كإعلان هوية واتحاد بموت القيامة وقيامته) والعشاء الرباني.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-bolt"></i> المعمودية بالروح القدس</h3>
-                    <p>اختبار التنعم بقوة خارقة ومواهب الروح (ومنها الألسنة) ليكون المؤمن شاهداً فعالاً.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-gifts"></i> مواهب وثمار الروح القدس</h3>
-                    <p>مواهب خارقة لبناء الكنيسة، وثمار الروح (محبة، فرح، سلام...) هي النتيجة الطبيعية لحياة الروح.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-hands-holding-heart"></i> الشفاء الإلهي</h3>
-                    <p>متاح للروح والنفس والجسد من خلال كفارة يسوع المسيح.</p>
-                </div>
-
-                <div class="faith-card">
-                    <h3><i class="fas fa-pray"></i> الصلاة والقيامة والنبوات</h3>
-                    <p>الصلاة شركة مع الله، وهناك قيامة جسدية للأبرار وللأشرار، وستبلغ عصور الكنيسة ذروتها بعودة المسيح المرئية.</p>
-                </div>
-
-            </div>
-
-            <!-- زر العودة للرئيسية -->
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="index.html" class="btn primary-btn"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
-            </div>
+            <p class="section-desc">نؤمن ونعترف بالأسس الكتابية والتعليم الرسولي الصحيح بثبات واწمح:</p>
         </div>
     </section>
 
+    <div class="faith-modern-grid">
+        
+        <div class="faith-card-item">
+            <span class="faith-card-number">01</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-bible"></i></div>
+                <h3>الكتاب المقدس</h3>
+            </div>
+            <p>معصوم، موحى به من الله، وهو السلطة المطلقة للإيمان والحياة المسيحية دون إضافة أو تغيير.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">02</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-dove"></i></div>
+                <h3>اللاهوت (الثالوث)</h3>
+            </div>
+            <p>إله واحد مثلث الأقانيم (الآب والابن والروح القدس)، متساوون في الأزلية والقدرة، خالق وحافظ كل شيء.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">03</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-sun"></i></div>
+                <h3>الله الآب</h3>
+            </div>
+            <p>الأزلي، الروح الأبدي، كلي القدرة والمعرفة، الصالح والمحب، الذي بذل ابنه لفداء البشرية.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">04</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-cross"></i></div>
+                <h3>يسوع المسيح</h3>
+            </div>
+            <p>الابن الأزلي، الكلمة المتجسد من العذراء مريم، إله حق وإنسان حق، بلا خطيئة، مات على الصليب فداءً، قام، صعد وسيرجع في المجد.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">05</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-wind"></i></div>
+                <h3>الروح القدس</h3>
+            </div>
+            <p>الأقنوم الثالث، واهب الحياة، يدين العالم، يسكن في المؤمنين، ينتج فيهم الثمار ويمكّنهم بالتقديس والمواهب.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">06</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-user"></i></div>
+                <h3>الإنسان</h3>
+            </div>
+            <p>خُلق على صورة الله، سقط بالتعدي (الخطيئة الأصلية)، وانفصل عن الله، وبات عاجزاً بلا أمل إلا بيسوع المسيح.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">07</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-shield-alt"></i></div>
+                <h3>الشيطان</h3>
+            </div>
+            <p>ملاك ساقط يسعى لتدمير البشرية، جرد من قوته بموت المسيح، ومصيره العقاب الأبدي.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">08</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-heart"></i></div>
+                <h3>الخلاص</h3>
+            </div>
+            <p>بالنعمة فقط من خلال التوبة والإيمان بيسوع المسيح؛ ولادة جديدة وتبرير وتقديس وحياة أبدية.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">09</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-church"></i></div>
+                <h3>الكنيسة</h3>
+            </div>
+            <p>جماعة المؤمنين "المولودين ثانية"، مهمتها الكرازة بالإنجيل وصنع التلاميذ وخلاص الهالكين.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">10</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-water"></i></div>
+                <h3>الفرائض</h3>
+            </div>
+            <p>تشمل معمودية المؤمنين (بالتغطيس كإعلان هوية واتحاد بموت القيامة وقيامته) والعشاء الرباني.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">11</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-bolt"></i></div>
+                <h3>المعمودية بالروح القدس</h3>
+            </div>
+            <p>اختبار التنعم بقوة خارقة ومواهب الروح (ومنها الألسنة) ليكون المؤمن شاهداً فعالاً.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">12</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-gifts"></i></div>
+                <h3>مواهب وثمار الروح القدس</h3>
+            </div>
+            <p>مواهب خارقة لبناء الكنيسة، وثمار الروح (محبة، فرح، سلام...) هي النتيجة الطبيعية لحياة الروح.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">13</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-hands-holding-heart"></i></div>
+                <h3>الشفاء الإلهي</h3>
+            </div>
+            <p>متاح للروح والنفس والجسد من خلال كفارة يسوع المسيح.</p>
+        </div>
+
+        <div class="faith-card-item">
+            <span class="faith-card-number">14</span>
+            <div class="faith-card-header">
+                <div class="faith-icon-box"><i class="fas fa-pray"></i></div>
+                <h3>الصلاة والقيامة والنبوات</h3>
+            </div>
+            <p>الصلاة شركة مع الله، وهناك قيامة جسدية للأبرار وللأشرار، وستبلغ عصور الكنيسة ذروتها بعودة المسيح المرئية.</p>
+        </div>
+
+    </div>
+
+    <!-- زر العودة للرئيسية -->
+    <div style="text-align: center; margin-bottom: 60px;">
+        <a href="ar.html" class="btn primary-btn" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);">
+            <i class="fas fa-arrow-right"></i> العودة للرئيسية
+        </a>
+    </div>
+
     <!-- الفوتر -->
-    <footer>
+    <footer style="background: rgba(10, 10, 10, 0.95); text-align: center; padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.05);">
         <div class="container">
-            <p>&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
+            <p style="color: #94a3b8; font-size: 0.9rem;">&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
