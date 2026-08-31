@@ -10,8 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Cairo', sans-serif; background-color: #0b0f19; color: #ffffff; }
+        body { margin: 0; font-family: 'Cairo', sans-serif; color: #ffffff; background: transparent !important; }
 
+        /* صور الخلفية المتحركة */
         .en-bg-slideshow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; }
         .en-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; animation: enSlideAnimation 30s infinite; }
         .en-slide:nth-child(1) { background-image: url('church4.jpg'); animation-delay: 0s; }
@@ -21,13 +22,12 @@
         .en-slide:nth-child(5) { background-image: url('church8.jpg'); animation-delay: 24s; }
         @keyframes enSlideAnimation { 0% { opacity: 0; transform: scale(1); } 8% { opacity: 1; } 24% { opacity: 1; } 32% { opacity: 0; transform: scale(1.05); } 100% { opacity: 0; } }
         
-        .en-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.65); z-index: -1; }
+        /* طبقة تعتيم خفيفة جداً وموحدة لتظهر الصور بوضوح */
+        .en-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: -1; }
 
-        /* الهيدر وقائمة التنقل */
+        /* الهيدر وقائمة التنقل (شفافة تماماً) */
         header {
-            background: rgba(11, 15, 25, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent !important;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -39,12 +39,12 @@
             width: 100%;
             max-width: 1300px;
             margin: 0 auto;
-            padding: 12px 30px;
+            padding: 15px 30px;
             direction: ltr;
         }
-        .logo a { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #ffffff !important; font-weight: bold; font-size: 1rem; }
+        .logo a { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #ffffff !important; font-weight: bold; font-size: 1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.8); }
         
-        #menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+        #menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; text-shadow: 0 2px 6px rgba(0,0,0,0.8); }
         
         #nav-menu ul {
             display: flex;
@@ -54,22 +54,22 @@
             margin: 0;
             padding: 0;
         }
-        #nav-menu ul li a { font-size: 0.9rem; white-space: nowrap; text-decoration: none; color: #ffffff !important; transition: color 0.2s; }
+        #nav-menu ul li a { font-size: 0.9rem; white-space: nowrap; text-decoration: none; color: #ffffff !important; text-shadow: 0 2px 6px rgba(0,0,0,0.8); transition: color 0.2s; }
         #nav-menu ul li a:hover { color: #38bdf8 !important; }
 
-        /* مربع الملاحظة الكبير والواضح جداً (منفصل ومرتب تحت الهيدر تماماً) */
+        /* صندوق الملاحظة (بإطار زجاجي شفاف تماماً وناعم) */
         .service-translation-banner {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(212, 175, 55, 0.7);
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(212, 175, 55, 0.6);
             border-radius: 20px;
-            padding: 20px 30px;
+            padding: 18px 25px;
             max-width: 800px;
-            margin: 30px auto 20px auto;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             text-align: center;
             direction: ltr !important;
         }
@@ -77,7 +77,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         .banner-main-text {
             display: flex;
@@ -87,84 +87,89 @@
             flex-wrap: wrap;
         }
         .lang-badge.arabic {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background: rgba(59, 130, 246, 0.85);
             color: #ffffff !important;
-            padding: 6px 16px;
+            padding: 5px 15px;
             border-radius: 20px;
             font-weight: 700;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
-        .divider { color: rgba(255, 255, 255, 0.5); font-weight: bold; }
+        .divider { color: rgba(255, 255, 255, 0.7); font-weight: bold; }
         .translation-note {
             color: #38bdf8 !important;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 1.05rem;
+            gap: 6px;
+            font-size: 1rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
         }
         .banner-sub-text {
-            color: #e2e8f0 !important;
-            font-size: 0.95rem;
+            color: #ffffff !important;
+            font-size: 0.92rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            gap: 6px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 8px;
             width: 100%;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
         }
         .banner-sub-text i { color: #d4af37 !important; }
         .highlight-en { color: #ffd43b !important; font-weight: 700; }
 
-        /* قسم الـ Hero الرئيسي */
+        /* قسم الهيرو (بإضاءة شفافة ونصوص بارزة بالظل) */
         .hero {
-            padding: 40px 20px 60px 20px;
+            padding: 40px 20px 50px 20px;
             text-align: center;
+            background: transparent !important;
         }
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
         }
-        .hero h1 { font-size: 2.8rem; margin: 10px 0; text-shadow: 0 2px 10px rgba(0,0,0,0.9); color: #ffffff !important; }
-        .hero h2 { font-size: 1.6rem; margin: 0 0 15px 0; color: #cbd5e1 !important; }
-        .vision-text { font-size: 1.2rem; margin: 0 auto 25px auto; color: #e2e8f0 !important; line-height: 1.6; }
+        .hero h1 { font-size: 2.8rem; margin: 10px 0; text-shadow: 0 3px 12px rgba(0,0,0,0.9); color: #ffffff !important; }
+        .hero h2 { font-size: 1.6rem; margin: 0 0 15px 0; text-shadow: 0 3px 10px rgba(0,0,0,0.9); color: #ffffff !important; }
+        .vision-text { font-size: 1.2rem; margin: 0 auto 25px auto; color: #ffffff !important; text-shadow: 0 3px 10px rgba(0,0,0,0.9); line-height: 1.6; }
 
         .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .btn-main { background: #4dabf7; color: #ffffff !important; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(77, 171, 247, 0.4); }
-        .btn-outline { background: transparent; border: 2px solid #ffffff; color: #ffffff !important; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; }
+        .btn-main { background: #4dabf7; color: #ffffff !important; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+        .btn-outline { background: rgba(0,0,0,0.2); border: 2px solid #ffffff; color: #ffffff !important; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; backdrop-filter: blur(4px); box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
 
-        /* بطاقات الخدمات */
-        .section { padding: 60px 20px; }
-        .container { max-width: 1100px; margin: 0 auto; text-align: center; }
+        /* بطاقات الخدمات (بخلفية زجاجية شفافة تماماً) */
+        .section { padding: 50px 20px; background: transparent !important; }
+        .container { max-width: 1100px; margin: 0 auto; text-align: center; background: transparent !important; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
         
         .service-card { 
-            background: rgba(15, 23, 42, 0.75) !important; 
-            backdrop-filter: blur(10px); 
-            border: 1px solid rgba(255, 255, 255, 0.15); 
+            background: rgba(0, 0, 0, 0.35) !important; 
+            backdrop-filter: blur(8px); 
+            border: 1px solid rgba(255, 255, 255, 0.25); 
             padding: 30px 20px; 
             border-radius: 16px; 
             text-align: center; 
             transition: all 0.3s ease; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
             text-decoration: none !important; 
             display: block; 
         }
-        .service-card:hover { transform: translateY(-5px); border-color: rgba(77, 171, 247, 0.6); background: rgba(15, 23, 42, 0.9) !important; }
-        .service-card h3 { color: #ffffff !important; margin: 10px 0; font-size: 1.3rem; }
-        .service-card p { color: #cbd5e1 !important; margin: 5px 0; }
+        .service-card:hover { transform: translateY(-5px); border-color: rgba(77, 171, 247, 0.8); background: rgba(0, 0, 0, 0.5) !important; }
+        .service-card h3 { color: #ffffff !important; margin: 10px 0; font-size: 1.3rem; text-shadow: 0 2px 6px rgba(0,0,0,0.9); }
+        .service-card p { color: #ffffff !important; margin: 5px 0; text-shadow: 0 2px 6px rgba(0,0,0,0.9); }
+        .section h2 { text-shadow: 0 3px 10px rgba(0,0,0,0.9); }
+        .section p { text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
 
         /* نافذة الصيانة */
-        #under-construction-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); z-index: 9999; justify-content: center; align-items: center; }
-        .modal-content { background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.98)); border: 1px solid rgba(77, 171, 247, 0.4); padding: 40px 30px; border-radius: 20px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 20px 50px rgba(0,0,0,0.9); }
+        #under-construction-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(10px); z-index: 9999; justify-content: center; align-items: center; }
+        .modal-content { background: rgba(20, 20, 20, 0.85); backdrop-filter: blur(15px); border: 1px solid rgba(77, 171, 247, 0.5); padding: 40px 30px; border-radius: 20px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 20px 50px rgba(0,0,0,0.9); }
         .modal-btn { background: #4dabf7; color: #fff; border: none; padding: 10px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px; }
 
         /* الموبايل */
         @media (max-width: 1000px) {
             #menu-toggle { display: block; }
-            #nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(11, 15, 25, 0.98); backdrop-filter: blur(15px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            #nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(15px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
             #nav-menu.active { display: block; }
             #nav-menu ul { flex-direction: column; gap: 15px; }
         }
@@ -185,13 +190,13 @@
     <div id="under-construction-modal">
         <div class="modal-content">
             <div style="font-size: 3.5rem; color: #4dabf7; margin-bottom: 15px;"><i class="fas fa-hammer"></i></div>
-            <h3 style="color: #ffffff; margin-bottom: 10px;">Under Maintenance</h3>
-            <p style="color: #cbd5e1; margin-bottom: 20px; line-height: 1.6;">We are working on preparing the details of this service to be available soon.</p>
+            <h3 style="color: #ffffff; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">Under Maintenance</h3>
+            <p style="color: #e2e8f0; margin-bottom: 20px; line-height: 1.6; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">We are working on preparing the details of this service to be available soon.</p>
             <button class="modal-btn" onclick="closeModal()">Back to Home</button>
         </div>
     </div>
 
-    <!-- الهيدر العلوي -->
+    <!-- الهيدر العلوي الشفاف -->
     <header>
         <div class="container nav-container">
             <div class="logo">
@@ -208,12 +213,12 @@
             <nav id="nav-menu">
                 <ul>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="faith-en.html" style="color: #d4af37 !important; font-weight: bold;">Our Faith</a></li>
-                    <li><a href="conference.html" style="color: #ffd43b !important; font-weight: bold;"><i class="fas fa-star"></i> Conference</a></li>
-                    <li><a href="bible-en.pdf" target="_blank" style="color: #4dabf7 !important; font-weight: bold;"><i class="fas fa-bible"></i> Holy Bible</a></li>
+                    <li><a href="faith-en.html" style="color: #ffd700 !important; font-weight: bold;">Our Faith</a></li>
+                    <li><a href="conference.html" style="color: #ffea79 !important; font-weight: bold;"><i class="fas fa-star"></i> Conference</a></li>
+                    <li><a href="bible-en.pdf" target="_blank" style="color: #70b8ff !important; font-weight: bold;"><i class="fas fa-bible"></i> Holy Bible</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li>
-                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff !important; padding: 5px 12px; font-size: 13px; font-weight: bold; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px;">
+                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff !important; padding: 5px 12px; font-size: 13px; font-weight: bold; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">
                             <span>✨</span> Register
                         </a>
                     </li>
@@ -227,7 +232,7 @@
         </div>
     </header>
 
-    <!-- صندوق الملاحظة الكبير والمرتب (في مكانه الصحيح تحت الهيدر مباشرة) -->
+    <!-- صندوق الملاحظة الشفاف والمنظم -->
     <div class="service-translation-banner">
         <div class="banner-content-wrapper">
             <div class="banner-main-text">
@@ -243,11 +248,11 @@
         </div>
     </div>
 
-    <!-- قسم الهيرو -->
+    <!-- قسم الهيرو الشفاف -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div style="margin-bottom: 15px;">
-                <img src="chrch Logo.png" alt="LCAC Logo" style="max-height: 110px;">
+                <img src="chrch Logo.png" alt="LCAC Logo" style="max-height: 110px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));">
             </div>
             <h1>Life Center Arabic Church</h1>
             <h2>LCAC</h2>
@@ -261,88 +266,88 @@
         </div>
     </section>
 
-    <!-- قسم الخدمات -->
+    <!-- قسم الخدمات الشفاف -->
     <section id="services" class="section">
         <div class="container">
             <h2 style="font-size: 2.2rem; margin-bottom: 10px; color: #ffffff;">Services & Activities Schedule</h2>
-            <p style="color: #4dabf7; font-weight: 600; margin-bottom: 5px;">
+            <p style="color: #70b8ff; font-weight: 600; margin-bottom: 5px;">
                 <i class="fas fa-info-circle"></i> Click on any service below to learn more details
             </p>
-            <p style="color: #cbd5e1; margin-bottom: 30px;">You are always welcome to join us in times of worship, prayer, and the Word of God</p>
+            <p style="color: #ffffff; margin-bottom: 30px;">You are always welcome to join us in times of worship, prayer, and the Word of God</p>
             
             <div class="services-grid">
-                <a href="sermons.html" class="service-card" style="border-color: #4dabf7;">
-                    <i class="fas fa-church" style="font-size: 2.2rem; color: #4dabf7; margin-bottom: 12px;"></i>
+                <a href="sermons.html" class="service-card" style="border-color: #70b8ff;">
+                    <i class="fas fa-church" style="font-size: 2.2rem; color: #70b8ff; margin-bottom: 12px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));"></i>
                     <h3>Main Service</h3>
                     <p>Sunday - 5:30 PM</p>
-                    <span style="display: inline-block; background: rgba(255,255,255,0.15); color: #ffd43b; font-size: 0.75rem; padding: 2px 8px; border-radius: 6px; margin: 6px 0;">In Arabic</span>
-                    <span style="color: #4dabf7; font-size: 0.85rem; display: block; margin-top: 6px; font-weight: bold;">
+                    <span style="display: inline-block; background: rgba(0,0,0,0.4); color: #ffea79; font-size: 0.75rem; padding: 2px 8px; border-radius: 6px; margin: 6px 0; border: 1px solid rgba(255,255,255,0.2);">In Arabic</span>
+                    <span style="color: #70b8ff; font-size: 0.85rem; display: block; margin-top: 6px; font-weight: bold; text-shadow: 0 1px 4px rgba(0,0,0,0.9);">
                         <i class="fas fa-arrow-right"></i> Watch sermons
                     </span>
                 </a>
 
                 <a href="javascript:void(0);" onclick="openModal()" class="service-card">
-                    <i class="fas fa-book-open" style="font-size: 2.2rem; color: #4dabf7; margin-bottom: 12px;"></i>
+                    <i class="fas fa-book-open" style="font-size: 2.2rem; color: #70b8ff; margin-bottom: 12px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));"></i>
                     <h3>Bible Study</h3>
                     <p>Friday - 6:00 PM</p>
-                    <span style="display: inline-block; background: rgba(255,255,255,0.15); color: #ffd43b; font-size: 0.75rem; padding: 2px 8px; border-radius: 6px; margin-top: 6px;">In Arabic</span>
+                    <span style="display: inline-block; background: rgba(0,0,0,0.4); color: #ffea79; font-size: 0.75rem; padding: 2px 8px; border-radius: 6px; margin-top: 6px; border: 1px solid rgba(255,255,255,0.2);">In Arabic</span>
                 </a>
 
                 <a href="javascript:void(0);" onclick="openModal()" class="service-card">
-                    <i class="fas fa-users" style="font-size: 2.2rem; color: #4dabf7; margin-bottom: 12px;"></i>
-                    <h3>Youth Ministry <span style="font-size: 0.8rem; color: #4dabf7;">(In English)</span></h3>
+                    <i class="fas fa-users" style="font-size: 2.2rem; color: #70b8ff; margin-bottom: 12px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));"></i>
+                    <h3>Youth Ministry <span style="font-size: 0.8rem; color: #70b8ff;">(In English)</span></h3>
                     <p>Friday - 6:00 PM</p>
                 </a>
 
                 <a href="javascript:void(0);" onclick="openModal()" class="service-card">
-                    <i class="fas fa-pray" style="font-size: 2.2rem; color: #4dabf7; margin-bottom: 12px;"></i>
+                    <i class="fas fa-pray" style="font-size: 2.2rem; color: #70b8ff; margin-bottom: 12px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));"></i>
                     <h3>Prayer Meeting</h3>
                     <p>Friday - 7:30 PM</p>
                 </a>
 
-                <a href="javascript:void(0);" onclick="openModal()" class="service-card" style="grid-column: span auto;">
-                    <i class="fas fa-female" style="font-size: 2.2rem; color: #4dabf7; margin-bottom: 12px;"></i>
+                <a href="javascript:void(0);" onclick="openModal()" class="service-card">
+                    <i class="fas fa-female" style="font-size: 2.2rem; color: #70b8ff; margin-bottom: 12px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));"></i>
                     <h3>Women's Ministry</h3>
                     <p>Fortnightly on Thursdays - 10:30 AM</p>
-                    <span style="display: inline-block; background: rgba(255,255,255,0.15); color: #ffd43b; font-size: 0.75rem; padding: 2px 8px; border-radius: 6px; margin: 6px 0;">In Arabic</span>
-                    <span style="color: #cbd5e1; display: block; margin-top: 6px; font-size: 0.85rem; line-height: 1.4;">
-                        <i class="fas fa-map-pin" style="color: #4dabf7;"></i> Highlander Community Centre<br>141 Highlander Dr, Craigieburn VIC 3064
+                    <span style="display: inline-block; background: rgba(0,0,0,0.4); color: #ffea79; font-size: 0.75rem; padding: 2px 8px; border-radius: 6px; margin: 6px 0; border: 1px solid rgba(255,255,255,0.2);">In Arabic</span>
+                    <span style="color: #ffffff; display: block; margin-top: 6px; font-size: 0.85rem; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
+                        <i class="fas fa-map-pin" style="color: #70b8ff;"></i> Highlander Community Centre<br>141 Highlander Dr, Craigieburn VIC 3064
                     </span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- قسم التواصل والعنوان -->
-    <section id="contact" class="section" style="background: rgba(0,0,0,0.3);">
+    <!-- قسم التواصل الشفاف -->
+    <section id="contact" class="section">
         <div class="container" style="max-width: 800px;">
             <h2 style="font-size: 2.2rem; margin-bottom: 10px; color: #ffffff;">Church Address & Social Media</h2>
-            <p style="color: #cbd5e1; margin-bottom: 20px;">Scan the QR Code to get direct directions to the church address</p>
+            <p style="color: #ffffff; margin-bottom: 20px;">Scan the QR Code to get direct directions to the church address</p>
             
             <div style="margin: 20px 0;">
-                <img src="church address qr.jpg" alt="Church Address QR Code" style="max-width: 170px; border-radius: 12px; border: 3px solid rgba(255,255,255,0.3); padding: 6px; background: #fff; box-shadow: 0 8px 25px rgba(0,0,0,0.7);">
-                <p style="color: #cbd5e1; margin-top: 10px; font-size: 0.9rem;">Point your phone camera at the code to view the location</p>
+                <img src="church address qr.jpg" alt="Church Address QR Code" style="max-width: 170px; border-radius: 12px; border: 3px solid rgba(255,255,255,0.4); padding: 6px; background: rgba(255,255,255,0.9); box-shadow: 0 8px 25px rgba(0,0,0,0.6);">
+                <p style="color: #ffffff; margin-top: 10px; font-size: 0.9rem; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">Point your phone camera at the code to view the location</p>
             </div>
 
             <div style="margin: 20px 0;">
-                <a href="https://maps.google.com/?q=75+Interlink+Dr,+Craigieburn+VIC+3064" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #28a745; color: #fff; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);">
+                <a href="https://maps.google.com/?q=75+Interlink+Dr,+Craigieburn+VIC+3064" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #28a745; color: #fff; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
                     <i class="fas fa-map-marked-alt"></i> Get Directions on Google Maps
                 </a>
             </div>
 
             <div style="display: flex; justify-content: center; gap: 12px; margin-top: 30px; flex-wrap: wrap;">
-                <a href="https://www.facebook.com/lifecenterarabicchurch?locale=ar_AR" target="_blank" style="background: #1877f2; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold;"><i class="fab fa-facebook-f"></i> LCAC</a>
-                <a href="https://www.facebook.com/profile.php?id=61588101971469" target="_blank" style="background: #1877f2; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold;"><i class="fab fa-facebook-f"></i> Women</a>
-                <a href="https://www.instagram.com/lifecenterarabicchurch/" target="_blank" style="background: #e1306c; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold;"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="https://www.tiktok.com/@lifecenterarabicchurch" target="_blank" style="background: #000; border: 1px solid #444; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold;"><i class="fab fa-tiktok"></i> TikTok</a>
-                <a href="https://www.youtube.com/@lifecenterarabicchurch" target="_blank" style="background: #ff0000; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold;"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://www.facebook.com/lifecenterarabicchurch?locale=ar_AR" target="_blank" style="background: rgba(24, 119, 242, 0.9); color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; backdrop-filter: blur(4px);"><i class="fab fa-facebook-f"></i> LCAC</a>
+                <a href="https://www.facebook.com/profile.php?id=61588101971469" target="_blank" style="background: rgba(24, 119, 242, 0.9); color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; backdrop-filter: blur(4px);"><i class="fab fa-facebook-f"></i> Women</a>
+                <a href="https://www.instagram.com/lifecenterarabicchurch/" target="_blank" style="background: rgba(225, 48, 108, 0.9); color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; backdrop-filter: blur(4px);"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.tiktok.com/@lifecenterarabicchurch" target="_blank" style="background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; backdrop-filter: blur(4px);"><i class="fab fa-tiktok"></i> TikTok</a>
+                <a href="https://www.youtube.com/@lifecenterarabicchurch" target="_blank" style="background: rgba(255, 0, 0, 0.9); color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; backdrop-filter: blur(4px);"><i class="fab fa-youtube"></i> YouTube</a>
             </div>
         </div>
     </section>
 
-    <!-- الفوتر -->
-    <footer style="padding: 20px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); background: #0b0f19;">
-        <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">© 2026 Life Center Arabic Church (LCAC). All rights reserved.</p>
+    <!-- الفوتر الشفاف -->
+    <footer style="padding: 20px 0; text-align: center; background: transparent !important;">
+        <p style="color: #ffffff; font-size: 0.9rem; margin: 0; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">© 2026 Life Center Arabic Church (LCAC). All rights reserved.</p>
     </footer>
 
     <script>
