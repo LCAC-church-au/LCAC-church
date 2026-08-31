@@ -3,7 +3,7 @@
 <head>
     <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">            
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">          
     <title>Life Center Arabic Church - LCAC</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -33,7 +33,7 @@
         .modal-icon-glow { font-size: 3.8rem; color: #4dabf7; margin-bottom: 20px; }
         .modal-btn { background: linear-gradient(135deg, #4dabf7, #228be6); color: #fff; border: none; padding: 12px 30px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.05rem; }
         
-        /* تنسيق الشريط العلوي: اللوجو يمين والأزرار يسار مع تباعد مريح ومنع التداخل */
+        /* تنسيق الشريط العلوي */
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; width: 100%; box-sizing: border-box; }
         .logo a { display: flex; align-items: center; gap: 10px; white-space: nowrap; text-decoration: none; color: #fff; font-weight: bold; font-size: 1rem; }
         
@@ -41,6 +41,85 @@
         #nav-menu { display: block !important; position: static !important; width: auto !important; background: transparent !important; box-shadow: none !important; }
         #nav-menu ul { display: flex !important; list-style: none !important; gap: 18px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
         #nav-menu ul li a { font-size: 0.9rem; white-space: nowrap; }
+
+        /* تنسيقات الشريط العصري الموحد للترجمة والخدمات */
+        .service-translation-banner {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            padding: 14px 28px;
+            max-width: 750px;
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            direction: ltr !important;
+        }
+        .service-translation-banner:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+        }
+        .banner-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.98rem;
+        }
+        .banner-main-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .lang-badge.arabic {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: #ffffff;
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+        }
+        .divider {
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: bold;
+        }
+        .translation-note {
+            color: #38bdf8;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .translation-note i {
+            color: #38bdf8;
+            font-size: 1.05rem;
+        }
+        .banner-sub-text {
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 6px;
+            width: 100%;
+        }
+        .banner-sub-text i {
+            color: #d4af37;
+        }
+        .highlight-en {
+            color: #ffd43b;
+            font-weight: 700;
+        }
 
         /* الشاشات الصغيرة (الموبايل) */
         @media (max-width: 1200px) {
@@ -52,86 +131,7 @@
     </style>
 </head>
 <body>
-<style>
-    .service-translation-banner {
-        background: rgba(15, 23, 42, 0.75);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(212, 175, 55, 0.25);
-        border-radius: 50px;
-        padding: 14px 28px;
-        max-width: 750px;
-        margin: 20px auto;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-        transition: all 0.3s ease;
-    }
-    .service-translation-banner:hover {
-        border-color: rgba(212, 175, 55, 0.6);
-        box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
-    }
-    .banner-content-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        font-size: 0.98rem;
-    }
-    .banner-main-text {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .lang-badge.arabic {
-        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-        color: #ffffff;
-        padding: 4px 14px;
-        border-radius: 20px;
-        font-weight: 700;
-        font-size: 0.9rem;
-        box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
-    }
-    .divider {
-        color: rgba(255, 255, 255, 0.3);
-        font-weight: bold;
-    }
-    .translation-note {
-        color: #38bdf8;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-    }
-    .translation-note i {
-        color: #38bdf8;
-        font-size: 1.05rem;
-    }
-    .banner-sub-text {
-        color: #cbd5e1;
-        font-size: 0.92rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        padding-top: 6px;
-        width: 100%;
-        justify-content: center;
-    }
-    .banner-sub-text i {
-        color: #d4af37;
-    }
-    .highlight-en {
-        color: #ffd43b;
-        font-weight: 700;
-    }
-</style>
-    
+
     <div class="en-bg-slideshow">
         <div class="en-slide"></div>
         <div class="en-slide"></div>
@@ -153,8 +153,7 @@
 
     <header>
         <div class="container nav-container">
-            
-            <!-- اللوجو واسم الكنيسة على اليمين وينقل إلى الصفحة الرئيسية index.html -->
+            <!-- اللوجو واسم الكنيسة على اليمين وينقل إلى الصفحة الرئيسية -->
             <div class="logo">
                 <a href="index.html">
                     <img src="chrch Logo.png" alt="Life Center Arabic Church Logo" style="height: 40px; width: auto;">
@@ -170,7 +169,7 @@
             <nav id="nav-menu">
                 <ul>
                     <li><a href="#services" style="color:#fff; text-decoration:none;">Services</a></li>
-                   <li><a href="faith-en.html" style="color: #d4af37; font-weight: bold;">Our Faith</a></li>
+                    <li><a href="faith-en.html" style="color: #d4af37; font-weight: bold;">Our Faith</a></li>
                     <li><a href="conference.html" style="color: #ffd43b; font-weight: bold; text-decoration:none;"><i class="fas fa-star"></i> Conference</a></li>
                     <li><a href="bible-en.pdf" target="_blank" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-bible"></i> Holy Bible</a></li>
                     <li><a href="#contact" style="color:#fff; text-decoration:none;">Contact</a></li>
@@ -179,7 +178,6 @@
                             <span>✨</span> Register
                         </a>
                     </li>
-                    <!-- زر اللغة العربية مع الكرة الأرضية لينقلك للصفحة العربية -->
                     <li>
                         <a href="https://www.lifecenterarabicchurch.org/ar.html" style="color:#fff; text-decoration:none; display: inline-flex; align-items: center; gap: 5px;">
                             <i class="fas fa-globe"></i> Arabic
@@ -187,153 +185,24 @@
                     </li>
                 </ul>
             </nav>
-
         </div>
     </header>
 
+    <!-- شريط الترجمة والخدمات العصري الموحد والمرتب -->
     <div class="service-translation-banner">
-    <div class="banner-content-wrapper">
-        <div class="banner-main-text">
-            <span class="lang-badge arabic">Arabic Service</span> 
-            <span class="divider">|</span>
-            <span class="translation-note">
-                <i class="fas fa-headphones-alt"></i> Live English Translation Available via Headphones
-            </span>
-        </div>
-        <div class="banner-sub-text">
-            <i class="fas fa-users"></i> Youth Ministry is in <span class="highlight-en">English</span>
-        </div>
-    </div>
-</div>
-    <!-- تصميم عصري ومميز لشريط لغة الخدمات والترجمة الفورية -->
-<div class="service-translation-banner">
-    <div class="banner-content-wrapper">
-        <div class="banner-main-text">
-            <span class="lang-badge arabic">Arabic Service</span> 
-            <span class="divider">|</span>
-            <span class="translation-note">
-                <i class="fas fa-headphones-alt"></i> Live English Translation Available via Headphones
-            </span>
-        </div>
-        <div class="banner-sub-text">
-            <i class="fas fa-users"></i> Youth Ministry is in <span class="highlight-en">English</span>
+        <div class="banner-content-wrapper">
+            <div class="banner-main-text">
+                <span class="lang-badge arabic">Arabic Service</span> 
+                <span class="divider">|</span>
+                <span class="translation-note">
+                    <i class="fas fa-headphones-alt"></i> Live English Translation Available via Headphones
+                </span>
+            </div>
+            <div class="banner-sub-text">
+                <i class="fas fa-users"></i> Youth Ministry is in <span class="highlight-en">English</span>
+            </div>
         </div>
     </div>
-</div>
-
-<style>
-    /* تنسيقات الشريط العصري الجديد */
-    .service-translation-banner {
-        background: rgba(15, 23, 42, 0.75);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(212, 175, 55, 0.25);
-        border-radius: 50px;
-        padding: 14px 28px;
-        max-width: 750px;
-        margin: 20px auto;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-        transition: all 0.3s ease;
-    }
-
-    .service-translation-banner:hover {
-        border-color: rgba(212, 175, 55, 0.6);
-        box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
-    }
-
-    .banner-content-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        font-size: 0.98rem;
-    }
-
-    .banner-main-text {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .lang-badge.arabic {
-        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-        color: #ffffff;
-        padding: 4px 14px;
-        border-radius: 20px;
-        font-weight: 700;
-        font-size: 0.9rem;
-        box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
-    }
-
-    .divider {
-        color: rgba(255, 255, 255, 0.3);
-        font-weight: bold;
-    }
-
-    .translation-note {
-        color: #38bdf8;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .translation-note i {
-        color: #38bdf8;
-        font-size: 1.05rem;
-        animation: pulse-icon 2s infinite;
-    }
-
-    .banner-sub-text {
-        color: #cbd5e1;
-        font-size: 0.92rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        padding-top: 6px;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .banner-sub-text i {
-        color: #d4af37;
-    }
-
-    .highlight-en {
-        color: #ffd43b;
-        font-weight: 700;
-    }
-
-    @keyframes pulse-icon {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.15); }
-        100% { transform: scale(1); }
-    }
-
-    @media (max-width: 600px) {
-        .service-translation-banner {
-            border-radius: 20px;
-            padding: 12px 15px;
-        }
-        .banner-content-wrapper {
-            font-size: 0.88rem;
-        }
-    }
-</style>
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('active');
-        }
-    </script>
 
     <section id="home" class="hero" style="background: transparent !important; padding: 80px 20px;">
         <div class="container hero-content en-hero-text" style="text-align: center;">
@@ -462,6 +331,10 @@
             const modal = document.getElementById('under-construction-modal');
             modal.style.opacity = '0';
             setTimeout(() => { modal.style.display = 'none'; }, 300);
+        }
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
         }
     </script>
 </body>
