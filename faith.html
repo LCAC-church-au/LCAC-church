@@ -12,32 +12,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* تنسيقات عصرية خاصة بصفحة الإيمان لتوفير تجربة قراءة مريحة وجذابة */
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #0b0f19;
+            background-color: #07090e;
             color: #f3f4f6;
             overflow-x: hidden;
+            margin: 0;
         }
 
-        /* خلفية جمالية خفيفة */
         .faith-hero-section {
             position: relative;
-            padding: 140px 20px 60px;
+            padding: 140px 20px 50px;
             text-align: center;
-            background: radial-gradient(circle at center, rgba(30, 41, 59, 0.6) 0%, rgba(11, 15, 25, 0.95) 100%);
+            background: radial-gradient(circle at center, rgba(30, 41, 59, 0.4) 0%, rgba(7, 9, 14, 0.95) 100%);
         }
 
         .faith-badge-main {
             display: inline-block;
-            background: rgba(77, 171, 247, 0.15);
-            color: #4dabf7;
-            padding: 8px 20px;
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            padding: 8px 22px;
             border-radius: 30px;
             font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 15px;
-            border: 1px solid rgba(77, 171, 247, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .faith-hero-section h2 {
@@ -45,7 +44,6 @@
             font-weight: 900;
             color: #ffffff;
             margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .faith-hero-section .section-desc {
@@ -55,7 +53,7 @@
             margin: 0 auto;
         }
 
-        /* شبكة البطاقات بتصميم زجاجي حديث (Glassmorphism) */
+        /* شبكة البطاقات مع تخصص كل بطاقة بلونها وهويتها البصرية */
         .faith-modern-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -66,25 +64,42 @@
         }
 
         .faith-card-item {
-            background: rgba(30, 41, 59, 0.45);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
-            padding: 30px;
             position: relative;
+            border-radius: 20px;
+            padding: 30px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
+        /* إضافة أيقونة أو رمز خفيف ومائي في خلفية كل بطاقة ليعكس المعنى */
+        .faith-card-item::after {
+            content: var(--card-icon);
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            bottom: -20px;
+            left: -10px;
+            font-size: 7rem;
+            color: rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+            transition: transform 0.4s ease;
+        }
+
         .faith-card-item:hover {
             transform: translateY(-8px);
-            border-color: rgba(77, 171, 247, 0.4);
-            background: rgba(30, 41, 59, 0.7);
-            box-shadow: 0 20px 40px rgba(77, 171, 247, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border-color: var(--theme-color);
+        }
+
+        .faith-card-item:hover::after {
+            transform: scale(1.1) rotate(-5deg);
         }
 
         .faith-card-header {
@@ -92,19 +107,20 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 18px;
+            z-index: 2;
         }
 
         .faith-icon-box {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background: var(--theme-gradient);
             color: #ffffff;
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.4rem;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             flex-shrink: 0;
         }
 
@@ -116,22 +132,38 @@
         }
 
         .faith-card-item p {
-            color: #cbd5e1;
+            color: #e2e8f0;
             font-size: 1rem;
             line-height: 1.8;
             margin: 0;
+            z-index: 2;
         }
 
-        /* رقم تسلسلي خفيف في زاوية البطاقة لتعزيز الجمالية البصرية */
         .faith-card-number {
             position: absolute;
             top: 20px;
             left: 25px;
             font-size: 1.5rem;
             font-weight: 900;
-            color: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.06);
             pointer-events: none;
         }
+
+        /* تخصيص الألوان والهويات البصرية لكل بند إيماني بدقة */
+        .card-bible { --theme-color: #3b82f6; --theme-gradient: linear-gradient(135deg, #3b82f6, #1d4ed8); background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f02d"; }
+        .card-trinity { --theme-color: #8b5cf6; --theme-gradient: linear-gradient(135deg, #8b5cf6, #6d28d9); background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f648"; }
+        .card-father { --theme-color: #f59e0b; --theme-gradient: linear-gradient(135deg, #f59e0b, #d97706); background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f185"; }
+        .card-jesus { --theme-color: #ef4444; --theme-gradient: linear-gradient(135deg, #ef4444, #b91c1c); background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f067"; }
+        .card-spirit { --theme-color: #06b6d4; --theme-gradient: linear-gradient(135deg, #06b6d4, #0e7490); background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f472"; }
+        .card-human { --theme-color: #64748b; --theme-gradient: linear-gradient(135deg, #64748b, #334155); background: linear-gradient(135deg, rgba(100, 116, 139, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f007"; }
+        .card-satan { --theme-color: #475569; --theme-gradient: linear-gradient(135deg, #475569, #1e293b); background: linear-gradient(135deg, rgba(71, 85, 105, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f3ed"; }
+        .card-salvation { --theme-color: #10b981; --theme-gradient: linear-gradient(135deg, #10b981, #047857); background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f004"; }
+        .card-church { --theme-color: #6366f1; --theme-gradient: linear-gradient(135deg, #6366f1, #4338ca); background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f51f"; }
+        .card-ordinances { --theme-color: #0ea5e9; --theme-gradient: linear-gradient(135deg, #0ea5e9, #0369a1); background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f043"; }
+        .card-baptism { --theme-color: #14b8a6; --theme-gradient: linear-gradient(135deg, #14b8a6, #0f766e); background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f0e7"; }
+        .card-gifts { --theme-color: #d946ef; --theme-gradient: linear-gradient(135deg, #d946ef, #a21caf); background: linear-gradient(135deg, rgba(217, 70, 239, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f796"; }
+        .card-healing { --theme-color: #f43f5e; --theme-gradient: linear-gradient(135deg, #f43f5e, #be123c); background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f2e8"; }
+        .card-prayer { --theme-color: #d4af37; --theme-gradient: linear-gradient(135deg, #d4af37, #aa771c); background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f5b0"; }
 
         /* تنسيق الشريط العلوي */
         .nav-container { display: flex; justify-content: space-between; align-items: center; position: relative; padding: 15px 30px; }
@@ -164,7 +196,7 @@
 </head>
 <body>
 
-    <!-- الشريط العلوي والتنقل الموحد والمتجاوب -->
+    <!-- الشريط العلوي -->
     <header>
         <div class="container nav-container">
             <div class="logo">
@@ -182,7 +214,7 @@
                 <ul>
                     <li><a href="ar.html">الرئيسية</a></li>
                     <li><a href="ar.html#services">خدمات الكنيسة</a></li>
-                    <li><a href="faith.html" style="color: #4dabf7; font-weight: bold;">إيمان الكنيسة</a></li>
+                    <li><a href="faith.html" style="color: #d4af37; font-weight: bold;">إيمان الكنيسة</a></li>
                     <li><a href="conference.html" style="color: #ffd43b; font-weight: bold;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
                     <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
                     <li><a href="ar.html#contact">اتصل بنا</a></li>
@@ -199,18 +231,18 @@
         }
     </script>
 
-    <!-- محتوى صفحة الإيمان بالتصميم العصري الجديد -->
+    <!-- المحتوى بتصميم رمزي ولوني متفرد -->
     <section class="faith-hero-section">
         <div class="container">
             <span class="faith-badge-main">عقيدتنا وتعليمنا</span>
             <h2>إيمان كنيسة مركز الحياة العربية (LCAC)</h2>
-            <p class="section-desc">نؤمن ونعترف بالأسس الكتابية والتعليم الرسولي الصحيح:</p>
+            <p class="section-desc">نؤمن ونعترف بالأسس الكتابية والتعليم الرسولي الصحيح بثبات:</p>
         </div>
     </section>
 
     <div class="faith-modern-grid">
         
-        <div class="faith-card-item">
+        <div class="faith-card-item card-bible">
             <span class="faith-card-number">01</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-bible"></i></div>
@@ -219,7 +251,7 @@
             <p>معصوم، موحى به من الله، وهو السلطة المطلقة للإيمان والحياة المسيحية دون إضافة أو تغيير.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-trinity">
             <span class="faith-card-number">02</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-dove"></i></div>
@@ -228,7 +260,7 @@
             <p>إله واحد مثلث الأقانيم (الآب والابن والروح القدس)، متساوون في الأزلية والقدرة، خالق وحافظ كل شيء.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-father">
             <span class="faith-card-number">03</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-sun"></i></div>
@@ -237,7 +269,7 @@
             <p>الأزلي، الروح الأبدي، كلي القدرة والمعرفة، الصالح والمحب، الذي بذل ابنه لفداء البشرية.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-jesus">
             <span class="faith-card-number">04</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-cross"></i></div>
@@ -246,7 +278,7 @@
             <p>الابن الأزلي، الكلمة المتجسد من العذراء مريم، إله حق وإنسان حق، بلا خطيئة، مات على الصليب فداءً، قام، صعد وسيرجع في المجد.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-spirit">
             <span class="faith-card-number">05</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-wind"></i></div>
@@ -255,7 +287,7 @@
             <p>الأقنوم الثالث، واهب الحياة، يدين العالم، يسكن في المؤمنين، ينتج فيهم الثمار ويمكّنهم بالتقديس والمواهب.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-human">
             <span class="faith-card-number">06</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-user"></i></div>
@@ -264,7 +296,7 @@
             <p>خُلق على صورة الله، سقط بالتعدي (الخطيئة الأصلية)، وانفصل عن الله، وبات عاجزاً بلا أمل إلا بيسوع المسيح.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-satan">
             <span class="faith-card-number">07</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-shield-alt"></i></div>
@@ -273,7 +305,7 @@
             <p>ملاك ساقط يسعى لتدمير البشرية، جرد من قوته بموت المسيح، ومصيره العقاب الأبدي.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-salvation">
             <span class="faith-card-number">08</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-heart"></i></div>
@@ -282,7 +314,7 @@
             <p>بالنعمة فقط من خلال التوبة والإيمان بيسوع المسيح؛ ولادة جديدة وتبرير وتقديس وحياة أبدية.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-church">
             <span class="faith-card-number">09</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-church"></i></div>
@@ -291,7 +323,7 @@
             <p>جماعة المؤمنين "المولودين ثانية"، مهمتها الكرازة بالإنجيل وصنع التلاميذ وخلاص الهالكين.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-ordinances">
             <span class="faith-card-number">10</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-water"></i></div>
@@ -300,7 +332,7 @@
             <p>تشمل معمودية المؤمنين (بالتغطيس كإعلان هوية واتحاد بموت القيامة وقيامته) والعشاء الرباني.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-baptism">
             <span class="faith-card-number">11</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-bolt"></i></div>
@@ -309,7 +341,7 @@
             <p>اختبار التنعم بقوة خارقة ومواهب الروح (ومنها الألسنة) ليكون المؤمن شاهداً فعالاً.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-gifts">
             <span class="faith-card-number">12</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-gifts"></i></div>
@@ -318,7 +350,7 @@
             <p>مواهب خارقة لبناء الكنيسة، وثمار الروح (محبة، فرح، سلام...) هي النتيجة الطبيعية لحياة الروح.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-healing">
             <span class="faith-card-number">13</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-hands-holding-heart"></i></div>
@@ -327,7 +359,7 @@
             <p>متاح للروح والنفس والجسد من خلال كفارة يسوع المسيح.</p>
         </div>
 
-        <div class="faith-card-item">
+        <div class="faith-card-item card-prayer">
             <span class="faith-card-number">14</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-pray"></i></div>
@@ -340,13 +372,13 @@
 
     <!-- زر العودة للرئيسية -->
     <div style="text-align: center; margin-bottom: 60px;">
-        <a href="ar.html" class="btn primary-btn" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);">
+        <a href="ar.html" class="btn primary-btn" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);">
             <i class="fas fa-arrow-right"></i> العودة للرئيسية
         </a>
     </div>
 
     <!-- الفوتر -->
-    <footer style="background: rgba(10, 10, 10, 0.95); text-align: center; padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+    <footer style="background: rgba(7, 9, 14, 0.95); text-align: center; padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.05);">
         <div class="container">
             <p style="color: #94a3b8; font-size: 0.9rem;">&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
         </div>
