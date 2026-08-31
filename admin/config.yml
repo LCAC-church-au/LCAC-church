@@ -16,7 +16,8 @@ collections:
     fields:
       - {label: "عنوان العظة", name: "title", widget: "string"}
       - {label: "اسم الواعظ", name: "speaker", widget: "string"}
-- {label: "التاريخ", name: "date", widget: "string", hint: "أدخل التاريخ بهذا الشكل: 2026-08-31"}      - {label: "رابط يوتيوب (Embed ID)", name: "youtube_id", widget: "string"}
+- {label: "التاريخ", name: "date", widget: "string", hint: "أدخل التاريخ بهذا الشكل: 2026-08-31"}   
+- {label: "رابط يوتيوب (Embed ID)", name: "youtube_id", widget: "string"}
       - {label: "ملخص العظة", name: "summary", widget: "text"}
 
   - name: "pages"
