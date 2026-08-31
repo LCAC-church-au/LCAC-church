@@ -1,6 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/auth", "destination": "https://decap-cms-oauth.vercel.app/auth" },
-    { "source": "/admin/(.*)", "destination": "/admin/index.html" }
-  ]
-}
