@@ -33,23 +33,17 @@
         .modal-icon-glow { font-size: 3.8rem; color: #4dabf7; margin-bottom: 20px; }
         .modal-btn { background: linear-gradient(135deg, #4dabf7, #228be6); color: #fff; border: none; padding: 12px 30px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.05rem; }
         
-        /* تنسيق اللوجو في الشريط العلوي ليبتعد نحو اليمين وبسطر واحد */
-        .logo a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            white-space: nowrap;
-            margin-right: 40px; /* إبعاد اللوجو عن الأزرار */
-        }
-
-        /* ضبط القائمة للكمبيوتر والشاشات الكبيرة */
+        /* تنسيق اللوجو والشريط العلوي لمنع التداخل وجعله على سطر واحد وبمسافات مريحة */
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; width: 100%; box-sizing: border-box; }
+        .logo a { display: flex; align-items: center; gap: 10px; white-space: nowrap; text-decoration: none; color: #fff; font-weight: bold; font-size: 1rem; }
+        
         #menu-toggle { display: none !important; }
         #nav-menu { display: block !important; position: static !important; width: auto !important; background: transparent !important; box-shadow: none !important; }
-        #nav-menu ul { display: flex !important; list-style: none !important; gap: 16px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
+        #nav-menu ul { display: flex !important; list-style: none !important; gap: 14px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
+        #nav-menu ul li a { font-size: 0.9rem; white-space: nowrap; }
 
-        /* الشاشات الصغيرة فقط (الموبايل) */
-        @media (max-width: 1100px) {
-            .logo a { margin-right: 0; }
+        /* الشاشات الصغيرة (الموبايل) */
+        @media (max-width: 1200px) {
             #menu-toggle { display: block !important; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; }
             #nav-menu { display: none !important; position: absolute !important; top: 100% !important; left: 0 !important; width: 100% !important; background: rgba(15, 15, 15, 0.95) !important; backdrop-filter: blur(10px); padding: 20px 0; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.8); }
             #nav-menu.active { display: block !important; }
@@ -79,41 +73,41 @@
     </div>
 
     <header>
-        <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center; position: relative; padding: 15px 25px;">
+        <div class="container nav-container">
             
-            <!-- اللوجو مكبر ومبتعد نحو اليمين وبسطر واحد وينقل للرئيسية -->
-            <div class="logo">
-                <a href="en.html" style="color: #fff; text-decoration: none; font-weight: bold; font-size: 1.15rem;">
-                    <img src="chrch Logo.png" alt="Life Center Arabic Church Logo" style="height: 45px; width: auto;">
-                    <span>Life Center Arabic Church</span>
-                </a>
-            </div>
-            
-            <button id="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- القائمة العلوية -->
+            <!-- القائمة العلوية أصبحت على اليسار -->
             <nav id="nav-menu">
                 <ul>
                     <li><a href="#services" style="color:#fff; text-decoration:none;">Services</a></li>
                     <li><a href="faith.html" style="color:#fff; text-decoration:none;">Our Faith</a></li>
-                    <li><a href="conference.html" style="color: #ffd43b; font-weight: bold; text-decoration:none;"><i class="fas fa-star"></i> Glory of God Conference</a></li>
-                    <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold; text-decoration:none;"><i class="fas fa-bible"></i> Holy Bible</a></li>
-                    <li><a href="#contact" style="color:#fff; text-decoration:none;">Contact Us</a></li>
+                    <li><a href="conference.html" style="color: #ffd43b; font-weight: bold; text-decoration:none;"><i class="fas fa-star"></i> Conference</a></li>
+                    <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold; text-decoration:none;"><i class="fas fa-bible"></i> Bible</a></li>
+                    <li><a href="#contact" style="color:#fff; text-decoration:none;">Contact</a></li>
                     <li>
-                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff; padding: 8px 16px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px;">
-                            <span>✨</span> Register Your Info
+                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff; padding: 6px 12px; font-size: 13px; font-weight: bold; text-decoration: none; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px;">
+                            <span>✨</span> Register
                         </a>
                     </li>
-                    <!-- زر اللغة العربية كإمتداد طبيعي للكرة الأرضية -->
                     <li>
-                        <a href="index.html" style="color:#fff; text-decoration:none; display: inline-flex; align-items: center; gap: 6px;">
+                        <a href="index.html" style="color:#fff; text-decoration:none; display: inline-flex; align-items: center; gap: 5px;">
                             <i class="fas fa-globe"></i> Arabic
                         </a>
                     </li>
                 </ul>
             </nav>
+            
+            <button id="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- اللوجو على اليمين وينقل للرئيسية الإنجليزية en.html -->
+            <div class="logo">
+                <a href="en.html">
+                    <span>Life Center Arabic Church</span>
+                    <img src="chrch Logo.png" alt="Life Center Arabic Church Logo" style="height: 40px; width: auto;">
+                </a>
+            </div>
+
         </div>
     </header>
 
@@ -135,7 +129,6 @@
                 "Our vision is to introduce people to Jesus Christ and help them find eternal life."
             </p>
             
-            <!-- شارة عصرية ومودرن لتوضيح لغات الخدمات -->
             <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(77, 171, 247, 0.4); padding: 10px 22px; border-radius: 30px; margin-bottom: 25px; backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
                 <i class="fas fa-language" style="color: #4dabf7; font-size: 1.2rem;"></i>
                 <span style="color: #e5e5e5; font-size: 0.95rem;">
