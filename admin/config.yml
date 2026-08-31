@@ -9,17 +9,18 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "sermons"
-    label: "أرشيف العظات"
+ - name: "sermons"
+    label: "أرشيف العظات / Sermons Archive"
     folder: "_sermons"
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
+      - {label: "لغة العظة / Language", name: "language", widget: "select", options: [{label: "العربية", value: "ar"}, {label: "English", value: "en"}], default: "ar"}
       - {label: "عنوان العظة", name: "title", widget: "string"}
       - {label: "اسم الواعظ", name: "speaker", widget: "string"}
-      - {label: "التاريخ", name: "date", widget: "string", hint: "أدخل التاريخ بهذا الشكل: 2026-08-31"}      
+      - {label: "التاريخ", name: "date", widget: "string", hint: "31-08-2026"}
       - {label: "رابط يوتيوب (Embed ID)", name: "youtube_id", widget: "string"}
       - {label: "ملخص العظة", name: "summary", widget: "text"}
-
   - name: "pages"
     label: "صفحات الموقع"
     files:
