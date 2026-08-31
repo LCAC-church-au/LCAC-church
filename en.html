@@ -112,6 +112,129 @@
         </div>
     </header>
 
+    <!-- تصميم عصري ومميز لشريط لغة الخدمات والترجمة الفورية -->
+<div class="service-translation-banner">
+    <div class="banner-content-wrapper">
+        <div class="banner-main-text">
+            <span class="lang-badge arabic">Arabic Service</span> 
+            <span class="divider">|</span>
+            <span class="translation-note">
+                <i class="fas fa-headphones-alt"></i> Live English Translation Available via Headphones
+            </span>
+        </div>
+        <div class="banner-sub-text">
+            <i class="fas fa-users"></i> Youth Ministry is in <span class="highlight-en">English</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* تنسيقات الشريط العصري الجديد */
+    .service-translation-banner {
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        border-radius: 50px;
+        padding: 14px 28px;
+        max-width: 750px;
+        margin: 20px auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .service-translation-banner:hover {
+        border-color: rgba(212, 175, 55, 0.6);
+        box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+    }
+
+    .banner-content-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        font-size: 0.98rem;
+    }
+
+    .banner-main-text {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .lang-badge.arabic {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: #ffffff;
+        padding: 4px 14px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+    }
+
+    .divider {
+        color: rgba(255, 255, 255, 0.3);
+        font-weight: bold;
+    }
+
+    .translation-note {
+        color: #38bdf8;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .translation-note i {
+        color: #38bdf8;
+        font-size: 1.05rem;
+        animation: pulse-icon 2s infinite;
+    }
+
+    .banner-sub-text {
+        color: #cbd5e1;
+        font-size: 0.92rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding-top: 6px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .banner-sub-text i {
+        color: #d4af37;
+    }
+
+    .highlight-en {
+        color: #ffd43b;
+        font-weight: 700;
+    }
+
+    @keyframes pulse-icon {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+        100% { transform: scale(1); }
+    }
+
+    @media (max-width: 600px) {
+        .service-translation-banner {
+            border-radius: 20px;
+            padding: 12px 15px;
+        }
+        .banner-content-wrapper {
+            font-size: 0.88rem;
+        }
+    }
+</style>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
@@ -129,13 +252,6 @@
             <p class="vision-text" style="color: #d4d4d4; font-size: 1.2rem; max-width: 700px; margin: 0 auto 15px;">
                 "Our vision is to introduce people to Jesus Christ and help them find eternal life."
             </p>
-            
-            <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(77, 171, 247, 0.4); padding: 10px 22px; border-radius: 30px; margin-bottom: 25px; backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-                <i class="fas fa-language" style="color: #4dabf7; font-size: 1.2rem;"></i>
-                <span style="color: #e5e5e5; font-size: 0.95rem;">
-                    Church Services are in <strong style="color: #4dabf7;">Arabic</strong> <span style="color: #888; margin: 0 5px;">|</span> Youth Ministry is in <strong style="color: #ffd43b;">English</strong>
-                </span>
-            </div>
 
             <div class="hero-buttons">
                 <a href="#services" class="btn primary-btn" style="background: #4dabf7; color: #fff; padding: 12px 25px; border-radius: 25px; text-decoration: none; margin: 5px; display: inline-block;">Church Services</a>
