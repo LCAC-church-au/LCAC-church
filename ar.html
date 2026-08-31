@@ -8,184 +8,33 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        /* خلفية الصور المتحركة الخاصة بالموقع العربي */
-        .ar-bg-slideshow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
-        }
-
-        .ar-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            animation: arSlideAnimation 30s infinite;
-        }
-
+        .ar-bg-slideshow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; }
+        .ar-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; animation: arSlideAnimation 30s infinite; }
         .ar-slide:nth-child(1) { background-image: url('church4.jpg'); animation-delay: 0s; }
         .ar-slide:nth-child(2) { background-image: url('church5.jpg'); animation-delay: 6s; }
         .ar-slide:nth-child(3) { background-image: url('church6.jpg'); animation-delay: 12s; }
         .ar-slide:nth-child(4) { background-image: url('church7.jpg'); animation-delay: 18s; }
         .ar-slide:nth-child(5) { background-image: url('church8.jpg'); animation-delay: 24s; }
-
-        @keyframes arSlideAnimation {
-            0% { opacity: 0; transform: scale(1); }
-            8% { opacity: 1; }
-            24% { opacity: 1; }
-            32% { opacity: 0; transform: scale(1.05); }
-            100% { opacity: 0; }
-        }
-
-        /* طبقة عتمة عامة خفيفة ومتوازنة لترى الصور بوضوح */
-        .ar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.45);
-            z-index: -1;
-        }
-
-        /* تنسيق العنوان الرئيسي بدون مربعات مع ظلال قوية */
-        .ar-hero-text h2, .ar-hero-text p, .hero h1, .hero h2, .vision-text {
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-        }
-
-        /* بطاقات الخدمات الشفافة والقابلة للنقر */
-        .service-card {
-            background: rgba(15, 15, 15, 0.35) !important;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 30px;
-            border-radius: 14px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            text-decoration: none !important;
-            display: block;
-            cursor: pointer;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            background: rgba(15, 15, 15, 0.55) !important;
-            border-color: rgba(77, 171, 247, 0.5);
-        }
-
-        .service-card h3, .service-card p, .service-card span, .service-card i {
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-        }
-
-        /* ضبط قسم التواصل والـ QR ليكون في المنتصف تماماً */
-        #contact {
-            background: transparent !important;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #contact .container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .qr-clean-img {
-            max-width: 190px;
-            border-radius: 12px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-            display: inline-block;
-            padding: 8px;
-            background: #ffffff;
-        }
-
-        /* -------------------------------------------------- */
-        /* تصميم عصري ومتحرك لنافذة "تحت الإنشاء" الحديثة */
-        /* -------------------------------------------------- */
-        #under-construction-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95));
-            border: 1px solid rgba(77, 171, 247, 0.4);
-            padding: 45px 30px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 420px;
-            width: 90%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(77, 171, 247, 0.2);
-            transform: scale(0.7) translateY(30px);
-            animation: modalPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        @keyframes modalPopIn {
-            to {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-icon-glow {
-            font-size: 3.8rem;
-            color: #4dabf7;
-            margin-bottom: 20px;
-            animation: iconPulse 2s infinite ease-in-out;
-        }
-
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(77,171,247,0.4)); }
-            50% { transform: scale(1.12); filter: drop-shadow(0 0 15px rgba(77,171,247,0.8)); }
-        }
-
-        .modal-btn {
-            background: linear-gradient(135deg, #4dabf7, #228be6);
-            color: #fff;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1.05rem;
-            box-shadow: 0 5px 15px rgba(77, 171, 247, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .modal-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(77, 171, 247, 0.6);
-            background: linear-gradient(135deg, #339af0, #1c7ed6);
+        @keyframes arSlideAnimation { 0% { opacity: 0; transform: scale(1); } 8% { opacity: 1; } 24% { opacity: 1; } 32% { opacity: 0; transform: scale(1.05); } 100% { opacity: 0; } }
+        .ar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45); z-index: -1; }
+        .ar-hero-text h2, .ar-hero-text p, .hero h1, .hero h2, .vision-text { text-shadow: 0 2px 10px rgba(0,0,0,0.9); }
+        .service-card { background: rgba(15, 15, 15, 0.35) !important; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.15); padding: 30px; border-radius: 14px; text-align: center; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(0,0,0,0.5); text-decoration: none !important; display: block; cursor: pointer; }
+        .service-card:hover { transform: translateY(-5px); background: rgba(15, 15, 15, 0.55) !important; border-color: rgba(77, 171, 247, 0.5); }
+        .service-card h3, .service-card p, .service-card span, .service-card i { text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
+        #contact { background: transparent !important; width: 100%; display: flex; justify-content: center; align-items: center; }
+        #contact .container { width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .qr-clean-img { max-width: 190px; border-radius: 12px; border: 3px solid rgba(255, 255, 255, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.7); display: inline-block; padding: 8px; background: #ffffff; }
+        #under-construction-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 9999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; }
+        .modal-content { background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95)); border: 1px solid rgba(77, 171, 247, 0.4); padding: 45px 30px; border-radius: 20px; text-align: center; max-width: 420px; width: 90%; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9); transform: scale(0.7) translateY(30px); animation: modalPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes modalPopIn { to { transform: scale(1) translateY(0); opacity: 1; } }
+        .modal-icon-glow { font-size: 3.8rem; color: #4dabf7; margin-bottom: 20px; }
+        .modal-btn { background: linear-gradient(135deg, #4dabf7, #228be6); color: #fff; border: none; padding: 12px 30px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.05rem; }
+        @media (max-width: 900px) {
+            #menu-toggle { display: block !important; }
+            #nav-menu { display: none; position: absolute; top: 100%; right: 0; width: 100%; background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(10px); padding: 20px 0; }
+            #nav-menu.active { display: block; }
+            #nav-menu ul { flex-direction: column; gap: 15px !important; text-align: center; }
         }
     </style>
 </head>
@@ -203,67 +52,175 @@
 
     <div id="under-construction-modal">
         <div class="modal-content">
-            <div class="modal-icon-glow">
-                <i class="fas fa-hammer"></i>
-            </div>
-            <h3 style="color: #fff; margin-bottom: 12px; font-size: 1.6rem; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">هذه الصفحة قيد التحديث</h3>
-            <p style="color: #d4d4d4; margin-bottom: 25px; line-height: 1.7; font-size: 1rem;">نعمل بكل حب على تجهيز تفاصيل هذه الخدمة لتكون متاحة لكم بأفضل شكل قريباً. نشكر صبركم وتفهمكم!</p>
+            <div class="modal-icon-glow"><i class="fas fa-hammer"></i></div>
+            <h3 style="color: #fff; margin-bottom: 12px; font-size: 1.6rem;">هذه الصفحة قيد التحديث</h3>
+            <p style="color: #d4d4d4; margin-bottom: 25px; line-height: 1.7;">نعمل بكل حب على تجهيز تفاصيل هذه الخدمة لتكون متاحة لكم قريباً.</p>
             <button class="modal-btn" onclick="closeModal()">العودة للرئيسية</button>
         </div>
     </div>
 
     <header>
-        <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+        <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center; position: relative; padding: 15px 20px;">
             <div class="logo">
                 <a href="index.html" style="color: #fff; text-decoration: none; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
-                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 35px; width: auto; background: transparent; border: none; object-fit: contain;">
+                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 35px; width: auto;">
                     <span>كنيسة مركز الحياة العربية</span>
                 </a>
             </div>
             
-            <button id="menu-toggle" onclick="toggleMenu()" style="background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; display: none; padding: 5px;">
+            <button id="menu-toggle" onclick="toggleMenu()" style="background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; display: none;">
                 <i class="fas fa-bars"></i>
             </button>
 
             <nav id="nav-menu">
                 <ul style="display: flex; list-style: none; gap: 18px; align-items: center; margin: 0; padding: 0;">
-                    <li><a href="#services">خدمات الكنيسة</a></li>
-                    <li><a href="faith.html">إيمان الكنيسة</a></li>
-                    <li><a href="conference.html" style="color: #ffd43b; font-weight: bold;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
-                    <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
+                    <li><a href="#services" style="color:#fff; text-decoration:none;">خدمات الكنيسة</a></li>
+                    <li><a href="faith.html" style="color:#fff; text-decoration:none;">إيمان الكنيسة</a></li>
+                    <li><a href="conference.html" style="color: #ffd43b; font-weight: bold; text-decoration:none;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
+                    <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold; text-decoration:none;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
+                    <li><a href="#contact" style="color:#fff; text-decoration:none;">اتصل بنا</a></li>
                     <li>
-                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff; padding: 8px 16px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 20px; box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4); display: inline-flex; align-items: center; gap: 5px;">
+                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff; padding: 8px 16px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px;">
                             <span>✨</span> سجل بياناتك
                         </a>
                     </li>
-                    <li><a href="en.html"><i class="fas fa-globe"></i> English</a></li>
+                    <li><a href="en.html" style="color:#fff; text-decoration:none;"><i class="fas fa-globe"></i> English</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <style>
-        @media (max-width: 900px) {
-            #menu-toggle {
-                display: block !important;
-            }
-            #nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                right: 0;
-                width: 100%;
-                background: rgba(15, 15, 15, 0.95);
-                backdrop-filter: blur(10px);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 20px 0;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-            }
-            #nav-menu.active {
-                display: block;
-            }
-            #nav-menu ul {
-                flex-direction: column;
-                gap: 15px !important;
-                text
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+    </script>
+
+    <section id="home" class="hero" style="background: transparent !important; padding: 80px 20px;">
+        <div class="container hero-content ar-hero-text" style="text-align: center;">
+            <div class="hero-logo-large" style="margin-bottom: 20px;">
+                <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="max-height: 120px;">
+            </div>
+            <h1 style="color: #fff; font-size: 2.5rem; margin-bottom: 10px;">كنيسة مركز الحياة العربية</h1>
+            <h2 style="color: #e5e5e5; font-size: 1.5rem; margin-bottom: 20px;">Life Center Arabic Church - LCAC</h2>
+            <p class="vision-text" style="color: #d4d4d4; font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px;">
+                "رؤيتنا هي ان نعرف الناس بيسوع المسيح ومساعدتهم على ايجاد الحياة الابدية."
+            </p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn primary-btn" style="background: #4dabf7; color: #fff; padding: 12px 25px; border-radius: 25px; text-decoration: none; margin: 5px; display: inline-block;">خدمات الكنيسة</a>
+                <a href="#contact" class="btn secondary-btn" style="background: transparent; border: 2px solid #fff; color: #fff; padding: 12px 25px; border-radius: 25px; text-decoration: none; margin: 5px; display: inline-block;">اتصل بنا</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section" style="background: transparent !important; padding: 60px 20px;">
+        <div class="container" style="text-align: center; max-width: 1100px; margin: 0 auto;">
+            <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 2rem; margin-bottom: 10px;">مواعيد الخدمات والأنشطة</h2>
+            <p class="section-desc" style="color: #4dabf7; font-weight: 600; font-size: 1.05rem; text-shadow: 0 2px 8px rgba(0,0,0,0.9); margin-bottom: 5px;">
+                <i class="fas fa-info-circle"></i> اضغط على أي خدمة أدناه لمعرفة المزيد من التفاصيل
+            </p>
+            <p style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 0.95rem; margin-bottom: 30px;">نرحب بكم دائماً للمشاركة معنا في أوقات التسبيح والصلاة وكلمة الرب</p>
+            
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                
+                <a href="sermons.html" class="service-card" style="border-color: #4dabf7;">
+                    <i class="fas fa-church" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">الخدمة الرئيسية</h3>
+                    <p class="time" style="color: #d4d4d4;">الأحد - الساعة 5:30 مساءً</p>
+                    <span style="color: #4dabf7; font-size: 0.85rem; display: block; margin-top: 8px; font-weight: bold;">
+                        <i class="fas fa-arrow-left"></i> اضغط هنا لمشاهدة العظات
+                    </span>
+                </a>
+
+                <a href="javascript:void(0);" onclick="openModal()" class="service-card">
+                    <i class="fas fa-book-open" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">درس الكتاب</h3>
+                    <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
+                </a>
+
+                <a href="javascript:void(0);" onclick="openModal()" class="service-card">
+                    <i class="fas fa-users" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 10px 0;">
+                        <span>خدمة الشبيبة <span style="font-size: 0.75rem; font-weight: normal; color: #aaa;">(باللغة الإنجليزية)</span></span>
+                    </h3>
+                    <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
+                </a>
+
+                <a href="javascript:void(0);" onclick="openModal()" class="service-card">
+                    <i class="fas fa-pray" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">خدمة الصلاة</h3>
+                    <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 7:30 مساءً</p>
+                </a>
+
+                <a href="javascript:void(0);" onclick="openModal()" class="service-card special-card">
+                    <i class="fas fa-female" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">خدمة النساء</h3>
+                    <p class="time" style="color: #d4d4d4;">بين خميس وخميس - الساعة 10:30 صباحاً</p>
+                    <span class="location-note" style="color: #ccc; display: block; margin-top: 10px; font-size: 0.9rem;">
+                        <i class="fas fa-map-pin"></i> المكان المخصص لاجتماع النساء :<br>
+                        Highlander Community Centre<br>
+                        141 Highlander Dr, Craigieburn VIC 3064
+                    </span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="padding: 60px 20px;">
+        <div class="container">
+            <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 2rem; margin-bottom: 10px;">عنوان الكنيسة ووسائل التواصل</h2>
+            <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9); margin-bottom: 20px;">مسح رمز الاستجابة السريعة (QR Code) للوصول إلى عنوان الكنيسة مباشرة</p>
+            
+            <div class="qr-container" style="margin: 20px 0; text-align: center;">
+                <img src="church address qr.jpg" alt="QR Code عنوان الكنيسة" class="qr-clean-img">
+                <p style="color: #d4d4d4; margin-top: 12px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">وجه كاميرا هاتفك نحو الرمز لعرض الموقع الجغرافي</p>
+            </div>
+
+            <!-- زر الانتقال المباشر لخرائط جوجل لعنوان الكنيسة -->
+            <div style="margin: 15px 0 25px 0;">
+                <a href="https://maps.google.com/?q=75+Interlink+Dr,+Craigieburn+VIC+3064" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #28a745; color: #fff; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);">
+                    <i class="fas fa-map-marked-alt"></i> الانتقال المباشر لعنوان الكنيسة على الخرائط
+                </a>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap;">
+                <a href="https://www.facebook.com/lifecenterarabicchurch?locale=ar_AR" target="_blank" style="background: #1877f2; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-facebook-f"></i> فيسبوك (LCAC)
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61588101971469" target="_blank" style="background: #1877f2; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-facebook-f"></i> فيسبوك (خدمة النساء)
+                </a>
+                <a href="https://www.instagram.com/lifecenterarabicchurch/" target="_blank" style="background: #e1306c; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-instagram"></i> إنستغرام
+                </a>
+                <a href="https://www.tiktok.com/@lifecenterarabicchurch" target="_blank" style="background: #000000; border: 1px solid #333; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-tiktok"></i> تيك توك
+                </a>
+                <a href="https://www.youtube.com/@lifecenterarabicchurch" target="_blank" style="background: #ff0000; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-youtube"></i> يوتيوب
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: transparent !important; text-align: center; padding: 20px 0;">
+        <div class="container">
+            <p style="color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openModal() {
+            const modal = document.getElementById('under-construction-modal');
+            modal.style.display = 'flex';
+            setTimeout(() => { modal.style.opacity = '1'; }, 10);
+        }
+        function closeModal() {
+            const modal = document.getElementById('under-construction-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => { modal.style.display = 'none'; }, 300);
+        }
+    </script>
+</body>
+</html>
