@@ -142,7 +142,7 @@
     </header>
 
     <!-- محتوى صفحة العظات -->
-    <main class="container" style="padding: 50px 0; max-width: 1000px;">
+    <main class="container" style="padding: 50px 0;">
         
         <div style="text-align: center; margin-bottom: 40px;">
             <h1 style="color: #fff; font-size: 2.2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.9); margin-bottom: 10px;">
@@ -153,66 +153,60 @@
             </p>
         </div>
 
-        <!-- حاوية العظات بتصميم شبكي (Grid) يجمع كافة الصناديق بداخله بشكل منظم -->
+        <!-- حاوية العظات بتصميم شبكي (Grid) منظم ومتناسق -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; align-items: stretch;">
 
-           إليك الكود مرتباً ومنسقاً بشكل احترافي، مع تعبئة كافة البيانات بدقة (عنوان العظة، اسم الواعظ، التاريخ، تحويل رابط يوتيوب إلى صيغة المشغل المضمن `embed`، وملخص العظة)، بالإضافة إلى تصحيح الخطأ الإملائي في إغلاق الوسم الأخير في الكود الذي أرسلته:
+            <!-- 1. العظة الجديدة (ما في يد الأب وما في يد الآب) -->
+            <div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                        <h2 style="color: #fff; font-size: 1.3rem; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
+                            ما في يد الأب وما في يد الآب
+                        </h2>
+                        <div style="display: flex; flex-direction: column; gap: 6px; color: #4dabf7; font-size: 0.95rem; font-weight: bold;">
+                            <span><i class="fas fa-user-tie"></i> الواعظ: القس غسان توماس</span>
+                            <span><i class="fas fa-calendar-alt"></i> التاريخ: 06/09/2026</span>
+                        </div>
+                    </div>
 
-```html
-<!-- صندوق العظة الجديدة -->
-<div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
-    
-    <!-- 1. العنوان، اسم الواعظ، والتاريخ -->
-    <div style="margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-        <h2 style="color: #fff; font-size: 1.4rem; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
-            ما في يد الأب وما في يد الآب
-        </h2>
-        <div style="display: flex; gap: 20px; flex-wrap: wrap; color: #4dabf7; font-size: 0.95rem; font-weight: bold;">
-            <span><i class="fas fa-user-tie"></i> الواعظ: القس غسان توماس</span>
-            <span><i class="fas fa-calendar-alt"></i> التاريخ: 06/09/2026</span>
-        </div>
-    </div>
+                    <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.8); background: #000; margin-bottom: 15px;">
+                        <iframe src="https://www.youtube.com/embed/Llp2z6RFx4Y" title="عظة ما في يد الأب وما في يد الآب" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+                    </div>
+                </div>
 
-    <!-- 2. مشغل فيديو يوتيوب للعظة -->
-    <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.8); background: #000; margin-bottom: 15px;">
-        <iframe src="https://www.youtube.com/embed/Llp2z6RFx4Y" title="عظة ما في يد الأب وما في يد الآب" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
-    </div>
+                <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; border-right: 4px solid #4dabf7;">
+                    <p style="color: #e5e5e5; font-size: 0.95rem; line-height: 1.6; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
+                        <strong>ملخص العظة:</strong> الإيمان ليس محاولة السيطرة على الله أو إجباره على تغيير الظروف، بل الثقة به، وطاعته في ما وضعه بين أيدينا، وترك ما لا نستطيع التحكم به بين يديه. لا تحمل ما لم يطلب الله منك أن تحمله. افعل بأمانة ما هو في يدك، وخذ الخطوة التي يطلبها منك اليوم، ثم اترك النتيجة والسيادة لله.
+                    </p>
+                </div>
+            </div>
 
-    <!-- 3. ملخص العظة -->
-    <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; border-right: 4px solid #4dabf7;">
-        <p style="color: #e5e5e5; font-size: 0.95rem; line-height: 1.6; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
-            <strong>ملخص العظة:</strong> الإيمان ليس محاولة السيطرة على الله أو إجباره على تغيير الظروف، بل الثقة به، وطاعته في ما وضعه بين أيدينا، وترك ما لا نستطيع التحكم به بين يديه. لا تحمل ما لم يطلب الله منك أن تحمله. افعل بأمانة ما هو في يدك، وخذ الخطوة التي يطلبها منك اليوم، ثم اترك النتيجة والسيادة لله.
-        </p>
-    </div>
-</div>
+            <!-- 2. العظة السابقة (إيمان يواجه الظروف) -->
+            <div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                        <h2 style="color: #fff; font-size: 1.3rem; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
+                            إيمان يواجه الظروف
+                        </h2>
+                        <div style="display: flex; flex-direction: column; gap: 6px; color: #4dabf7; font-size: 0.95rem; font-weight: bold;">
+                            <span><i class="fas fa-user-tie"></i> الواعظ: القس غسان توماس</span>
+                            <span><i class="fas fa-calendar-alt"></i> التاريخ: 30/08/2026</span>
+                        </div>
+                    </div>
 
-``` 
-           <!-- صندوق العظة الجديدة (الأحدث في المقدمة) -->
-           <div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between;">
-               <div>
-                   <div style="margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-                       <h2 style="color: #fff; font-size: 1.3rem; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
-                           إيمان يواجه الظروف
-                       </h2>
-                       <div style="display: flex; flex-direction: column; gap: 6px; color: #4dabf7; font-size: 0.95rem; font-weight: bold;">
-                           <span><i class="fas fa-user-tie"></i> الواعظ: القس غسان توماس</span>
-                           <span><i class="fas fa-calendar-alt"></i> التاريخ: 30/08/2026</span>
-                       </div>
-                   </div>
+                    <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.8); background: #000; margin-bottom: 15px;">
+                        <iframe src="https://www.youtube.com/embed/byV6LXqoQow" title="عظة الكنيسة" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+                    </div>
+                </div>
 
-                   <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.8); background: #000; margin-bottom: 15px;">
-                       <iframe src="https://www.youtube.com/embed/byV6LXqoQow" title="عظة الكنيسة" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
-                   </div>
-               </div>
+                <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; border-right: 4px solid #4dabf7;">
+                    <p style="color: #e5e5e5; font-size: 0.95rem; line-height: 1.6; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
+                        <strong>ملخص العظة:</strong> الإيمان الحقيقي لا يسمح للظروف أن تكون هي الصوت الأعلى في حياتنا، بل يجعل صوت الله وكلمته وتسبيحنا أعلى من صوت الخوف والواقع والظروف. فالظروف قد تتغير، والمشاعر قد تتغير، لكن كلمة الله ثابتة.
+                    </p>
+                </div>
+            </div>
 
-               <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; border-right: 4px solid #4dabf7;">
-                   <p style="color: #e5e5e5; font-size: 0.95rem; line-height: 1.6; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
-                       <strong>ملخص العظة:</strong> الإيمان الحقيقي لا يسمح للظروف أن تكون هي الصوت الأعلى في حياتنا، بل يجعل صوت الله وكلمته وتسبيحنا أعلى من صوت الخوف والواقع والظروف. فالظروف قد تتغير، والمشاعر قد تتغير، لكن كلمة الله ثابتة؛ لذلك يبني المؤمن حياته وقراراته على ما يقوله الله، وليس فقط على ما يراه أو يشعر به.
-                   </p>
-               </div>
-           </div> 
-            
-            <!-- صندوق العظة الأولى (القس جوزيف كبريال) -->
+            <!-- 3. صندوق العظة (محبة الله غير المحدودة) -->
             <div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
                     <div style="margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
@@ -221,7 +215,7 @@
                         </h2>
                         <div style="display: flex; flex-direction: column; gap: 6px; color: #4dabf7; font-size: 0.95rem; font-weight: bold;">
                             <span><i class="fas fa-user-tie"></i> الواعظ: القس جوزيف كبريال</span>
-                            <span><i class="fas fa-calendar-alt"></i> التاريخ: 2026/08/23</span>
+                            <span><i class="fas fa-calendar-alt"></i> التاريخ: 23/08/2026</span>
                         </div>
                     </div>
 
@@ -232,12 +226,12 @@
 
                 <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; border-right: 4px solid #4dabf7;">
                     <p style="color: #e5e5e5; font-size: 0.95rem; line-height: 1.6; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
-                        <strong>ملخص العظة:</strong> الفكرة الرئيسية: الإيمان المسيحي ليس مجرد اعتقاد أو كلمات نرددها، بل هو علاقة حقيقية مع الله تظهر في العبادة، والسلوك، والطاعة، والمصالحة، والتضحية، والشهادة أمام الآخرين.
+                        <strong>ملخص العظة:</strong> الإيمان المسيحي ليس مجرد اعتقاد أو كلمات نرددها، بل هو علاقة حقيقية مع الله تظهر في العبادة، والسلوك، والطاعة، والمصالحة، والتضحية، والشهادة أمام الآخرين.
                     </p>
                 </div>
             </div>
 
-            <!-- صندوق العظة الثانية (القس غسان توماس) -->
+            <!-- 4. صندوق العظة (إيمان يواجه الواقع) -->
             <div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
                     <div style="margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
@@ -246,7 +240,7 @@
                         </h2>
                         <div style="display: flex; flex-direction: column; gap: 6px; color: #4dabf7; font-size: 0.95rem; font-weight: bold;">
                             <span><i class="fas fa-user-tie"></i> الواعظ: القس غسان توماس</span>
-                            <span><i class="fas fa-calendar-alt"></i> التاريخ: 2026/08/16</span>
+                            <span><i class="fas fa-calendar-alt"></i> التاريخ: 16/08/2026</span>
                         </div>
                     </div>
 
@@ -257,7 +251,7 @@
 
                 <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; border-right: 4px solid #4dabf7;">
                     <p style="color: #e5e5e5; font-size: 0.95rem; line-height: 1.6; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
-                        <strong>ملخص العظة:</strong> الإيمان الحقيقي لا ينكر الواقع ولا يتجاهل الألم والمشكلات، لكنه يرفض أن يعتبر الواقع هو الكلمة الأخيرة. المؤمن يرى الظروف كما هي، لكنه يؤمن أن الله أكبر من الظروف وأن القصة لم تنتهِ بعد.
+                        <strong>ملخص العظة:</strong> الإيمان الحقيقي لا ينكر الواقع ولا يتجاهل الألم والمشكلات، لكنه يرفض أن يعتبر الواقع هو الكلمة الأخيرة. المؤمن يرى الظروف كما هي، لكنه يؤمن أن الله أكبر من الظروف.
                     </p>
                 </div>
             </div>
