@@ -1,184 +1,17 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كنيسة مركز الحياة العربية - Life Center Arabic Church</title>
+    
+    <!-- الأيقونة الخاصة بالموقع -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- ملف التصميم الخارجي والخطوط والأيقونات -->
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #0b0b0b;
-            color: #fff;
-            font-family: 'Cairo', sans-serif;
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* خلفية صور الكنيسة المتحركة (Slideshow) */
-        .bg-slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
-        }
-
-        .bg-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            animation: slideAnimation 18s infinite;
-        }
-
-        /* أسماء صور الكنيسة (تأكد من مطابقتها لما رفعته) */
-        .bg-slide:nth-child(1) {
-            background-image: url('church1.jpg');
-            animation-delay: 0s;
-        }
-        .bg-slide:nth-child(2) {
-            background-image: url('church2.jpg');
-            animation-delay: 6s;
-        }
-        .bg-slide:nth-child(3) {
-            background-image: url('church3.jpg');
-            animation-delay: 12s;
-        }
-
-        @keyframes slideAnimation {
-            0% { opacity: 0; transform: scale(1); }
-            10% { opacity: 1; }
-            33% { opacity: 1; }
-            43% { opacity: 0; transform: scale(1.05); }
-            100% { opacity: 0; }
-        }
-
-        /* طبقة عتمة متوازنة لتبرز الصور وتسمح بوضوح النصوص فوقها */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.65);
-            z-index: -1;
-        }
-
-        /* الحاوية العامة بدون أي مستطيل أو خلفية صلبة */
-        .welcome-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* الشعار المتحرك مع توهج بارز */
-        .welcome-logo img {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            margin-bottom: 20px;
-            mix-blend-mode: screen;
-            filter: drop-shadow(0 0 15px rgba(77, 175, 247, 0.8));
-            animation: floatLogo 4s ease-in-out infinite;
-        }
-
-        @keyframes floatLogo {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        /* النصوص مع ظلال قوية (Text Shadow) لتبقى واضحة تماماً بلا خلفية */
-        .welcome-content h1 {
-            font-size: 2rem;
-            margin-bottom: 5px;
-            color: #fff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-            font-weight: 700;
-        }
-        
-        .welcome-content h2 {
-            font-size: 1.1rem;
-            color: #d4d4d4;
-            margin-bottom: 20px;
-            font-weight: 400;
-            direction: ltr;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-        }
-
-        .welcome-content p {
-            color: #e5e5e5;
-            font-size: 0.95rem;
-            margin-bottom: 30px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-        }
-
-        /* أزرار اللغات مع تأثير زجاجي خفيف يبرز فوق الصور */
-        .lang-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            max-width: 320px;
-        }
-
-        .lang-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-decoration: none;
-            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-            backdrop-filter: blur(5px);
-        }
-
-        .btn-ar {
-            background: rgba(37, 99, 235, 0.9);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-        }
-        .btn-ar:hover {
-            background: rgba(29, 78, 216, 1);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
-        }
-
-        .btn-en {
-            background: rgba(22, 22, 22, 0.8);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        .btn-en:hover {
-            background: rgba(40, 40, 40, 0.9);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.7);
-        }
-    </style>
 </head>
 <body>
 
@@ -189,9 +22,10 @@
         <div class="bg-slide"></div>
     </div>
     
-    <!-- طبقة التعتيم الخفيفة -->
+    <!-- طبقة التعتيم الخفيفة لإبراز النصوص -->
     <div class="overlay"></div>
 
+    <!-- محتوى الصفحة الترحيبية -->
     <div class="welcome-content">
         <div class="welcome-logo">
             <img src="chrch Logo.png" alt="LCAC Logo">
