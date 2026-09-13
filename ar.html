@@ -1,58 +1,19 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">            
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كنيسة مركز الحياة العربية - LCAC</title>
+    
+    <!-- الأيقونة وملف التصميم والخطوط -->
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        .ar-bg-slideshow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; }
-        .ar-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; animation: arSlideAnimation 30s infinite; }
-        .ar-slide:nth-child(1) { background-image: url('church4.jpg'); animation-delay: 0s; }
-        .ar-slide:nth-child(2) { background-image: url('church5.jpg'); animation-delay: 6s; }
-        .ar-slide:nth-child(3) { background-image: url('church6.jpg'); animation-delay: 12s; }
-        .ar-slide:nth-child(4) { background-image: url('church7.jpg'); animation-delay: 18s; }
-        .ar-slide:nth-child(5) { background-image: url('church8.jpg'); animation-delay: 24s; }
-        @keyframes arSlideAnimation { 0% { opacity: 0; transform: scale(1); } 8% { opacity: 1; } 24% { opacity: 1; } 32% { opacity: 0; transform: scale(1.05); } 100% { opacity: 0; } }
-        .ar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45); z-index: -1; }
-        .ar-hero-text h2, .ar-hero-text p, .hero h1, .hero h2, .vision-text { text-shadow: 0 2px 10px rgba(0,0,0,0.9); }
-        .service-card { background: rgba(15, 15, 15, 0.35) !important; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.15); padding: 30px; border-radius: 14px; text-align: center; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(0,0,0,0.5); text-decoration: none !important; display: block; cursor: pointer; }
-        .service-card:hover { transform: translateY(-5px); background: rgba(15, 15, 15, 0.55) !important; border-color: rgba(77, 171, 247, 0.5); }
-        .service-card h3, .service-card p, .service-card span, .service-card i { text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
-        #contact { background: transparent !important; width: 100%; display: flex; justify-content: center; align-items: center; }
-        #contact .container { width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        
-        .qr-clean-img { max-width: 190px; border-radius: 12px; border: 3px solid rgba(255, 255, 255, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.7); display: inline-block; padding: 8px; background: #ffffff; }
-
-        #under-construction-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 9999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; }
-        .modal-content { background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95)); border: 1px solid rgba(77, 171, 247, 0.4); padding: 45px 30px; border-radius: 20px; text-align: center; max-width: 420px; width: 90%; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9); transform: scale(0.7) translateY(30px); animation: modalPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        @keyframes modalPopIn { to { transform: scale(1) translateY(0); opacity: 1; } }
-        .modal-icon-glow { font-size: 3.8rem; color: #4dabf7; margin-bottom: 20px; }
-        .modal-btn { background: linear-gradient(135deg, #4dabf7, #228be6); color: #fff; border: none; padding: 12px 30px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.05rem; }
-
-        /* تنسيق الشريط العلوي: اللوجو يمين والأزرار يسار مع تباعد مريح ومنع التداخل */
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; width: 100%; box-sizing: border-box; }
-        .logo a { display: flex; align-items: center; gap: 10px; white-space: nowrap; text-decoration: none; color: #fff; font-weight: bold; font-size: 1rem; }
-        
-        #menu-toggle { display: none !important; }
-        #nav-menu { display: block !important; position: static !important; width: auto !important; background: transparent !important; box-shadow: none !important; }
-        #nav-menu ul { display: flex !important; list-style: none !important; gap: 18px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
-        #nav-menu ul li a { font-size: 0.9rem; white-space: nowrap; }
-
-        /* الشاشات الصغيرة (الموبايل): قائمة منسدلة لمنع التداخل */
-        @media (max-width: 1200px) {
-            #menu-toggle { display: block !important; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; }
-            #nav-menu { display: none !important; position: absolute !important; top: 100% !important; right: 0 !important; width: 100% !important; background: rgba(15, 15, 15, 0.95) !important; backdrop-filter: blur(10px); padding: 20px 0; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.8); }
-            #nav-menu.active { display: block !important; }
-            #nav-menu ul { flex-direction: column !important; gap: 15px !important; text-align: center !important; }
-        }
-    </style>
 </head>
 <body>
 
+    <!-- خلفية الصور المتحركة -->
     <div class="ar-bg-slideshow">
         <div class="ar-slide"></div>
         <div class="ar-slide"></div>
@@ -63,6 +24,7 @@
     
     <div class="ar-overlay"></div>
 
+    <!-- نافذة قيد التحديث -->
     <div id="under-construction-modal">
         <div class="modal-content">
             <div class="modal-icon-glow"><i class="fas fa-hammer"></i></div>
@@ -72,10 +34,9 @@
         </div>
     </div>
 
+    <!-- شريط التنقل العلوي -->
     <header>
         <div class="container nav-container">
-            
-            <!-- اللوجو واسم الكنيسة على اليمين وينقل إلى الصفحة الرئيسية index.html -->
             <div class="logo">
                 <a href="index.html">
                     <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 40px; width: auto;">
@@ -87,7 +48,6 @@
                 <i class="fas fa-bars"></i>
             </button>
 
-            <!-- الأزرار وقائمة التنقل على اليسار -->
             <nav id="nav-menu">
                 <ul>
                     <li><a href="#services" style="color:#fff; text-decoration:none;">خدمات الكنيسة</a></li>
@@ -100,7 +60,6 @@
                             <span>✨</span> كن جزءاً منا
                         </a>
                     </li>
-                    <!-- زر اللغة الإنجليزية مع الكرة الأرضية لينقلك للصفحة الإنجليزية -->
                     <li>
                         <a href="en.html" style="color:#fff; text-decoration:none; display: inline-flex; align-items: center; gap: 5px;">
                             <i class="fas fa-globe"></i> English
@@ -108,17 +67,10 @@
                     </li>
                 </ul>
             </nav>
-
         </div>
     </header>
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('active');
-        }
-    </script>
-
+    <!-- الواجهة الرئيسية -->
     <section id="home" class="hero" style="background: transparent !important; padding: 80px 20px;">
         <div class="container hero-content ar-hero-text" style="text-align: center;">
             <div class="hero-logo-large" style="margin-bottom: 20px;">
@@ -136,6 +88,7 @@
         </div>
     </section>
 
+    <!-- مواعيد الخدمات والأنشطة -->
     <section id="services" class="section" style="background: transparent !important; padding: 60px 20px;">
         <div class="container" style="text-align: center; max-width: 1100px; margin: 0 auto;">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 2rem; margin-bottom: 10px;">مواعيد الخدمات والأنشطة</h2>
@@ -156,10 +109,10 @@
                 </a>
 
                 <a href="bible-study.html" class="service-card">
-    <i class="fas fa-book-open" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
-    <h3 style="color: #fff;">درس الكتاب</h3>
-    <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
-</a>
+                    <i class="fas fa-book-open" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">درس الكتاب</h3>
+                    <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
+                </a>
 
                 <a href="javascript:void(0);" onclick="openModal()" class="service-card">
                     <i class="fas fa-users" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
@@ -169,13 +122,11 @@
                     <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
                 </a>
 
-             <a href="prayer-service.html" class="service-card-link">
-    <div class="service-card">
-        <i class="fas fa-hands-praying"></i>
-        <h3>خدمة الصلاة</h3>
-        <p style="color: #38bdf8; text-shadow: 0 2px 8px rgba(0,0,0,0.95);">انضم إلينا في شركة روحية وطلبات مقدسة</p>
-    </div>
-</a>
+                <a href="prayer-service.html" class="service-card">
+                    <i class="fas fa-hands-praying" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff;">خدمة الصلاة</h3>
+                    <p style="color: #38bdf8; text-shadow: 0 2px 8px rgba(0,0,0,0.95); margin-top: 5px;">انضم إلينا في شركة روحية وطلبات مقدسة</p>
+                </a>
 
                 <a href="javascript:void(0);" onclick="openModal()" class="service-card special-card">
                     <i class="fas fa-female" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
@@ -192,6 +143,7 @@
         </div>
     </section>
 
+    <!-- عنوان الكنيسة والتواصل -->
     <section id="contact" class="section" style="padding: 60px 20px; background: transparent !important;">
         <div class="container" style="background: transparent !important;">
             <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 2rem; margin-bottom: 10px;">عنوان الكنيسة ووسائل التواصل</h2>
@@ -228,18 +180,26 @@
         </div>
     </section>
 
+    <!-- الفوتر -->
     <footer style="background: transparent !important; text-align: center; padding: 20px 0;">
         <div class="container">
             <p style="color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
+    <!-- الدوال البرمجية التفاعلية -->
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
         function openModal() {
             const modal = document.getElementById('under-construction-modal');
             modal.style.display = 'flex';
             setTimeout(() => { modal.style.opacity = '1'; }, 10);
         }
+        
         function closeModal() {
             const modal = document.getElementById('under-construction-modal');
             modal.style.opacity = '0';
