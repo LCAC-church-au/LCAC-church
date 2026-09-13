@@ -1,454 +1,270 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">          
-    <title>درس الكتاب المقدس - كنيسة مركز الحياة العربية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحلة النمو: من العبادة إلى الانطلاق - كنيسة مركز الحياة العربية</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Cairo', sans-serif; color: #ffffff; background: #03050a !important; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
-
-        /* خلفية التروس الضخمة التي تملأ الشاشة بالكامل وبدون عتمة سوداء */
-        .gears-fullscreen-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -4;
-            overflow: hidden;
-            background: linear-gradient(135deg, #050811 0%, #171010 50%, #050811 100%);
-        }
-
-        .giant-gear {
-            position: absolute;
-            color: rgba(212, 175, 55, 0.22);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.15));
-        }
-
-        .giant-gear i {
-            animation: spinGear 22s linear infinite;
-        }
-
-        .giant-gear.reverse i {
-            animation: spinGearRev 28s linear infinite;
-        }
-
-        .gear-a { top: -10%; right: -5%; }
-        .gear-a i { font-size: 38rem; }
-
-        .gear-b { bottom: -15%; left: -5%; }
-        .gear-b i { font-size: 42rem; color: rgba(239, 68, 68, 0.18); }
-
-        .gear-c { top: 20%; left: -5%; }
-        .gear-c i { font-size: 26rem; color: rgba(245, 158, 11, 0.2); }
-
-        .gear-d { bottom: 5%; right: 10%; }
-        .gear-d i { font-size: 32rem; color: rgba(255, 255, 255, 0.12); }
-
-        @keyframes spinGear {
-            from { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.04); }
-            to { transform: rotate(360deg) scale(1); }
-        }
-
-        @keyframes spinGearRev {
-            from { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(-180deg) scale(0.96); }
-            to { transform: rotate(-360deg) scale(1); }
-        }
-
-        /* تقليل العتمة السوداء للحد الأدنى لتظهر الخلفية النارية والتروس ساطعة */
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(3, 5, 10, 0.2);
-            z-index: -3;
-            pointer-events: none;
-        }
-
-        /* خلفية اللهيب الكلي والواسع المتصاعد من الأسفل وكأنه يغطي كامل المساحة */
-        .ambient-background-fx {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        .fullscreen-rising-flames {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 15% 90%, rgba(239, 68, 68, 0.45) 0%, transparent 55%),
-                radial-gradient(circle at 85% 85%, rgba(245, 158, 11, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 50% 100%, rgba(220, 38, 38, 0.5) 0%, transparent 70%);
-            filter: blur(25px);
-            animation: globalFlameFlicker 3s infinite alternate ease-in-out;
-        }
-
-        @keyframes globalFlameFlicker {
-            0% { opacity: 0.65; transform: scale(1) translateY(0); }
-            100% { opacity: 0.95; transform: scale(1.05) translateY(-10px); }
-        }
-
-        /* المطر الهادئ على الجوانب */
-        .rain-side {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 18%;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.12));
-            overflow: hidden;
-            z-index: -1;
-        }
-        .rain-drop {
-            position: absolute;
-            background: linear-gradient(transparent, rgba(56, 189, 248, 0.85));
-            width: 2px;
-            height: 25px;
-            animation: fallRain linear infinite;
-        }
-        @keyframes fallRain {
-            0% { transform: translateY(-20px); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(105vh); opacity: 0; }
-        }
-
-        /* شريط التنبيه العلوي */
-        .construction-banner {
-            background: rgba(212, 175, 55, 0.95);
-            color: #000000;
+        .bible-hero {
             text-align: center;
-            padding: 10px 20px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            position: relative;
-            z-index: 1001;
+            padding: 100px 20px 40px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('church1.jpg') center/cover;
+            border-bottom: 1px solid var(--border-color);
         }
-        .construction-banner i { color: #78350f; font-size: 1.1rem; }
-
-        /* الهيدر العلوي */
-        header { background: transparent !important; position: sticky; top: 0; z-index: 1000; width: 100%; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1300px; margin: 0 auto; padding: 15px 30px; direction: rtl; }
-        
-        .logo a { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            text-decoration: none; 
-            color: #ffffff !important; 
-            font-weight: bold; 
-            font-size: 1.1rem; 
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9); 
+        .journey-banner {
+            max-width: 800px;
+            margin: -30px auto 30px auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-right: 4px solid #4dabf7;
+            padding: 20px 25px;
+            border-radius: 10px;
+            text-align: center;
         }
-        .logo-img-wrapper {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 5px;
-            border-radius: 50%;
-            border: 2px solid rgba(212, 175, 55, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
+        .weeks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px 5% 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .logo img { height: 42px; width: auto; border-radius: 50%; }
-
-        #menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-        
-        #nav-menu ul { display: flex; list-style: none; gap: 20px; align-items: center; margin: 0; padding: 0; }
-        #nav-menu ul li a { font-size: 0.95rem; white-space: nowrap; text-decoration: none; color: #ffffff !important; text-shadow: 0 2px 6px rgba(0,0,0,0.8); transition: color 0.2s; }
-        #nav-menu ul li a:hover { color: #ffd700 !important; }
-
-        /* محتوى الصفحة الرئيسي */
-        .main-content-area {
-            flex: 1;
+        .week-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
         }
-
-        .page-hero h1 { 
-            font-size: 3rem; 
-            margin: 0 0 10px 0; 
-            text-shadow: 0 4px 20px rgba(0,0,0,0.95), 0 0 25px rgba(255,255,255,0.4); 
-            color: #ffffff; 
-            font-weight: 900; 
+        .week-card:hover {
+            transform: translateY(-5px);
+            border-color: #4dabf7;
+            box-shadow: 0 8px 25px rgba(77, 171, 247, 0.2);
         }
-        .page-hero p { 
-            font-size: 1.3rem; 
-            color: #ffd700; 
-            text-shadow: 0 3px 12px rgba(0,0,0,0.95); 
-            font-weight: 700; 
-            margin-bottom: 25px;
-        }
-
-        /* نظام الآيات المتغيرة كخلفيات حية */
-        .dynamic-verses-container {
-            max-width: 850px;
-            width: 100%;
-            min-height: 160px;
+        .week-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            margin: 10px auto 30px auto;
-            position: relative;
-        }
-
-        .verse-slide {
-            position: absolute;
-            width: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-            transform: scale(0.95);
-            pointer-events: none;
-            background: rgba(11, 15, 25, 0.5);
-            border: 2px solid rgba(212, 175, 55, 0.5);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
-        }
-
-        .verse-slide.active {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto;
-            z-index: 5;
-        }
-
-        .verse-text-content {
-            font-size: 1.55rem;
-            line-height: 1.8;
-            color: #ffffff;
-            margin: 0 0 12px 0;
-            font-weight: 700;
-            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.98), 0 0 20px rgba(212, 175, 55, 0.7);
-        }
-
-        .verse-ref-content {
-            display: inline-block;
-            font-size: 1.1rem;
-            color: #38bdf8;
+            margin-bottom: 12px;
             font-weight: bold;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.95);
+            color: #4dabf7;
+            font-size: 1.05rem;
         }
-
-        /* المطرقة الكبيرة وتحت-ها الأحجار المتناثرة */
-        .hammer-stones-display {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            margin-top: 15px;
-            position: relative;
-            z-index: 10;
+        .week-date {
+            background: rgba(77, 171, 247, 0.1);
+            color: #4dabf7;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
         }
-
-        .giant-hammer {
-            font-size: 3.5rem;
-            color: #ffd700;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.95));
-            animation: hammerHit 2s infinite ease-in-out;
+        .week-content h3 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
         }
-
-        @keyframes hammerHit {
-            0%, 100% { transform: rotate(0deg) translateY(0); }
-            50% { transform: rotate(-20deg) translateY(-8px); }
+        .week-content p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 12px;
         }
-
-        .shattered-stones-grid {
-            display: flex;
-            gap: 15px;
-            font-size: 1.8rem;
-            color: #cbd5e1;
-            filter: drop-shadow(0 3px 8px rgba(0,0,0,0.9));
+        .idea-box {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px dashed rgba(255, 215, 0, 0.3);
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #ffd43b;
+            margin-bottom: 15px;
         }
-
-        .shattered-stones-grid i {
-            animation: stoneJiggle 1.5s infinite alternate;
-        }
-        .shattered-stones-grid i:nth-child(2) { color: #f1f5f9; animation-delay: 0.3s; font-size: 2.1rem; }
-        .shattered-stones-grid i:nth-child(3) { color: #94a3b8; animation-delay: 0.6s; }
-
-        @keyframes stoneJiggle {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(3px); }
-        }
-
-        /* الفوتر */
-        footer {
-            padding: 20px 0;
-            text-align: center;
-            background: transparent !important;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-            z-index: 10;
-            width: 100%;
-        }
-        footer p { color: #ffffff; font-size: 0.9rem; margin: 0; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
-
-        /* الموبايل */
-        @media (max-width: 1000px) {
-            #menu-toggle { display: block; }
-            #nav-menu { display: none; position: absolute; top: 100%; right: 0; width: 100%; background: rgba(5, 8, 17, 0.96); backdrop-filter: blur(15px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.2); }
-            #nav-menu.active { display: block; }
-            #nav-menu ul { flex-direction: column; gap: 15px; }
-            .page-hero h1 { font-size: 2.2rem; }
-            .verse-text-content { font-size: 1.15rem; }
-            .rain-side { width: 12%; opacity: 0.4; }
+        .verse-badge {
+            font-style: italic;
+            color: #e5e5e5;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <!-- خلفية التروس الضخمة التي تملأ الشاشة بالكامل -->
-    <div class="gears-fullscreen-bg">
-        <div class="giant-gear gear-a"><i class="fas fa-cog"></i></div>
-        <div class="giant-gear reverse gear-b"><i class="fas fa-cog"></i></div>
-        <div class="giant-gear gear-c"><i class="fas fa-cog"></i></div>
-        <div class="giant-gear reverse gear-d"><i class="fas fa-cog"></i></div>
-    </div>
-    
-    <div class="bg-overlay"></div>
-
-    <!-- تأثيرات الخلفية الكلية: لهيب النيران الشامل والمطر الجانبي -->
-    <div class="ambient-background-fx">
-        <div class="fullscreen-rising-flames"></div>
-        <div class="rain-side" id="rainContainer"></div>
-    </div>
-
-    <!-- شريط التنبيه العلوي -->
-    <div class="construction-banner">
-        <i class="fas fa-tools"></i>
-        <span>هذه الصفحة قيد التجهيز والتطوير المستمر لإضافات ومحتوى أرقى قريباً!</span>
-    </div>
-
-    <!-- الهيدر العلوي -->
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <a href="index.html">
-                    <div class="logo-img-wrapper">
-                        <img src="chrch Logo.png" alt="LCAC Logo">
-                    </div>
+                <a href="ar.html">
+                    <img src="chrch Logo.png" alt="الشعار" style="height: 40px;">
                     <span>كنيسة مركز الحياة العربية</span>
                 </a>
             </div>
-            
-            <button id="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-
             <nav id="nav-menu">
                 <ul>
-                    <li><a href="ar.html#services">الخدمات</a></li>
-                    <li><a href="faith-ar.html">إيماننا</a></li>
-                    <li><a href="conference.html">المؤتمر</a></li>
-                    <li><a href="ar.html#contact">تواصل معنا</a></li>
-                    <li><a href="ar.html" style="color: #70b8ff !important;"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="ar.html" style="color:#fff; text-decoration:none;">الرئيسية</a></li>
+                    <li><a href="sermons.html" style="color:#fff; text-decoration:none;">العظات</a></li>
+                    <li><a href="bible.pdf" target="_blank" rel="noopener noreferrer" style="color: #4dabf7; text-decoration:none;">الكتاب المقدس PDF</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- المحتوى الرئيسي -->
-    <main class="main-content-area">
-        <div class="page-hero">
-            <h1>درس الكتاب المقدس</h1>
-            <p>كلمة الله الحية.. تتأسس كالتروس وتبني القلوب وسط التجهيز</p>
-        </div>
+    <section class="bible-hero">
+        <i class="fas fa-seedling" style="font-size: 3rem; color: #4dabf7; margin-bottom: 15px;"></i>
+        <h1 style="color: #fff; font-size: 2.2rem; margin-bottom: 10px;">رحلة النمو: من العبادة إلى الانطلاق</h1>
+        <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto;">«بَلِ انْمُوا فِي النِّعْمَةِ وَفِي مَعْرِفَةِ رَبِّنَا وَمُخَلِّصِنَا يَسُوعَ الْمَسِيحِ» (2 بطرس 3: 18)</p>
+    </section>
 
-        <p style="color: #ffffff; font-size: 1.15rem; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.95); font-weight: 600;">
-            ✨ ترقبوا انطلاق القسم قريباً بمحتوى روحي مبارك:
+    <div class="journey-banner">
+        <p style="color: #fff; font-size: 0.95rem; line-height: 1.7;">
+            الله لم يدعُنا لنكون مجرد حضور في مقاعد الكنيسة، بل أرادنا كنيسة حية ومتوازنة تقاد بقصده الإلهي. انطلق معنا عبر 10 محطات عملية لتغيير الواقع في البيوت والأعمال والمجتمع.
         </p>
+    </div>
 
-        <!-- حاوية الآيات المتغيرة كخلفيات حية -->
-        <div class="dynamic-verses-container" id="versesSlider">
-            <div class="verse-slide active">
-                <p class="verse-text-content">"سراج لرجلي كلامك ونور لسبيلي"</p>
-                <span class="verse-ref-content">مزمور 119: 105</span>
+    <!-- شبكة الـ 10 أسابيع (بدءاً من 11 سبتمبر 2026) -->
+    <main class="weeks-grid">
+        
+        <!-- الأسبوع 1 -->
+        <a href="lesson-week1.html" class="week-card">
+            <div>
+                <div class="week-header"><span>الأسبوع الأول</span><span class="week-date">11 سبتمبر 2026</span></div>
+                <div class="week-content">
+                    <h3>العبادة (تعريفها)</h3>
+                    <p>نبدأ من الله، لنفهم جوهر السجود الحقيقي وعلاقة القلب بالخالق بعيداً عن الطقس المجرد.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة جذابة:</strong> "ساعة سكون صامت" مدتها 10 دقائق يومياً دون هاتف قبل قراءة الكلمة.</div>
+                </div>
             </div>
-            <div class="verse-slide">
-                <p class="verse-text-content">"السماء والأرض تزولان وأما كلامي فلا يزول"</p>
-                <span class="verse-ref-content">متى 24: 35</span>
-            </div>
-            <div class="verse-slide">
-                <p class="verse-text-content">"خبأتم كلامي في قلبي لكيلا أخطئ إليك"</p>
-                <span class="verse-ref-content">مزمور 119: 11</span>
-            </div>
-        </div>
+            <span class="verse-badge">«اِسْجُدُوا لِلرَّبِّ فِي زِينَةٍ مُقَدَّسَةٍ.» (مز 96: 9)</span>
+        </a>
 
-        <!-- المطرقة الكبيرة وتحت-ها الأحجار المتناثرة -->
-        <div class="hammer-stones-display">
-            <i class="fas fa-hammer giant-hammer" title="المطرقة الكبيرة"></i>
-            <div class="shattered-stones-grid" title="أحجار محطمة ومتناثرة تحت المطرقة">
-                <i class="fas fa-gem"></i>
-                <i class="fas fa-cubes"></i>
-                <i class="fas fa-stone"></i>
+        <!-- الأسبوع 2 -->
+        <a href="lesson-week2.html" class="week-card">
+            <div>
+                <div class="week-header"><span>الأسبوع الثاني</span><span class="week-date">18 سبتمبر 2026</span></div>
+                <div class="week-content">
+                    <h3>العبادة العملية</h3>
+                    <p>كيف تتحول العبادة إلى أسلوب حياة يملأ تفاصيل كل يوم، في العمل والبيت والمعاملات.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة جذابة:</strong> "مذبح العمل"؛ تقديم أول 5 دقائق من ساعات العمل تسبيحاً وشكراً للرب.</div>
+                </div>
             </div>
-        </div>
+            <span class="verse-badge">«فَإِنْ كُنْتُمْ تَأْكُلُونَ أَوْ تَشْرَبُونَ أَوْ تَفْعَلُونَ شَيْئاً، فَافْعَلُوا كُلَّ شَيْءٍ لِمَجْدِ اللهِ.» (1كو 10: 31)</span>
+        </a>
+
+        <!-- الأسبوع 3 -->
+        <a href="lesson-week3.html" class="week-card">
+            <div>
+                <div class="week-header"><span>الأسبوع الثالث</span><span class="week-date">25 سبتمبر 2026</span></div>
+                <div class="week-content">
+                    <h3>الشركة (أنت جزء من جسد)</h3>
+                    <p>معاً نحن أقوى، لا مكان للعزلة في جسد المسيح الحي والمتفاعل.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة جذابة:</strong> تواصل هاتفي تشجيعي مع عضو غائب عن الشركة هذا الأسبوع.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«أَنْتُمْ جَسَدُ الْمَسِيحِ وَأَعْضَاؤُهُ أَفْرَاداً.» (1كو 12: 27)</span>
+        </a>
+
+        <!-- الأسبوع 4 -->
+        <a href="lesson-week4.html" class="week-card">
+            <div>
+                <div class="week-header"><span>الأسبوع الرابع</span><span class="week-date">2 أكتوبر 2026</span></div>
+                <div class="week-content">
+                    <h3>التلمذة (نضوج المؤمن)</h3>
+                    <p>التغيير الداخلي والنمو المستمر لنكون على صورة المسيح في السلوك والفكر.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة جذابة:</strong> سجل ردود فعلك اليومية وافحصها بمقياس محبة المسيح.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«حَتَّى يَتَصَوَّرَ الْمَسِيحُ فِيكُمْ.» (غل 4: 19)</span>
+        </a>
+
+        <!-- الأسبوع 5 -->
+        <a href="lesson-week5.html" class="week-card">
+            <div>
+                <div class="week-header"><span>الأسبوع الخامس</span><span class="week-date">9 أكتوبر 2026</span></div>
+                <div class="week-content">
+                    <h3>التلمذة (أنت جزء فعّال)</h3>
+                    <p>الانتقال من مرحلة الاستقبال السلبي للمعلومة إلى الفاعلية والتأثير في الآخرين.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة جذابة:</strong> شارك آية واحدة تعلّمتها مع شخص قريب عبر الرسائل.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«كُنْتُمْ مُحْتَاجِينَ أَنْ يُعَلِّمَكُمْ أَحَدٌ...» (عب 5: 12)</span>
+        </a>
+
+        <!-- الأسبوع 6 -->
+        <a href="lesson-week6.html" class="week-card">
+            <div>
+                <div class="week-header"><span>الأسبوع السادس</span><span class="week-date">16 أكتوبر 2026</span></div>
+                <div class="week-content">
+                    <h3>الخدمة (معنى الخدمة)</h3>
+                    <p>خدمة حقيقية مقرونة باتضاع تعكس قلب المسيح الخادم الذي غسل الأرجل.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة جذابة:</strong> خدمة خفية غير منتظرة لشخص في العائلة أو محيط العمل.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«لِأَنَّ ابْنَ الْإِنْسَانِ أَيْضاً لَمْ يَأْتِ لِيُخْدَمَ بَلْ لِيَخْدِمَ.» (مر 10: 45)</span>
+        </a>
+
+        <!-- الأسبوع 7 -->
+        <a href="lesson-week7.html" class="week-card">
+            <div>
+                <div class="week-header"><span>الأسبوع السابع</span><span class="week-date">23 أكتوبر 2026</span></div>
+                <div class="week-content">
+                    <h3>الخدمة (استخدام المواهب)</h3>
+                    <p>اكتشاف واستثمار كل موهبة فريدة منحها الروح لبنيان الجسد وتعزيته.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة جذابة:</strong> اكتب موهبتك بوضوح واسأل راعي الخدمة عن فرصة لتفعيلها.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«كَمَا أَخَذَ كُلُّ وَاحِدٍ مَوْهِبَةً، اخْدِمُوا بِهَا بَعْضُكُمْ بَعْضاً.» (1بط 4: 10)</span>
+        </a>
+
+        <!-- الأسبوع 8 -->
+        <a href="lesson-week8.html" class="week-card">
+            <div>
+                <div class="week-header"><span>الأسبوع الثامن</span><span class="week-date">30 أكتوبر 2026</span></div>
+                <div class="week-content">
+                    <h3>أنت خادم ممسوح</h3>
+                    <p>الخدمة ليست بجهد بشري مُنهك، بل بمسحة وقوة وفعل الروح القدس من خلالك.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة جذابة:</strong> وقت صلاة جماعي لطلب امتلاء جديد للخدمة بانسكاب الروح.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«لاَ بِالْقُدْرَةِ وَلاَ بِالْقُوَّةِ، بَلْ بِرُوحِي قَالَ رَبُّ الْجنُودِ.» (زك 4: 6)</span>
+        </a>
+
+        <!-- الأسبوع 9 -->
+        <a href="lesson-week9.html" class="week-card">
+            <div>
+                <div class="week-header"><span>الأسبوع التاسع</span><span class="week-date">6 نوفمبر 2026</span></div>
+                <div class="week-content">
+                    <h3>الكرازة (المأمورية العظمى)</h3>
+                    <p>حمل بشارة الخلاص والرجاء للأقرباء والبعيدين بروح المحبة والجرأة.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة جذابة:</strong> صلِ بأسماء 3 أشخاص غير مؤمنين طوال الأسبوع لدعوة الرب.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«اذْهَبُوا إِلَى الْعَالَمِ أَجْمَعَ وَاخْرِفُوا بِالْبِشَارَةِ.» (مر 16: 15)</span>
+        </a>
+
+        <!-- الأسبوع 10 -->
+        <a href="lesson-week10.html" class="week-card">
+            <div>
+                <div class="week-header"><span>الأسبوع العاشر</span><span class="week-date">13 نوفمبر 2026</span></div>
+                <div class="week-content">
+                    <h3>الآن وقت الانطلاق</h3>
+                    <p>الانطلاق الحقيقي والجاهزية العالية لنكون شهوداً للمسيح حتى أقصى الأرض.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة جذابة:</strong> تعهد شخصي مكتوب للالتزام بدورك الكنسي والمجتمعي المؤثر.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«تَكُونُونَ لِي شُهُوداً فِي أُورُشَلِيمَ وَفِي كُلِّ الْيَهُودِيَّةِ وَالسَّامِرَةِ وَإِلَى أَقْصَى الْأَرْضِ.» (أع 1: 8)</span>
+        </a>
+
     </main>
 
-    <!-- الفوتر -->
-    <footer>
-        <p>© 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
+    <footer style="text-align: center; padding: 25px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem;">
+        &copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.
     </footer>
-
-    <script>
-        function toggleMenu() {
-            document.getElementById('nav-menu').classList.toggle('active');
-        }
-
-        // نظام تبديل الآيات التلقائي
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.verse-slide');
-        
-        function rotateVerses() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-        setInterval(rotateVerses, 4000);
-
-        // مولد قطرات المطر للجانب الأيسر
-        const rainContainer = document.getElementById('rainContainer');
-        for (let i = 0; i < 20; i++) {
-            const drop = document.createElement('div');
-            drop.classList.add('rain-drop');
-            drop.style.left = Math.random() * 100 + '%';
-            drop.style.top = (Math.random() * -50) + 'px';
-            drop.style.animationDuration = (0.7 + Math.random() * 1.3) + 's';
-            drop.style.animationDelay = (Math.random() * 2) + 's';
-            rainContainer.appendChild(drop);
-        }
-    </script>
 </body>
 </html>
