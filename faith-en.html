@@ -19,6 +19,7 @@
             overflow-x: hidden;
             margin: 0;
             min-height: 100vh;
+            scroll-behavior: smooth; /* لتمرير سلس عند الضغط على الأزرار */
         }
 
         .faith-hero-section {
@@ -155,7 +156,7 @@
             z-index: 2;
         }
 
-        /* صندوق عرض الآية المباشرة داخل البطاقة (NIV) */
+        /* صندوق عرض الآية المباشرة داخل البطاقة */
         .card-verse-box {
             background: rgba(0, 0, 0, 0.35);
             border-left: 3px solid var(--theme-color);
@@ -179,6 +180,26 @@
             font-weight: bold;
             display: block;
             text-align: right;
+            margin-bottom: 10px;
+        }
+
+        /* زر الإغلاق المخصص داخل البطاقة باللغة الإنجليزية */
+        .card-close-verse-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #94a3b8;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .card-close-verse-btn:hover {
+            background: #ef4444;
+            color: #fff;
+            border-color: #ef4444;
         }
 
         .faith-card-number {
@@ -358,15 +379,15 @@
             <span class="faith-badge-main"><i class="fas fa-shield-alt"></i> Our Doctrine & Beliefs</span>
             <h2>Statement of Faith - LCAC</h2>
             <p class="section-desc">We firmly believe and confess the foundational biblical truths and sound apostolic teaching.</p>
-            <div class="click-hint"><i class="fas fa-hand-pointer"></i> Click on any faith card below to read the Scripture reference in reflection</div>
+            <div class="click-hint"><i class="fas fa-hand-pointer"></i> Click on any card to jump directly to its scripture reference or open reflection</div>
         </div>
     </section>
 
-    <!-- Faith Grid (Interactive Cards with NIV Verses) -->
+    <!-- Faith Grid -->
     <div class="faith-modern-grid">
         
         <!-- 01 -->
-        <div class="faith-card-item card-bible" onclick="openVerseModal('01. The Holy Bible', '"All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness."', '(2 Timothy 3:16)')">
+        <div class="faith-card-item card-bible" id="card-1" onclick="openVerseModal('01. The Holy Bible', '"All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness."', '(2 Timothy 3:16)')">
             <span class="faith-card-number">01</span>
             <div>
                 <div class="faith-card-header">
@@ -376,13 +397,14 @@
                 <p>Infallible, divinely inspired by God, and the supreme authority for Christian faith and life without addition or alteration.</p>
             </div>
             <div class="card-verse-box">
-                <p>"All Scripture is God-breathed and is useful for teaching..."</p>
+                <p>"All Scripture is God-breathed..."</p>
                 <span class="card-verse-ref">2 Timothy 3:16 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 02 -->
-        <div class="faith-card-item card-trinity" onclick="openVerseModal('02. The Trinity', '"For there are three that testify: the Spirit, the water and the blood; and the three are in agreement."', '(1 John 5:7-8)')">
+        <div class="faith-card-item card-trinity" id="card-2" onclick="openVerseModal('02. The Trinity', '"For there are three that testify: the Spirit, the water and the blood; and the three are in agreement."', '(1 John 5:7-8)')">
             <span class="faith-card-number">02</span>
             <div>
                 <div class="faith-card-header">
@@ -392,13 +414,14 @@
                 <p>One God in three persons (Father, Son, and Holy Spirit), co-equal in eternity and power, the Creator and Sustainer of all things.</p>
             </div>
             <div class="card-verse-box">
-                <p>"For there are three that testify... and the three are in agreement."</p>
+                <p>"...the three are in agreement."</p>
                 <span class="card-verse-ref">1 John 5:7-8 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 03 -->
-        <div class="faith-card-item card-father" onclick="openVerseModal('03. God the Father', '"And so we know and rely on the love God has for us. God is love. Whoever lives in love lives in God, and God in them."', '(1 John 4:16)')">
+        <div class="faith-card-item card-father" id="card-3" onclick="openVerseModal('03. God the Father', '"And so we know and rely on the love God has for us. God is love. Whoever lives in love lives in God, and God in them."', '(1 John 4:16)')">
             <span class="faith-card-number">03</span>
             <div>
                 <div class="faith-card-header">
@@ -408,13 +431,14 @@
                 <p>Eternal, spiritual, omnipotent, omniscient, good, and loving, who gave His Son for the redemption of humanity.</p>
             </div>
             <div class="card-verse-box">
-                <p>"God is love. Whoever lives in love lives in God, and God in them."</p>
+                <p>"God is love. Whoever lives in love lives in God..."</p>
                 <span class="card-verse-ref">1 John 4:16 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 04 -->
-        <div class="faith-card-item card-jesus" onclick="openVerseModal('04. Jesus Christ', '"Who, being in very nature God, did not consider equality with God something to be used to his own advantage; rather, he made himself nothing by taking the very nature of a servant."', '(Philippians 2:6-7)')">
+        <div class="faith-card-item card-jesus" id="card-4" onclick="openVerseModal('04. Jesus Christ', '"Who, being in very nature God, did not consider equality with God something to be used to his own advantage; rather, he made himself nothing by taking the very nature of a servant."', '(Philippians 2:6-7)')">
             <span class="faith-card-number">04</span>
             <div>
                 <div class="faith-card-header">
@@ -424,13 +448,14 @@
                 <p>The eternal Son, the Word incarnate born of the Virgin Mary, true God and true man, sinless, died on the cross for redemption, rose, ascended, and will return in glory.</p>
             </div>
             <div class="card-verse-box">
-                <p>"...rather, he made himself nothing by taking the very nature of a servant."</p>
+                <p>"...he made himself nothing by taking the very nature of a servant."</p>
                 <span class="card-verse-ref">Philippians 2:7 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 05 -->
-        <div class="faith-card-item card-spirit" onclick="openVerseModal('05. The Holy Spirit', '"But when he, the Spirit of truth, comes, he will guide you into all the truth."', '(John 16:13)')">
+        <div class="faith-card-item card-spirit" id="card-5" onclick="openVerseModal('05. The Holy Spirit', '"But when he, the Spirit of truth, comes, he will guide you into all the truth."', '(John 16:13)')">
             <span class="faith-card-number">05</span>
             <div>
                 <div class="faith-card-header">
@@ -440,13 +465,14 @@
                 <p>The third person, Giver of life, convicts the world, dwells in believers, produces fruit in them, and empowers them with sanctification and gifts.</p>
             </div>
             <div class="card-verse-box">
-                <p>"...he, the Spirit of truth, comes, he will guide you into all the truth."</p>
+                <p>"...he will guide you into all the truth."</p>
                 <span class="card-verse-ref">John 16:13 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 06 -->
-        <div class="faith-card-item card-human" onclick="openVerseModal('06. Humanity', '"Therefore, just as sin entered the world through one man, and death through sin, and in this way death came to all people, because all sinned."', '(Romans 5:12)')">
+        <div class="faith-card-item card-human" id="card-6" onclick="openVerseModal('06. Humanity', '"Therefore, just as sin entered the world through one man, and death through sin, and in this way death came to all people, because all sinned."', '(Romans 5:12)')">
             <span class="faith-card-number">06</span>
             <div>
                 <div class="faith-card-header">
@@ -456,13 +482,14 @@
                 <p>Created in the image of God, fell through transgression (original sin), separated from God, and utterly helpless without Jesus Christ.</p>
             </div>
             <div class="card-verse-box">
-                <p>"...sin entered the world through one man, and death through sin..."</p>
+                <p>"...sin entered the world through one man..."</p>
                 <span class="card-verse-ref">Romans 5:12 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 07 -->
-        <div class="faith-card-item card-satan" onclick="openVerseModal('07. Satan', '"Be alert and of sober mind. Your enemy the devil prowls around like a roaring lion looking for someone to devour."', '(1 Peter 5:8)')">
+        <div class="faith-card-item card-satan" id="card-7" onclick="openVerseModal('07. Satan', '"Be alert and of sober mind. Your enemy the devil prowls around like a roaring lion looking for someone to devour."', '(1 Peter 5:8)')">
             <span class="faith-card-number">07</span>
             <div>
                 <div class="faith-card-header">
@@ -472,13 +499,14 @@
                 <p>A fallen angel seeking to destroy humanity, disarmed by Christ’s death, and destined for eternal punishment.</p>
             </div>
             <div class="card-verse-box">
-                <p>"Your enemy the devil prowls around like a roaring lion looking for someone to devour."</p>
+                <p>"Your enemy the devil prowls around like a roaring lion..."</p>
                 <span class="card-verse-ref">1 Peter 5:8 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 08 -->
-        <div class="faith-card-item card-salvation" onclick="openVerseModal('08. Salvation', '"For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God—not by works, so that no one can boast."', '(Ephesians 2:8-9)')">
+        <div class="faith-card-item card-salvation" id="card-8" onclick="openVerseModal('08. Salvation', '"For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God—not by works, so that no one can boast."', '(Ephesians 2:8-9)')">
             <span class="faith-card-number">08</span>
             <div>
                 <div class="faith-card-header">
@@ -488,13 +516,14 @@
                 <p>By grace alone through repentance and faith in Jesus Christ; new birth, justification, sanctification, and eternal life.</p>
             </div>
             <div class="card-verse-box">
-                <p>"For it is by grace you have been saved, through faith... it is the gift of God"</p>
+                <p>"For it is by grace you have been saved, through faith..."</p>
                 <span class="card-verse-ref">Ephesians 2:8 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 09 -->
-        <div class="faith-card-item card-church" onclick="openVerseModal('09. The Church', '"And I tell you that you are Peter, and on this rock I will build my church, and the gates of Hades will not overcome it."', '(Matthew 16:18)')">
+        <div class="faith-card-item card-church" id="card-9" onclick="openVerseModal('09. The Church', '"And I tell you that you are Peter, and on this rock I will build my church, and the gates of Hades will not overcome it."', '(Matthew 16:18)')">
             <span class="faith-card-number">09</span>
             <div>
                 <div class="faith-card-header">
@@ -504,13 +533,14 @@
                 <p>The community of "born-again" believers, whose mission is to preach the Gospel, make disciples, and rescue the lost.</p>
             </div>
             <div class="card-verse-box">
-                <p>"...on this rock I will build my church, and the gates of Hades will not overcome it."</p>
+                <p>"...on this rock I will build my church..."</p>
                 <span class="card-verse-ref">Matthew 16:18 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 10 -->
-        <div class="faith-card-item card-ordinances" onclick="openVerseModal('10. The Ordinances', '"We were therefore buried with him through baptism into death in order that, just as Christ was raised from the dead through the glory of the Father, we too may live a new life."', '(Romans 6:4)')">
+        <div class="faith-card-item card-ordinances" id="card-10" onclick="openVerseModal('10. The Ordinances', '"We were therefore buried with him through baptism into death in order that, just as Christ was raised from the dead through the glory of the Father, we too may live a new life."', '(Romans 6:4)')">
             <span class="faith-card-number">10</span>
             <div>
                 <div class="faith-card-header">
@@ -522,11 +552,12 @@
             <div class="card-verse-box">
                 <p>"We were therefore buried with him through baptism into death..."</p>
                 <span class="card-verse-ref">Romans 6:4 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 11 -->
-        <div class="faith-card-item card-baptism" onclick="openVerseModal('11. Baptism in the Holy Spirit', '"For John baptized with water, but in a few days you will be baptized with the Holy Spirit."', '(Acts 1:5)')">
+        <div class="faith-card-item card-baptism" id="card-11" onclick="openVerseModal('11. Baptism in the Holy Spirit', '"For John baptized with water, but in a few days you will be baptized with the Holy Spirit."', '(Acts 1:5)')">
             <span class="faith-card-number">11</span>
             <div>
                 <div class="faith-card-header">
@@ -536,13 +567,14 @@
                 <p>An experience empowering believers with supernatural strength and spiritual gifts to be effective witnesses.</p>
             </div>
             <div class="card-verse-box">
-                <p>"...in a few days you will be baptized with the Holy Spirit."</p>
+                <p>"...you will be baptized with the Holy Spirit."</p>
                 <span class="card-verse-ref">Acts 1:5 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 12 -->
-        <div class="faith-card-item card-gifts" onclick="openVerseModal('12. Gifts and Fruit of the Spirit', '"But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control."', '(Galatians 5:22-23)')">
+        <div class="faith-card-item card-gifts" id="card-12" onclick="openVerseModal('12. Gifts and Fruit of the Spirit', '"But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control."', '(Galatians 5:22-23)')">
             <span class="faith-card-number">12</span>
             <div>
                 <div class="faith-card-header">
@@ -552,13 +584,14 @@
                 <p>Supernatural gifts for building up the church, and the fruit of the Spirit as the natural result of a life led by the Spirit.</p>
             </div>
             <div class="card-verse-box">
-                <p>"But the fruit of the Spirit is love, joy, peace, forbearance, kindness..."</p>
+                <p>"But the fruit of the Spirit is love, joy, peace..."</p>
                 <span class="card-verse-ref">Galatians 5:22 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 13 -->
-        <div class="faith-card-item card-healing" onclick="openVerseModal('13. Divine Healing', '"He himself bore our sins in his body on the cross, so that we might die to sins and live for righteousness; "by his wounds you have been healed."', '(1 Peter 2:24)')">
+        <div class="faith-card-item card-healing" id="card-13" onclick="openVerseModal('13. Divine Healing', '"He himself bore our sins in his body on the cross, so that we might die to sins and live for righteousness; "by his wounds you have been healed."', '(1 Peter 2:24)')">
             <span class="faith-card-number">13</span>
             <div>
                 <div class="faith-card-header">
@@ -570,11 +603,12 @@
             <div class="card-verse-box">
                 <p>"...by his wounds you have been healed."</p>
                 <span class="card-verse-ref">1 Peter 2:24 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
         <!-- 14 -->
-        <div class="faith-card-item card-prayer" onclick="openVerseModal('14. Prayer, Resurrection & Prophecy', '"For the Lord himself will come down from heaven, with a loud command, with the voice of the archangel and with the trumpet call of God, and the dead in Christ will rise first."', '(1 Thessalonians 4:16)')">
+        <div class="faith-card-item card-prayer" id="card-14" onclick="openVerseModal('14. Prayer, Resurrection & Prophecy', '"For the Lord himself will come down from heaven, with a loud command, with the voice of the archangel and with the trumpet call of God, and the dead in Christ will rise first."', '(1 Thessalonians 4:16)')">
             <span class="faith-card-number">14</span>
             <div>
                 <div class="faith-card-header">
@@ -584,8 +618,9 @@
                 <p>Prayer is communion with God; there is a bodily resurrection, and the church ages will culminate in Christ's visible return.</p>
             </div>
             <div class="card-verse-box">
-                <p>"For the Lord himself will come down from heaven... and the dead in Christ will rise first."</p>
+                <p>"For the Lord himself will come down from heaven..."</p>
                 <span class="card-verse-ref">1 Thessalonians 4:16 (NIV)</span>
+                <button class="card-close-verse-btn" onclick="event.stopPropagation();">Close Verse</button>
             </div>
         </div>
 
@@ -604,7 +639,7 @@
                 <span id="modal-verse-ref" class="modal-verse-ref"></span>
             </div>
 
-            <button class="modal-close-btn" onclick="closeVerseModal(null)">Close Reflection</button>
+            <button class="modal-close-btn" onclick="closeVerseModal(null)">Close Verse</button>
         </div>
     </div>
 
@@ -635,7 +670,7 @@
         }
 
         function closeVerseModal(e) {
-            if (!e || e.target.id === 'verse-modal' || e.currentTarget.classList.contains('modal-close-btn')) {
+            if (!e || e.target.id === 'verse-modal' || e.currentTarget.classList.contains('modal-close-btn') || e.currentTarget.classList.contains('card-close-verse-btn')) {
                 const modal = document.getElementById('verse-modal');
                 modal.style.opacity = '0';
                 modal.classList.remove('active');
