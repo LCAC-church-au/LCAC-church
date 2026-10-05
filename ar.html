@@ -9,9 +9,64 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* مظهر بطاقات الخدمات بزجاج بصري فاخر */
+        .service-card {
+            background: rgba(15, 15, 15, 0.65) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 20px !important;
+            padding: 30px 20px !important;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) !important;
+            border-color: #4dabf7 !important;
+            box-shadow: 0 15px 40px rgba(77, 171, 247, 0.25) !important;
+        }
+
+        /* زر العودة للأعلى العائم */
+        #backToTop {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #4dabf7;
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(77, 171, 247, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #backToTop:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
-<body>
+<body id="top">
 
     <!-- خلفية الصور المتحركة -->
     <div class="ar-bg-slideshow">
@@ -38,7 +93,7 @@
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <a href="index.html">
+                <a href="ar.html">
                     <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 40px; width: auto;">
                     <span>كنيسة مركز الحياة العربية</span>
                 </a>
@@ -56,7 +111,7 @@
                     <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold; text-decoration:none;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
                     <li><a href="#contact" style="color:#fff; text-decoration:none;">اتصل بنا</a></li>
                     <li>
-                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff; padding: 6px 12px; font-size: 13px; font-weight: bold; text-decoration: none; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px;">
+                        <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff; padding: 6px 14px; font-size: 13px; font-weight: bold; text-decoration: none; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px;">
                             <span>✨</span> كن جزءاً منا
                         </a>
                     </li>
@@ -71,71 +126,88 @@
     </header>
 
     <!-- الواجهة الرئيسية -->
-    <section id="home" class="hero" style="background: transparent !important; padding: 80px 20px;">
+    <section id="home" class="hero" style="background: transparent !important; padding: 90px 20px 40px 20px;">
         <div class="container hero-content ar-hero-text" style="text-align: center;">
             <div class="hero-logo-large" style="margin-bottom: 20px;">
                 <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="max-height: 120px;">
             </div>
-            <h1 style="color: #fff; font-size: 2.5rem; margin-bottom: 10px;">كنيسة مركز الحياة العربية</h1>
-            <h2 style="color: #e5e5e5; font-size: 1.5rem; margin-bottom: 20px;">Life Center Arabic Church - LCAC</h2>
-            <p class="vision-text" style="color: #d4d4d4; font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px;">
-                "رؤيتنا هي ان نعرف الناس بيسوع المسيح ومساعدتهم على ايجاد الحياة الابدية."
+            <h1 style="color: #fff; font-size: 2.6rem; font-weight: 900; margin-bottom: 10px; text-shadow: 0 4px 15px rgba(0,0,0,0.8);">كنيسة مركز الحياة العربية</h1>
+            <h2 style="color: #e5e5e5; font-size: 1.4rem; font-weight: 600; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">Life Center Arabic Church - LCAC</h2>
+            <p class="vision-text" style="color: #d4d4d4; font-size: 1.15rem; max-width: 700px; margin: 0 auto 30px; line-height: 1.8; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">
+                "رؤيتنا هي أن نعرف الناس بيسوع المسيح ومساعدتهم على إيجاد الحياة الأبدية."
             </p>
             <div class="hero-buttons">
-                <a href="#services" class="btn primary-btn" style="background: #4dabf7; color: #fff; padding: 12px 25px; border-radius: 25px; text-decoration: none; margin: 5px; display: inline-block;">خدمات الكنيسة</a>
-                <a href="#contact" class="btn secondary-btn" style="background: transparent; border: 2px solid #fff; color: #fff; padding: 12px 25px; border-radius: 25px; text-decoration: none; margin: 5px; display: inline-block;">اتصل بنا</a>
+                <a href="#services" class="btn primary-btn" style="background: #4dabf7; color: #fff; padding: 12px 28px; border-radius: 25px; text-decoration: none; margin: 5px; display: inline-block; font-weight: bold; box-shadow: 0 4px 15px rgba(77, 171, 247, 0.4);">خدمات الكنيسة</a>
+                <a href="#contact" class="btn secondary-btn" style="background: transparent; border: 2px solid #fff; color: #fff; padding: 12px 28px; border-radius: 25px; text-decoration: none; margin: 5px; display: inline-block; font-weight: bold;">اتصل بنا</a>
             </div>
         </div>
     </section>
 
+    <!-- قسم آية اليوم الروحية الذكي -->
+    <section style="max-width: 850px; margin: 20px auto 40px auto; padding: 0 20px;">
+        <div style="background: rgba(15, 15, 15, 0.75); backdrop-filter: blur(14px); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 18px; padding: 22px 30px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.7);">
+            <div style="color: #ffd700; font-size: 1rem; font-weight: bold; margin-bottom: 8px; display: inline-flex; align-items: center; gap: 8px;">
+                <i class="fas fa-bible"></i> آية اليوم الروحية
+            </div>
+            <p id="daily-verse-ar" style="color: #f8fafc; font-size: 1.1rem; font-style: italic; line-height: 1.8; margin: 0;">
+                جاري تحميل آية اليوم...
+            </p>
+        </div>
+    </section>
+
     <!-- مواعيد الخدمات والأنشطة -->
-    <section id="services" class="section" style="background: transparent !important; padding: 60px 20px;">
+    <section id="services" class="section" style="background: transparent !important; padding: 40px 20px 60px 20px;">
         <div class="container" style="text-align: center; max-width: 1100px; margin: 0 auto;">
-            <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 2rem; margin-bottom: 10px;">مواعيد الخدمات والأنشطة</h2>
+            <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 2.2rem; margin-bottom: 10px;">مواعيد الخدمات والأنشطة</h2>
             <p class="section-desc" style="color: #4dabf7; font-weight: 600; font-size: 1.05rem; text-shadow: 0 2px 8px rgba(0,0,0,0.9); margin-bottom: 5px;">
                 <i class="fas fa-info-circle"></i> اضغط على أي خدمة أدناه لمعرفة المزيد من التفاصيل
             </p>
-            <p style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 0.95rem; margin-bottom: 30px;">نرحب بكم دائماً للمشاركة معنا في أوقات التسبيح والصلاة وكلمة الرب</p>
+            <p style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 0.95rem; margin-bottom: 40px;">نرحب بكم دائماً للمشاركة معنا في أوقات التسبيح والصلاة وكلمة الرب</p>
             
             <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
                 
-                <a href="sermons.html" class="service-card" style="border-color: #4dabf7;">
+                <a href="sermons.html" class="service-card" style="text-decoration: none;">
                     <i class="fas fa-church" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
-                    <h3 style="color: #fff;">الخدمة الرئيسية</h3>
-                    <p class="time" style="color: #d4d4d4;">الأحد - الساعة 5:30 مساءً</p>
-                    <span style="color: #4dabf7; font-size: 0.85rem; display: block; margin-top: 8px; font-weight: bold;">
+                    <h3 style="color: #fff; margin-bottom: 10px;">الخدمة الرئيسية</h3>
+                    <p class="time" style="color: #d4d4d4; margin-bottom: 12px;">الأحد - الساعة 5:30 مساءً</p>
+                    <span style="color: #4dabf7; font-size: 0.88rem; display: block; font-weight: bold;">
                         <i class="fas fa-arrow-left"></i> اضغط هنا لمشاهدة العظات
                     </span>
                 </a>
 
-                <a href="bible-study.html" class="service-card">
-                    <i class="fas fa-book-open" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
-                    <h3 style="color: #fff;">درس الكتاب</h3>
-                    <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
+                <a href="bible-study.html" class="service-card" style="text-decoration: none;">
+                    <i class="fas fa-book-open" style="font-size: 2.5rem; color: #38bdf8; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff; margin-bottom: 10px;">درس الكتاب</h3>
+                    <p class="time" style="color: #d4d4d4; margin-bottom: 12px;">الجمعة - الساعة 6:00 مساءً</p>
+                    <span style="color: #38bdf8; font-size: 0.88rem; display: block; font-weight: bold;">
+                        <i class="fas fa-arrow-left"></i> تفاصيل درس الكتاب
+                    </span>
                 </a>
 
-               <a href="javascript:void(0);" onclick="openModal()" class="service-card">
-                    <i class="fas fa-users" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
-                    <h3 style="color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 10px 0;">
+               <a href="javascript:void(0);" onclick="openModal()" class="service-card" style="text-decoration: none;">
+                    <i class="fas fa-users" style="font-size: 2.5rem; color: #a855f7; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff; margin: 10px 0;">
                         <span>خدمة الشبيبة <span style="font-size: 0.75rem; font-weight: normal; color: #aaa;">(باللغة الإنجليزية)</span></span>
                     </h3>
-                    <p class="time" style="color: #d4d4d4;">الجمعة - الساعة 6:00 مساءً</p>
+                    <p class="time" style="color: #d4d4d4; margin-bottom: 12px;">الجمعة - الساعة 6:00 مساءً</p>
+                    <span style="color: #a855f7; font-size: 0.88rem; display: block; font-weight: bold;">
+                        <i class="fas fa-arrow-left"></i> قريباً
+                    </span>
                 </a>
 
-                <a href="prayer-service.html" class="service-card">
-                    <i class="fas fa-hands-praying" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
-                    <h3 style="color: #fff;">خدمة الصلاة</h3>
-                    <p style="color: #38bdf8; text-shadow: 0 2px 8px rgba(0,0,0,0.95); margin-top: 5px;">انضم إلينا في شركة روحية وطلبات مقدسة</p>
+                <a href="prayer-service.html" class="service-card" style="text-decoration: none;">
+                    <i class="fas fa-hands-praying" style="font-size: 2.5rem; color: #fbbf24; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff; margin-bottom: 10px;">خدمة الصلاة</h3>
+                    <p style="color: #fbbf24; text-shadow: 0 2px 8px rgba(0,0,0,0.95); margin-top: 5px; font-size: 0.95rem;">انضم إلينا في شركة روحية وطلبات مقدسة</p>
                 </a>
 
-               <a href="women.html" class="service-card special-card">
-                    <i class="fas fa-female" style="font-size: 2.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
-                    <h3 style="color: #fff;">خدمة النساء</h3>
-                    <p class="time" style="color: #d4d4d4;">بين خميس وخميس - الساعة 10:30 صباحاً</p>
-                    <span class="location-note" style="color: #ccc; display: block; margin-top: 10px; font-size: 0.9rem;">
-                        <i class="fas fa-map-pin"></i> المكان المخصص لاجتماع النساء :<br>
-                        Highlander Community Centre<br>
-                        141 Highlander Dr, Craigieburn VIC 3064
+               <a href="women.html" class="service-card special-card" style="text-decoration: none;">
+                    <i class="fas fa-female" style="font-size: 2.5rem; color: #f43f5e; margin-bottom: 15px;"></i>
+                    <h3 style="color: #fff; margin-bottom: 10px;">خدمة النساء</h3>
+                    <p class="time" style="color: #d4d4d4; margin-bottom: 10px;">بين خميس وخميس - الساعة 10:30 صباحاً</p>
+                    <span class="location-note" style="color: #cbd5e1; display: block; font-size: 0.88rem; line-height: 1.5;">
+                        <i class="fas fa-map-pin" style="color: #f43f5e;"></i> المكان: Highlander Community Centre<br>
+                        141 Highlander Dr, Craigieburn
                     </span>
                 </a>
 
@@ -145,17 +217,17 @@
 
     <!-- عنوان الكنيسة والتواصل -->
     <section id="contact" class="section" style="padding: 60px 20px; background: transparent !important;">
-        <div class="container" style="background: transparent !important;">
-            <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 2rem; margin-bottom: 10px;">عنوان الكنيسة ووسائل التواصل</h2>
-            <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9); margin-bottom: 20px;">مسح رمز الاستجابة السريعة (QR Code) للوصول إلى عنوان الكنيسة مباشرة</p>
+        <div class="container" style="background: transparent !important; text-align: center;">
+            <h2 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 2.2rem; margin-bottom: 10px;">عنوان الكنيسة ووسائل التواصل</h2>
+            <p class="section-desc" style="color: #e5e5e5; text-shadow: 0 2px 8px rgba(0,0,0,0.9); margin-bottom: 25px;">امسح رمز الاستجابة السريعة (QR Code) للوصول إلى عنوان الكنيسة مباشرة</p>
             
-            <div style="margin: 20px 0; text-align: center; background: transparent !important;">
-                <img src="church address qr.jpg" alt="QR Code عنوان الكنيسة" class="qr-clean-img">
+            <div style="margin: 20px 0; background: transparent !important;">
+                <img src="church address qr.jpg" alt="QR Code عنوان الكنيسة" class="qr-clean-img" style="border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.6);">
                 <p style="color: #d4d4d4; margin-top: 12px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">وجه كاميرا هاتفك نحو الرمز لعرض الموقع الجغرافي</p>
             </div>
 
-            <div style="margin: 15px 0 25px 0; background: transparent !important;">
-                <a href="https://maps.google.com/?q=75+Interlink+Dr,+Craigieburn+VIC+3064" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #28a745; color: #fff; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);">
+            <div style="margin: 20px 0 30px 0; background: transparent !important;">
+                <a href="https://maps.google.com/?q=75+Interlink+Dr,+Craigieburn+VIC+3064" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #28a745; color: #fff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);">
                     <i class="fas fa-map-marked-alt"></i> الانتقال المباشر لعنوان الكنيسة على الخرائط
                 </a>
             </div>
@@ -180,12 +252,18 @@
         </div>
     </section>
 
+    <!-- زر العودة للأعلى -->
+    <a href="#top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
     <!-- الفوتر -->
-    <footer style="background: transparent !important; text-align: center; padding: 20px 0;">
+    <footer style="background: transparent !important; text-align: center; padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.05);">
         <div class="container">
-            <p style="color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
+            <p style="color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.8); font-size: 0.9rem;">&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
         </div>
     </footer>
+
+    <!-- استدعاء ملف الآيات اليومية -->
+    <script src="daily-verses.js"></script>
 
     <!-- الدوال البرمجية التفاعلية -->
     <script>
@@ -205,6 +283,16 @@
             modal.style.opacity = '0';
             setTimeout(() => { modal.style.display = 'none'; }, 300);
         }
+
+        // إظهار وإخفاء زر العودة للأعلى حسب التمرير
+        window.addEventListener('scroll', function() {
+            const backBtn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backBtn.classList.add('show');
+            } else {
+                backBtn.classList.remove('show');
+            }
+        });
     </script>
 </body>
 </html>
