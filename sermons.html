@@ -10,6 +10,102 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .sermons-hero {
+            text-align: center;
+            padding: 110px 20px 40px;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)), url('church1.jpg') center/cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* شبكة منظمة تضمن تساوي الكارتات وجماليتها */
+        .sermons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 50px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sermon-card {
+            background: rgba(15, 15, 15, 0.65);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .sermon-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(77, 171, 247, 0.6);
+        }
+
+        .sermon-header {
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .sermon-header h2 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+        }
+
+        .sermon-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            color: #4dabf7;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+
+        .sermon-video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+            background: #000;
+            margin-bottom: 20px;
+        }
+
+        .sermon-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .sermon-summary {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            border-right: 4px solid #4dabf7;
+            margin-top: auto;
+        }
+
+        .sermon-summary p {
+            color: #e5e5e5;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+        }
+    </style>
 </head>
 <body>
 
