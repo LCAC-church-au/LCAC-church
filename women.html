@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمة النساء - ابنة الملك | كنيسة مركز الحياة العربية</title>
+    
+    <!-- الأيقونات والخطوط وملف التصميم المركزي -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .women-hero {
+            text-align: center;
+            padding: 120px 20px 60px;
+            background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.95)), url('church4.jpg') center/cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .women-badge {
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* تنسيق الصورة الجماعية الكبيرة البارزة */
+        .featured-group-photo {
+            width: 100%;
+            max-height: 480px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            margin: 30px 0;
+        }
+
+        .vision-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-right: 4px solid #d4af37;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .verse-display-card {
+            background: linear-gradient(135deg, rgba(30,30,30,0.9), rgba(15,15,15,0.95));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .meeting-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .info-card i {
+            font-size: 2.2rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 220px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر الموحد -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="ar.html">
+                    <img src="chrch Logo.png" alt="الشعار" style="height: 40px;">
+                    <span>كنيسة مركز الحياة العربية</span>
+                </a>
+            </div>
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="ar.html" style="color:#fff; text-decoration:none;">الرئيسية</a></li>
+                    <li><a href="faith.html" style="color:#fff; text-decoration:none;">إيمان الكنيسة</a></li>
+                    <li><a href="bible-study.html" style="color:#fff; text-decoration:none;">درس الكتاب</a></li>
+                    <li><a href="ar.html#contact" style="color:#fff; text-decoration:none;">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ترويسة خدمة النساء -->
+    <section class="women-hero">
+        <span class="women-badge"><i class="fas fa-crown"></i> LCAC Women Ministry</span>
+        <h1 style="color: #fff; font-size: 2.5rem; margin-bottom: 15px;">خدمة النساء - ابنة الملك</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 650px; margin: 0 auto; line-height: 1.7;">
+            هنا نكتشف هويتنا في المسيح، ونعيش بالقوة والنعمة والإيمان، امرأة بحسب قلب الله.
+        </p>
+    </section>
+
+    <main class="content-section">
+        
+        <!-- الصورة الجماعية الكبيرة البارزة للأخوات -->
+        <div style="text-align: center;">
+            <img src="women-group.jpg" alt="صورة جماعية لخدمة النساء - ابنة الملك" class="featured-group-photo">
+            <p style="color: #ffd43b; font-style: italic; margin-top: 10px; font-size: 1rem;">«فرح عظيم وشركة مقدسة تجمع أخوات الكنيسة في محبة الرب»</p>
+        </div>
+
+        <!-- رسالة الهوية -->
+        <div class="vision-box" style="margin-top: 40px;">
+            <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 12px;">من نحن؟</h3>
+            <p style="color: #e5e5e5; font-size: 1.05rem; line-height: 1.8; margin: 0;">
+                جماعة مباركة من الأخوات اللواتي يجتمعن بشركة روحية مقدسة، لرفع بعضهن البعض، التغذي على كلمة الحياة، ونمو الشركة العائلية في محبة ربنا يسوع المسيح.
+            </p>
+        </div>
+
+        <!-- بطاقة الآية الرئيسية -->
+        <div class="verse-display-card">
+            <i class="fas fa-bible" style="font-size: 2.2rem; color: #d4af37; margin-bottom: 15px;"></i>
+            <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 10px;">آية المحور للخدمة</h3>
+            <p style="color: #ffd43b; font-size: 1.3rem; font-weight: bold; font-style: italic; margin-bottom: 10px;">
+                «اَلْبَارُّ بِإِيمَانِهِ يَحْيَا»
+            </p>
+            <span style="color: var(--text-muted); font-size: 0.95rem;">(سفر حبقوق 2: 4)</span>
+        </div>
+
+        <!-- مواعيد ومكان الاجتماع -->
+        <h2 style="color: #fff; text-align: center; margin-bottom: 10px; font-size: 1.8rem;">مواعيد لقاءات الأخوات</h2>
+        <p style="color: var(--text-muted); text-align: center; margin-bottom: 30px;">يسعدنا انضمامكن إلينا في أوقات التسبيح والصلاة ودرس الكلمة</p>
+
+        <div class="meeting-info-grid">
+            <div class="info-card">
+                <i class="fas fa-clock"></i>
+                <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 8px;">التوقيت الأسبوعي</h3>
+                <p style="color: var(--text-muted); font-size: 1rem;">بين خميس وخميس<br><strong>الساعة 10:30 صباحاً</strong></p>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 8px;">مكان الاجتماع</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                    Highlander Community Centre<br>
+                    141 Highlander Dr, Craigieburn VIC 3064
+                </p>
+                <a href="https://maps.google.com/?q=141+Highlander+Dr,+Craigieburn+VIC+3064" target="_blank" style="display: inline-block; margin-top: 12px; color: #4dabf7; font-size: 0.9rem; text-decoration: none; font-weight: bold;">
+                    <i class="fas fa-external-link-alt"></i> عرض على الخريطة
+                </a>
+            </div>
+        </div>
+
+        <!-- معرض ذكريات ولقاءات إضافية -->
+        <div style="margin-top: 60px;">
+            <h2 style="color: #fff; text-align: center; margin-bottom: 10px; font-size: 1.8rem;">أجواء الشركة والمحبة</h2>
+            <p style="color: var(--text-muted); text-align: center; margin-bottom: 30px;">لقطات من لقاءات وشركة أخوات كنيسة مركز الحياة العربية</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-10-05 at 6.43.25 PM.jpeg" alt="لقاء الأخوات والضيافة">
+                </div>
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-10-05 at 6.43.23 PM.jpeg" alt="شعار ابنة الملك">
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- الفوتر -->
+    <footer style="text-align: center; padding: 30px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; margin-top: 60px;">
+        &copy; 2026 كنيسة مركز الحياة العربية - خدمة النساء (ابنة الملك). جميع الحقوق محفوظة.
+    </footer>
+
+</body>
+</html>
