@@ -12,19 +12,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        .sermons-hero {
-            text-align: center;
-            padding: 110px 20px 40px;
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)), url('church1.jpg') center/cover;
-            border-bottom: 1px solid var(--border-color);
+        /* خلفية سينمائية فاخرة بلمسة عمق وتدرج مميز */
+        body {
+            background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(10, 10, 10, 0.95)), url('church1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
         }
 
-        /* ضبط المسافة والتباعد في شريط التنقل العلوي لمنع التداخل */
+        header {
+            background: rgba(10, 10, 10, 0.92);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 25px;
+            padding: 15px 20px;
             width: 100%;
             box-sizing: border-box;
         }
@@ -36,36 +54,95 @@
             text-decoration: none;
             color: #fff;
             font-weight: bold;
-            font-size: 1rem;
-            margin-left: 20px; /* توسيع المسافة الفاصلة عن القائمة بجانبه */
+            font-size: 1.05rem;
+        }
+
+        .logo img {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 16px;
+            gap: 20px;
             align-items: center;
             margin: 0;
             padding: 0;
         }
 
-        /* تعديل حجم الكارتات لعرض 3 أعمدة بشكل مريح ومتناسق */
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #4dabf7;
+        }
+
+        .sermons-hero {
+            text-align: center;
+            padding: 90px 20px 30px;
+        }
+
+        /* أزرار التصفية السريعة (Filtering Buttons) */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 25px 0 40px 0;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #4dabf7;
+            border-color: #4dabf7;
+            box-shadow: 0 0 15px rgba(77, 171, 247, 0.4);
+        }
+
+        /* ضبط شبكة العظات لتظهر بدقة في 3 أعمدة مريحة */
         .sermons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
-            padding: 40px 4%;
-            max-width: 1300px;
+            padding: 0 20px 60px 20px;
+            max-width: 1250px;
             margin: 0 auto;
         }
 
+        @media (max-width: 1050px) {
+            .sermons-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .sermons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .sermon-card {
-            background: rgba(15, 15, 15, 0.65);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 16px;
             padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.8);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -73,7 +150,7 @@
         }
 
         .sermon-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             border-color: rgba(77, 171, 247, 0.6);
         }
 
@@ -121,11 +198,12 @@
         }
 
         .sermon-summary {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.45);
             padding: 12px;
             border-radius: 10px;
             border-right: 4px solid #4dabf7;
             margin-top: auto;
+            margin-bottom: 12px;
         }
 
         .sermon-summary p {
@@ -136,11 +214,36 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.9);
         }
 
+        /* أزرار المشاركة السريعة عبر واتساب */
+        .share-whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(37, 211, 102, 0.15);
+            color: #25d366;
+            border: 1px solid rgba(37, 211, 102, 0.4);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .share-whatsapp-btn:hover {
+            background: #25d366;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
         #menu-toggle { display: none; }
 
-        @media (max-width: 1100px) {
+        @media (max-width: 950px) {
             #menu-toggle { display: block; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-            #nav-menu { display: none; position: absolute; top: 100%; right: 0; width: 100%; background: rgba(15,15,15,0.95); backdrop-filter: blur(10px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            #nav-menu { display: none; position: absolute; top: 100%; right: 0; width: 100%; background: rgba(15,15,15,0.95); backdrop-filter: blur(12px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
             #nav-menu.active { display: block; }
             #nav-menu ul { flex-direction: column; gap: 15px; text-align: center; }
         }
@@ -148,12 +251,12 @@
 </head>
 <body>
 
-    <!-- الشريط العلوي (الهيدر الموحد) -->
+    <!-- الشريط العلوي -->
     <header>
         <div class="container nav-container">
             <div class="logo">
                 <a href="ar.html">
-                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 38px;">
+                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية">
                     <span>كنيسة مركز الحياة العربية</span>
                 </a>
             </div>
@@ -180,18 +283,27 @@
     <!-- ترويسة صفحة العظات -->
     <section class="sermons-hero">
         <h1 style="color: #fff; font-size: 2.2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.9); margin-bottom: 10px;">
-            <i class="fas fa-video" style="color: #4dabf7;"></i> أرشيف العظات
+            <i class="fas fa-video" style="color: #4dabf7;"></i> أرشيف العظات والتأملات
         </h1>
         <p style="color: #d4d4d4; font-size: 1.1rem; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
             تابع معنا أحدث العظات وكلمة الرب لبناء حياتك الروحية.
         </p>
+
+        <!-- أزرار التصفية السريعة حسب الواعظ -->
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterSermons('all', this)">الكل</button>
+            <button class="filter-btn" onclick="filterSermons('غسان', this)">القس غسان توماس</button>
+            <button class="filter-btn" onclick="filterSermons('هاني', this)">القس هاني موسى</button>
+            <button class="filter-btn" onclick="filterSermons('جوزيف', this)">القس جوزيف كبريال</button>
+            <button class="filter-btn" onclick="filterSermons('مروان', this)">الأخ مروان مونا</button>
+        </div>
     </section>
 
     <!-- شبكة عرض العظات -->
     <main class="sermons-grid">
 
         <!-- العظة 1 -->
-        <div class="sermon-card">
+        <div class="sermon-card" data-speaker="هاني">
             <div>
                 <div class="sermon-header">
                     <h2>الروح القدس روح الحياة والقوة</h2>
@@ -204,13 +316,18 @@
                     <iframe src="https://www.youtube.com/embed/qqj1bMqpvnA?start=4283" title="عظة الكنيسة" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> التغيير الحقيقي لا يحدث بالجهد البشري، بل بفيض وامتلاء من "روح الله" الذي يحيي القلوب ويمنح القوة.</p>
+            <div>
+                <div class="sermon-summary">
+                    <p><strong>ملخص العظة:</strong> التغيير الحقيقي لا يحدث بالجهد البشري، بل بفيض وامتلاء من "روح الله" الذي يحيي القلوب ويمنح القوة.</p>
+                </div>
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D8%A7%D9%84%D8%B1%D9%88%D8%AD%20%D8%A7%D9%84%D9%82%D8%AF%D8%B3%20%D8%B1%D9%88%D8%AD%20%D8%A7%D9%84%D8%AD%D9%8A%D8%A7%D8%A9%20%D9%88%D8%A7%D9%84%D9%82%D9%88%D8%A9%20%D9%84%D9%84%D9%82%D8%B3%20%D9%87%D8%A7%D9%86%D9%8A%20%D9%85%D9%88%D8%B3%D9%89%20https://www.youtube.com/watch?v=qqj1bMqpvnA" target="_blank" class="share-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
+                </a>
             </div>
         </div>
 
         <!-- العظة 2 -->
-        <div class="sermon-card">
+        <div class="sermon-card" data-speaker="مروان">
             <div>
                 <div class="sermon-header">
                     <h2>معوقات الخطوة الأولى</h2>
@@ -223,13 +340,18 @@
                     <iframe src="https://www.youtube.com/embed/oQkganmkTn0" title="عظة الكنيسة" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> دعوة لتجاوز حواجز التاريخ المحبط، وهوية العجز، والشلل الروحي نحو التسليم الكامل للرب.</p>
+            <div>
+                <div class="sermon-summary">
+                    <p><strong>ملخص العظة:</strong> دعوة لتجاوز حواجز التاريخ المحبط، وهوية العجز، والشلل الروحي نحو التسليم الكامل للرب.</p>
+                </div>
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D9%85%D8%B9%D9%88%D9%82%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%A9%20%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%89%20https://www.youtube.com/watch?v=oQkganmkTn0" target="_blank" class="share-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
+                </a>
             </div>
         </div>
 
         <!-- العظة 3 -->
-        <div class="sermon-card">
+        <div class="sermon-card" data-speaker="غسان">
             <div>
                 <div class="sermon-header">
                     <h2>الإيمان العامل، عندما لا يسير الطريق كما توقعت</h2>
@@ -242,13 +364,18 @@
                     <iframe src="https://www.youtube.com/embed/hMIf_0g3WEk" title="عظة الكنيسة" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> الإيمان العامل يبدأ عندما يغلق الله بابًا، ويغيّر الطريق، ويطلب منك أن تثق به رغم عدم الفهم.</p>
+            <div>
+                <div class="sermon-summary">
+                    <p><strong>ملخص العظة:</strong> الإيمان العامل يبدأ عندما يغلق الله بابًا، ويغيّر الطريق، ويطلب منك أن تثق به رغم عدم الفهم.</p>
+                </div>
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D8%A7%D9%84%D8%A5%D9%8A%D9%85%D8%A7%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D9%84%20https://www.youtube.com/watch?v=hMIf_0g3WEk" target="_blank" class="share-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
+                </a>
             </div>
         </div>
 
         <!-- العظة 4 -->
-        <div class="sermon-card">
+        <div class="sermon-card" data-speaker="غسان">
             <div>
                 <div class="sermon-header">
                     <h2>الإيمان العامل، عندما يتحول ما في القلب إلى خطوة</h2>
@@ -261,13 +388,18 @@
                     <iframe src="https://www.youtube.com/embed/MeawFA2Z1fA" title="عظة الكنيسة" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> لا تؤجل الطاعة إلى أن يختفي الخوف؛ ابدأ بما لديك، وخذ الخطوة التي يضعها الله أمامك.</p>
+            <div>
+                <div class="sermon-summary">
+                    <p><strong>ملخص العظة:</strong> لا تؤجل الطاعة إلى أن يختفي الخوف؛ ابدأ بما لديك، وخذ الخطوة التي يضعها الله أمامك.</p>
+                </div>
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D8%A7%D9%84%D8%A5%D9%8A%D9%85%D8%A7%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D9%84%20https://www.youtube.com/watch?v=MeawFA2Z1fA" target="_blank" class="share-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
+                </a>
             </div>
         </div>
 
         <!-- العظة 5 -->
-        <div class="sermon-card">
+        <div class="sermon-card" data-speaker="غسان">
             <div>
                 <div class="sermon-header">
                     <h2>ما في يد الأب وما في يد الآب</h2>
@@ -280,13 +412,18 @@
                     <iframe src="https://www.youtube.com/embed/Llp2z6RFx4Y" title="عظة الكنيسة" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> الإيمان هو الثقة بالله، وطاعته فيما وضعه بين أيدينا، وترك ما لا نستطيع التحكم به بين يديه.</p>
+            <div>
+                <div class="sermon-summary">
+                    <p><strong>ملخص العظة:</strong> الإيمان هو الثقة بالله، وطاعته فيما وضعه بين أيدينا، وترك ما لا نستطيع التحكم به بين يديه.</p>
+                </div>
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D9%85%D8%A7%20%D9%81%D9%8A%20%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A3%D8%A8%20https://www.youtube.com/watch?v=Llp2z6RFx4Y" target="_blank" class="share-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
+                </a>
             </div>
         </div>
 
         <!-- العظة 6 -->
-        <div class="sermon-card">
+        <div class="sermon-card" data-speaker="غسان">
             <div>
                 <div class="sermon-header">
                     <h2>إيمان يواجه الظروف</h2>
@@ -299,13 +436,18 @@
                     <iframe src="https://www.youtube.com/embed/byV6LXqoQow" title="عظة الكنيسة" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> الإيمان الحقيقي يجعل صوت الله وكلمته أعلى من صوت الخوف والواقع والظروف الصعبة.</p>
+            <div>
+                <div class="sermon-summary">
+                    <p><strong>ملخص العظة:</strong> الإيمان الحقيقي يجعل صوت الله وكلمته أعلى من صوت الخوف والواقع والظروف الصعبة.</p>
+                </div>
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D நடிப்ப%20%D9%8A%D9%88%D8%A7%D8%AC%D9%87%20%D8%A7%D9%84%D8%B8%D8%B1%D9%88%D9%81%20https://www.youtube.com/watch?v=byV6LXqoQow" target="_blank" class="share-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
+                </a>
             </div>
         </div>
 
         <!-- العظة 7 -->
-        <div class="sermon-card">
+        <div class="sermon-card" data-speaker="جوزيف">
             <div>
                 <div class="sermon-header">
                     <h2>محبة الله غير المحدودة</h2>
@@ -318,13 +460,18 @@
                     <iframe src="https://www.youtube.com/embed/4WzCT-SITd4" title="عظة الكنيسة" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> الإيمان المسيحي علاقة حقيقية مع الله تظهر في العبادة، والسلوك، والطاعة والمصالحة المستمرة.</p>
+            <div>
+                <div class="sermon-summary">
+                    <p><strong>ملخص العظة:</strong> الإيمان المسيحي علاقة حقيقية مع الله تظهر في العبادة، والسلوك، والطاعة والمصالحة المستمرة.</p>
+                </div>
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D9%85%D8%AD%D8%A8%D8%A9%20%D8%A7%D9%84%D9%84%D9%87%20https://www.youtube.com/watch?v=4WzCT-SITd4" target="_blank" class="share-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
+                </a>
             </div>
         </div>
 
         <!-- العظة 8 -->
-        <div class="sermon-card">
+        <div class="sermon-card" data-speaker="غسان">
             <div>
                 <div class="sermon-header">
                     <h2>إيمان يواجه الواقع</h2>
@@ -337,18 +484,42 @@
                     <iframe src="https://www.youtube.com/embed/NNdv6fthKQ4" title="عظة الكنيسة" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> الإيمان الحقيقي لا ينكر الواقع، لكنه يرفض أن يعتبر الواقع هو الكلمة الأخيرة؛ الله أكبر من كل الظروف.</p>
+            <div>
+                <div class="sermon-summary">
+                    <p><strong>ملخص العظة:</strong> الإيمان الحقيقي لا ينكر الواقع، لكنه يرفض أن يعتبر الواقع هو الكلمة الأخيرة؛ الله أكبر من كل الظروف.</p>
+                </div>
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D8%A5%D9%8A%D9%85%D8%A7%D9%86%20%D9%8A%D9%88%D8%A7%D8%AC%D9%87%20%D8%A7%D9%84%D9%88%D8%A7%D9%82%D8%B9%20https://www.youtube.com/watch?v=NNdv6fthKQ4" target="_blank" class="share-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
+                </a>
             </div>
         </div>
 
     </main>
 
-    <!-- سكريبت القائمة الجانبية للشاشات الصغيرة -->
+    <!-- السكريبتات للتفاعل وتصفية العظات والقائمة الجانبية -->
     <script>
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
             menu.classList.toggle('active');
+        }
+
+        // دالة تصفية العظات حسب اسم الواعظ
+        function filterSermons(speakerKey, btn) {
+            const cards = document.querySelectorAll('.sermon-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // تغيير الزر النشط
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // إظهار أو إخفاء البطاقات بناءً على المطابقة
+            cards.forEach(card => {
+                if (speakerKey === 'all' || card.getAttribute('data-speaker') === speakerKey) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
