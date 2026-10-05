@@ -10,100 +10,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        .sermons-hero {
-            text-align: center;
-            padding: 110px 20px 40px;
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)), url('church1.jpg') center/cover;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .sermons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            padding: 50px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .sermon-card {
-            background: rgba(15, 15, 15, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .sermon-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(77, 171, 247, 0.5);
-        }
-
-        .sermon-header {
-            margin-bottom: 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 15px;
-        }
-
-        .sermon-header h2 {
-            color: #fff;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-        }
-
-        .sermon-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            color: #4dabf7;
-            font-size: 0.95rem;
-            font-weight: bold;
-        }
-
-        .sermon-video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
-            background: #000;
-            margin-bottom: 20px;
-        }
-
-        .sermon-video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .sermon-summary {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 15px;
-            border-radius: 10px;
-            border-right: 4px solid #4dabf7;
-        }
-
-        .sermon-summary p {
-            color: #e5e5e5;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 0;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
-        }
-    </style>
 </head>
 <body>
 
@@ -149,7 +55,7 @@
     <!-- شبكة عرض العظات -->
     <main class="sermons-grid">
 
-        <!-- العظة 1: الروح القدس روح الحياة والقوة -->
+        <!-- العظة 1 -->
         <div class="sermon-card">
             <div>
                 <div class="sermon-header">
@@ -168,7 +74,7 @@
             </div>
         </div>
 
-        <!-- العظة 2: معوقات الخطوة الأولى -->
+        <!-- العظة 2 -->
         <div class="sermon-card">
             <div>
                 <div class="sermon-header">
@@ -187,7 +93,7 @@
             </div>
         </div>
 
-        <!-- العظة 3: الإيمان العامل، عندما لا يسير الطريق كما توقعت -->
+        <!-- العظة 3 -->
         <div class="sermon-card">
             <div>
                 <div class="sermon-header">
@@ -206,7 +112,7 @@
             </div>
         </div>
 
-        <!-- العظة 4: الإيمان العامل، عندما يتحول ما في القلب إلى خطوة -->
+        <!-- العظة 4 -->
         <div class="sermon-card">
             <div>
                 <div class="sermon-header">
@@ -221,11 +127,11 @@
                 </div>
             </div>
             <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> لا تؤجل الطاعة إلى أن يختفي الخوف أو تكتمل الإمكانيات؛ ابدأ بما لديك، وخذ الخطوة التي يضعها الله أمامك، وثق أن الله يعمل من خلال إيمانك العملي.</p>
+                <p><strong>ملخص العظة:</strong> لا تؤجل الطاعة إلى أن يختفي الخوف أو تكتمل الإمكانيات؛ ابدأ بما لديك، وخذ الخطوة التي يضعها الله أمامك.</p>
             </div>
         </div>
 
-        <!-- العظة 5: ما في يد الأب وما في يد الآب -->
+        <!-- العظة 5 -->
         <div class="sermon-card">
             <div>
                 <div class="sermon-header">
@@ -240,11 +146,11 @@
                 </div>
             </div>
             <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> الإيمان ليس محاولة السيطرة على الله، بل الثقة به، وطاعته في ما وضعه بين أيدينا، وترك ما لا نستطيع التحكم به بين يديه.</p>
+                <p><strong>ملخص العظة:</strong> الإيمان ليس محاولة السيطرة على الله، بل الثقة به، وطاعته فيما وضعه بين أيدينا، وترك ما لا نستطيع التحكم به بين يديه.</p>
             </div>
         </div>
 
-        <!-- العظة 6: إيمان يواجه الظروف -->
+        <!-- العظة 6 -->
         <div class="sermon-card">
             <div>
                 <div class="sermon-header">
@@ -259,11 +165,11 @@
                 </div>
             </div>
             <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> الإيمان الحقيقي لا يسمح للظروف أن تكون هي الصوت الأعلى، بل يجعل صوت الله وكلمته أعلى من صوت الخوف والواقع.</p>
+                <p><strong>ملخص العظة:</strong> الإيمان الحقيقي لا يسمح للظروف أن تكون هي الصوت الأعلى، بل يجعل صوت الله وكلمته أعلى من صوت الخوف.</p>
             </div>
         </div>
 
-        <!-- العظة 7: محبة الله غير المحدودة -->
+        <!-- العظة 7 -->
         <div class="sermon-card">
             <div>
                 <div class="sermon-header">
@@ -278,11 +184,11 @@
                 </div>
             </div>
             <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> الإيمان المسيحي ليس مجرد اعتقاد، بل علاقة حقيقية مع الله تظهر في العبادة، والسلوك، والطاعة، والمصالحة أمام الآخرين.</p>
+                <p><strong>ملخص العظة:</strong> الإيمان المسيحي ليس مجرد اعتقاد، بل علاقة حقيقية مع الله تظهر في العبادة، والسلوك، والطاعة أمام الآخرين.</p>
             </div>
         </div>
 
-        <!-- العظة 8: إيمان يواجه الواقع -->
+        <!-- العظة 8 -->
         <div class="sermon-card">
             <div>
                 <div class="sermon-header">
@@ -297,7 +203,7 @@
                 </div>
             </div>
             <div class="sermon-summary">
-                <p><strong>ملخص العظة:</strong> الإيمان الحقيقي لا ينكر الواقع، لكنه يرفض أن يعتبر الواقع هو الكلمة الأخيرة. المؤمن يرى الظروف كما هي، لكنه يؤمن أن الله أكبر.</p>
+                <p><strong>ملخص العظة:</strong> الإيمان الحقيقي لا ينكر الواقع، لكنه يرفض أن يعتبر الواقع هو الكلمة الأخيرة. المؤمن يرى الظروف، لكنه يؤمن أن الله أكبر.</p>
             </div>
         </div>
 
