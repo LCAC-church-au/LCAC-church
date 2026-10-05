@@ -57,23 +57,12 @@
             line-height: 1.7;
         }
 
-        .click-hint {
-            display: inline-block;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #38bdf8;
-            background: rgba(56, 189, 248, 0.1);
-            padding: 6px 16px;
-            border-radius: 20px;
-            border: 1px dashed rgba(56, 189, 248, 0.3);
-        }
-
         /* شبكة البطاقات المتطورة */
         .faith-modern-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 25px;
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 30px auto 80px;
             padding: 0 20px;
         }
@@ -148,25 +137,34 @@
 
         .faith-card-item p {
             color: #cbd5e1;
-            font-size: 1rem;
+            font-size: 0.98rem;
             line-height: 1.8;
             margin: 0 0 15px 0;
             z-index: 2;
         }
 
-        .view-verse-link {
-            color: var(--theme-color);
-            font-size: 0.9rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        /* تنسيق الآية داخل الكارت بشكل بارز وجميل */
+        .card-verse-box {
+            background: rgba(0, 0, 0, 0.35);
+            border-right: 3px solid var(--theme-color);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
             z-index: 2;
-            transition: gap 0.3s;
         }
 
-        .faith-card-item:hover .view-verse-link {
-            gap: 10px;
+        .card-verse-box p {
+            color: #ffd700 !important;
+            font-size: 0.9rem !important;
+            font-style: italic;
+            margin: 0 0 5px 0 !important;
+            line-height: 1.6 !important;
+        }
+
+        .card-verse-box span {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            display: block;
         }
 
         .faith-card-number {
@@ -179,102 +177,23 @@
             pointer-events: none;
         }
 
-        /* الألوان والهويات البصرية المتطورة والبراقة لكل بند */
+        /* الهويات البصرية والرموز الحقيقية لكل بند إيماني */
         .card-bible { --theme-color: #38bdf8; --theme-gradient: linear-gradient(135deg, #38bdf8, #0284c7); background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f02d"; }
         .card-trinity { --theme-color: #a855f7; --theme-gradient: linear-gradient(135deg, #a855f7, #7e22ce); background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f648"; }
-        .card-father { --theme-color: #fbbf24; --theme-gradient: linear-gradient(135deg, #fbbf24, #d97706); background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f185"; }
+        .card-father { --theme-color: #fbbf24; --theme-gradient: linear-gradient(135deg, #fbbf24, #d97706); background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f041"; }
         .card-jesus { --theme-color: #f87171; --theme-gradient: linear-gradient(135deg, #f87171, #dc2626); background: linear-gradient(135deg, rgba(248, 113, 113, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f067"; }
-        .card-spirit { --theme-color: #22d3ee; --theme-gradient: linear-gradient(135deg, #22d3ee, #0891b2); background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f472"; }
-        .card-human { --theme-color: #94a3b8; --theme-gradient: linear-gradient(135deg, #94a3b8, #475569); background: linear-gradient(135deg, rgba(148, 163, 184, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f007"; }
+        .card-spirit { --theme-color: #22d3ee; --theme-gradient: linear-gradient(135deg, #22d3ee, #0891b2); background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f72e"; }
+        .card-human { --theme-color: #94a3b8; --theme-gradient: linear-gradient(135deg, #94a3b8, #475569); background: linear-gradient(135deg, rgba(148, 163, 184, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f0c0"; }
         .card-satan { --theme-color: #64748b; --theme-gradient: linear-gradient(135deg, #64748b, #334155); background: linear-gradient(135deg, rgba(100, 116, 139, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f3ed"; }
         .card-salvation { --theme-color: #34d399; --theme-gradient: linear-gradient(135deg, #34d399, #059669); background: linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f004"; }
         .card-church { --theme-color: #818cf8; --theme-gradient: linear-gradient(135deg, #818cf8, #4f46e5); background: linear-gradient(135deg, rgba(129, 140, 248, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f51f"; }
-        .card-ordinances { --theme-color: #2563eb; --theme-gradient: linear-gradient(135deg, #38bdf8, #1d4ed8); background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f043"; }
+        .card-ordinances { --theme-color: #38bdf8; --theme-gradient: linear-gradient(135deg, #38bdf8, #1d4ed8); background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f043"; }
         .card-baptism { --theme-color: #2dd4bf; --theme-gradient: linear-gradient(135deg, #2dd4bf, #0d9488); background: linear-gradient(135deg, rgba(45, 212, 191, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f0e7"; }
-        .card-gifts { --theme-color: #e879f9; --theme-gradient: linear-gradient(135deg, #e879f9, #c026d3); background: linear-gradient(135deg, rgba(232, 121, 249, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f796"; }
-        .card-healing { --theme-color: #fb7185; --theme-gradient: linear-gradient(135deg, #fb7185, #e11d48); background: linear-gradient(135deg, rgba(251, 113, 133, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f2e8"; }
+        .card-gifts { --theme-color: #e879f9; --theme-gradient: linear-gradient(135deg, #e879f9, #c026d3); background: linear-gradient(135deg, rgba(232, 121, 249, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f6d5"; }
+        .card-healing { --theme-color: #fb7185; --theme-gradient: linear-gradient(135deg, #fb7185, #e11d48); background: linear-gradient(135deg, rgba(251, 113, 133, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f0fa"; }
         .card-prayer { --theme-color: #facc15; --theme-gradient: linear-gradient(135deg, #facc15, #ca8a04); background: linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f5b0"; }
 
-        /* تنسيق النافذة المنبثقة (Modal) لعرض الآية بوضوح وبراقة */
-        #verse-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            padding: 20px;
-        }
-
-        .modal-box {
-            background: linear-gradient(145deg, #111827, #0f172a);
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            border-radius: 20px;
-            padding: 35px;
-            max-width: 550px;
-            width: 100%;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
-            transform: scale(0.85) translateY(20px);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-align: right;
-            position: relative;
-        }
-
-        #verse-modal.active .modal-box {
-            transform: scale(1) translateY(0);
-        }
-
-        .modal-verse-content {
-            background: rgba(56, 189, 248, 0.08);
-            border-right: 4px solid #38bdf8;
-            padding: 22px;
-            border-radius: 12px;
-            margin: 20px 0;
-        }
-
-        .modal-verse-content p {
-            color: #f8fafc;
-            font-size: 1.15rem;
-            font-weight: 700;
-            line-height: 1.8;
-            margin: 0 0 10px 0;
-            font-style: italic;
-        }
-
-        .modal-verse-ref {
-            color: #38bdf8;
-            font-size: 0.95rem;
-            font-weight: bold;
-            display: block;
-            text-align: left;
-        }
-
-        .modal-close-btn {
-            background: linear-gradient(135deg, #38bdf8, #0284c7);
-            color: #fff;
-            border: none;
-            padding: 12px 35px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1rem;
-            display: block;
-            margin: 25px auto 0 auto;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
-        }
-        .modal-close-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* الهيدر والقائمة العلوية */
+        /* تنسيق الشريط العلوي */
         .nav-container { display: flex; justify-content: space-between; align-items: center; position: relative; padding: 15px 30px; }
         header { background: rgba(15, 15, 15, 0.92); backdrop-filter: blur(10px); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
         .logo a { color: #fff; text-decoration: none; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
@@ -346,170 +265,236 @@
             <span class="faith-badge-main"><i class="fas fa-shield-alt"></i> عقيدتنا وتعليمنا</span>
             <h2>إيمان كنيسة مركز الحياة العربية (LCAC)</h2>
             <p class="section-desc">نؤمن ونعترف بالأسس الكتابية والتعليم الرسولي الصحيح بثبات.</p>
-            <div class="click-hint"><i class="fas fa-hand-pointer"></i> اضغط على أي بند إيماني أدناه لعرض الشاهد الكتابي الموافق له</div>
         </div>
     </section>
 
-    <!-- شبكة البطاقات الإيمانية (أزرار تفاعلية) -->
+    <!-- شبكة البطاقات الإيمانية مع عرض الآية مباشرة -->
     <div class="faith-modern-grid">
         
-        <div class="faith-card-item card-bible" onclick="openVerseModal('01. الكتاب المقدس', '«كُلُّ الْكِتَابِ هُوَ مُوحًى بِهِ مِنَ اللهِ، وَنَافِعٌ لِلتَّعْلِيمِ وَالتَّوْبيخِ، لِلتَّقْوِيمِ وَالتَّأْدِيبِ الَّذِي فِي الْبِرِّ»', '(رسالة بولس الرسول الثانية إلى تيموثاوس 3: 16)')">
+        <!-- 01 -->
+        <div class="faith-card-item card-bible">
             <span class="faith-card-number">01</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-bible"></i></div>
-                <h3>الكتاب المقدس</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-book-bible"></i></div>
+                    <h3>الكتاب المقدس</h3>
+                </div>
+                <p>معصوم، موحى به من الله، وهو السلطة المطلقة للإيمان والحياة المسيحية دون إضافة أو تغيير.</p>
             </div>
-            <p>معصوم، موحى به من الله، وهو السلطة المطلقة للإيمان والحياة المسيحية دون إضافة أو تغيير.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«كُلُّ الْكِتَابِ هُوَ مُوحًى بِهِ مِنَ اللهِ، وَنَافِعٌ لِلتَّعْلِيمِ وَالتَّوْبيخِ...»</p>
+                <span>(تيموثاوس الثانية 3: 16)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-trinity" onclick="openVerseModal('02. اللاهوت (الثالوث)', '«فَإِنَّ الَّذِينَ يَشْهَدُونَ فِي السَّمَاءِ هُمْ ثَلَاثَةٌ: الآبُ، وَالْكَلِمَةُ، وَالرُّوحُ الْقُدُسُ. وَهَؤُلَاءِ الثَّلَاثَةُ هُمْ وَاحِدٌ»', '(رسالة يوحنا الرسول الأولى 5: 7)')">
+        <!-- 02 -->
+        <div class="faith-card-item card-trinity">
             <span class="faith-card-number">02</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-dove"></i></div>
-                <h3>اللاهوت (الثالوث)</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-circle-nodes"></i></div>
+                    <h3>اللاهوت (الثالوث)</h3>
+                </div>
+                <p>إله واحد مثلث الأقانيم (الآب والابن والروح القدس)، متساوون في الأزلية والقدرة، خالق وحافظ كل شيء.</p>
             </div>
-            <p>إله واحد مثلث الأقانيم (الآب والابن والروح القدس)، متساوون في الأزلية والقدرة، خالق وحافظ كل شيء.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«فَإِنَّ الَّذِينَ يَشْهَدُونَ فِي السَّمَاءِ هُمْ ثَلَاثَةٌ: الآبُ، وَالْكَلِمَةُ، وَالرُّوحُ الْقُدُسُ...»</p>
+                <span>(يوحنا الأولى 5: 7)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-father" onclick="openVerseModal('03. الله الآب', '«اِللهُ مَحَبَّةٌ، وَمَنْ يَثْبُتْ فِي الْمَحَبَّةِ يَثْبُتْ فِي اللهِ وَاللهُ فِيهِ»', '(رسالة يوحنا الرسول الأولى 4: 16)')">
+        <!-- 03 -->
+        <div class="faith-card-item card-father">
             <span class="faith-card-number">03</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-sun"></i></div>
-                <h3>الله الآب</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-landmark"></i></div>
+                    <h3>الله الآب</h3>
+                </div>
+                <p>الأزلي، الروح الأبدي، كلي القدرة والمعرفة، الصالح والمحب، الذي بذل ابنه لفداء البشرية.</p>
             </div>
-            <p>الأزلي، الروح الأبدي، كلي القدرة والمعرفة، الصالح والمحب، الذي بذل ابنه لفداء البشرية.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«اِللهُ مَحَبَّةٌ، وَمَنْ يَثْبُتْ فِي الْمَحَبَّةِ يَثْبُتْ فِي اللهِ وَاللهُ فِيهِ»</p>
+                <span>(يوحنا الأولى 4: 16)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-jesus" onclick="openVerseModal('04. يسوع المسيح', '«الَّذِي إِذْ كَانَ فِي صُورَةِ اللهِ، لَمْ يَحْسِبْ خُلْسَةً أَنْ يَكُونَ مُعَادِلاً لِلَّهِ. لَكِنَّهُ أَخْلَى نَفْسَهُ، آخِذاً صُورَةَ عَبْدٍ، صَائِرًا فِي شِبْهِ النَّاسِ»', '(رسالة بولس الرسول إلى أهل فيلبي 2: 6-7)')">
+        <!-- 04 -->
+        <div class="faith-card-item card-jesus">
             <span class="faith-card-number">04</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-cross"></i></div>
-                <h3>يسوع المسيح</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-cross"></i></div>
+                    <h3>يسوع المسيح</h3>
+                </div>
+                <p>الابن الأزلي، الكلمة المتجسد من العذراء مريم، إله حق وإنسان حق، بلا خطيئة، مات على الصليب فداءً، قام، صعد وسيرجع في المجد.</p>
             </div>
-            <p>الابن الأزلي، الكلمة المتجسد من العذراء مريم، إله حق وإنسان حق، بلا خطيئة، مات على الصليب فداءً، قام، صعد وسيرجع في المجد.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«الَّذِي إِذْ كَانَ فِي صُورَةِ اللهِ، لَمْ يَحْسِبْ خُلْسَةً أَنْ يَكُونَ مُعَادِلاً لِلَّهِ...»</p>
+                <span>(فيلبي 2: 6-7)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-spirit" onclick="openVerseModal('05. الروح القدس', '«وَأَمَّا مَتَى جَاءَ ذَاكَ، رُوحُ الْحَقِّ، فَهُوَ يُرْشِدُكُمْ إِلَى جَمِيعِ الْحَقِّ...»', '(إنجيل يوحنا 16: 13)')">
+        <!-- 05 -->
+        <div class="faith-card-item card-spirit">
             <span class="faith-card-number">05</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-wind"></i></div>
-                <h3>الروح القدس</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-feather-pointed"></i></div>
+                    <h3>الروح القدس</h3>
+                </div>
+                <p>الأقنوم الثالث، واهب الحياة، يدين العالم، يسكن في المؤمنين، ينتج فيهم الثمار ويمكّنهم بالتقديس والمواهب.</p>
             </div>
-            <p>الأقنوم الثالث، واهب الحياة، يدين العالم، يسكن في المؤمنين، ينتج فيهم الثمار ويمكّنهم بالتقديس والمواهب.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«وَأَمَّا مَتَى جَاءَ ذَاكَ، رُوحُ الْحَقِّ، فَهُوَ يُرْشِدُكُمْ إِلَى جَمِيعِ الْحَقِّ...»</p>
+                <span>(يوحنا 16: 13)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-human" onclick="openVerseModal('06. الإنسان', '«لِذَلِكَ كَأَنَّمَا بِإِنْسَانِ وَاحِدٍ دَخَلَتِ الْخَطِيَّةُ إِلَى الْعَالَمِ، وَبِالْخَطِيَّةِ الْمَوْتُ، وَهَكَذَا اجْتَازَ الْمَوْتُ إِلَى جَمِيعِ النَّاسِ، إِذْ أَخْطَأَ الْجَمِيعُ»', '(رسالة بولس الرسول إلى أهل رومية 5: 12)')">
+        <!-- 06 -->
+        <div class="faith-card-item card-human">
             <span class="faith-card-number">06</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-user"></i></div>
-                <h3>الإنسان</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-users"></i></div>
+                    <h3>الإنسان</h3>
+                </div>
+                <p>خُلق على صورة الله، سقط بالتعدي (الخطيئة الأصلية)، وانفصل عن الله، وبات عاجزاً بلا أمل إلا بيسوع المسيح.</p>
             </div>
-            <p>خُلق على صورة الله، سقط بالتعدي (الخطيئة الأصلية)، وانفصل عن الله، وبات عاجزاً بلا أمل إلا بيسوع المسيح.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«لِذَلِكَ كَأَنَّمَا بِإِنْسَانِ وَاحِدٍ دَخَلَتِ الْخَطِيَّةُ إِلَى الْعَالَمِ، وَبِالْخَطِيَّةِ الْمَوْتُ...»</p>
+                <span>(رومية 5: 12)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-satan" onclick="openVerseModal('07. الشيطان', '«اِصْحُوا وَاسْهَرُوا؛ لِأَنَّ إِبْلِيسَ خَصْمَكُمْ كَأَسَدٍ زَائِرٍ، يَجُولُ مُلْتَمِساً مَنْ يَبْتَلِعُهُ هُوَ»', '(رسالة بطرس الرسول الأولى 5: 8)')">
+        <!-- 07 -->
+        <div class="faith-card-item card-satan">
             <span class="faith-card-number">07</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-shield-alt"></i></div>
-                <h3>الشيطان</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-shield-halved"></i></div>
+                    <h3>الشيطان</h3>
+                </div>
+                <p>ملاك ساقط يسعى لتدمير البشرية، جرد من قوته بموت المسيح، ومصيره العقاب الأبدي.</p>
             </div>
-            <p>ملاك ساقط يسعى لتدمير البشرية، جرد من قوته بموت المسيح، ومصيره العقاب الأبدي.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«اِصْحُوا وَاسْهَرُوا؛ لِأَنَّ إِبْلِيسَ خَصْمَكُمْ كَأَسَدٍ زَائِرٍ، يَجُولُ مُلْتَمِساً مَنْ يَبْتَلِعُهُ...»</p>
+                <span>(بطرس الأولى 5: 8)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-salvation" onclick="openVerseModal('08. الخلاص', '«لِأَنَّكُمْ بِالنِّعْمَةِ مُخَلَّصُونَ، بِالإِيمَانِ، وَذَلِكَ لَيْسَ مِنْكُمْ. هُوَ عَطِيَّةُ اللهِ. لَيْسَ مِنْ أَعْمَالٍ لِكَيْ لَا يَفْتَخِرَ أَحَدٌ»', '(رسالة بولس الرسول إلى أهل أفسس 2: 8-9)')">
+        <!-- 08 -->
+        <div class="faith-card-item card-salvation">
             <span class="faith-card-number">08</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-heart"></i></div>
-                <h3>الخلاص</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>الخلاص</h3>
+                </div>
+                <p>بالنعمة فقط من خلال التوبة والإيمان بيسوع المسيح؛ ولادة جديدة وتبرير وتقديس وحياة أبدية.</p>
             </div>
-            <p>بالنعمة فقط من خلال التوبة والإيمان بيسوع المسيح؛ ولادة جديدة وتبرير وتقديس وحياة أبدية.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«لِأَنَّكُمْ بِالنِّعْمَةِ مُخَلَّصُونَ، بِالإِيمَانِ، وَذَلِكَ لَيْسَ مِنْكُمْ. هُوَ عَطِيَّةُ اللهِ»</p>
+                <span>(أفسس 2: 8-9)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-church" onclick="openVerseModal('09. الكنيسة', '«وَأَقُولُ لَكَ أَيْضاً: أَنْتَ بُطْرُسُ، وَعَلَى هَذِه الصَّخْرَةِ أَبْني كَنِيسَتِي، وَأَبْوَابُ الْجَحِيمِ لَنْ تَقْوَى عَلَيْهَا»', '(إنجيل متى 16: 18)')">
+        <!-- 09 -->
+        <div class="faith-card-item card-church">
             <span class="faith-card-number">09</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-church"></i></div>
-                <h3>الكنيسة</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-place-of-worship"></i></div>
+                    <h3>الكنيسة</h3>
+                </div>
+                <p>جماعة المؤمنين "المولودين ثانية"، مهمتها الكرازة بالإنجيل وصنع التلاميذ وخلاص الهالكين.</p>
             </div>
-            <p>جماعة المؤمنين "المولودين ثانية"، مهمتها الكرازة بالإنجيل وصنع التلاميذ وخلاص الهالكين.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«وَأَقُولُ لَكَ أَيْضاً: أَنْتَ بُطْرُسُ، وَعَلَى هَذِه الصَّخْرَةِ أَبْني كَنِيسَتِي...»</p>
+                <span>(متى 16: 18)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-ordinances" onclick="openVerseModal('10. الفرائض', '«فَدُفِنْنَا مَعَهُ بِالْمَعْمُودِيَّةِ لِلْمَوْتِ، حَتَّى كَمَا أُقِيمَ الْمَسِيحُ مِنَ الأَمْوَاتِ، بِمَجْدِ الآبِ، هَكَذَا نَسْلُكُ نَحْنُ أَيْضاً فِي جِدَّةِ الْحَيَاةِ»', '(رسالة بولس الرسول إلى أهل رومية 6: 4)')">
+        <!-- 10 -->
+        <div class="faith-card-item card-ordinances">
             <span class="faith-card-number">10</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-water"></i></div>
-                <h3>الفرائض</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-water"></i></div>
+                    <h3>الفرائض</h3>
+                </div>
+                <p>تشمل معمودية المؤمنين (بالتغطيس كإعلان هوية واتحاد بموت المسيح وقيامته) والعشاء الرباني.</p>
             </div>
-            <p>تشمل معمودية المؤمنين (بالتغطيس كإعلان هوية واتحاد بموت المسيح وقيامته) والعشاء الرباني.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«فَدُفِنْنَا مَعَهُ بِالْمَعْمُودِيَّةِ لِلْمَوْتِ، حَتَّى كَمَا أُقِيمَ الْمَسِيحُ مِنَ الأَمْوَاتِ...»</p>
+                <span>(رومية 6: 4)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-baptism" onclick="openVerseModal('11. المعمودية بالروح القدس', '«لِأَنَّ يُوحَنَّا عَمَّدَ بِالْمَاءِ، وَأَمَّا أَنْتُمْ فَسَتَتَعَمَّدُونَ بِالرُّوحِ الْقُدُسِ، لَيْسَ بَعْدَ هَذِهِ الأَيَّامِ بِكَثِيرٍ»', '(سفر أعمال الرسل 1: 5)')">
+        <!-- 11 -->
+        <div class="faith-card-item card-baptism">
             <span class="faith-card-number">11</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-bolt"></i></div>
-                <h3>المعمودية بالروح القدس</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-bolt-lightning"></i></div>
+                    <h3>المعمودية بالروح القدس</h3>
+                </div>
+                <p>اختبار التنعم بقوة خارقة ومواهب الروح (ومنها الألسنة) ليكون المؤمن شاهداً فعالاً.</p>
             </div>
-            <p>اختبار التنعم بقوة خارقة ومواهب الروح (ومنها الألسنة) ليكون المؤمن شاهداً فعالاً.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«لِأَنَّ يُوحَنَّا عَمَّدَ بِالْمَاءِ، وَأَمَّا أَنْتُمْ فَسَتَتَعَمَّدُونَ بِالْرُّوحِ الْقُدُسِ...»</p>
+                <span>(أعمال الرسل 1: 5)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-gifts" onclick="openVerseModal('12. مواهب وثمار الروح القدس', '«وَأَمَّا ثَمَرُ الرُّوحِ فَهُوَ: مَحَبَّةٌ، فَرَحٌ، سَلَامٌ، طُولُ أَنَاةٍ، لُطْفٌ، صَلَاحٌ، إِيمَانٌ، وَدَاعَةٌ، تَعَفُّفٌ»', '(رسالة بولس الرسول إلى أهل غلاطية 5: 22-23)')">
+        <!-- 12 -->
+        <div class="faith-card-item card-gifts">
             <span class="faith-card-number">12</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-gifts"></i></div>
-                <h3>مواهب وثمار الروح القدس</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-gifts"></i></div>
+                    <h3>مواهب وثمار الروح القدس</h3>
+                </div>
+                <p>مواهب خارقة لبناء الكنيسة، وثمار الروح (محبة، فرح، سلام...) هي النتيجة الطبيعية لحياة الروح.</p>
             </div>
-            <p>مواهب خارقة لبناء الكنيسة، وثمار الروح (محبة، فرح، سلام...) هي النتيجة الطبيعية لحياة الروح.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«وَأَمَّا ثَمَرُ الرُّوحِ فَهُوَ: مَحَبَّةٌ، فَرَحٌ، سَلَامٌ، طُولُ أَنَاةٍ، لُطْفٌ...»</p>
+                <span>(غلاطية 5: 22-23)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-healing" onclick="openVerseModal('13. الشفاء الإلهي', '«الَّذِي حَمَلَ هُوَ نَفْسُهُ خَطَايَانَا فِي جَسَدِهِ عَلَى الخَشَبَةِ، لِكَيْ نَحْنُ نَمُوتَ لِلْخَطَايَا فَنَحْيَا لِلْبِرِّ. الَّذِي بِجَلْدَتِهِ شُفِيتُمْ»', '(رسالة بطرس الرسول الأولى 2: 24)')">
+        <!-- 13 -->
+        <div class="faith-card-item card-healing">
             <span class="faith-card-number">13</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-hands-holding-heart"></i></div>
-                <h3>الشفاء الإلهي</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-heart-pulse"></i></div>
+                    <h3>الشفاء الإلهي</h3>
+                </div>
+                <p>متاح للروح والنفس والجسد من خلال كفارة يسوع المسيح.</p>
             </div>
-            <p>متاح للروح والنفس والجسد من خلال كفارة يسوع المسيح.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«الَّذِي حَمَلَ هُوَ نَفْسُهُ خَطَايَانَا فِي جَسَدِهِ عَلَى الخَشَبَةِ... الَّذِي بِجَلْدَتِهِ شُفِيتُمْ»</p>
+                <span>(بطرس الأولى 2: 24)</span>
+            </div>
         </div>
 
-        <div class="faith-card-item card-prayer" onclick="openVerseModal('14. الصلاة والقيامة والنبوات', '«لِأَنَّ الرَّبَّ نَفْسَهُ بِهُتَافٍ، بِصَوْتِ رَئيسِ مَلَائِكَةٍ وَبُوقِ اللهِ، سَوْفَ يَنْزِلُ مِنَ السَّمَاءِ، وَالأَمْوَاتُ فِي الْمَسِيحِ سَيَقُومُونَ أَوَّلاً»', '(رسالة بولس الرسول الأولى إلى أهل تسالونيكي 4: 16)')">
+        <!-- 14 -->
+        <div class="faith-card-item card-prayer">
             <span class="faith-card-number">14</span>
-            <div class="faith-card-header">
-                <div class="faith-icon-box"><i class="fas fa-pray"></i></div>
-                <h3>الصلاة والقيامة والنبوات</h3>
+            <div>
+                <div class="faith-card-header">
+                    <div class="faith-icon-box"><i class="fas fa-hands-praying"></i></div>
+                    <h3>الصلاة والقيامة والنبوات</h3>
+                </div>
+                <p>الصلاة شركة مع الله، وهناك قيامة جسدية للأبرار وللأشرار، وستبلغ عصور الكنيسة ذروتها بعودة المسيح المرئية.</p>
             </div>
-            <p>الصلاة شركة مع الله، وهناك قيامة جسدية للأبرار وللأشرار، وستبلغ عصور الكنيسة ذروتها بعودة المسيح المرئية.</p>
-            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
+            <div class="card-verse-box">
+                <p>«لِأَنَّ الرَّبَّ نَفْسَهُ بِهُتَافٍ، بِصَوْتِ رَئيسِ مَلَائِكَةٍ وَبُوقِ اللهِ، سَوْفَ يَنْزِلُ...»</p>
+                <span>(تسالونيكي الأولى 4: 16)</span>
+            </div>
         </div>
 
-    </div>
-
-    <!-- نافذة عرض الآية (Modal) -->
-    <div id="verse-modal" onclick="closeVerseModal(event)">
-        <div class="modal-box" onclick="event.stopPropagation()">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 15px;">
-                <span id="modal-title" style="color: #38bdf8; font-weight: bold; font-size: 1.1rem;"></span>
-                <i class="fas fa-bible" style="color: #ffd700; font-size: 1.2rem;"></i>
-            </div>
-            
-            <div class="modal-verse-content">
-                <p id="modal-verse-text"></p>
-                <span id="modal-verse-ref" class="modal-verse-ref"></span>
-            </div>
-
-            <button class="modal-close-btn" onclick="closeVerseModal(null)">إغلاق</button>
-        </div>
     </div>
 
     <!-- زر العودة للرئيسية -->
@@ -526,26 +511,5 @@
         </div>
     </footer>
 
-    <!-- سكريبت تفاعل النافذة المنبثقة -->
-    <script>
-        function openVerseModal(title, verseText, verseRef) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-verse-text').innerText = verseText;
-            document.getElementById('modal-verse-ref').innerText = verseRef;
-
-            const modal = document.getElementById('verse-modal');
-            modal.style.display = 'flex';
-            setTimeout(() => { modal.style.opacity = '1'; modal.classList.add('active'); }, 10);
-        }
-
-        function closeVerseModal(e) {
-            if (!e || e.target.id === 'verse-modal' || e.currentTarget.classList.contains('modal-close-btn')) {
-                const modal = document.getElementById('verse-modal');
-                modal.style.opacity = '0';
-                modal.classList.remove('active');
-                setTimeout(() => { modal.style.display = 'none'; }, 300);
-            }
-        }
-    </script>
 </body>
 </html>
