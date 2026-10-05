@@ -14,52 +14,67 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #07090e;
+            background: linear-gradient(135deg, #05070a 0%, #0c1017 50%, #05070a 100%);
             color: #f3f4f6;
             overflow-x: hidden;
             margin: 0;
+            min-height: 100vh;
         }
 
         .faith-hero-section {
             position: relative;
-            padding: 140px 20px 50px;
+            padding: 150px 20px 60px;
             text-align: center;
-            background: radial-gradient(circle at center, rgba(30, 41, 59, 0.4) 0%, rgba(7, 9, 14, 0.95) 100%);
+            background: radial-gradient(circle at center, rgba(56, 189, 248, 0.08) 0%, rgba(7, 9, 14, 0.95) 70%);
         }
 
         .faith-badge-main {
             display: inline-block;
             background: rgba(212, 175, 55, 0.15);
-            color: #d4af37;
-            padding: 8px 22px;
+            color: #ffd700;
+            padding: 8px 24px;
             border-radius: 30px;
             font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
         }
 
         .faith-hero-section h2 {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             font-weight: 900;
             color: #ffffff;
             margin-bottom: 15px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
         }
 
         .faith-hero-section .section-desc {
             font-size: 1.15rem;
             color: #94a3b8;
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
+            line-height: 1.7;
         }
 
-        /* شبكة البطاقات مع تخصص كل بطاقة بلونها وهويتها البصرية */
+        .click-hint {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px dashed rgba(56, 189, 248, 0.3);
+        }
+
+        /* شبكة البطاقات المتطورة */
         .faith-modern-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
             gap: 25px;
             max-width: 1200px;
-            margin: 40px auto 80px;
+            margin: 30px auto 80px;
             padding: 0 20px;
         }
 
@@ -68,17 +83,17 @@
             border-radius: 20px;
             padding: 30px;
             overflow: hidden;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            cursor: pointer;
         }
 
-        /* إضافة أيقونة أو رمز خفيف ومائي في خلفية كل بطاقة ليعكس المعنى */
         .faith-card-item::after {
             content: var(--card-icon);
             font-family: "Font Awesome 6 Free";
@@ -87,14 +102,14 @@
             bottom: -20px;
             left: -10px;
             font-size: 7rem;
-            color: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.025);
             pointer-events: none;
             transition: transform 0.4s ease;
         }
 
         .faith-card-item:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
             border-color: var(--theme-color);
         }
 
@@ -111,8 +126,8 @@
         }
 
         .faith-icon-box {
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             background: var(--theme-gradient);
             color: #ffffff;
             border-radius: 14px;
@@ -120,7 +135,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.4rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             flex-shrink: 0;
         }
 
@@ -132,11 +147,26 @@
         }
 
         .faith-card-item p {
-            color: #e2e8f0;
+            color: #cbd5e1;
             font-size: 1rem;
             line-height: 1.8;
-            margin: 0;
+            margin: 0 0 15px 0;
             z-index: 2;
+        }
+
+        .view-verse-link {
+            color: var(--theme-color);
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 2;
+            transition: gap 0.3s;
+        }
+
+        .faith-card-item:hover .view-verse-link {
+            gap: 10px;
         }
 
         .faith-card-number {
@@ -145,33 +175,112 @@
             left: 25px;
             font-size: 1.5rem;
             font-weight: 900;
-            color: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.07);
             pointer-events: none;
         }
 
-        /* تخصيص الألوان والهويات البصرية لكل بند إيماني بدقة */
-        .card-bible { --theme-color: #3b82f6; --theme-gradient: linear-gradient(135deg, #3b82f6, #1d4ed8); background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f02d"; }
-        .card-trinity { --theme-color: #8b5cf6; --theme-gradient: linear-gradient(135deg, #8b5cf6, #6d28d9); background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f648"; }
-        .card-father { --theme-color: #f59e0b; --theme-gradient: linear-gradient(135deg, #f59e0b, #d97706); background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f185"; }
-        .card-jesus { --theme-color: #ef4444; --theme-gradient: linear-gradient(135deg, #ef4444, #b91c1c); background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f067"; }
-        .card-spirit { --theme-color: #06b6d4; --theme-gradient: linear-gradient(135deg, #06b6d4, #0e7490); background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f472"; }
-        .card-human { --theme-color: #64748b; --theme-gradient: linear-gradient(135deg, #64748b, #334155); background: linear-gradient(135deg, rgba(100, 116, 139, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f007"; }
-        .card-satan { --theme-color: #475569; --theme-gradient: linear-gradient(135deg, #475569, #1e293b); background: linear-gradient(135deg, rgba(71, 85, 105, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f3ed"; }
-        .card-salvation { --theme-color: #10b981; --theme-gradient: linear-gradient(135deg, #10b981, #047857); background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f004"; }
-        .card-church { --theme-color: #6366f1; --theme-gradient: linear-gradient(135deg, #6366f1, #4338ca); background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f51f"; }
-        .card-ordinances { --theme-color: #0ea5e9; --theme-gradient: linear-gradient(135deg, #0ea5e9, #0369a1); background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f043"; }
-        .card-baptism { --theme-color: #14b8a6; --theme-gradient: linear-gradient(135deg, #14b8a6, #0f766e); background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f0e7"; }
-        .card-gifts { --theme-color: #d946ef; --theme-gradient: linear-gradient(135deg, #d946ef, #a21caf); background: linear-gradient(135deg, rgba(217, 70, 239, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f796"; }
-        .card-healing { --theme-color: #f43f5e; --theme-gradient: linear-gradient(135deg, #f43f5e, #be123c); background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f2e8"; }
-        .card-prayer { --theme-color: #d4af37; --theme-gradient: linear-gradient(135deg, #d4af37, #aa771c); background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(15, 23, 42, 0.8)); --card-icon: "\f5b0"; }
+        /* الألوان والهويات البصرية المتطورة والبراقة لكل بند */
+        .card-bible { --theme-color: #38bdf8; --theme-gradient: linear-gradient(135deg, #38bdf8, #0284c7); background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f02d"; }
+        .card-trinity { --theme-color: #a855f7; --theme-gradient: linear-gradient(135deg, #a855f7, #7e22ce); background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f648"; }
+        .card-father { --theme-color: #fbbf24; --theme-gradient: linear-gradient(135deg, #fbbf24, #d97706); background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f185"; }
+        .card-jesus { --theme-color: #f87171; --theme-gradient: linear-gradient(135deg, #f87171, #dc2626); background: linear-gradient(135deg, rgba(248, 113, 113, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f067"; }
+        .card-spirit { --theme-color: #22d3ee; --theme-gradient: linear-gradient(135deg, #22d3ee, #0891b2); background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f472"; }
+        .card-human { --theme-color: #94a3b8; --theme-gradient: linear-gradient(135deg, #94a3b8, #475569); background: linear-gradient(135deg, rgba(148, 163, 184, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f007"; }
+        .card-satan { --theme-color: #64748b; --theme-gradient: linear-gradient(135deg, #64748b, #334155); background: linear-gradient(135deg, rgba(100, 116, 139, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f3ed"; }
+        .card-salvation { --theme-color: #34d399; --theme-gradient: linear-gradient(135deg, #34d399, #059669); background: linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f004"; }
+        .card-church { --theme-color: #818cf8; --theme-gradient: linear-gradient(135deg, #818cf8, #4f46e5); background: linear-gradient(135deg, rgba(129, 140, 248, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f51f"; }
+        .card-ordinances { --theme-color: #2563eb; --theme-gradient: linear-gradient(135deg, #38bdf8, #1d4ed8); background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f043"; }
+        .card-baptism { --theme-color: #2dd4bf; --theme-gradient: linear-gradient(135deg, #2dd4bf, #0d9488); background: linear-gradient(135deg, rgba(45, 212, 191, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f0e7"; }
+        .card-gifts { --theme-color: #e879f9; --theme-gradient: linear-gradient(135deg, #e879f9, #c026d3); background: linear-gradient(135deg, rgba(232, 121, 249, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f796"; }
+        .card-healing { --theme-color: #fb7185; --theme-gradient: linear-gradient(135deg, #fb7185, #e11d48); background: linear-gradient(135deg, rgba(251, 113, 133, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f2e8"; }
+        .card-prayer { --theme-color: #facc15; --theme-gradient: linear-gradient(135deg, #facc15, #ca8a04); background: linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f5b0"; }
 
-        /* تنسيق الشريط العلوي */
+        /* تنسيق النافذة المنبثقة (Modal) لعرض الآية بوضوح وبراقة */
+        #verse-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: linear-gradient(145deg, #111827, #0f172a);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            border-radius: 20px;
+            padding: 35px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+            transform: scale(0.85) translateY(20px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: right;
+            position: relative;
+        }
+
+        #verse-modal.active .modal-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-verse-content {
+            background: rgba(56, 189, 248, 0.08);
+            border-right: 4px solid #38bdf8;
+            padding: 22px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .modal-verse-content p {
+            color: #f8fafc;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.8;
+            margin: 0 0 10px 0;
+            font-style: italic;
+        }
+
+        .modal-verse-ref {
+            color: #38bdf8;
+            font-size: 0.95rem;
+            font-weight: bold;
+            display: block;
+            text-align: left;
+        }
+
+        .modal-close-btn {
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            color: #fff;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            display: block;
+            margin: 25px auto 0 auto;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+        }
+        .modal-close-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* الهيدر والقائمة العلوية */
         .nav-container { display: flex; justify-content: space-between; align-items: center; position: relative; padding: 15px 30px; }
-        header { background: rgba(15, 15, 15, 0.9); backdrop-filter: blur(10px); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        header { background: rgba(15, 15, 15, 0.92); backdrop-filter: blur(10px); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
         .logo a { color: #fff; text-decoration: none; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
         #nav-menu ul { display: flex; list-style: none; gap: 20px; align-items: center; margin: 0; padding: 0; }
         #nav-menu ul li a { color: #cbd5e1; text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
-        #nav-menu ul li a:hover { color: #4dabf7; }
+        #nav-menu ul li a:hover { color: #38bdf8; }
 
         @media (max-width: 900px) {
             #menu-toggle { display: block !important; }
@@ -214,9 +323,9 @@
                 <ul>
                     <li><a href="ar.html">الرئيسية</a></li>
                     <li><a href="ar.html#services">خدمات الكنيسة</a></li>
-                    <li><a href="faith.html" style="color: #d4af37; font-weight: bold;">إيمان الكنيسة</a></li>
+                    <li><a href="faith.html" style="color: #ffd700; font-weight: bold;">إيمان الكنيسة</a></li>
                     <li><a href="conference.html" style="color: #ffd43b; font-weight: bold;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
-                    <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
+                    <li><a href="bible.pdf" target="_blank" style="color: #38bdf8; font-weight: bold;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
                     <li><a href="ar.html#contact">اتصل بنا</a></li>
                     <li><a href="en.html"><i class="fas fa-globe"></i> English</a></li>
                 </ul>
@@ -231,143 +340,176 @@
         }
     </script>
 
-    <!-- المحتوى بتصميم رمزي ولوني متفرد -->
+    <!-- ترويسة الصفحة -->
     <section class="faith-hero-section">
         <div class="container">
-            <span class="faith-badge-main">عقيدتنا وتعليمنا</span>
+            <span class="faith-badge-main"><i class="fas fa-shield-alt"></i> عقيدتنا وتعليمنا</span>
             <h2>إيمان كنيسة مركز الحياة العربية (LCAC)</h2>
-            <p class="section-desc">نؤمن ونعترف بالأسس الكتابية والتعليم الرسولي الصحيح بثبات:</p>
+            <p class="section-desc">نؤمن ونعترف بالأسس الكتابية والتعليم الرسولي الصحيح بثبات.</p>
+            <div class="click-hint"><i class="fas fa-hand-pointer"></i> اضغط على أي بند إيماني أدناه لعرض الشاهد الكتابي الموافق له</div>
         </div>
     </section>
 
+    <!-- شبكة البطاقات الإيمانية (أزرار تفاعلية) -->
     <div class="faith-modern-grid">
         
-        <div class="faith-card-item card-bible">
+        <div class="faith-card-item card-bible" onclick="openVerseModal('01. الكتاب المقدس', '«كُلُّ الْكِتَابِ هُوَ مُوحًى بِهِ مِنَ اللهِ، وَنَافِعٌ لِلتَّعْلِيمِ وَالتَّوْبيخِ، لِلتَّقْوِيمِ وَالتَّأْدِيبِ الَّذِي فِي الْبِرِّ»', '(رسالة بولس الرسول الثانية إلى تيموثاوس 3: 16)')">
             <span class="faith-card-number">01</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-bible"></i></div>
                 <h3>الكتاب المقدس</h3>
             </div>
             <p>معصوم، موحى به من الله، وهو السلطة المطلقة للإيمان والحياة المسيحية دون إضافة أو تغيير.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-trinity">
+        <div class="faith-card-item card-trinity" onclick="openVerseModal('02. اللاهوت (الثالوث)', '«فَإِنَّ الَّذِينَ يَشْهَدُونَ فِي السَّمَاءِ هُمْ ثَلَاثَةٌ: الآبُ، وَالْكَلِمَةُ، وَالرُّوحُ الْقُدُسُ. وَهَؤُلَاءِ الثَّلَاثَةُ هُمْ وَاحِدٌ»', '(رسالة يوحنا الرسول الأولى 5: 7)')">
             <span class="faith-card-number">02</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-dove"></i></div>
                 <h3>اللاهوت (الثالوث)</h3>
             </div>
             <p>إله واحد مثلث الأقانيم (الآب والابن والروح القدس)، متساوون في الأزلية والقدرة، خالق وحافظ كل شيء.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-father">
+        <div class="faith-card-item card-father" onclick="openVerseModal('03. الله الآب', '«اِللهُ مَحَبَّةٌ، وَمَنْ يَثْبُتْ فِي الْمَحَبَّةِ يَثْبُتْ فِي اللهِ وَاللهُ فِيهِ»', '(رسالة يوحنا الرسول الأولى 4: 16)')">
             <span class="faith-card-number">03</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-sun"></i></div>
                 <h3>الله الآب</h3>
             </div>
             <p>الأزلي، الروح الأبدي، كلي القدرة والمعرفة، الصالح والمحب، الذي بذل ابنه لفداء البشرية.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-jesus">
+        <div class="faith-card-item card-jesus" onclick="openVerseModal('04. يسوع المسيح', '«الَّذِي إِذْ كَانَ فِي صُورَةِ اللهِ، لَمْ يَحْسِبْ خُلْسَةً أَنْ يَكُونَ مُعَادِلاً لِلَّهِ. لَكِنَّهُ أَخْلَى نَفْسَهُ، آخِذاً صُورَةَ عَبْدٍ، صَائِرًا فِي شِبْهِ النَّاسِ»', '(رسالة بولس الرسول إلى أهل فيلبي 2: 6-7)')">
             <span class="faith-card-number">04</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-cross"></i></div>
                 <h3>يسوع المسيح</h3>
             </div>
             <p>الابن الأزلي، الكلمة المتجسد من العذراء مريم، إله حق وإنسان حق، بلا خطيئة، مات على الصليب فداءً، قام، صعد وسيرجع في المجد.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-spirit">
+        <div class="faith-card-item card-spirit" onclick="openVerseModal('05. الروح القدس', '«وَأَمَّا مَتَى جَاءَ ذَاكَ، رُوحُ الْحَقِّ، فَهُوَ يُرْشِدُكُمْ إِلَى جَمِيعِ الْحَقِّ...»', '(إنجيل يوحنا 16: 13)')">
             <span class="faith-card-number">05</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-wind"></i></div>
                 <h3>الروح القدس</h3>
             </div>
             <p>الأقنوم الثالث، واهب الحياة، يدين العالم، يسكن في المؤمنين، ينتج فيهم الثمار ويمكّنهم بالتقديس والمواهب.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-human">
+        <div class="faith-card-item card-human" onclick="openVerseModal('06. الإنسان', '«لِذَلِكَ كَأَنَّمَا بِإِنْسَانِ وَاحِدٍ دَخَلَتِ الْخَطِيَّةُ إِلَى الْعَالَمِ، وَبِالْخَطِيَّةِ الْمَوْتُ، وَهَكَذَا اجْتَازَ الْمَوْتُ إِلَى جَمِيعِ النَّاسِ، إِذْ أَخْطَأَ الْجَمِيعُ»', '(رسالة بولس الرسول إلى أهل رومية 5: 12)')">
             <span class="faith-card-number">06</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-user"></i></div>
                 <h3>الإنسان</h3>
             </div>
             <p>خُلق على صورة الله، سقط بالتعدي (الخطيئة الأصلية)، وانفصل عن الله، وبات عاجزاً بلا أمل إلا بيسوع المسيح.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-satan">
+        <div class="faith-card-item card-satan" onclick="openVerseModal('07. الشيطان', '«اِصْحُوا وَاسْهَرُوا؛ لِأَنَّ إِبْلِيسَ خَصْمَكُمْ كَأَسَدٍ زَائِرٍ، يَجُولُ مُلْتَمِساً مَنْ يَبْتَلِعُهُ هُوَ»', '(رسالة بطرس الرسول الأولى 5: 8)')">
             <span class="faith-card-number">07</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-shield-alt"></i></div>
                 <h3>الشيطان</h3>
             </div>
             <p>ملاك ساقط يسعى لتدمير البشرية، جرد من قوته بموت المسيح، ومصيره العقاب الأبدي.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-salvation">
+        <div class="faith-card-item card-salvation" onclick="openVerseModal('08. الخلاص', '«لِأَنَّكُمْ بِالنِّعْمَةِ مُخَلَّصُونَ، بِالإِيمَانِ، وَذَلِكَ لَيْسَ مِنْكُمْ. هُوَ عَطِيَّةُ اللهِ. لَيْسَ مِنْ أَعْمَالٍ لِكَيْ لَا يَفْتَخِرَ أَحَدٌ»', '(رسالة بولس الرسول إلى أهل أفسس 2: 8-9)')">
             <span class="faith-card-number">08</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-heart"></i></div>
                 <h3>الخلاص</h3>
             </div>
             <p>بالنعمة فقط من خلال التوبة والإيمان بيسوع المسيح؛ ولادة جديدة وتبرير وتقديس وحياة أبدية.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-church">
+        <div class="faith-card-item card-church" onclick="openVerseModal('09. الكنيسة', '«وَأَقُولُ لَكَ أَيْضاً: أَنْتَ بُطْرُسُ، وَعَلَى هَذِه الصَّخْرَةِ أَبْني كَنِيسَتِي، وَأَبْوَابُ الْجَحِيمِ لَنْ تَقْوَى عَلَيْهَا»', '(إنجيل متى 16: 18)')">
             <span class="faith-card-number">09</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-church"></i></div>
                 <h3>الكنيسة</h3>
             </div>
             <p>جماعة المؤمنين "المولودين ثانية"، مهمتها الكرازة بالإنجيل وصنع التلاميذ وخلاص الهالكين.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-ordinances">
+        <div class="faith-card-item card-ordinances" onclick="openVerseModal('10. الفرائض', '«فَدُفِنْنَا مَعَهُ بِالْمَعْمُودِيَّةِ لِلْمَوْتِ، حَتَّى كَمَا أُقِيمَ الْمَسِيحُ مِنَ الأَمْوَاتِ، بِمَجْدِ الآبِ، هَكَذَا نَسْلُكُ نَحْنُ أَيْضاً فِي جِدَّةِ الْحَيَاةِ»', '(رسالة بولس الرسول إلى أهل رومية 6: 4)')">
             <span class="faith-card-number">10</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-water"></i></div>
                 <h3>الفرائض</h3>
             </div>
-            <p>تشمل معمودية المؤمنين (بالتغطيس كإعلان هوية واتحاد بموت القيامة وقيامته) والعشاء الرباني.</p>
+            <p>تشمل معمودية المؤمنين (بالتغطيس كإعلان هوية واتحاد بموت المسيح وقيامته) والعشاء الرباني.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-baptism">
+        <div class="faith-card-item card-baptism" onclick="openVerseModal('11. المعمودية بالروح القدس', '«لِأَنَّ يُوحَنَّا عَمَّدَ بِالْمَاءِ، وَأَمَّا أَنْتُمْ فَسَتَتَعَمَّدُونَ بِالرُّوحِ الْقُدُسِ، لَيْسَ بَعْدَ هَذِهِ الأَيَّامِ بِكَثِيرٍ»', '(سفر أعمال الرسل 1: 5)')">
             <span class="faith-card-number">11</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-bolt"></i></div>
                 <h3>المعمودية بالروح القدس</h3>
             </div>
             <p>اختبار التنعم بقوة خارقة ومواهب الروح (ومنها الألسنة) ليكون المؤمن شاهداً فعالاً.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-gifts">
+        <div class="faith-card-item card-gifts" onclick="openVerseModal('12. مواهب وثمار الروح القدس', '«وَأَمَّا ثَمَرُ الرُّوحِ فَهُوَ: مَحَبَّةٌ، فَرَحٌ، سَلَامٌ، طُولُ أَنَاةٍ، لُطْفٌ، صَلَاحٌ، إِيمَانٌ، وَدَاعَةٌ، تَعَفُّفٌ»', '(رسالة بولس الرسول إلى أهل غلاطية 5: 22-23)')">
             <span class="faith-card-number">12</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-gifts"></i></div>
                 <h3>مواهب وثمار الروح القدس</h3>
             </div>
             <p>مواهب خارقة لبناء الكنيسة، وثمار الروح (محبة، فرح، سلام...) هي النتيجة الطبيعية لحياة الروح.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-healing">
+        <div class="faith-card-item card-healing" onclick="openVerseModal('13. الشفاء الإلهي', '«الَّذِي حَمَلَ هُوَ نَفْسُهُ خَطَايَانَا فِي جَسَدِهِ عَلَى الخَشَبَةِ، لِكَيْ نَحْنُ نَمُوتَ لِلْخَطَايَا فَنَحْيَا لِلْبِرِّ. الَّذِي بِجَلْدَتِهِ شُفِيتُمْ»', '(رسالة بطرس الرسول الأولى 2: 24)')">
             <span class="faith-card-number">13</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-hands-holding-heart"></i></div>
                 <h3>الشفاء الإلهي</h3>
             </div>
             <p>متاح للروح والنفس والجسد من خلال كفارة يسوع المسيح.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
-        <div class="faith-card-item card-prayer">
+        <div class="faith-card-item card-prayer" onclick="openVerseModal('14. الصلاة والقيامة والنبوات', '«لِأَنَّ الرَّبَّ نَفْسَهُ بِهُتَافٍ، بِصَوْتِ رَئيسِ مَلَائِكَةٍ وَبُوقِ اللهِ، سَوْفَ يَنْزِلُ مِنَ السَّمَاءِ، وَالأَمْوَاتُ فِي الْمَسِيحِ سَيَقُومُونَ أَوَّلاً»', '(رسالة بولس الرسول الأولى إلى أهل تسالونيكي 4: 16)')">
             <span class="faith-card-number">14</span>
             <div class="faith-card-header">
                 <div class="faith-icon-box"><i class="fas fa-pray"></i></div>
                 <h3>الصلاة والقيامة والنبوات</h3>
             </div>
             <p>الصلاة شركة مع الله، وهناك قيامة جسدية للأبرار وللأشرار، وستبلغ عصور الكنيسة ذروتها بعودة المسيح المرئية.</p>
+            <span class="view-verse-link"><i class="fas fa-book-open"></i> عرض الآية الموافقة</span>
         </div>
 
+    </div>
+
+    <!-- نافذة عرض الآية (Modal) -->
+    <div id="verse-modal" onclick="closeVerseModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 15px;">
+                <span id="modal-title" style="color: #38bdf8; font-weight: bold; font-size: 1.1rem;"></span>
+                <i class="fas fa-bible" style="color: #ffd700; font-size: 1.2rem;"></i>
+            </div>
+            
+            <div class="modal-verse-content">
+                <p id="modal-verse-text"></p>
+                <span id="modal-verse-ref" class="modal-verse-ref"></span>
+            </div>
+
+            <button class="modal-close-btn" onclick="closeVerseModal(null)">إغلاق</button>
+        </div>
     </div>
 
     <!-- زر العودة للرئيسية -->
@@ -384,5 +526,26 @@
         </div>
     </footer>
 
+    <!-- سكريبت تفاعل النافذة المنبثقة -->
+    <script>
+        function openVerseModal(title, verseText, verseRef) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-verse-text').innerText = verseText;
+            document.getElementById('modal-verse-ref').innerText = verseRef;
+
+            const modal = document.getElementById('verse-modal');
+            modal.style.display = 'flex';
+            setTimeout(() => { modal.style.opacity = '1'; modal.classList.add('active'); }, 10);
+        }
+
+        function closeVerseModal(e) {
+            if (!e || e.target.id === 'verse-modal' || e.currentTarget.classList.contains('modal-close-btn')) {
+                const modal = document.getElementById('verse-modal');
+                modal.style.opacity = '0';
+                modal.classList.remove('active');
+                setTimeout(() => { modal.style.display = 'none'; }, 300);
+            }
+        }
+    </script>
 </body>
 </html>
