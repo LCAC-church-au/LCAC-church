@@ -19,7 +19,6 @@
             overflow-x: hidden;
             margin: 0;
             min-height: 100vh;
-            scroll-behavior: smooth; /* تفعيل التمرير السلس عند الضغط على الأزرار */
         }
 
         .faith-hero-section {
@@ -94,7 +93,6 @@
             justify-content: space-between;
             text-align: left;
             cursor: pointer;
-            text-decoration: none;
         }
 
         .faith-card-item::after {
@@ -153,57 +151,18 @@
             color: #cbd5e1;
             font-size: 0.98rem;
             line-height: 1.7;
-            margin: 0 0 18px 0;
+            margin: 0 0 15px 0;
             z-index: 2;
         }
 
-        /* صندوق عرض الآية المباشرة داخل البطاقة */
-        .card-verse-box {
-            background: rgba(0, 0, 0, 0.35);
-            border-left: 3px solid var(--theme-color);
-            padding: 12px 15px;
-            border-radius: 8px;
-            z-index: 2;
-            margin-top: 10px;
-            scroll-margin-top: 100px; /* ضمان ظهور الآية بوضوح عند التمرير إليها */
-        }
-
-        .card-verse-box p {
-            color: #f8fafc;
-            font-size: 0.9rem;
-            font-style: italic;
-            font-weight: 600;
-            margin: 0 0 6px 0;
-            line-height: 1.6;
-        }
-
-        .card-verse-ref {
+        .view-verse-action {
             color: var(--theme-color);
-            font-size: 0.82rem;
+            font-size: 0.9rem;
             font-weight: bold;
-            display: block;
-            text-align: right;
-            margin-bottom: 10px;
-        }
-
-        /* زر إغلاق الآية العودة لأعلى البطاقة باللغة الإنجليزية */
-        .card-close-verse-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #94a3b8;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            display: inline-block;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .card-close-verse-btn:hover {
-            background: #ef4444;
-            color: #fff;
-            border-color: #ef4444;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 2;
         }
 
         .faith-card-number {
@@ -231,6 +190,85 @@
         .card-gifts { --theme-color: #e879f9; --theme-gradient: linear-gradient(135deg, #e879f9, #c026d3); background: linear-gradient(135deg, rgba(232, 121, 249, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f796"; }
         .card-healing { --theme-color: #fb7185; --theme-gradient: linear-gradient(135deg, #fb7185, #e11d48); background: linear-gradient(135deg, rgba(251, 113, 133, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f2e8"; }
         .card-prayer { --theme-color: #facc15; --theme-gradient: linear-gradient(135deg, #facc15, #ca8a04); background: linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(15, 23, 42, 0.85)); --card-icon: "\f5b0"; }
+
+        /* Modal styling */
+        #verse-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: linear-gradient(145deg, #111827, #0f172a);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            border-radius: 20px;
+            padding: 35px;
+            max-width: 580px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+            transform: scale(0.85) translateY(20px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: left;
+            position: relative;
+        }
+
+        #verse-modal.active .modal-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-verse-content {
+            background: rgba(56, 189, 248, 0.08);
+            border-left: 4px solid #38bdf8;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .modal-verse-content p {
+            color: #f8fafc;
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.9;
+            margin: 0 0 12px 0;
+            font-style: italic;
+        }
+
+        .modal-verse-ref {
+            color: #38bdf8;
+            font-size: 1rem;
+            font-weight: bold;
+            display: block;
+            text-align: right;
+        }
+
+        .modal-close-btn {
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            color: #fff;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            display: block;
+            margin: 25px auto 0 auto;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+        }
+        .modal-close-btn:hover {
+            transform: scale(1.05);
+        }
 
         /* Navbar */
         .nav-container { display: flex; justify-content: space-between; align-items: center; position: relative; padding: 15px 30px; }
@@ -261,7 +299,7 @@
         #menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; }
     </style>
 </head>
-<body id="top">
+<body>
 
     <!-- Header & Navigation -->
     <header>
@@ -304,7 +342,7 @@
             <span class="faith-badge-main"><i class="fas fa-shield-alt"></i> Our Doctrine & Beliefs</span>
             <h2>Statement of Faith - LCAC</h2>
             <p class="section-desc">We firmly believe and confess the foundational biblical truths and sound apostolic teaching.</p>
-            <div class="click-hint"><i class="fas fa-hand-pointer"></i> Click on any card to jump directly to its scripture reference</div>
+            <div class="click-hint"><i class="fas fa-hand-pointer"></i> Click on any card to read its scripture reference (NIV)</div>
         </div>
     </section>
 
@@ -312,7 +350,7 @@
     <div class="faith-modern-grid">
         
         <!-- 01 -->
-        <a href="#verse-1" class="faith-card-item card-bible">
+        <div class="faith-card-item card-bible" onclick="openVerseModal('01. The Holy Bible', '\"All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness.\"', '(2 Timothy 3:16 NIV)')">
             <span class="faith-card-number">01</span>
             <div>
                 <div class="faith-card-header">
@@ -321,13 +359,11 @@
                 </div>
                 <p>Infallible, divinely inspired by God, and the supreme authority for Christian faith and life without addition or alteration.</p>
             </div>
-            <div style="color: #38bdf8; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 02 -->
-        <a href="#verse-2" class="faith-card-item card-trinity">
+        <div class="faith-card-item card-trinity" onclick="openVerseModal('02. The Trinity', '\"For there are three that testify: the Spirit, the water and the blood; and the three are in agreement.\"', '(1 John 5:7-8 NIV)')">
             <span class="faith-card-number">02</span>
             <div>
                 <div class="faith-card-header">
@@ -336,13 +372,11 @@
                 </div>
                 <p>One God in three persons (Father, Son, and Holy Spirit), co-equal in eternity and power, the Creator and Sustainer of all things.</p>
             </div>
-            <div style="color: #a855f7; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 03 -->
-        <a href="#verse-3" class="faith-card-item card-father">
+        <div class="faith-card-item card-father" onclick="openVerseModal('03. God the Father', '\"And so we know and rely on the love God has for us. God is love. Whoever lives in love lives in God, and God in them.\"', '(1 John 4:16 NIV)')">
             <span class="faith-card-number">03</span>
             <div>
                 <div class="faith-card-header">
@@ -351,13 +385,11 @@
                 </div>
                 <p>Eternal, spiritual, omnipotent, omniscient, good, and loving, who gave His Son for the redemption of humanity.</p>
             </div>
-            <div style="color: #fbbf24; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 04 -->
-        <a href="#verse-4" class="faith-card-item card-jesus">
+        <div class="faith-card-item card-jesus" onclick="openVerseModal('04. Jesus Christ', '\"Who, being in very nature God, did not consider equality with God something to be used to his own advantage; rather, he made himself nothing by taking the very nature of a servant.\"', '(Philippians 2:6-7 NIV)')">
             <span class="faith-card-number">04</span>
             <div>
                 <div class="faith-card-header">
@@ -366,13 +398,11 @@
                 </div>
                 <p>The eternal Son, the Word incarnate born of the Virgin Mary, true God and true man, sinless, died on the cross for redemption, rose, ascended, and will return in glory.</p>
             </div>
-            <div style="color: #f87171; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 05 -->
-        <a href="#verse-5" class="faith-card-item card-spirit">
+        <div class="faith-card-item card-spirit" onclick="openVerseModal('05. The Holy Spirit', '\"But when he, the Spirit of truth, comes, he will guide you into all the truth.\"', '(John 16:13 NIV)')">
             <span class="faith-card-number">05</span>
             <div>
                 <div class="faith-card-header">
@@ -381,13 +411,11 @@
                 </div>
                 <p>The third person, Giver of life, convicts the world, dwells in believers, produces fruit in them, and empowers them with sanctification and gifts.</p>
             </div>
-            <div style="color: #22d3ee; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 06 -->
-        <a href="#verse-6" class="faith-card-item card-human">
+        <div class="faith-card-item card-human" onclick="openVerseModal('06. Humanity', '\"Therefore, just as sin entered the world through one man, and death through sin, and in this way death came to all people, because all sinned.\"', '(Romans 5:12 NIV)')">
             <span class="faith-card-number">06</span>
             <div>
                 <div class="faith-card-header">
@@ -396,13 +424,11 @@
                 </div>
                 <p>Created in the image of God, fell through transgression (original sin), separated from God, and utterly helpless without Jesus Christ.</p>
             </div>
-            <div style="color: #94a3b8; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 07 -->
-        <a href="#verse-7" class="faith-card-item card-satan">
+        <div class="faith-card-item card-satan" onclick="openVerseModal('07. Satan', '\"Be alert and of sober mind. Your enemy the devil prowls around like a roaring lion looking for someone to devour.\"', '(1 Peter 5:8 NIV)')">
             <span class="faith-card-number">07</span>
             <div>
                 <div class="faith-card-header">
@@ -411,13 +437,11 @@
                 </div>
                 <p>A fallen angel seeking to destroy humanity, disarmed by Christ’s death, and destined for eternal punishment.</p>
             </div>
-            <div style="color: #64748b; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 08 -->
-        <a href="#verse-8" class="faith-card-item card-salvation">
+        <div class="faith-card-item card-salvation" onclick="openVerseModal('08. Salvation', '\"For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God—not by works, so that no one can boast.\"', '(Ephesians 2:8-9 NIV)')">
             <span class="faith-card-number">08</span>
             <div>
                 <div class="faith-card-header">
@@ -426,13 +450,11 @@
                 </div>
                 <p>By grace alone through repentance and faith in Jesus Christ; new birth, justification, sanctification, and eternal life.</p>
             </div>
-            <div style="color: #34d399; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 09 -->
-        <a href="#verse-9" class="faith-card-item card-church">
+        <div class="faith-card-item card-church" onclick="openVerseModal('09. The Church', '\"And I tell you that you are Peter, and on this rock I will build my church, and the gates of Hades will not overcome it.\"', '(Matthew 16:18 NIV)')">
             <span class="faith-card-number">09</span>
             <div>
                 <div class="faith-card-header">
@@ -441,13 +463,11 @@
                 </div>
                 <p>The community of "born-again" believers, whose mission is to preach the Gospel, make disciples, and rescue the lost.</p>
             </div>
-            <div style="color: #818cf8; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 10 -->
-        <a href="#verse-10" class="faith-card-item card-ordinances">
+        <div class="faith-card-item card-ordinances" onclick="openVerseModal('10. The Ordinances', '\"We were therefore buried with him through baptism into death in order that, just as Christ was raised from the dead through the glory of the Father, we too may live a new life.\"', '(Romans 6:4 NIV)')">
             <span class="faith-card-number">10</span>
             <div>
                 <div class="faith-card-header">
@@ -456,13 +476,11 @@
                 </div>
                 <p>Including believer's baptism (by full immersion as an identity declaration and union with Christ’s death and resurrection) and Holy Communion.</p>
             </div>
-            <div style="color: #38bdf8; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 11 -->
-        <a href="#verse-11" class="faith-card-item card-baptism">
+        <div class="faith-card-item card-baptism" onclick="openVerseModal('11. Baptism in the Holy Spirit', '\"For John baptized with water, but in a few days you will be baptized with the Holy Spirit.\"', '(Acts 1:5 NIV)')">
             <span class="faith-card-number">11</span>
             <div>
                 <div class="faith-card-header">
@@ -471,13 +489,11 @@
                 </div>
                 <p>An experience empowering believers with supernatural strength and spiritual gifts to be effective witnesses.</p>
             </div>
-            <div style="color: #2dd4bf; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 12 -->
-        <a href="#verse-12" class="faith-card-item card-gifts">
+        <div class="faith-card-item card-gifts" onclick="openVerseModal('12. Gifts and Fruit of the Spirit', '\"But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control.\"', '(Galatians 5:22-23 NIV)')">
             <span class="faith-card-number">12</span>
             <div>
                 <div class="faith-card-header">
@@ -486,13 +502,11 @@
                 </div>
                 <p>Supernatural gifts for building up the church, and the fruit of the Spirit as the natural result of a life led by the Spirit.</p>
             </div>
-            <div style="color: #e879f9; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 13 -->
-        <a href="#verse-13" class="faith-card-item card-healing">
+        <div class="faith-card-item card-healing" onclick="openVerseModal('13. Divine Healing', '\"He himself bore our sins in his body on the cross, so that we might die to sins and live for righteousness; by his wounds you have been healed.\"', '(1 Peter 2:24 NIV)')">
             <span class="faith-card-number">13</span>
             <div>
                 <div class="faith-card-header">
@@ -501,13 +515,11 @@
                 </div>
                 <p>Available for spirit, soul, and body through the atoning sacrifice of Jesus Christ.</p>
             </div>
-            <div style="color: #fb7185; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
         <!-- 14 -->
-        <a href="#verse-14" class="faith-card-item card-prayer">
+        <div class="faith-card-item card-prayer" onclick="openVerseModal('14. Prayer, Resurrection & Prophecy', '\"For the Lord himself will come down from heaven, with a loud command, with the voice of the archangel and with the trumpet call of God, and the dead in Christ will rise first.\"', '(1 Thessalonians 4:16 NIV)')">
             <span class="faith-card-number">14</span>
             <div>
                 <div class="faith-card-header">
@@ -516,129 +528,26 @@
                 </div>
                 <p>Prayer is communion with God; there is a bodily resurrection, and the church ages will culminate in Christ's visible return.</p>
             </div>
-            <div style="color: #facc15; font-size: 0.88rem; font-weight: bold; margin-top: 15px;">
-                <i class="fas fa-arrow-down"></i> View Scripture (NIV)
-            </div>
-        </a>
+            <div class="view-verse-action"><i class="fas fa-book-open"></i> View Scripture (NIV)</div>
+        </div>
 
     </div>
 
-    <!-- قسم الآيات المرتبطة (تظهر بالتفصيل مع أزرار الإغلاق) -->
-    <div style="max-width: 900px; margin: 0 auto 100px; padding: 0 20px;">
-        <h3 style="text-align: center; color: #ffd700; font-size: 2rem; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">Scriptural References (NIV)</h3>
+    <!-- Verse Modal Popup -->
+    <div id="verse-modal" onclick="closeVerseModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 15px;">
+                <span id="modal-title" style="color: #38bdf8; font-weight: bold; font-size: 1.15rem;"></span>
+                <i class="fas fa-bible" style="color: #ffd700; font-size: 1.3rem;"></i>
+            </div>
+            
+            <div class="modal-verse-content">
+                <p id="modal-verse-text"></p>
+                <span id="modal-verse-ref" class="modal-verse-ref"></span>
+            </div>
 
-        <!-- 01 -->
-        <div id="verse-1" class="card-verse-box card-bible" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #38bdf8; margin: 0 0 10px 0;">01. The Holy Bible</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">2 Timothy 3:16 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
+            <button class="modal-close-btn" onclick="closeVerseModal(null)">Close Verse</button>
         </div>
-
-        <!-- 02 -->
-        <div id="verse-2" class="card-verse-box card-trinity" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #a855f7; margin: 0 0 10px 0;">02. The Trinity</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"For there are three that testify: the Spirit, the water and the blood; and the three are in agreement."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">1 John 5:7-8 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 03 -->
-        <div id="verse-3" class="card-verse-box card-father" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #fbbf24; margin: 0 0 10px 0;">03. God the Father</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"And so we know and rely on the love God has for us. God is love. Whoever lives in love lives in God, and God in them."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">1 John 4:16 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 04 -->
-        <div id="verse-4" class="card-verse-box card-jesus" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #f87171; margin: 0 0 10px 0;">04. Jesus Christ</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"Who, being in very nature God, did not consider equality with God something to be used to his own advantage; rather, he made himself nothing by taking the very nature of a servant."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">Philippians 2:6-7 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 05 -->
-        <div id="verse-5" class="card-verse-box card-spirit" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #22d3ee; margin: 0 0 10px 0;">05. The Holy Spirit</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"But when he, the Spirit of truth, comes, he will guide you into all the truth."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">John 16:13 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 06 -->
-        <div id="verse-6" class="card-verse-box card-human" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #94a3b8; margin: 0 0 10px 0;">06. Humanity</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"Therefore, just as sin entered the world through one man, and death through sin, and in this way death came to all people, because all sinned."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">Romans 5:12 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 07 -->
-        <div id="verse-7" class="card-verse-box card-satan" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #64748b; margin: 0 0 10px 0;">07. Satan</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"Be alert and of sober mind. Your enemy the devil prowls around like a roaring lion looking for someone to devour."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">1 Peter 5:8 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 08 -->
-        <div id="verse-8" class="card-verse-box card-salvation" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #34d399; margin: 0 0 10px 0;">08. Salvation</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God—not by works, so that no one can boast."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">Ephesians 2:8-9 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 09 -->
-        <div id="verse-9" class="card-verse-box card-church" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #818cf8; margin: 0 0 10px 0;">09. The Church</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"And I tell you that you are Peter, and on this rock I will build my church, and the gates of Hades will not overcome it."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">Matthew 16:18 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 10 -->
-        <div id="verse-10" class="card-verse-box card-ordinances" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #38bdf8; margin: 0 0 10px 0;">10. The Ordinances</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"We were therefore buried with him through baptism into death in order that, just as Christ was raised from the dead through the glory of the Father, we too may live a new life."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">Romans 6:4 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 11 -->
-        <div id="verse-11" class="card-verse-box card-baptism" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #2dd4bf; margin: 0 0 10px 0;">11. Baptism in the Holy Spirit</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"For John baptized with water, but in a few days you will be baptized with the Holy Spirit."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">Acts 1:5 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 12 -->
-        <div id="verse-12" class="card-verse-box card-gifts" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #e879f9; margin: 0 0 10px 0;">12. Gifts and Fruit of the Spirit</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">Galatians 5:22-23 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 13 -->
-        <div id="verse-13" class="card-verse-box card-healing" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #fb7185; margin: 0 0 10px 0;">13. Divine Healing</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"He himself bore our sins in his body on the cross, so that we might die to sins and live for righteousness; by his wounds you have been healed."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">1 Peter 2:24 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
-        <!-- 14 -->
-        <div id="verse-14" class="card-verse-box card-prayer" style="padding: 25px; margin-bottom: 25px; border-radius: 14px;">
-            <h4 style="color: #facc15; margin: 0 0 10px 0;">14. Prayer, Resurrection & Prophecy</h4>
-            <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.8;">"For the Lord himself will come down from heaven, with a loud command, with the voice of the archangel and with the trumpet call of God, and the dead in Christ will rise first."</p>
-            <span class="card-verse-ref" style="margin-top: 10px; font-size: 0.95rem;">1 Thessalonians 4:16 (NIV)</span>
-            <div style="text-align: right; margin-top: 15px;"><a href="#top" class="card-close-verse-btn">Close Verse</a></div>
-        </div>
-
     </div>
 
     <!-- Back to Home Button -->
@@ -654,5 +563,27 @@
             <p style="color: #94a3b8; font-size: 0.9rem;">&copy; 2026 Living Arab Center Church (LCAC). All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Modal Script -->
+    <script>
+        function openVerseModal(title, verseText, verseRef) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-verse-text').innerText = verseText;
+            document.getElementById('modal-verse-ref').innerText = verseRef;
+
+            const modal = document.getElementById('verse-modal');
+            modal.style.display = 'flex';
+            setTimeout(() => { modal.style.opacity = '1'; modal.classList.add('active'); }, 10);
+        }
+
+        function closeVerseModal(e) {
+            if (!e || e.target.id === 'verse-modal' || e.currentTarget.classList.contains('modal-close-btn')) {
+                const modal = document.getElementById('verse-modal');
+                modal.style.opacity = '0';
+                modal.classList.remove('active');
+                setTimeout(() => { modal.style.display = 'none'; }, 300);
+            }
+        }
+    </script>
 </body>
 </html>
