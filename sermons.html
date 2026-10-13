@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عظات الكنيسة والتأملات - كنيسة مركز الحياة العربية</title>
     
-    <!-- الأيقونات والخطوط وملف التصميم المركزي -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* خلفية سينمائية فاخرة بلمسة عمق وتدرج مميز */
         body {
             background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(10, 10, 10, 0.95)), url('church1.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -88,7 +86,7 @@
             padding: 90px 20px 30px;
         }
 
-        /* أزرار التصفية السريعة (Filtering Buttons) */
+        /* أزرار التصفية السريعة */
         .filter-container {
             display: flex;
             justify-content: center;
@@ -114,7 +112,6 @@
             box-shadow: 0 0 15px rgba(77, 171, 247, 0.4);
         }
 
-        /* ضبط شبكة العظات لتظهر بدقة في 3 أعمدة مريحة */
         .sermons-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -125,15 +122,11 @@
         }
 
         @media (max-width: 1050px) {
-            .sermons-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .sermons-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 700px) {
-            .sermons-grid {
-                grid-template-columns: 1fr;
-            }
+            .sermons-grid { grid-template-columns: 1fr; }
         }
 
         .sermon-card {
@@ -214,7 +207,6 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.9);
         }
 
-        /* أزرار المشاركة السريعة عبر واتساب */
         .share-whatsapp-btn {
             display: inline-flex;
             align-items: center;
@@ -271,7 +263,7 @@
                     <li><a href="ar.html#services">خدمات الكنيسة</a></li>
                     <li><a href="faith.html">إيمان الكنيسة</a></li>
                     <li><a href="bible-study.html">درس الكتاب</a></li>
-                    <li><a href="women.html">خدمة النساء</a></li>
+                    <li><a href="prayer-service.html">خدمة الصلاة</a></li>
                     <li><a href="conference.html" style="color: #ffd43b; font-weight: bold;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
                     <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
                     <li><a href="en.html"><i class="fas fa-globe"></i> English</a></li>
@@ -294,6 +286,7 @@
             <button class="filter-btn active" onclick="filterSermons('all', this)">الكل</button>
             <button class="filter-btn" onclick="filterSermons('غسان', this)">القس غسان توماس</button>
             <button class="filter-btn" onclick="filterSermons('هاني', this)">القس هاني موسى</button>
+            <button class="filter-btn" onclick="filterSermons('غطاس', this)">القس هاني غطاس</button>
             <button class="filter-btn" onclick="filterSermons('جوزيف', this)">القس جوزيف كبريال</button>
             <button class="filter-btn" onclick="filterSermons('مروان', this)">الأخ مروان مونا</button>
         </div>
@@ -302,31 +295,31 @@
     <!-- شبكة عرض العظات -->
     <main class="sermons-grid">
 
-        <!-- العظة الجديدة: فيروس الكذب - القس هاني غطاس -->
-            <div class="sermon-card" style="background: rgba(15, 15, 15, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <div style="margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-                        <h2 style="color: #fff; font-size: 1.3rem; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);">
-                            فيروس الكذب
-                        </h2>
-                        <div style="display: flex; flex-direction: column; gap: 6px; color: #4dabf7; font-size: 0.95rem; font-weight: bold;">
-                            <span><i class="fas fa-user-tie"></i> الواعظ: القس هاني غطاس</span>
-                            <span><i class="fas fa-calendar-alt"></i> التاريخ: 11/10/2026</span>
-                        </div>
-                    </div>
-
-                    <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.8); background: #000; margin-bottom: 15px;">
-                        <iframe src="https://www.youtube.com/embed/ELrMvj4HvaY?start=3045" title="عظة الكنيسة" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+        <!-- العظة الجديدة: فيروس الكذب (القس هاني غطاس) -->
+        <div class="sermon-card" data-speaker="غطاس">
+            <div>
+                <div class="sermon-header">
+                    <h2>فيروس الكذب</h2>
+                    <div class="sermon-meta">
+                        <span><i class="fas fa-user-tie"></i> الواعظ: القس هاني غطاس</span>
+                        <span><i class="fas fa-calendar-alt"></i> التاريخ: 11/10/2026</span>
                     </div>
                 </div>
-
-                <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; border-right: 4px solid #4dabf7;">
-                    <p style="color: #e5e5e5; font-size: 0.95rem; line-height: 1.6; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
-                        <strong>ملخص العظة:</strong> تحذير المؤمنين من "فيروس الكذب" بأنواعه (على الله، على الناس، وعلى النفس) والتمسك بالحق والشفافية الروحية لنيل البركة والتحرر.
-                    </p>
+                <div class="sermon-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/ELrMvj4HvaY?start=3045" title="عظة الكنيسة" allowfullscreen></iframe>
                 </div>
             </div>
-        <!-- العظة 1 -->
+            <div>
+                <div class="sermon-summary">
+                    <p><strong>ملخص العظة:</strong> تحذير المؤمنين من "فيروس الكذب" بأنواعه والتمسك بالحق والشفافية الروحية لنيل البركة والتحرر.</p>
+                </div>
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D9%81%D9%8A%D8%B1%D9%88%D8%B3%20%D8%A7%D9%84%D9%83%D8%B0%D8%A8%20https://www.youtube.com/watch?v=ELrMvj4HvaY" target="_blank" class="share-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
+                </a>
+            </div>
+        </div>
+
+        <!-- العظة: الروح القدس روح الحياة والقوة (القس هاني موسى) -->
         <div class="sermon-card" data-speaker="هاني">
             <div>
                 <div class="sermon-header">
@@ -344,13 +337,13 @@
                 <div class="sermon-summary">
                     <p><strong>ملخص العظة:</strong> التغيير الحقيقي لا يحدث بالجهد البشري، بل بفيض وامتلاء من "روح الله" الذي يحيي القلوب ويمنح القوة.</p>
                 </div>
-                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D8%A7%D9%84%D8%B1%D9%88%D8%AD%20%D8%A7%D9%84%D9%82%D8%AF%D8%B3%20%D8%B1%D9%88%D8%AD%20%D8%A7%D9%84%D8%AD%D9%8A%D8%A7%D8%A9%20%D9%88%D8%A7%D9%84%D9%82%D9%88%D8%A9%20%D9%84%D9%84%D9%82%D8%B3%20%D9%87%D8%A7%D9%86%D9%8A%20%D9%85%D9%88%D8%B3%D9%89%20https://www.youtube.com/watch?v=qqj1bMqpvnA" target="_blank" class="share-whatsapp-btn">
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D8%A7%D9%84%D8%B1%D9%88%D8%AD%20%D8%A7%D9%84%D9%82%D8%AF%D8%B3%20%D8%B1%D9%88%D8%AD%20%D8%A7%D9%84%D8%AD%D9%8A%D8%A7%D8%A9%20%D9%88%D8%A7%D9%84%D9%82%D9%88%D8%A9%20https://www.youtube.com/watch?v=qqj1bMqpvnA" target="_blank" class="share-whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
                 </a>
             </div>
         </div>
 
-        <!-- العظة 2 -->
+        <!-- العظة: معوقات الخطوة الأولى (الأخ مروان مونا) -->
         <div class="sermon-card" data-speaker="مروان">
             <div>
                 <div class="sermon-header">
@@ -374,7 +367,7 @@
             </div>
         </div>
 
-        <!-- العظة 3 -->
+        <!-- العظة: الإيمان العامل، عندما لا يسير الطريق كما توقعت (القس غسان توماس) -->
         <div class="sermon-card" data-speaker="غسان">
             <div>
                 <div class="sermon-header">
@@ -398,7 +391,7 @@
             </div>
         </div>
 
-        <!-- العظة 4 -->
+        <!-- العظة: الإيمان العامل، عندما يتحول ما في القلب إلى خطوة (القس غسان توماس) -->
         <div class="sermon-card" data-speaker="غسان">
             <div>
                 <div class="sermon-header">
@@ -422,7 +415,7 @@
             </div>
         </div>
 
-        <!-- العظة 5 -->
+        <!-- العظة: ما في يد الأب وما في يد الآب (القس غسان توماس) -->
         <div class="sermon-card" data-speaker="غسان">
             <div>
                 <div class="sermon-header">
@@ -446,7 +439,7 @@
             </div>
         </div>
 
-        <!-- العظة 6 -->
+        <!-- العظة: إيمان يواجه الظروف (القس غسان توماس) -->
         <div class="sermon-card" data-speaker="غسان">
             <div>
                 <div class="sermon-header">
@@ -464,13 +457,13 @@
                 <div class="sermon-summary">
                     <p><strong>ملخص العظة:</strong> الإيمان الحقيقي يجعل صوت الله وكلمته أعلى من صوت الخوف والواقع والظروف الصعبة.</p>
                 </div>
-                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D நடிப்ப%20%D9%8A%D9%88%D8%A7%D8%AC%D9%87%20%D8%A7%D9%84%D8%B8%D8%B1%D9%88%D9%81%20https://www.youtube.com/watch?v=byV6LXqoQow" target="_blank" class="share-whatsapp-btn">
+                <a href="https://api.whatsapp.com/send?text=%D8%B4%D8%A7%D9%87%D8%AF%20%D8%B9%D8%B8%D8%A9%20%D8%A5%D9%8A%D9%85%D8%A7%D9%86%20%D9%8A%D9%88%D8%A7%D8%AC%D9%87%20%D8%A7%D9%84%D8%B8%D8%B1%D9%88%D9%81%20https://www.youtube.com/watch?v=byV6LXqoQow" target="_blank" class="share-whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> مشاركة عبر واتساب
                 </a>
             </div>
         </div>
 
-        <!-- العظة 7 -->
+        <!-- العظة: محبة الله غير المحدودة (القس جوزيف كبريال) -->
         <div class="sermon-card" data-speaker="جوزيف">
             <div>
                 <div class="sermon-header">
@@ -494,7 +487,7 @@
             </div>
         </div>
 
-        <!-- العظة 8 -->
+        <!-- العظة: إيمان يواجه الواقع (القس غسان توماس) -->
         <div class="sermon-card" data-speaker="غسان">
             <div>
                 <div class="sermon-header">
@@ -520,7 +513,7 @@
 
     </main>
 
-    <!-- السكريبتات للتفاعل وتصفية العظات والقائمة الجانبية -->
+    <!-- السكريبتات للتفاعل وتصفية العظات -->
     <script>
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
@@ -532,11 +525,9 @@
             const cards = document.querySelectorAll('.sermon-card');
             const buttons = document.querySelectorAll('.filter-btn');
 
-            // تغيير الزر النشط
             buttons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            // إظهار أو إخفاء البطاقات بناءً على المطابقة
             cards.forEach(card => {
                 if (speakerKey === 'all' || card.getAttribute('data-speaker') === speakerKey) {
                     card.style.display = 'flex';
