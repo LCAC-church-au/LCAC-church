@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>درس الكتاب - كنيسة مركز الحياة العربية LCAC</title>
+    <title>رحلة النمو - درس الكتاب | كنيسة مركز الحياة العربية LCAC</title>
     
     <!-- الأيقونات والخطوط وملف التصميم المركزي -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -21,44 +21,126 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            scroll-behavior: smooth;
         }
 
         .bible-hero {
             text-align: center;
-            padding: 140px 20px 50px;
-            background: radial-gradient(circle at center, rgba(77, 171, 247, 0.1) 0%, rgba(7, 9, 14, 0.95) 75%);
+            padding: 140px 20px 40px;
+            background: radial-gradient(circle at center, rgba(77, 171, 247, 0.12) 0%, rgba(7, 9, 14, 0.95) 75%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* زر رحلة النمو البارز والفاخر */
-        .journey-trigger-container {
+        /* بانر العنوان البارز */
+        .journey-banner {
+            max-width: 800px;
+            margin: 30px auto;
+            background: rgba(15, 15, 15, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-right: 4px solid #4dabf7;
+            padding: 22px 28px;
+            border-radius: 14px;
             text-align: center;
-            padding: 80px 20px 120px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .journey-main-btn {
-            background: linear-gradient(135deg, #4dabf7, #1d4ed8);
-            color: #fff;
-            border: none;
-            padding: 22px 45px;
-            border-radius: 40px;
-            font-size: 1.35rem;
-            font-weight: 900;
+        /* شبكة الأسابيع المرئية والمباشرة */
+        .weeks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            padding: 10px 5% 70px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .week-card {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
             cursor: pointer;
-            box-shadow: 0 10px 35px rgba(77, 171, 247, 0.4);
-            display: inline-flex;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .week-card:hover {
+            transform: translateY(-6px);
+            border-color: #4dabf7;
+            box-shadow: 0 12px 35px rgba(77, 171, 247, 0.3);
+            background: rgba(30, 41, 59, 0.85);
+        }
+
+        /* ستايل الأزرار المستقبلية الجاهزة (Placeholder Cards) */
+        .week-card.future-card {
+            border: 2px dashed rgba(77, 171, 247, 0.3);
+            background: rgba(77, 171, 247, 0.03);
+            text-align: center;
+            justify-content: center;
             align-items: center;
-            gap: 15px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-height: 200px;
+        }
+        .week-card.future-card:hover {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.05);
         }
 
-        .journey-main-btn:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 15px 45px rgba(77, 171, 247, 0.6);
+        .week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #4dabf7;
         }
 
-        /* تنسيق النافذة المنبثقة (Modal) الكبرى لرحلة النمو */
-        #journey-modal {
+        .week-date {
+            background: rgba(77, 171, 247, 0.15);
+            color: #4dabf7;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+        }
+
+        .week-content h3 {
+            color: #fff;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .week-content p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .idea-box {
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px dashed rgba(255, 215, 0, 0.4);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            color: #ffd43b;
+            margin-bottom: 15px;
+        }
+
+        .verse-badge {
+            font-style: italic;
+            color: #e5e5e5;
+            font-size: 0.88rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 12px;
+            display: block;
+        }
+
+        /* تنسيق النافذة المنبثقة للتفاصيل */
+        #lesson-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -75,60 +157,54 @@
             padding: 20px;
         }
 
-        .journey-modal-box {
+        .modal-box {
             background: linear-gradient(145deg, #111827, #0f172a);
-            border: 1px solid rgba(77, 171, 247, 0.4);
-            border-radius: 22px;
+            border: 1px solid rgba(77, 171, 247, 0.5);
+            border-radius: 20px;
             padding: 35px;
-            max-width: 800px;
+            max-width: 580px;
             width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
             box-shadow: 0 25px 60px rgba(0,0,0,0.9);
             transform: scale(0.85) translateY(20px);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: right;
         }
 
-        #journey-modal.active .journey-modal-box {
+        #lesson-modal.active .modal-box {
             transform: scale(1) translateY(0);
         }
 
-        /* تخطيط مراحل الرحلة داخل النافذة */
-        .modal-weeks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-            margin-bottom: 25px;
+        .modal-verse-highlight {
+            background: rgba(77, 171, 247, 0.12);
+            border-right: 4px solid #4dabf7;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
         }
 
-        .modal-week-item {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 14px;
-            padding: 20px;
-            transition: border-color 0.3s;
-        }
-
-        .modal-week-item:hover {
-            border-color: #4dabf7;
-            background: rgba(77, 171, 247, 0.05);
+        .modal-verse-highlight p {
+            color: #ffd43b;
+            font-size: 1.15rem;
+            font-weight: bold;
+            font-style: italic;
+            margin: 0;
+            line-height: 1.7;
         }
 
         .modal-close-btn {
             background: linear-gradient(135deg, #4dabf7, #1d4ed8);
             color: #fff;
             border: none;
-            padding: 12px 40px;
+            padding: 12px 35px;
             border-radius: 25px;
             font-weight: bold;
             cursor: pointer;
             font-size: 1rem;
             display: block;
-            margin: 0 auto;
-            box-shadow: 0 4px 15px rgba(77, 171, 247, 0.4);
+            margin: 25px auto 0 auto;
             transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(77, 171, 247, 0.4);
         }
         .modal-close-btn:hover { transform: scale(1.05); }
 
@@ -141,7 +217,7 @@
         #nav-menu ul li a:hover { color: #4dabf7; }
     </style>
 </head>
-<body>
+<body id="top">
 
     <!-- الهيدر العلوي الموحد -->
     <header>
@@ -164,66 +240,173 @@
         </div>
     </header>
 
-    <!-- الواجهة الرئيسية لدرس الكتاب -->
+    <!-- الواجهة الرئيسية -->
     <section class="bible-hero">
         <i class="fas fa-book-open" style="font-size: 3.5rem; color: #4dabf7; margin-bottom: 15px;"></i>
         <h1 style="color: #fff; font-size: 2.5rem; margin-bottom: 10px; font-weight: 900;">درس الكتاب المقدّس</h1>
-        <p style="color: #94a3b8; max-width: 700px; margin: 0 auto; font-size: 1.15rem; line-height: 1.8;">
+        <p style="color: #94a3b8; max-width: 700px; margin: 0 auto 25px auto; font-size: 1.15rem; line-height: 1.8;">
             «بَلِ انْمُوا فِي النِّعْمَةِ وَفِي مَعْرِفَةِ رَبِّنَا وَمُخَلِّصِنَا يَسُوعَ الْمَسِيحِ» (2 بطرس 3: 18)
         </p>
+        
+        <!-- الزر الرئيسي الذي ينقلك مباشرة للأسابيع بالأسفل -->
+        <a href="#weeks-section" style="background: linear-gradient(135deg, #4dabf7, #1d4ed8); color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(77, 171, 247, 0.4); margin-bottom: 20px;">
+            <i class="fas fa-arrow-down"></i> تصفح أسابيع رحلة النمو
+        </a>
     </section>
 
-    <!-- زر رحلة النمو المدمج والبارز -->
-    <div class="journey-trigger-container">
-        <p style="color: #cbd5e1; font-size: 1.1rem; margin-bottom: 25px;">
-            استكشف المسار الروحي الكامل لنمو المؤمن وتجهيزه للخدمة والشهادة
+    <!-- نبذة توضيحية -->
+    <div class="journey-banner">
+        <h3 style="color: #4dabf7; margin-top: 0; margin-bottom: 8px; font-size: 1.2rem;"><i class="fas fa-seedling"></i> رحلة النمو: من العبادة إلى الانطلاق</h3>
+        <p style="color: #fff; font-size: 0.98rem; line-height: 1.7; margin: 0;">
+            الله لم يدعُنا لنكون مجرد حضور في مقاعد الكنيسة، بل أرادنا كنيسة حية ومتوازنة تقاد بقصده الإلهي. اضغط على أي أسبوع لاستعراض تفاصيل الدرس والآية المحورية.
         </p>
-        <button class="journey-main-btn" onclick="openJourneyModal()">
-            <i class="fas fa-seedling"></i> رحلة النمو: من العبادة إلى الانطلاق
-        </button>
     </div>
 
-    <!-- النافذة المنبثقة الشاملة لتفاصيل رحلة النمو (الـ 10 أسابيع) -->
-    <div id="journey-modal" onclick="closeJourneyModal(event)">
-        <div class="journey-modal-box" onclick="event.stopPropagation()">
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
-                <h2 style="color: #4dabf7; font-size: 1.5rem; margin: 0;"><i class="fas fa-route"></i> رحلة النمو: من العبادة إلى الانطلاق</h2>
-                <button onclick="closeJourneyModal(null)" style="background: none; border: none; color: #aaa; font-size: 1.5rem; cursor: pointer;"><i class="fas fa-times"></i></button>
+    <!-- شبكة الأسابيع والأزرار المباشرة (مع أزرار المستقبل الجاهزة) -->
+    <main id="weeks-section" class="weeks-grid">
+        
+        <!-- الأسبوع 1 -->
+        <div class="week-card" onclick="openLessonModal('الأسبوع الأول', '11 سبتمبر 2026', 'العبادة (تعريفها)', 'نبدأ من الله، لنفهم جوهر السجود الحقيقي وعلاقة القلب بالخالق بعيداً عن الطقس المجرد.', 'ساعة سكون صامت مدتها 10 دقائق يومياً دون هاتف قبل قراءة الكلمة.', '«اِسْجُدُوا لِلرَّبِّ فِي زِينَةٍ مُقَدَّسَةٍ.» (مز 96: 9)')">
+            <div>
+                <div class="week-header"><span>الأسبوع الأول</span><span class="week-date">11 سبتمبر 2026</span></div>
+                <div class="week-content">
+                    <h3>العبادة (تعريفها)</h3>
+                    <p>نبدأ من الله، لنفهم جوهر السجود الحقيقي وعلاقة القلب بالخالق.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة:</strong> ساعة سكون صامت 10 دقائق يومياً.</div>
+                </div>
             </div>
+            <span class="verse-badge">«اِسْجُدُوا لِلرَّبِّ فِي زِينَةٍ مُقَدَّسَةٍ.» (مز 96: 9)</span>
+        </div>
 
-            <p style="color: #cbd5e1; font-size: 0.98rem; line-height: 1.7; margin-bottom: 25px;">
-                الله لم يدعُنا لنكون مجرد حضور في مقاعد الكنيسة، بل أرادنا كنيسة حية ومتوازنة تقاد بقصده الإلهي عبر محطات الروحيّة العشر الآتية:
-            </p>
-
-            <div class="modal-weeks-grid">
-                
-                <!-- الأسبوع 1 -->
-                <div class="modal-week-item">
-                    <span style="color: #4dabf7; font-weight: bold; font-size: 0.85rem;">الأسبوع الأول</span>
-                    <h4 style="color: #fff; margin: 5px 0 8px 0; font-size: 1.1rem;">العبادة (تعريفها)</h4>
-                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px; line-height: 1.6;">نبدأ من الله، لنفهم جوهر السجود الحقيقي وعلاقة القلب بالخالق.</p>
-                    <span style="color: #ffd43b; font-size: 0.85rem; font-style: italic; display: block;">«اِسْجُدُوا لِلرَّبِّ فِي زِينَةٍ مُقَدَّسَةٍ.» (مز 96: 9)</span>
+        <!-- الأسبوع 2 -->
+        <div class="week-card" onclick="openLessonModal('الأسبوع الثاني', '18 سبتمبر 2026', 'العبادة العملية', 'كيف تتحول العبادة إلى أسلوب حياة يملأ تفاصيل كل يوم في العمل والبيت.', 'مذبح العمل؛ تقديم أول 5 دقائق من ساعات العمل تسبيحاً وشكراً للرب.', '«فَإِنْ كُنْتُمْ تَأْكُلُونَ أَوْ تَشْرَبُونَ أَوْ تَفْعَلُونَ شَيْئاً، فَافْعَلُوا كُلَّ شَيْءٍ لِمَجْدِ اللهِ.» (1كو 10: 31)')">
+            <div>
+                <div class="week-header"><span>الأسبوع الثاني</span><span class="week-date">18 سبتمبر 2026</span></div>
+                <div class="week-content">
+                    <h3>العبادة العملية</h3>
+                    <p>كيف تتحول العبادة إلى أسلوب حياة يملأ تفاصيل كل يوم.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة:</strong> مذبح العمل أول 5 دقائق تسبيح.</div>
                 </div>
+            </div>
+            <span class="verse-badge">«فَإِنْ كُنْتُمْ تَأْكُلُونَ أَوْ تَشْرَبُونَ... فَافْعَلُوا لِمَجْدِ اللهِ.» (1كو 10: 31)</span>
+        </div>
 
-                <!-- الأسبوع 2 -->
-                <div class="modal-week-item">
-                    <span style="color: #4dabf7; font-weight: bold; font-size: 0.85rem;">الأسبوع الثاني</span>
-                    <h4 style="color: #fff; margin: 5px 0 8px 0; font-size: 1.1rem;">العبادة العملية</h4>
-                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px; line-height: 1.6;">كيف تتحول العبادة إلى أسلوب حياة يملأ تفاصيل كل يوم.</p>
-                    <span style="color: #ffd43b; font-size: 0.85rem; font-style: italic; display: block;">«فَإِنْ كُنْتُمْ تَأْكُلُونَ... فَافْعَلُوا لِمَجْدِ اللهِ.» (1كو 10: 31)</span>
+        <!-- الأسبوع 3 -->
+        <div class="week-card" onclick="openLessonModal('الأسبوع الثالث', '25 سبتمبر 2026', 'الشركة (أنت جزء من جسد)', 'معاً نحن أقوى، لا مكان للعزلة في جسد المسيح الحي والمتفاعل.', 'تواصل هاتفي تشجيعي مع عضو غائب عن الشركة هذا الأسبوع.', '«أَنْتُمْ جَسَدُ الْمَسِيحِ وَأَعْضَاؤُهُ أَفْرَاداً.» (1كو 12: 27)')">
+            <div>
+                <div class="week-header"><span>الأسبوع الثالث</span><span class="week-date">25 سبتمبر 2026</span></div>
+                <div class="week-content">
+                    <h3>الشركة (أنت جزء من جسد)</h3>
+                    <p>معاً نحن أقوى، لا مكان للعزلة في جسد المسيح.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة:</strong> تواصل هاتفي مع عضو غائب.</div>
                 </div>
+            </div>
+            <span class="verse-badge">«أَنْتُمْ جَسَدُ الْمَسِيحِ وَأَعْضَاؤُهُ أَفْرَاداً.» (1كو 12: 27)</span>
+        </div>
 
-                <!-- الأسبوع 3 -->
-                <div class="modal-week-item">
-                    <span style="color: #4dabf7; font-weight: bold; font-size: 0.85rem;">الأسبوع الثالث</span>
-                    <h4 style="color: #fff; margin: 5px 0 8px 0; font-size: 1.1rem;">الشركة (أنت جزء من جسد)</h4>
-                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px; line-height: 1.6;">معاً نحن أقوى، لا مكان للعزلة في جسد المسيح.</p>
-                    <span style="color: #ffd43b; font-size: 0.85rem; font-style: italic; display: block;">«أَنْتُمْ جَسَدُ الْمَسِيحِ وَأَعْضَاؤُهُ أَفْرَاداً.» (1كو 12: 27)</span>
+        <!-- الأسبوع 4 -->
+        <div class="week-card" onclick="openLessonModal('الأسبوع الرابع', '2 أكتوبر 2026', 'التلمذة (نضوج المؤمن)', 'التغيير الداخلي والنمو المستمر لنكون على صورة المسيح في السلوك والفكر.', 'سجل ردود فعلك اليومية وافحصها بمقياس محبة المسيح.', '«حَتَّى يَتَصَوَّرَ الْمَسِيحُ فِيكُمْ.» (غل 4: 19)')">
+            <div>
+                <div class="week-header"><span>الأسبوع الرابع</span><span class="week-date">2 أكتوبر 2026</span></div>
+                <div class="week-content">
+                    <h3>التلمذة (نضوج المؤمن)</h3>
+                    <p>التغيير الداخلي والنمو لنكون على صورة المسيح.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة:</strong> فحص ردود الفعل بمقياس المحبة.</div>
                 </div>
+            </div>
+            <span class="verse-badge">«حَتَّى يَتَصَوَّرَ الْمَسِيحُ فِيكُمْ.» (غل 4: 19)</span>
+        </div>
 
-                <!-- الأسبوع 4 -->
-                <div class="modal-week-item">
-                    <span style="color: #4dabf7; font-weight: bold; font-size: 0.85rem;">الأسبوع الرابع</span>
-                    <h4 style="color: #fff; margin: 5px 0 8px 0; font-size: 1.1rem;">التلمذة (نضوج المؤمن)</h4>
-                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px; line-height: 1.6;">التغي
+        <!-- الأسبوع 5 -->
+        <div class="week-card" onclick="openLessonModal('الأسبوع الخامس', '9 أكتوبر 2026', 'التلمذة (أنت جزء فعّال)', 'الانتقال من مرحلة الاستقبال السلبي للمعلومة إلى الفاعلية والتأثير.', 'شارك آية واحدة تعلّمتها مع شخص قريب عبر الرسائل.', '«كُنْتُمْ مُحْتَاجِينَ أَنْ يُعَلِّمَكُمْ أَحَدٌ...» (عب 5: 12)')">
+            <div>
+                <div class="week-header"><span>الأسبوع الخامس</span><span class="week-date">9 أكتوبر 2026</span></div>
+                <div class="week-content">
+                    <h3>التلمذة (أنت جزء فعّال)</h3>
+                    <p>الانتقال من الاستقبال إلى الفاعلية والتأثير.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة:</strong> مشاركة آية مع شخص قريب.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«كُنْتُمْ مُحْتَاجِينَ أَنْ يُعَلِّمَكُمْ أَحَدٌ...» (عب 5: 12)</span>
+        </div>
+
+        <!-- الأسبوع 6 -->
+        <div class="week-card" onclick="openLessonModal('الأسبوع السادس', '16 أكتوبر 2026', 'الخدمة (معنى الخدمة)', 'خدمة حقيقية مقرونة باتضاع تعكس قلب المسيح الخادم الذي غسل الأرجل.', 'خدمة خفية غير منتظرة لشخص في العائلة أو محيط العمل.', '«لِأَنَّ ابْنَ الْإِنْسَانِ أَيْضاً لَمْ يَأْتِ لِيُخْدَمَ بَلْ لِيَخْدِمَ.» (مر 10: 45)')">
+            <div>
+                <div class="week-header"><span>الأسبوع السادس</span><span class="week-date">16 أكتوبر 2026</span></div>
+                <div class="week-content">
+                    <h3>الخدمة (معنى الخدمة)</h3>
+                    <p>خدمة حقيقية تعكس قلب المسيح الخادم.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة:</strong> خدمة خفية غير منتظرة.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«لِأَنَّ ابْنَ الْإِنْسَانِ لَمْ يَأْتِ لِيُخْدَمَ بَلْ لِيَخْدِمَ.» (مر 10: 45)</span>
+        </div>
+
+        <!-- الأسبوع 7 -->
+        <div class="week-card" onclick="openLessonModal('الأسبوع السابع', '23 أكتوبر 2026', 'الخدمة (استخدام المواهب)', 'اكتشاف واستثمار كل موهبة فريدة منحها الروح لبنيان الجسد وتعزيته.', 'اكتب موهبتك بوضوح واسأل راعي الخدمة عن فرصة لتفعيلها.', '«كَمَا أَخَذَ كُلُّ وَاحِدٍ مَوْهِبَةً، اخْدِمُوا بِهَا بَعْضُكُمْ بَعْضاً.» (1بط 4: 10)')">
+            <div>
+                <div class="week-header"><span>الأسبوع السابع</span><span class="week-date">23 أكتوبر 2026</span></div>
+                <div class="week-content">
+                    <h3>الخدمة (استخدام المواهب)</h3>
+                    <p>اكتشاف واستثمار كل موهبة منحها الروح.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة:</strong> تحديد الموهبة وسؤال الراعي لتفعيلها.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«كَمَا أَخَذَ كُلُّ وَاحِدٍ مَوْهِبَةً...» (1بط 4: 10)</span>
+        </div>
+
+        <!-- الأسبوع 8 -->
+        <div class="week-card" onclick="openLessonModal('الأسبوع الثامن', '30 أكتوبر 2026', 'أنت خادم ممسوح', 'الخدمة ليست بجهد بشري مُنهك، بل بمسحة وقوة وفعل الروح القدس.', 'وقت صلاة جماعي لطلب امتلاء جديد للخدمة بانسكاب الروح.', '«لاَ بِالْقُدْرَةِ وَلاَ بِالْقُوَّةِ، بَلْ بِرُوحِي قَالَ رَبُّ الْجنُودِ.» (زك 4: 6)')">
+            <div>
+                <div class="week-header"><span>الأسبوع الثامن</span><span class="week-date">30 أكتوبر 2026</span></div>
+                <div class="week-content">
+                    <h3>أنت خادم ممسوح</h3>
+                    <p>الخدمة بقوة ومسحة الروح القدس لا بالجهد البشري.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة:</strong> وقت صلاة جماعي للابتعاد عن التعب والامتلاء بالروح.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«لاَ بِالْقُدْرَةِ وَلاَ بِالْقُوَّةِ، بَلْ بِرُوحِي.» (زك 4: 6)</span>
+        </div>
+
+        <!-- الأسبوع 9 -->
+        <div class="week-card" onclick="openLessonModal('الأسبوع التاسع', '6 نوفمبر 2026', 'الكرازة (المأمورية العظمى)', 'حمل بشارة الخلاص والرجاء للأقرباء والبعيدين بروح المحبة والجرأة.', 'صلِ بأسماء 3 أشخاص غير مؤمنين طوال الأسبوع لدعوة الرب.', '«اذْهَبُوا إِلَى الْعَالَمِ أَجْمَعَ وَاكْرِفُوا بِالْبِشَارَةِ.» (مر 16: 15)')">
+            <div>
+                <div class="week-header"><span>الأسبوع التاسع</span><span class="week-date">6 نوفمبر 2026</span></div>
+                <div class="week-content">
+                    <h3>الكرازة (المأمورية العظمى)</h3>
+                    <p>حمل بشارة الخلاص والرجاء إلى العالم.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة:</strong> الصلاة لأجل 3 أسماء طوال الأسبوع.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«اذْهَبُوا إِلَى الْعَالَمِ أَجْمَعَ.» (مر 16: 15)</span>
+        </div>
+
+        <!-- الأسبوع 10 -->
+        <div class="week-card" onclick="openLessonModal('الأسبوع العاشر', '13 نوفمبر 2026', 'الآن وقت الانطلاق', 'الانطلاق الحقيقي والجاهزية العالية لنكون شهوداً للمسيح حتى أقصى الأرض.', 'تعهد شخصي مكتوب للالتزام بدورك الكنسي والمجتمعي المؤثر.', '«تَكُونُونَ لِي شُهُوداً فِي أُورُشَلِيمَ وَفِي كُلِّ الْيَهُودِيَّةِ... وَإِلَى أَقْصَى الْأَرْضِ.» (أع 1: 8)')">
+            <div>
+                <div class="week-header"><span>الأسبوع العاشر</span><span class="week-date">13 نوفمبر 2026</span></div>
+                <div class="week-content">
+                    <h3>الآن وقت الانطلاق</h3>
+                    <p>الانطلاق الحقيقي لنكون شهوداً حتى أقصى الأرض.</p>
+                    <div class="idea-box"><i class="fas fa-lightbulb"></i> <strong>فكرة:</strong> تعهد شخصي مكتوب للالتزام بالخدمة.</div>
+                </div>
+            </div>
+            <span class="verse-badge">«تَكُونُونَ لِي شُهُوداً إِلَى أَقْصَى الْأَرْضِ.» (أع 1: 8)</span>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- 🚀 أزرار مستقبلية جاهزة للإضافة لاحقاً -->
+        <!-- ========================================== -->
+        
+        <!-- الأسبوع الحادي عشر (جاهز للمستقبل) -->
+        <div class="week-card future-card" onclick="alert('هذا الموضوع قيد التجهيز وسيتم إضافته قريباً!')">
+            <div>
+                <i class="fas fa-plus-circle" style="font-size: 2rem; color: #4dabf7; margin-bottom: 10px;"></i>
+                <h3 style="color: #4dabf7; font-size: 1.1rem; margin-bottom: 5px;">الأسبوع الحادي عشر</h3>
+                <p style="color: #94a3b8; font-size: 0.85rem; margin: 0;">موضوع قادم قريباً...</p>
+            </div>
+        </div>
+
+        <!-- الأسبوع الثاني عشر (جاهز للمستقبل) -->
+        <div class="week-card future-card" onclick="alert('هذا الموضوع قيد التجهيز وسيتم إضاف
