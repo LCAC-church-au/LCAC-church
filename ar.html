@@ -28,11 +28,26 @@
             text-align: center;
         }
 
+        /* حماية صارمة لأبعاد الشعار الكبير في الواجهة لمنع التشوه */
         .hero-logo-box img {
-            max-height: 90px;
-            width: auto;
+            height: 90px !important;
+            width: auto !important;
+            max-height: 90px !important;
+            max-width: 250px !important;
+            object-fit: contain !important;
             filter: drop-shadow(0 4px 15px rgba(0,0,0,0.8));
             margin-bottom: 15px;
+            display: block !important;
+        }
+
+        /* حماية صارمة لأبعاد الشعار في شريط التنقل العلوي */
+        .logo img {
+            height: 38px !important;
+            width: auto !important;
+            max-height: 38px !important;
+            max-width: 150px !important;
+            object-fit: contain !important;
+            display: block !important;
         }
 
         .hero-title-main {
@@ -138,7 +153,7 @@
         <div class="container nav-container">
             <div class="logo">
                 <a href="ar.html">
-                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 38px; width: auto;">
+                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 38px; width: auto; max-height: 38px; object-fit: contain;">
                     <span>كنيسة مركز الحياة العربية</span>
                 </a>
             </div>
@@ -169,11 +184,11 @@
         </div>
     </header>
 
-    <!-- الواجهة الرئيسية (متراصة ومدمجة بإيقاع سينمائي) -->
+    <!-- الواجهة الرئيسية -->
     <section id="home" style="background: transparent !important;">
         <div class="hero-compact-wrapper">
             <div class="hero-logo-box">
-                <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية">
+                <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 90px; width: auto; max-height: 90px; object-fit: contain;">
             </div>
             <h1 class="hero-title-main">كنيسة مركز الحياة العربية</h1>
             <h2 class="hero-title-sub">Life Center Arabic Church - LCAC</h2>
@@ -187,7 +202,7 @@
         </div>
     </section>
 
-    <!-- قسم رسالة الله لك اليوم (مدمج بجمالية وفخامة روحية) -->
+    <!-- قسم رسالة الله لك اليوم -->
     <section style="max-width: 800px; margin: -20px auto 40px auto; padding: 0 20px; position: relative; z-index: 2;">
         <div style="background: rgba(15, 15, 15, 0.85); backdrop-filter: blur(14px); border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 18px; padding: 22px 30px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.8);">
             <div style="color: #ffd700; font-size: 1rem; font-weight: bold; margin-bottom: 8px; display: inline-flex; align-items: center; gap: 8px;">
@@ -289,54 +304,4 @@
                 <a href="https://www.tiktok.com/@lifecenterarabicchurch" target="_blank" style="background: #000000; border: 1px solid #333; color: #fff; padding: 8px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;">
                     <i class="fab fa-tiktok"></i> تيك توك
                 </a>
-                <a href="https://www.youtube.com/@lifecenterarabicchurch" target="_blank" style="background: #ff0000; color: #fff; padding: 8px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;">
-                    <i class="fab fa-youtube"></i> يوتيوب
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- زر العودة للأعلى -->
-    <a href="#top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
-
-    <!-- الفوتر -->
-    <footer style="background: transparent !important; text-align: center; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container">
-            <p style="color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.8); font-size: 0.88rem;">&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
-        </div>
-    </footer>
-
-    <!-- استدعاء ملف الآيات اليومية -->
-    <script src="daily-verses.js"></script>
-
-    <!-- الدوال البرمجية التفاعلية -->
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('active');
-        }
-
-        function openModal() {
-            const modal = document.getElementById('under-construction-modal');
-            modal.style.display = 'flex';
-            setTimeout(() => { modal.style.opacity = '1'; }, 10);
-        }
-        
-        function closeModal() {
-            const modal = document.getElementById('under-construction-modal');
-            modal.style.opacity = '0';
-            setTimeout(() => { modal.style.display = 'none'; }, 300);
-        }
-
-        // إظهار وإخفاء زر العودة للأعلى حسب التمرير
-        window.addEventListener('scroll', function() {
-            const backBtn = document.getElementById('backToTop');
-            if (window.scrollY > 300) {
-                backBtn.classList.add('show');
-            } else {
-                backBtn.classList.remove('show');
-            }
-        });
-    </script>
-</body>
-</html>
+                <a href="https://www.youtube.com/@lifecenterarabicchurch" target="_blank" style="background: #ff0000; color: #fff; padding: 8px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size
