@@ -28,7 +28,6 @@
             text-align: center;
         }
 
-        /* حماية صارمة لأبعاد الشعار الكبير في الواجهة لمنع التشوه */
         .hero-logo-box img {
             height: 90px !important;
             width: auto !important;
@@ -37,16 +36,6 @@
             object-fit: contain !important;
             filter: drop-shadow(0 4px 15px rgba(0,0,0,0.8));
             margin-bottom: 15px;
-            display: block !important;
-        }
-
-        /* حماية صارمة لأبعاد الشعار في شريط التنقل العلوي */
-        .logo img {
-            height: 38px !important;
-            width: auto !important;
-            max-height: 38px !important;
-            max-width: 150px !important;
-            object-fit: contain !important;
             display: block !important;
         }
 
@@ -94,6 +83,121 @@
             box-shadow: 0 15px 40px rgba(77, 171, 247, 0.3) !important;
         }
 
+        /* الهيدر العربي المضبوط بدقة */
+        header { 
+            background: rgba(11, 11, 11, 0.95); 
+            backdrop-filter: blur(10px); 
+            border-bottom: 1px solid var(--border-color); 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+        }
+
+        .nav-container { 
+            display: flex !important; 
+            flex-direction: row !important; 
+            justify-content: space-between !important; 
+            align-items: center !important; 
+            height: 75px;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            direction: rtl !important;
+        }
+
+        .logo {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px;
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .logo img {
+            height: 38px !important;
+            width: auto !important;
+            max-height: 38px !important;
+            max-width: 150px !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
+
+        #nav-menu ul { 
+            display: flex !important; 
+            list-style: none !important; 
+            gap: 20px !important; 
+            align-items: center !important; 
+            margin: 0 !important; 
+            padding: 0 !important; 
+        }
+
+        #nav-menu ul li a { 
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s; 
+        }
+
+        #nav-menu ul li a:hover { color: #fff; }
+
+        /* إصلاح جذري لنافذة "قيد التحديث" لتتمركز تماماً في منتصف الشاشة */
+        #under-construction-modal {
+            display: none;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(0, 0, 0, 0.85) !important;
+            backdrop-filter: blur(10px);
+            z-index: 99999 !important;
+            justify-content: center !important;
+            align-items: center !important;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            margin: 0 !important;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.98));
+            border: 1px solid rgba(77, 171, 247, 0.4);
+            padding: 45px 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+            margin: auto !important;
+        }
+
+        .modal-icon-glow {
+            font-size: 3.8rem;
+            color: #4dabf7;
+            margin-bottom: 20px;
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, #4dabf7, #228be6);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.05rem;
+        }
+
         /* زر العودة للأعلى العائم */
         #backToTop {
             position: fixed;
@@ -123,6 +227,26 @@
         #backToTop:hover {
             transform: scale(1.1);
         }
+
+        @media (max-width: 900px) {
+            #menu-toggle { display: block !important; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; }
+            #nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background: rgba(15, 15, 15, 0.98);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 20px 0;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+                z-index: 1000;
+            }
+            #nav-menu.active { display: block; }
+            #nav-menu ul { flex-direction: column !important; gap: 15px !important; text-align: center !important; }
+        }
+        #menu-toggle { display: none; }
     </style>
 </head>
 <body id="top">
@@ -138,7 +262,7 @@
     
     <div class="ar-overlay"></div>
 
-    <!-- نافذة قيد التحديث -->
+    <!-- نافذة قيد التحديث (متمركزة تماماً في المنتصف الآن) -->
     <div id="under-construction-modal">
         <div class="modal-content">
             <div class="modal-icon-glow"><i class="fas fa-hammer"></i></div>
@@ -153,7 +277,7 @@
         <div class="container nav-container">
             <div class="logo">
                 <a href="ar.html">
-                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 38px; width: auto; max-height: 38px; object-fit: contain;">
+                    <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية">
                     <span>كنيسة مركز الحياة العربية</span>
                 </a>
             </div>
@@ -164,11 +288,11 @@
 
             <nav id="nav-menu">
                 <ul>
-                    <li><a href="#services" style="color:#fff; text-decoration:none;">خدمات الكنيسة</a></li>
-                    <li><a href="faith.html" style="color:#fff; text-decoration:none;">إيمان الكنيسة</a></li>
-                    <li><a href="conference.html" style="color: #ffd43b; font-weight: bold; text-decoration:none;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
-                    <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold; text-decoration:none;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
-                    <li><a href="#contact" style="color:#fff; text-decoration:none;">اتصل بنا</a></li>
+                    <li><a href="#services">خدمات الكنيسة</a></li>
+                    <li><a href="faith.html">إيمان الكنيسة</a></li>
+                    <li><a href="conference.html" style="color: #ffd43b; font-weight: bold;"><i class="fas fa-star"></i> مؤتمر مجد الرب</a></li>
+                    <li><a href="bible.pdf" target="_blank" style="color: #4dabf7; font-weight: bold;"><i class="fas fa-bible"></i> الكتاب المقدس</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
                     <li>
                         <a href="https://forms.gle/sBXa8hQtGhmyuJ7XA" target="_blank" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #ffffff; padding: 5px 12px; font-size: 13px; font-weight: bold; text-decoration: none; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px;">
                             <span>✨</span> كن جزءاً منا
@@ -188,7 +312,7 @@
     <section id="home" style="background: transparent !important;">
         <div class="hero-compact-wrapper">
             <div class="hero-logo-box">
-                <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية" style="height: 90px; width: auto; max-height: 90px; object-fit: contain;">
+                <img src="chrch Logo.png" alt="شعار كنيسة مركز الحياة العربية">
             </div>
             <h1 class="hero-title-main">كنيسة مركز الحياة العربية</h1>
             <h2 class="hero-title-sub">Life Center Arabic Church - LCAC</h2>
@@ -304,4 +428,54 @@
                 <a href="https://www.tiktok.com/@lifecenterarabicchurch" target="_blank" style="background: #000000; border: 1px solid #333; color: #fff; padding: 8px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;">
                     <i class="fab fa-tiktok"></i> تيك توك
                 </a>
-                <a href="https://www.youtube.com/@lifecenterarabicchurch" target="_blank" style="background: #ff0000; color: #fff; padding: 8px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size
+                <a href="https://www.youtube.com/@lifecenterarabicchurch" target="_blank" style="background: #ff0000; color: #fff; padding: 8px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;">
+                    <i class="fab fa-youtube"></i> يوتيوب
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- زر العودة للأعلى -->
+    <a href="#top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- الفوتر -->
+    <footer style="background: transparent !important; text-align: center; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <p style="color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.8); font-size: 0.88rem;">&copy; 2026 كنيسة مركز الحياة العربية (LCAC). جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- استدعاء ملف الآيات اليومية -->
+    <script src="daily-verses.js"></script>
+
+    <!-- الدوال البرمجية التفاعلية -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        function openModal() {
+            const modal = document.getElementById('under-construction-modal');
+            modal.style.display = 'flex';
+            setTimeout(() => { modal.style.opacity = '1'; }, 10);
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('under-construction-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => { modal.style.display = 'none'; }, 300);
+        }
+
+        // إظهار وإخفاء زر العودة للأعلى حسب التمرير
+        window.addEventListener('scroll', function() {
+            const backBtn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backBtn.classList.add('show');
+            } else {
+                backBtn.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
