@@ -22,10 +22,10 @@
         .en-slide:nth-child(5) { background-image: url('church8.jpg'); animation-delay: 24s; }
         @keyframes enSlideAnimation { 0% { opacity: 0; transform: scale(1); } 8% { opacity: 1; } 24% { opacity: 1; } 32% { opacity: 0; transform: scale(1.05); } 100% { opacity: 0; } }
         
-        /* طبقة التعتيم */
+        /* طبقة تعتيم خفيفة جداً وموحدة لتظهر الصور بوضوح */
         .en-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: -1; }
 
-        /* الهيدر وقائمة التنقل */
+        /* الهيدر وقائمة التنقل (شفافة تماماً) */
         header {
             background: rgba(11, 11, 11, 0.95);
             backdrop-filter: blur(10px);
@@ -55,12 +55,14 @@
             text-shadow: 0 2px 6px rgba(0,0,0,0.8); 
         }
 
-        /* حماية صارمة لأبعاد الشعار في شريط التنقل */
+        /* حماية صارمة ونهائية لأبعاد الشعار في شريط التنقل */
         .logo img {
             height: 38px !important;
             width: auto !important;
             max-height: 38px !important;
             max-width: 150px !important;
+            min-height: 38px !important;
+            min-width: 38px !important;
             object-fit: contain !important;
             display: block !important;
         }
@@ -78,7 +80,7 @@
         #nav-menu ul li a { font-size: 0.9rem; white-space: nowrap; text-decoration: none; color: #ffffff !important; text-shadow: 0 2px 6px rgba(0,0,0,0.8); transition: color 0.2s; }
         #nav-menu ul li a:hover { color: #38bdf8 !important; }
 
-        /* صندوق الملاحظة */
+        /* صندوق الملاحظة (بإطار زجاجي شفاف تماماً وناعم) */
         .service-translation-banner {
             background: rgba(0, 0, 0, 0.35);
             backdrop-filter: blur(8px);
@@ -141,7 +143,7 @@
         .banner-sub-text i { color: #d4af37 !important; }
         .highlight-en { color: #ffd43b !important; font-weight: 700; }
 
-        /* قسم الهيرو */
+        /* قسم الهيرو (بإضاءة شفافة ونصوص بارزة بالظل) */
         .hero {
             padding: 40px 20px 50px 20px;
             text-align: center;
@@ -152,12 +154,13 @@
             margin: 0 auto;
         }
 
-        /* حماية صارمة لأبعاد الشعار الكبير في الواجهة */
+        /* حماية صارمة ونهائية لأبعاد الشعار الكبير في الواجهة الرئيسية */
         .hero-content img {
             height: 110px !important;
             width: auto !important;
             max-height: 110px !important;
             max-width: 300px !important;
+            min-height: 110px !important;
             object-fit: contain !important;
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));
             display: block !important;
@@ -170,106 +173,4 @@
 
         .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .btn-main { background: #4dabf7; color: #ffffff !important; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
-        .btn-outline { background: rgba(0,0,0,0.2); border: 2px solid #ffffff; color: #ffffff !important; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; backdrop-filter: blur(4px); box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
-
-        /* بطاقات الخدمات */
-        .section { padding: 50px 20px; background: transparent !important; }
-        .container { max-width: 1100px; margin: 0 auto; text-align: center; background: transparent !important; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
-        
-        .service-card { 
-            background: rgba(0, 0, 0, 0.35) !important; 
-            backdrop-filter: blur(8px); 
-            border: 1px solid rgba(255, 255, 255, 0.25); 
-            padding: 30px 20px; 
-            border-radius: 16px; 
-            text-align: center; 
-            transition: all 0.3s ease; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
-            text-decoration: none !important; 
-            display: block; 
-        }
-        .service-card:hover { transform: translateY(-5px); border-color: rgba(77, 171, 247, 0.8); background: rgba(0, 0, 0, 0.5) !important; }
-        .service-card h3 { color: #ffffff !important; margin: 10px 0; font-size: 1.3rem; text-shadow: 0 2px 6px rgba(0,0,0,0.9); }
-        .service-card p { color: #ffffff !important; margin: 5px 0; text-shadow: 0 2px 6px rgba(0,0,0,0.9); }
-        .section h2 { text-shadow: 0 3px 10px rgba(0,0,0,0.9); }
-        .section p { text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
-
-        /* نافذة الصيانة المتمركزة تماماً في المنتصف */
-        #under-construction-modal { 
-            display: none; 
-            position: fixed !important; 
-            top: 0 !important; 
-            left: 0 !important; 
-            width: 100vw !important; 
-            height: 100vh !important; 
-            background: rgba(0, 0, 0, 0.8) !important; 
-            backdrop-filter: blur(10px); 
-            z-index: 99999 !important; 
-            justify-content: center !important; 
-            align-items: center !important; 
-            margin: 0 !important;
-        }
-        .modal-content { 
-            background: rgba(20, 20, 20, 0.95); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid rgba(77, 171, 247, 0.5); 
-            padding: 40px 30px; 
-            border-radius: 20px; 
-            text-align: center; 
-            max-width: 400px; 
-            width: 90%; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.9); 
-            margin: auto !important;
-        }
-        .modal-btn { background: #4dabf7; color: #fff; border: none; padding: 10px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px; }
-
-        /* الموبايل */
-        @media (max-width: 1000px) {
-            #menu-toggle { display: block; }
-            #nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 25px rgba(0,0,0,0.8); }
-            #nav-menu.active { display: block; }
-            #nav-menu ul { flex-direction: column; gap: 15px; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="en-bg-slideshow">
-        <div class="en-slide"></div>
-        <div class="en-slide"></div>
-        <div class="en-slide"></div>
-        <div class="en-slide"></div>
-        <div class="en-slide"></div>
-    </div>
-    
-    <div class="en-overlay"></div>
-
-    <div id="under-construction-modal">
-        <div class="modal-content">
-            <div style="font-size: 3.5rem; color: #4dabf7; margin-bottom: 15px;"><i class="fas fa-hammer"></i></div>
-            <h3 style="color: #ffffff; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">Under Maintenance</h3>
-            <p style="color: #e2e8f0; margin-bottom: 20px; line-height: 1.6; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">We are working on preparing the details of this service to be available soon.</p>
-            <button class="modal-btn" onclick="closeModal()">Back to Home</button>
-        </div>
-    </div>
-
-    <!-- الهيدر العلوي الشفاف -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <a href="en.html">
-                    <img src="chrch Logo.png" alt="LCAC Logo" style="height: 38px; width: auto; max-height: 38px; object-fit: contain;">
-                    <span>Life Center Arabic Church</span>
-                </a>
-            </div>
-            
-            <button id="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <nav id="nav-menu">
-                <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="faith-en.html" style="color: #ffd700 !important; font-weight: bold;">Our Faith</a></li>
-                    <li><a href="conference.html" style="color: #ffea79 !important; font-weight: bold;"><i class="fas fa-star"></i> Conference</a></li>
+        .btn-outline { background: rgba(0,0,0,0.2); border: 2px solid #ffffff; color: #ffffff !important; padding: 12px 28px; border-radius: 30px; text-decoration:
