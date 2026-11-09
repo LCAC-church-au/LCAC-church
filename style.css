@@ -22,8 +22,18 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    direction: rtl;
     line-height: 1.7;
+}
+
+/* دعم تلقائي لاتجاه الصفحة حسب اللغة (عربي/إنجليزي) */
+body[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+body[dir="ltr"], html[lang="en"] {
+    direction: ltr;
+    text-align: left;
 }
 
 .container {
@@ -34,7 +44,7 @@ body {
 
 
 /* ==========================================
-   2. الهيدر وشريط التنقل (Header)
+   2. الهيدر وشريط التنقل (Header & Navigation)
    ========================================== */
 header {
     background: rgba(11, 11, 11, 0.95);
@@ -51,6 +61,18 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 75px;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* التكيف التلقائي للووجو والقائمة حسب اتجاه الصفحة */
+html[lang="en"] .nav-container, body[dir="ltr"] .nav-container {
+    flex-direction: row;
+}
+
+html[lang="ar"] .nav-container, body[dir="rtl"] .nav-container {
+    flex-direction: row; /* في العربي الشعار يمين والقائمة لليسار طبيعياً */
 }
 
 .logo {
@@ -62,16 +84,25 @@ header {
     font-size: 1.1rem;
 }
 
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
 .logo img {
     height: 40px;
     width: auto;
     border-radius: 4px;
+    object-fit: contain;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 22px;
     align-items: center;
 }
 
@@ -79,6 +110,7 @@ nav a {
     text-decoration: none;
     color: var(--text-muted);
     font-weight: 600;
+    font-size: 0.95rem;
     transition: color 0.3s;
 }
 
@@ -91,6 +123,15 @@ nav a:hover, .highlight-btn {
     color: #000 !important;
     padding: 6px 15px;
     border-radius: 4px;
+}
+
+#menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.6rem;
+    cursor: pointer;
 }
 
 
@@ -130,8 +171,15 @@ nav a:hover, .highlight-btn {
     margin: 0 auto 30px auto;
     color: #d1d1d1;
     font-style: italic;
+    padding: 0 15px;
+}
+
+body[dir="rtl"] .vision-text {
     border-right: 3px solid #fff;
-    padding-right: 15px;
+}
+
+body[dir="ltr"] .vision-text {
+    border-left: 3px solid #fff;
 }
 
 .hero-buttons {
@@ -189,7 +237,6 @@ nav a:hover, .highlight-btn {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    text-align: right;
 }
 
 .service-card {
@@ -197,12 +244,12 @@ nav a:hover, .highlight-btn {
     border: 1px solid var(--border-color);
     padding: 25px;
     border-radius: 8px;
-    transition: transform 0.3s;
+    transition: transform 0.3s, border-color 0.3s;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    border-color: #444;
+    border-color: #4dabf7;
 }
 
 .service-card i {
@@ -258,10 +305,12 @@ nav a:hover, .highlight-btn {
     margin: 25px auto;
     padding: 20px;
     background: var(--card-bg);
-    border-right: 4px solid #fff;
     border-radius: 5px;
     text-align: center;
 }
+
+body[dir="rtl"] .verse-box { border-right: 4px solid #fff; }
+body[dir="ltr"] .verse-box { border-left: 4px solid #fff; }
 
 .verse-box p {
     font-size: 1.1rem;
@@ -367,53 +416,7 @@ nav a:hover, .highlight-btn {
 
 
 /* ==========================================
-   6. صفحة الإيمان والبطاقات (Faith Section)
-   ========================================== */
-.faith-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    text-align: right;
-    margin-top: 30px;
-}
-
-.faith-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 22px;
-    border-radius: 10px;
-    transition: transform 0.3s, border-color 0.3s;
-}
-
-.faith-card:hover {
-    transform: translateY(-4px);
-    border-color: #555;
-}
-
-.faith-card h3 {
-    font-size: 1.1rem;
-    color: #fff;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.faith-card h3 i {
-    color: #fff;
-    font-size: 1.1rem;
-}
-
-.faith-card p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin: 0;
-}
-
-
-/* ==========================================
-   7. الأزرار العائمة والفوتر (Floating & Footer)
+   6. الأزرار العائمة والفوتر (Floating & Footer)
    ========================================== */
 .qr-container {
     max-width: 300px;
@@ -439,12 +442,14 @@ nav a:hover, .highlight-btn {
 .floating-buttons {
     position: fixed;
     bottom: 25px;
-    left: 25px;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    z-index: 1000;
 }
+
+body[dir="rtl"] .floating-buttons { left: 25px; }
+body[dir="ltr"] .floating-buttons { right: 25px; }
 
 .floating-buttons a {
     width: 50px;
@@ -474,11 +479,13 @@ footer {
     font-size: 0.9rem;
     border-top: 1px solid var(--border-color);
 }
+
+
 /* ==========================================
-   8. تخصيص الصفحة الرئيسية (Index Page & Slideshow)
+   7. الشرائح المتحركة (Slideshows)
    ========================================== */
-.bg-slideshow {
-    position: absolute;
+.bg-slideshow, .ar-bg-slideshow {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -487,7 +494,7 @@ footer {
     overflow: hidden;
 }
 
-.bg-slide {
+.bg-slide, .ar-slide {
     position: absolute;
     top: 0;
     left: 0;
@@ -496,21 +503,10 @@ footer {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    animation: slideAnimation 18s infinite;
 }
 
-.bg-slide:nth-child(1) {
-    background-image: url('church1.jpg');
-    animation-delay: 0s;
-}
-.bg-slide:nth-child(2) {
-    background-image: url('church2.jpg');
-    animation-delay: 6s;
-}
-.bg-slide:nth-child(3) {
-    background-image: url('church3.jpg');
-    animation-delay: 12s;
-}
+.bg-slide { animation: slideAnimation 18s infinite; }
+.ar-slide { animation: arSlideAnimation 30s infinite; }
 
 @keyframes slideAnimation {
     0% { opacity: 0; transform: scale(1); }
@@ -520,142 +516,6 @@ footer {
     100% { opacity: 0; }
 }
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.65);
-    z-index: -1;
-}
-
-.welcome-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-    z-index: 2;
-    margin: auto;
-}
-
-/* تصحيح حجم الشعار المتحرك ليظهر بشكل متناسق ومقبول */
-.welcome-logo img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    margin-bottom: 20px;
-    mix-blend-mode: screen;
-    filter: drop-shadow(0 0 15px rgba(77, 175, 247, 0.8));
-    animation: floatLogo 4s ease-in-out infinite;
-}
-
-@keyframes floatLogo {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
-.welcome-content h1 {
-    font-size: 2rem;
-    margin-bottom: 5px;
-    color: #fff;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-    font-weight: 700;
-}
-
-.welcome-content h2 {
-    font-size: 1.1rem;
-    color: #d4d4d4;
-    margin-bottom: 20px;
-    font-weight: 400;
-    direction: ltr;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-}
-
-.welcome-content p {
-    color: #e5e5e5;
-    font-size: 0.95rem;
-    margin-bottom: 30px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-}
-
-.lang-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    max-width: 320px;
-}
-
-.lang-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 20px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-decoration: none;
-    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-    backdrop-filter: blur(5px);
-}
-
-.btn-ar {
-    background: rgba(37, 99, 235, 0.9);
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-}
-.btn-ar:hover {
-    background: rgba(29, 78, 216, 1);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
-}
-
-.btn-en {
-    background: rgba(22, 22, 22, 0.8);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-.btn-en:hover {
-    background: rgba(40, 40, 40, 0.9);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.7);
-}
-/* ==========================================
-   9. تخصيصات الصفحة العربية والواجهة (ar.html)
-   ========================================== */
-.ar-bg-slideshow {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    overflow: hidden;
-}
-
-.ar-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    animation: arSlideAnimation 30s infinite;
-}
-
-.ar-slide:nth-child(1) { background-image: url('church4.jpg'); animation-delay: 0s; }
-.ar-slide:nth-child(2) { background-image: url('church5.jpg'); animation-delay: 6s; }
-.ar-slide:nth-child(3) { background-image: url('church6.jpg'); animation-delay: 12s; }
-.ar-slide:nth-child(4) { background-image: url('church7.jpg'); animation-delay: 18s; }
-.ar-slide:nth-child(5) { background-image: url('church8.jpg'); animation-delay: 24s; }
-
 @keyframes arSlideAnimation {
     0% { opacity: 0; transform: scale(1); }
     8% { opacity: 1; }
@@ -664,153 +524,35 @@ footer {
     100% { opacity: 0; }
 }
 
-.ar-overlay {
+.overlay, .ar-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.6);
     z-index: -1;
 }
 
-.ar-hero-text h2, .ar-hero-text p, .hero h1, .hero h2, .vision-text {
-    text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-}
 
-.service-card {
-    background: rgba(15, 15, 15, 0.35) !important;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 30px;
-    border-radius: 14px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-    text-decoration: none !important;
-    display: block;
-    cursor: pointer;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    background: rgba(15, 15, 15, 0.55) !important;
-    border-color: rgba(77, 171, 247, 0.5);
-}
-
-.service-card h3, .service-card p, .service-card span, .service-card i {
-    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-}
-
-#contact {
-    background: transparent !important;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#contact .container {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.qr-clean-img {
-    max-width: 190px;
-    border-radius: 12px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-    display: inline-block;
-    padding: 8px;
-    background: #ffffff;
-}
-
-/* النافذة المنسدلة (Modal) */
-#under-construction-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.modal-content {
-    background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95));
-    border: 1px solid rgba(77, 171, 247, 0.4);
-    padding: 45px 30px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 420px;
-    width: 90%;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
-    transform: scale(0.7) translateY(30px);
-    animation: modalPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-@keyframes modalPopIn {
-    to { transform: scale(1) translateY(0); opacity: 1; }
-}
-
-.modal-icon-glow {
-    font-size: 3.8rem;
-    color: #4dabf7;
-    margin-bottom: 20px;
-}
-
-.modal-btn {
-    background: linear-gradient(135deg, #4dabf7, #228be6);
-    color: #fff;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1.05rem;
-}
-
-/* الشريط العلوي وتجاوب الشاشات */
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 30px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.logo a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-#menu-toggle { display: none !important; }
-#nav-menu { display: block !important; position: static !important; width: auto !important; background: transparent !important; box-shadow: none !important; }
-#nav-menu ul { display: flex !important; list-style: none !important; gap: 18px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
-#nav-menu ul li a { font-size: 0.9rem; white-space: nowrap; }
-
-@media (max-width: 1200px) {
-    #menu-toggle { display: block !important; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; }
-    #nav-menu { display: none !important; position: absolute !important; top: 100% !important; right: 0 !important; width: 100% !important; background: rgba(15, 15, 15, 0.95) !important; backdrop-filter: blur(10px); padding: 20px 0; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.8); }
-    #nav-menu.active { display: block !important; }
+/* ==========================================
+   8. التجاوب مع الهواتف الذكية (Responsive Menu)
+   ========================================== */
+@media (max-width: 900px) {
+    #menu-toggle { display: block !important; }
+    #nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 15, 15, 0.98);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px 0;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+        z-index: 1000;
+    }
+    #nav-menu.active { display: block; }
     #nav-menu ul { flex-direction: column !important; gap: 15px !important; text-align: center !important; }
 }
