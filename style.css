@@ -93,10 +93,12 @@ html[lang="ar"] .nav-container, body[dir="rtl"] .nav-container {
 }
 
 .logo img {
-    height: 40px;
-    width: auto;
-    border-radius: 4px;
-    object-fit: contain;
+    height: 40px !important;    /* تثبيت الارتفاع بدقة ليكون متناسقاً مع شريط التنقل */
+    width: auto !important;     /* الحفاظ على تناسب العرض تلقائياً */
+    max-height: 40px !important; /* قيد أقصى لمنع أي تمدد مفاجئ */
+    max-width: 150px !important; /* قيد أقصى للرض */
+    object-fit: contain !important; /* منع التشوه نهائياً */
+    display: block !important;
 }
 
 nav ul {
